@@ -13,7 +13,6 @@ import {
   
   
 import React from 'react'
-import { fetchApi,baseUrl } from '../../utils/fetchApi'
 const Company = ({agentsDetails}) => {
   console.log(agentsDetails)
     return (
