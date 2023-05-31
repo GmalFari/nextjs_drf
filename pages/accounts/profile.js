@@ -16,7 +16,6 @@ import { FaHome } from 'react-icons/fa';
 import { useContext,useState, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';  
 import { useRouter } from 'next/router';
-import { fetchApi } from '../../utils/fetchApi';
 
 
 const  Profile =()=> {
