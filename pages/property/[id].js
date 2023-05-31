@@ -15,9 +15,9 @@ const PropertyDetails = ({propertyDetails:
     {coverPhoto,price,rentFrequency,rooms,purpose
     ,title_l1,description_l1,baths,area,agency,
     isVerified,type,photos,amenities,furnishingStatus,geography}})=>{
-    const [toggleMap,setToggleMap ] = useState(true)
-    const t = ''
-    const encodedParams = new URLSearchParams();
+    let [toggleMap,setToggleMap ] = useState(true)
+    let t = ''
+    let encodedParams = new URLSearchParams();
     encodedParams.append("q", "English is hard, but detectably so");
 
   const options = {
