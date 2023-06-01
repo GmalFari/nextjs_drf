@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { Box,CardHeader,Flex,Card,Text,Heading ,CardBody} from '@chakra-ui/react'
 import { useState,useEffect } from 'react';
 import {sections} from "../utils/searchSections";
+
+import yemenGis from "../utils/yemenGis.json";
+import gadm41_YEM_1 from "../utils/gadm41_YEM_1.json";
 const Section2 = () => {
   const [content, setcontent] = useState(null);
   useEffect((content)=>{
@@ -23,11 +26,14 @@ const Section2 = () => {
 
 
   ))
-  
+  const newcontent  =yemenGis.features.map((Directorate,index) =>(
+          <Box key={index} value={`${Directorate['properties']['NL_NAME_2']}`}>{`${Directorate['properties']['NL_NAME_2']}`}</Box>
+        ))
+        
  return (
   
   <Flex  justifyContent="space-between" flexWrap="wrap">
-   {content}
+   {newcontent}
   </Flex>
 
   )
