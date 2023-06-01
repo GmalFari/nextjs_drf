@@ -50,6 +50,7 @@ interface LinkItemProps {
 import AuthContext from '../context/AuthContext';
 
 const LinkItems: Array<LinkItemProps> = [
+  
   { name: 'الرئيسية',url:'/', icon: FiHome },
   { name: 'أبحث عن عقار',url:'/search', icon: FaSearch },
   { name: 'أستأجر عقار ',url:'/', icon: FiHome },
