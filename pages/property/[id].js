@@ -13,7 +13,7 @@ import { BasicUsage } from '../../components/BasicUsage';
 import MainBtn from '../../components/MainBtn';
 const PropertyDetails = ({propertyDetails:
     {coverPhoto,price,rentFrequency,rooms,purpose
-    ,title_l1,description_l1,baths,area,agency,
+    ,property_title,description_l1,baths,area,agency,
     isVerified,type,photos,amenities,furnishingStatus,geography}})=>{
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
@@ -49,7 +49,7 @@ console.log(response.data);
                 <MainBtn icon={<FaRegHeart fontWeight={'bold'} color='#006169' />} color={'#fff'}  />
                 <MainBtn icon={<FaDownload fontWeight={'bold'} color='#006169' />} color={'#fff'}  />
             </Flex>
-            {coverPhoto && <Img src={coverPhoto.url} width={"100%"} height={"100%"} />}
+            {coverPhoto && <Img src={coverPhoto} width={"100%"} height={"100%"} />}
           </Box>
         <Box w="full" p="6">
         
@@ -74,7 +74,7 @@ console.log(response.data);
       </Box>
         <Box marginTop="2">
             <Text fontSize="lg" marginBottom="2" fontWeight="bold">
-                {title_l1.replace('صنعاء','دبي')}
+                {property_title.replace('صنعاء','دبي')}
             </Text>
             <Box p={0} bg='#fff' position={['fixed','fixed','fixed','relative']} left={0} bottom={'0'} width={'100%'}>
             <Grid  templateColumns='repeat(3, 1fr)' gap={2} >
@@ -105,10 +105,10 @@ console.log(response.data);
                 )
                 }
                 <Box>
-                    {amenities.length && <Text fontSize="2xl" fontWeight="black"  marginTop="5"  >
+                    {/* {amenities.length && <Text fontSize="2xl" fontWeight="black"  marginTop="5"  >
                         Amenities
-                    </Text>}
-                    <Flex flexWrap="wrap">
+                    </Text>} */}
+                    {/* <Flex flexWrap="wrap">
                         {amenities.map((item)=>(
                             item.amenities.map((amenity)=>(
                                 <Text key={amenity.text} 
@@ -124,7 +124,7 @@ console.log(response.data);
                                 </Text>
                             ))
                         ))}
-                    </Flex>
+                    </Flex> */}
                 </Box>
            </Flex> 
             </Box>
@@ -134,7 +134,7 @@ console.log(response.data);
 
 export default PropertyDetails
 export async function getServerSideProps({params: {id}}){
-    const data = await fetchApi(`${baseUrl}/properties/detail?externalID=${id}`)
+    const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/${id}`)
     return {
         props : {
             propertyDetails:data

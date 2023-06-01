@@ -19,11 +19,12 @@ const MainCard = (
     const created = currentDate.getHours() - date.getHours();
     const checkCreatedFunc = created =>{
       let checkCreated = '';
-      if(created == 1) {
-        return checkCreated = 'ساعة واحده'
+      if(created < 1) {
+        return checkCreated = 'الاَن'
       } else if (created == 2){
        return  checkCreated='ساعتين';
-      } else if (created <= 10) {
+      }
+       else if (created <= 10) {
        return  checkCreated = `${created} ساعات`
       }
       return  checkCreated = `${created} ساعة`
