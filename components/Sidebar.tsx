@@ -110,7 +110,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       pos="fixed"
       h="full"
       {...rest}>
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between" overflow="scroll">
         <Text style={{"fontFamily":"font-family: 'Cairo', sans-serif"}} fontSize="2xl"  fontWeight="bold">
         <Link href="/" passHref>
           لبنة هاوس
