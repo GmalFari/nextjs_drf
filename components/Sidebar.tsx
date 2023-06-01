@@ -53,7 +53,7 @@ const LinkItems: Array<LinkItemProps> = [
   { name: 'الرئيسية',url:'/', icon: FiHome },
   { name: 'أبحث عن عقار',url:'/search', icon: FaSearch },
   { name: 'أستأجر عقار ',url:'/', icon: FiHome },
-  { name: 'بيع عقار',url:'/create', icon: FiPlus },
+  { name: ' أضف عقارك مجاناً',url:'/create', icon: FiPlus },
   // { name: '',url:'/agencies', icon: FiStar },
   // { name: 'الإعدادات',url:'/', icon: FiSettings },
 ];
