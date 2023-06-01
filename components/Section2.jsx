@@ -26,8 +26,7 @@ const Section2 = () => {
 
 
   ))
-  const newcontent  =yemenGis.features.map((Directorate,index) =>(
-        
+  
  return (
   
   <Flex  justifyContent="space-between" flexWrap="wrap">
