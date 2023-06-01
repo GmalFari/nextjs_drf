@@ -16,9 +16,9 @@ const Section2 = () => {
    pt="10px" pb="10px" ms="20px" mt="50px" mb="50px" width={['100%','45%','25%','25%']}>
         <Heading size="md" style={{"fontFamily":"Cairo,sans-serif"}} margin="auto"  fontWeight="bold">{content.title}</Heading> 
         <Box margin="auto" >{content.content.map((content,index)=>(
-           <Text key={index} color="#177578" p="2px">
+           <Link href=`/search?area=${content}`> <Text key={index} color="#177578" p="2px">
             {content}
-          </Text>
+          </Text></Link>
       ))}
       
        </Box>
