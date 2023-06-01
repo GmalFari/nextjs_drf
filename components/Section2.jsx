@@ -27,7 +27,16 @@ const Section2 = () => {
 
   ))
   const newcontent  =yemenGis.features.map((Directorate,index) =>(
-          <Box key={index} value={`${Directorate['properties']['NL_NAME_2']}`}>{`${Directorate['properties']['NL_NAME_2']}`}</Box>
+         // <Box key={index} value={`${Directorate['properties']['NL_NAME_2']}`}>{`${Directorate['properties']['NL_NAME_1']}`}</Box>
+          <Box pt="10px" pb="10px" ms="20px" mt="50px" mb="50px" width={['100%','45%','25%','25%']}>
+        <Heading style={{"fontFamily":"Cairo,sans-serif"}} margin="auto"  fontWeight="bold">{`${Directorate['properties']['NL_NAME_1']}`}</Heading> 
+        <Box margin="auto" >
+      
+        {`${Directorate['properties']['NL_NAME_1']}`}
+      
+       </Box>
+        </Box>
+          
         ))
         
  return (
