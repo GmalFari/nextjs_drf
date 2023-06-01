@@ -32,6 +32,7 @@ const Section2 = () => {
         <Heading style={{"fontFamily":"Cairo,sans-serif"}} margin="auto"  fontWeight="bold">{`${Directorate['properties']['NL_NAME_1']}`}</Heading> 
         <Box margin="auto" >
       
+      
         {`${Directorate['properties']['NL_NAME_2']}`}
       
        </Box>
