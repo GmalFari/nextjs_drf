@@ -55,8 +55,8 @@ const LinkItems: Array<LinkItemProps> = [
   
   { name: 'الرئيسية',url:'/', icon: FiHome },
   { name: 'أبحث عن عقار',url:'/search', icon: FaSearch },
-  { name:' عقارات للبيع ',url:'/search?porpose=for sale', icon: BsFillHouseAddFill },
-    { name:' عقارات للإيجار ',url:'/search?porpose=for rent', icon: BsFillHouseAddFill },
+  { name:' عقارات للبيع ',url:'/search?porpose=for sale', icon: BsFillHouseFill },
+    { name:' عقارات للإيجار ',url:'/search?porpose=for rent', icon: BsFillHouseFill },
   { name: ' أضف عقارك مجاناً',url:'/create', icon: FiPlus },
   // { name: '',url:'/agencies', icon: FiStar },
   // { name: 'الإعدادات',url:'/', icon: FiSettings },
