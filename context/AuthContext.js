@@ -55,7 +55,7 @@ useEffect(()=>{
       localStorage.setItem("authTokens", JSON.stringify(data));
       console.log(response.status)
       alert("لقد تم تسجيل الدخول")
-      router.push('/accounts/profile')
+      router
       // history.back();
       // Router.back()
     } else {

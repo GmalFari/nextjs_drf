@@ -56,15 +56,15 @@ const Create = () => {
 const [myData,setData] = useState(
   {
   property_title:"",
+  property_type:"",
+  property_price:0,
   coverPhoto:null,
   // "location":{  
   //       latitude:"",
   //       longitude:""},
-  proType:"",
   purpose:"",
-  rentFrequency:"",
-  rentFrequency:"",
-  city:"",
+  rent_frequency:"",
+  property_town:"",
   state:"",
   directorate:"",
   district:"",

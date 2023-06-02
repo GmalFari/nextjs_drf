@@ -45,7 +45,7 @@ const Form1 = ({data,
       أعلن عن عقارك 
       </Heading>
       
-      <FormControl as={GridItem} colSpan={[6, 3]}>
+      <FormControl as={GridItem} dir="rtl" colSpan={[6, 3]}>
         <FormLabel
           htmlFor="typeProperty"
           fontSize="sm"
@@ -57,9 +57,9 @@ const Form1 = ({data,
            نوع العقار
         </FormLabel>
         <Select
-          direction="rtl"
+            dir="ltr"
           id="typeProperty"
-          name="typeProperty"
+          name="property_type"
           autoComplete="typeProperty"
           placeholder=" نوع العقار"
           focusBorderColor="brand.400"
@@ -68,6 +68,7 @@ const Form1 = ({data,
           w="full"
           rounded="md"
           onChange={handleChange}
+          value={data.property_type}
           >
           {typeProperty.map((typeP)=>{
         return (
@@ -88,7 +89,7 @@ const Form1 = ({data,
            الغرض 
         </FormLabel>
         <Select
-          // direction="rtl"
+            dir="ltr"
           id="purpose"
           name="purpose"
           autoComplete="purpose"
@@ -110,7 +111,7 @@ const Form1 = ({data,
           عقد الإيجار
           </FormLabel>
         <Select
-          direction="rtl"
+         dir="ltr"
           id="typeProperty"
           name="typeProperty"
           autoComplete="typeProperty"
@@ -120,6 +121,7 @@ const Form1 = ({data,
           w="full"
           rounded="md"
           onChange={handleChange}
+          value={data.rent_frequency}
           >
           {rentFrequencyList.map((propertyview)=>{
         return (
@@ -140,6 +142,7 @@ const Form1 = ({data,
       إسم المدينة
         </FormLabel>
         <Select
+        dir="ltr"
           id="city"
           name="city"
           autoComplete="city"
@@ -172,6 +175,7 @@ const Form1 = ({data,
                   إسم المديرية
         </FormLabel>
         <Select
+        dir="ltr"
           id="city"
           name="city"
           autoComplete="city"
@@ -281,16 +285,30 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
           onChange={handleChange}
           // onChange={e=>{setTitle(e.target.value)}}
         />
+      </FormControl>
+      <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
+        <FormLabel
+          htmlFor="title"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}
+          mt="2%">
+          السعر
+        </FormLabel>
         <Input
           type="text"
-          name="coverPhoto"
-          id="coverPhoto"
+          name="property_price"
+          id="title"
           focusBorderColor="brand.400"
           shadow="sm"
           size="sm"
           w="full"
           rounded="md"
-          onChange={e=>{}}
+          value={myData.property_price}
+          onChange={handleChange}
           // onChange={e=>{setTitle(e.target.value)}}
         />
       </FormControl>
@@ -306,8 +324,22 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
           mt="2%">
           الصورة الرئيسية للعقار
         </FormLabel>
-        
+        <Input
+          type="file"
+          name="coverPhoto"
+          accept="image/png, image/jpeg"                       
+          id="mainImg"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          onChange={(e)=>setData({...myData,coverPhoto:e.target.files[0]})}
+          // onChange={e=>{e.target.mainImg.files[0]}}
+        /> 
       </FormControl>
+        
+      
       <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
         <FormLabel
           htmlFor="videoURL"
@@ -392,8 +424,7 @@ const Form3 = ({setPropertyLocation,ChooseLocation}) => {
           الإطلالة
           </FormLabel>
         <Select
-          direction="rtl"
-          id="typeProperty"
+dir="ltr"          id="typeProperty"
           name="typeProperty"
           autoComplete="typeProperty"
           placeholder="الإطلالة"
@@ -428,8 +459,8 @@ const Form3 = ({setPropertyLocation,ChooseLocation}) => {
          قابلية للتفاوض
           </FormLabel>
         <Select
-          direction="rtl"
-          id="typeProperty"
+        dir="ltr"
+        id="typeProperty"
           name="typeProperty"
           autoComplete="typeProperty"
           placeholder=""
@@ -456,7 +487,6 @@ const Form3 = ({setPropertyLocation,ChooseLocation}) => {
           نوع التشطيب
           </FormLabel>
         <Select
-          direction="rtl"
           id="typeProperty"
           name="typeProperty"
           autoComplete="typeProperty"
@@ -492,7 +522,7 @@ const Form3 = ({setPropertyLocation,ChooseLocation}) => {
 };
 
 export default function Multistep({myData,setData}) {
-  const [submitted,setSubmitted]=useState(false);
+  const [submitted,setSubmitted]=useState(null);
   const [apiMessage,setApiMessage]= useState([])
  const newData = Object.keys(apiMessage).map((key) => {
     return {
@@ -538,7 +568,10 @@ export default function Multistep({myData,setData}) {
     const myform = new FormData()
     {myData.coverPhoto &&myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
     myform.append("property_title",myData.property_title);
-    myform.append("purpose",myData.purpose)
+    myform.append("purpose",myData.purpose);
+    myform.append("rent_frequency",myData.rent_frequency);
+    myform.append("purpose",myData.property_price);
+   
     const url = 'http://127.0.0.1:8000/api/list-properties/'
         const options = {
         method: 'POST',
@@ -561,11 +594,11 @@ export default function Multistep({myData,setData}) {
           setData({...myData,property_title:""})
           console.log(myform)
         }else {
-          setSubmitted(false)
+          // setSubmitted(false)
           setApiMessage(result)
         }          
       } catch (error) {
-        // setApiMessage(error)
+        // setApiMessage()
         console.log(error)
         setSubmitted(false)
         alert(error)
@@ -590,13 +623,15 @@ export default function Multistep({myData,setData}) {
   return (
     <>
       <Box 
+        onSubmit={handleSubmit}
         borderWidth="1px"
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
         maxWidth={800}
         p={6}
         m="10px auto"
-        as="form">
+        as="form"
+        >
         <Progress
           hasStripe
           value={progress}
@@ -644,28 +679,14 @@ export default function Multistep({myData,setData}) {
                 Next
               </Button>
             </Flex>
-            {step === 3 ? (
-              <form onSubmit={handleSubmit} enctype="multipart/form-data">  
-              <Input
-          type="file"
-          name="coverPhoto"
-          accept="image/png, image/jpeg"                       
-          id="mainImg"
-          focusBorderColor="brand.400"
-          shadow="sm"
-          size="sm"
-          w="full"
-          rounded="md"
-          onChange={(e)=>setData({...myData,coverPhoto:e.target.files[0]})}
-          // onChange={e=>{e.target.mainImg.files[0]}}
-
-        /> 
-        <Button
+            {step === 3?(
+      <Button
                 type="submit"
                 w="8rem"
                 colorScheme="teal"
                 variant="solid"
-                onClick={() => {submitted?
+                onClick={
+                  () => {submitted?
         
               toast({
                 title: `لقد تم إضافة العقار`,
@@ -685,17 +706,16 @@ export default function Multistep({myData,setData}) {
                 isClosable: true,
               })
             
-                }}
+                }
+            }
                 >
                 إضافة عقار
-              </Button>
-              
-        </form>
-            ) : null}
+              </Button>):null}
           </Flex>
         </ButtonGroup>
         
       </Box>
+    
     </>
   );
 }

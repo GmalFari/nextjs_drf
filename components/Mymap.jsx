@@ -9,7 +9,9 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 const MyMap = ({geoDetail,sizes,ChooseLocation}) =>{
   const map = useRef(null);
-    const {lat,lng} = {...geoDetail}
+  console.log(geoDetail)
+    const [lat,lng] = [...geoDetail]
+    console.log(lat )
     const {mapW ,mapH} = {...sizes}
   const [viewport,setViewport] = useState({latitude:lat,longitude:lng});
   useEffect(()=>{
@@ -21,10 +23,12 @@ const MyMap = ({geoDetail,sizes,ChooseLocation}) =>{
         zoom:7
       })
     })
-  },[])
+  },[viewport])
   function onClickMap(e) {
     // console.log(e.lngLat);
-    ChooseLocation({latitude:e.lngLat.lat,longitude:e.lngLat.lng})
+ {ChooseLocation?
+   ChooseLocation({latitude:e.lngLat.lat,longitude:e.lngLat.lng}):null}
+
 
   }
 
