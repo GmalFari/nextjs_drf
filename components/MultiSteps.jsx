@@ -629,7 +629,6 @@ export default function Multistep({myData,setData}) {
         maxWidth={800}
         p={6}
         m="10px auto"
-        as="form"
         >
         <Progress
           hasStripe
@@ -679,13 +678,13 @@ export default function Multistep({myData,setData}) {
               </Button>
             </Flex>
             {step === 3?(
-      <Button
+            <form onSubmit={handleSubmit} enctype="multipart/form-data">   
+              <Button
                 type="submit"
                 w="8rem"
                 colorScheme="teal"
                 variant="solid"
-                onClick={
-                  () => {submitted?
+                onClick={() => {submitted?
         
               toast({
                 title: `لقد تم إضافة العقار`,
@@ -696,22 +695,22 @@ export default function Multistep({myData,setData}) {
             :
               toast({
                 title: ` خطأ`,
-                description:'لم يتم إضافه العقار هنالك خطأ'
-  //   newData.map((m,i)=>(
-                  //  <>
-                     // {m.key}: {m.value}
-                  //  </>
-               // ))
-                ,
+                description:newData.map((m,i)=>(
+                    <>
+                      {m.key}: {m.value}
+                    </>
+                )),
                 status: 'error',
                 isClosable: true,
               })
             
-                }
-            }
+                }}
                 >
                 إضافة عقار
-              </Button>):null}
+                </Button>
+              
+        </form>
+     ):null}
           </Flex>
         </ButtonGroup>
         
