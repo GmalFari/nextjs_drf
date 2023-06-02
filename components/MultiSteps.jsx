@@ -572,7 +572,7 @@ export default function Multistep({myData,setData}) {
     myform.append("rent_frequency",myData.rent_frequency);
     myform.append("purpose",myData.property_price);
    
-    const url = 'http://127.0.0.1:8000/api/list-properties/'
+    const url = 'https://fortestmimd.pythonanywhere.com/api/list-properties/'
         const options = {
         method: 'POST',
         headers: {
