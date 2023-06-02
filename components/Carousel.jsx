@@ -4,17 +4,22 @@ import Head from 'next/head';
 import Image from 'next/image';
 import advancedSearch from "../assets/images/advanced.svg";
 import image from "../assets/images/webImg1.webp";
-import img2 from "../assets/images/img1.webp";
+import img2 from "../assets/images/best1.webp";
 import { useState , useEffect } from 'react';
 import { fetchApi } from '../utils/fetchApi';
 import MainSearch from "../components/MainSearch";
-import { Box,Text,Heading,Stack } from '@chakra-ui/react';
+import { Box,Img,Text,Heading,Stack } from '@chakra-ui/react';
 import '@coreui/coreui/dist/css/coreui.min.css';
 const Carousel = () => {
   return (
       <Box>
         <Box className="carousel-inner">
-          <Box backgroundImage={img2} backgroundSize="cover" className="carousel-item active">
+          <Box backgroundImage={image} backgroundSize="cover" className="carousel-item active">
+                <Box 
+                     width="100%" minwidth="100%"
+
+                dispa
+                >
                 <Image
                 width="100%" minwidth="100%"
                     // boxSize='100px'
@@ -22,6 +27,7 @@ const Carousel = () => {
                     src={img2}
                     alt='carousel image'
                   />
+                </Box>
             <Box className="carousel-caption">
               <Heading fontSize={["2xl","3xl"]} mb="2px"  style={{"fontFamily":"Cairo,sans-serif"}}>أبحث الأن عن بيت الأحلام</Heading>
               <Text fontWeight={"bold"}  fontSize={"xl"}>نوفر لك جميع ماتحتاجة عن العقارات في مكان واحد</Text>

@@ -60,7 +60,7 @@ const Search = ({data}) => {
           .catch((error) => {
             console.log(error);
           });
-      }, [currentPage, itemsCount, router]);
+      }, []);
 
     const listingsH = [properties.map((property) =>(
                <HorizonalCard   property={property} key={property.id} /> 
