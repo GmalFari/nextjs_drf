@@ -568,11 +568,16 @@ export default function Multistep({myData,setData}) {
     const myform = new FormData()
     {myData.coverPhoto &&myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
     myform.append("property_title",myData.property_title);
+<<<<<<< HEAD
     myform.append("purpose",myData.purpose);
     myform.append("rent_frequency",myData.rent_frequency);
     myform.append("purpose",myData.property_price);
    
     const url = 'http://127.0.0.1:8000/api/list-properties/'
+=======
+    //myform.append("purpose",myData.purpose)
+    const url = 'https://fortestmimd.pythonanywhere.com/api/list-properties/'
+>>>>>>> 9b5d68981b311691b3caac243e8c911703f0e546
         const options = {
         method: 'POST',
         headers: {
@@ -697,11 +702,13 @@ export default function Multistep({myData,setData}) {
             :
               toast({
                 title: ` خطأ`,
-                description:newData.map((m,i)=>(
-                    <>
-                      {m.key}: {m.value}
-                    </>
-                )),
+                description:'لم يتم إضافه العقار هنالك خطأ'
+  //   newData.map((m,i)=>(
+                  //  <>
+                     // {m.key}: {m.value}
+                  //  </>
+               // ))
+                ,
                 status: 'error',
                 isClosable: true,
               })

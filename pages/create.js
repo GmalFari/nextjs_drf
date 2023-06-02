@@ -81,7 +81,7 @@ const [myData,setData] = useState(
     {user?
     <Box>
       <MultiSteps myData={myData} setData={setData}/>
-      </Box>:window.location.replace("/accounts/register")}
+      </Box>:window.location.replace("/accounts/login")}
       </>
   )
 }

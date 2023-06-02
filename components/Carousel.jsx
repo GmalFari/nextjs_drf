@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import advancedSearch from "../assets/images/advanced.svg";
 import image from "../assets/images/webImg1.webp";
-import img2 from "../assets/images/img2.jpg";
+import img2 from "../assets/images/img1.webp";
 import { useState , useEffect } from 'react';
 import { fetchApi } from '../utils/fetchApi';
 import MainSearch from "../components/MainSearch";
@@ -14,12 +14,12 @@ const Carousel = () => {
   return (
       <Box>
         <Box className="carousel-inner">
-          <Box backgroundImage={image} backgroundSize="cover" className="carousel-item active">
+          <Box backgroundImage={img2} backgroundSize="cover" className="carousel-item active">
                 <Image
                 width="100%" minwidth="100%"
                     // boxSize='100px'
                     style={{objectFit:"cover"}}
-                    src={image}
+                    src={img2}
                     alt='carousel image'
                   />
             <Box className="carousel-caption">

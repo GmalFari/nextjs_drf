@@ -202,7 +202,7 @@ export async function getServerSideProps({query}) {
     const categoryExternalID = query.categoryExternalID || '4'; 
     const lang = query.lang || 'ar';
     // const data = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=${locationExternalIDs}&purpose=${purpose}&hitsPerPage=6&rentFrequency=${rentFrequency}&minPrice=${minPrice}&maxPrice=${maxPrice}&bathsMin=${bathsMin}&roomsMin=${roomsMin}&sort=${sort}&areaMax=${areaMax}&categoryExternalID=${categoryExternalID}&lang=${lang}`);
-        const data = await fetchApi(`http://127.0.0.1:8000/api/list-properties/`)
+        const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/`)
                     return {
                         props:{
                             data:data,
