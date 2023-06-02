@@ -25,7 +25,8 @@ const Section2 = () => {
         <Heading size="md" style={{"fontFamily":"Cairo,sans-serif"}} margin="auto"  fontWeight="bold">{content.title}</Heading> 
         
         <Box   ref={ref} margin="auto" >{content.content.map((content,index)=>(
-           <Link href={`/search?area=${content}`}> <Text key={index} color="#177578" p="2px">
+           // eslint-disable-next-line react/jsx-key
+           <Link key={index} href={`/search?area=${content}`}> <Text key={index} color="#177578" p="2px">
             {content}
           </Text></Link>
       ))}
