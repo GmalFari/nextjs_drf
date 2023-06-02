@@ -680,7 +680,7 @@ export default function Multistep({myData,setData}) {
   //   newData.map((m,i)=>(
                   //  <>
                      // {m.key}: {m.value}
-                  /  </>
+                  //  </>
                // ))
                 ,
                 status: 'error',
