@@ -30,7 +30,44 @@ const Banner = ({purpose , property_title,title2,desc1,desc2,buttonText,linkName
 
 export default function Home({propertiesForSale,propertiesForRent}) {
   return (
-  <>page
+  <>
+     <Box>
+       <Container maxW='1600px'>
+    <Carousel />
+    </Container>
+    <Container maxW='1400px'>
+     <Box 
+     ms={['2px','50px','100px']}
+     m={['2px','50px','100px']}> 
+      <Box textAlign="center" margin='10px' fontSize="40px" 
+      fontWeight="bold">   تصفح اَخر العقارت
+      </Box>
+      <Box overflowX={"scoll"}  justifyContent={"center"}   display="flex"  flexWrap="nowrap" overflowY="hidden" >
+      {propertiesForRent.map((property) => <MainCard  property={property} key={property.id} />)}
+    </Box>
+    <Spacer/>
+      <Box mt="100" display={['Flex']} 
+         flexDirection={['column','column','column','column','row']}  
+        justifyContent="center"
+        alignItems="center"
+        >
+        <Link href="/search?purpose=for-rent">
+        <Section1 image={Rent} title="أستأجر عقار " content="نحن نخلق تجربة سلسة عبر الإنترنت - من التسوق على أكبر شبكة تأجير ، إلى التقديم ، إلى دفع الإيجار."  />
+        </Link>
+        <Link href="/search?purpose=for-sale">
+        <Section1 image={Buy} title=" أشتري عقار" content="اعثر على مكانك من خلال تجربة صور غامرة ومعظم القوائم ، بما في ذلك الأشياء التي لن تجدها في أي مكان آخر."/>
+        </Link>
+        <Section1  image={Sell} title="بيع عقار " content="بغض النظر عن المسار الذي تسلكه لبيع منزلك ، يمكننا مساعدتك في اجتياز عملية بيع ناجحة." />
+      </Box>
+      <Box  mt="100px" textAlign="center"  >
+      <Heading fontFamily={'body'} as="h2">
+      العقارات الأكثر بحثاً
+      </Heading>
+      <Section2 />
+      </Box>     
+      </Box>
+      </Container>
+   </Box>
     
     </>
      )
