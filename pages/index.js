@@ -6,7 +6,7 @@ import {baseUrl,fetchApi} from '../utils/fetchApi';
 import MainCard from "../components/MainCard";
 import Section1 from "../components/Section1";
 import Section2 from "../components/Section2";
-// import Carousel from '../components/Carousel';
+import Carousel from '../components/Carousel';
 import Rent from "../assets/images/Rent_a_home.webp";
 import Sell from "../assets/images/Sell_a_home.webp";
 import Buy from "../assets/images/Buy_a_home.webp";
