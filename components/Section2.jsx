@@ -45,9 +45,11 @@ const Section2 = () => {
           
           <Box margin="auto" >{
           content.content.map((content,index)=>(
+             <>
              <Link href={`/search?area=${content}`}> <Text key={index} color="#177578" p="2px">
               {content}
             </Text></Link>
+             </>
         ))}
         
          </Box>
