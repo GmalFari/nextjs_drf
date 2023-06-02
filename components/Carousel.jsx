@@ -15,11 +15,8 @@ const Carousel = () => {
       <Box>
         <Box className="carousel-inner">
           <Box backgroundImage={image} backgroundSize="cover" className="carousel-item active">
-                <Box 
-                     width="100%" minwidth="100%"
-
-                dispa
-                >
+                
+       
                 <Image
                 width="100%" minwidth="100%"
                     // boxSize='100px'
@@ -27,7 +24,7 @@ const Carousel = () => {
                     src={img2}
                     alt='carousel image'
                   />
-                </Box>
+                
             <Box className="carousel-caption">
               <Heading fontSize={["2xl","3xl"]} mb="2px"  style={{"fontFamily":"Cairo,sans-serif"}}>أبحث الأن عن بيت الأحلام</Heading>
               <Text fontWeight={"bold"}  fontSize={"xl"}>نوفر لك جميع ماتحتاجة عن العقارات في مكان واحد</Text>
