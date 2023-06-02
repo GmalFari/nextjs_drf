@@ -4,7 +4,7 @@ import {Container, Box, Button, Heading } from '@chakra-ui/react';
 import Navbar from './Navbar';
 import Carousel from './Carousel';
 import Sidebar from "./Sidebar";
-import Footer from "./Footer";
+import Footer1 from "./Footer1";
 import { useState, useEffect } from 'react';
 export default function Layout({ children }) {
   const [windowWidth, setWindowWidth] = useState(null);
@@ -27,7 +27,7 @@ export default function Layout({ children }) {
           </Container>
         <main>{children}</main>
       </Box>
-      <Footer/>
+      <Footer1/>
     </Box>
   );
 }

@@ -2,16 +2,20 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image';
-import {Flex,Box,Text,Icon} from '@chakra-ui/react';
+import {Flex,Box,Text,Icon,Spacer,Heading} from '@chakra-ui/react';
 import {BsFilter } from 'react-icons/bs'; 
 import SearchFilter from '../components/SearchFilter';
 import Main_search from "../components/MainSearch";
 import Property from '../components/Property';
 import HorizonalCard from "../components/HorizonalCard";
+import OtherProperty from '../components/OtherProperty';
+import Section2 from "../components/Section2";
+
 import noresult from '../assets/images/noresult.svg';
 import {baseUrl,fetchApi} from '../utils/fetchApi';
 import Autocomplete from '../components/AutoComplete';
 import Map, { GeolocateControl } from "react-map-gl";
+
 import {GoKebabVertical } from 'react-icons/go';
 import { BsSortDown } from 'react-icons/bs';
 import {FaGripHorizontal,FaList} from 'react-icons/fa';
@@ -48,7 +52,7 @@ const Search = ({data}) => {
         query["page"] = currentPage
         router.push({pathname:path,query})
 
-        axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?page=${currentPage}`)
+        axios.get(`http://127.0.0.1:8000/api/list-properties/?page=${currentPage}`)
           .then((response) => {
             setPageCount(response.data.count)
             setProperties(response.data.results);
@@ -65,8 +69,7 @@ const Search = ({data}) => {
         
        
        <Property property={property} key={property.id} />
-        )
-                   )]
+        ))]
   return (
     <Box>
         <Flex
@@ -81,13 +84,13 @@ const Search = ({data}) => {
         alignItems="center"
         onClick={() => setSearchFilter(!searchFilter)}
         >
-        <Text> Search properties by filter </Text>
+        <Text> البحث المتقدم  </Text>
         <Icon paddingLeft="2" w="7" as={BsFilter} />
         </Flex>
         {searchFilter && <SearchFilter setProperties={setProperties}/>}
         <Flex justifyContent={'space-between'} fontSize={['md','xl','xl','2xl']} p="4" fontWeight="bold">
         <Flex color={'#006169'} flexGrow={1} justifyContent={'right'} >
-        <Icon 
+        <Icon             
             cursor={ 'pointer'} 
             color={!toggleVerticalCard?'#006169':'#ddd'}
              onClick={()=>{setToggleVerticalCard(!toggleVerticalCard)}} 
@@ -117,8 +120,8 @@ const Search = ({data}) => {
        </Box>:listingsH}
           </Flex>
           {properties.length !== 0&& <Flex justifyContent={"center"}>
-         <li style={{
-            "display": "flex",
+         <Box style={{
+           "display": "flex",
           "justify-content": "center",
          " align-items": "center",
           "paddingRight": "0.5rem",
@@ -126,17 +129,21 @@ const Search = ({data}) => {
           "margin":"0 20px",
           "border": "1px solid #eaeaea",
           "border-radius": "0.5rem",
-          "cursor": "pointer"
+          "cursor": "pointer",
+          "marginTop":"50px",
+          "height":"30px",
+
          }}
          onClick={()=>{setCurrentPage(currentPage -1)}}
-         >Previous</li>
+         >السابق</Box>
          <Pagination
                 items={itemsCount} // 100
                 currentPage={currentPage} // 1
                 pageSize={pageSize} // 10
                 onPageChange={onPageChange}
             />
-            <li style={{   "display": "flex",
+            <Box style={{   
+              "display": "flex",
           "justify-content": "center",
          " align-items": "center",
           "paddingRight": "0.5rem",
@@ -144,12 +151,14 @@ const Search = ({data}) => {
           "margin":"0 20px",
           "border": "1px solid #eaeaea",
           "border-radius": "0.5rem",
-          "cursor": "pointer"
+          "cursor": "pointer",
+          "marginTop":"50px",
+          "height":"30px",
         }}
         onClick={()=>{setCurrentPage(currentPage  + 1)}}
         >
-                next
-            </li>
+                القادم
+            </Box>
          </Flex>}
         {properties.length === 0 && (
             <Flex justifyContent="center" alignItems="center" flexDirection="column" marginTop="5" marginBottom="5">
@@ -157,6 +166,22 @@ const Search = ({data}) => {
             <Text fontSize="2xl" marginTop="3">No Results founds</Text>
             </Flex>
         )}
+
+        <Spacer />
+        <Box mt="100px" mb={"100px"} >
+        <Box textAlign="center" margin='10px' fontSize="40px" 
+      fontWeight="bold">      عقارت أخرى
+      </Box>
+      <Box overflowX={"scoll"}  justifyContent={"center"}   display="flex"  flexWrap="nowrap" overflowY="scroll" >
+      {properties.map((property) => <OtherProperty  property={property}  key={property.id} />)}
+    </Box>
+        </Box>
+      <Box  mt="100px" textAlign="center"  >
+      <Heading fontFamily={'body'} as="h2">
+      العقارات الأكثر بحثاً
+      </Heading>
+      <Section2 />
+      </Box>  
     </Box>
   )
 }
@@ -177,7 +202,7 @@ export async function getServerSideProps({query}) {
     const categoryExternalID = query.categoryExternalID || '4'; 
     const lang = query.lang || 'ar';
     // const data = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=${locationExternalIDs}&purpose=${purpose}&hitsPerPage=6&rentFrequency=${rentFrequency}&minPrice=${minPrice}&maxPrice=${maxPrice}&bathsMin=${bathsMin}&roomsMin=${roomsMin}&sort=${sort}&areaMax=${areaMax}&categoryExternalID=${categoryExternalID}&lang=${lang}`);
-        const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/`)
+        const data = await fetchApi(`http://127.0.0.1:8000/api/list-properties/`)
                     return {
                         props:{
                             data:data,

@@ -4,6 +4,7 @@ import {Flex,Select ,Box,Text,Input,Spinner,Icon,Button} from '@chakra-ui/react'
 import  { useRouter } from 'next/router';
 import {MdCancel} from 'react-icons/md';
 import Image from 'next/image';
+import noresult from "../assets/images/Noresult.jpg"
 import {filterData,getFilterValues} from "../utils/filterData";
 const SearchFilter = () => {
   const [filters] = useState(filterData);
@@ -54,10 +55,10 @@ const SearchFilter = () => {
         </Box>
       ))}
       <Flex flexDir='column'>
-        <Button onClick={() => setShowLocations(!showLocations)} border='1px' borderColor='gray.200' marginTop='2' >
+        {/* <Button onClick={() => setShowLocations(!showLocations)} border='1px' borderColor='gray.200' marginTop='2' >
           Search Location
-        </Button>
-        {showLocations && (
+        </Button> */}
+        {/* {showLocations && (
           <Flex flexDir='column' pos='relative' paddingTop='2'>
             <Input
               placeholder='Type Here'
@@ -105,7 +106,7 @@ const SearchFilter = () => {
               </Box>
             )}
           </Flex>
-        )}
+        )} */}
       </Flex>
     </Flex>
   )

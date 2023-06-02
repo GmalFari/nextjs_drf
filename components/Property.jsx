@@ -19,7 +19,7 @@ const Property = (
                 <Box 
                 style={{
                 backgroundImage:`url(${coverPhoto?coverPhoto:DefaultImage})`,backgroundSize:"cover"}}
-                 width="100%" minW="100%"  height={200} overscrollY={"hidden"} ></Box>
+                 width="320px" minW="100%"  height={200} overscrollY={"hidden"} ></Box>
             </Box>
             </Link>
             <Box >

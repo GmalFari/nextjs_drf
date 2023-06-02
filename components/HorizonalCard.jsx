@@ -13,7 +13,7 @@ import { Card,CardBody,CardFooter,Stack,Heading,Button } from "@chakra-ui/react"
 import MainBtn from "./MainBtn";
 import Horizontal from './Horizontal';
 const HorizonalCard = (
-    {property:{coverPhoto,property_title
+    {property:{coverPhoto,property_title,sqrt_area
         ,property_price,rentFrequency,
         location,rooms,
         baths,area,agency,isVerified,externalID,geography}}) => {
@@ -46,7 +46,7 @@ const HorizonalCard = (
                 <Flex paddingTop="2" alignItems="center" justifyContent="space-between" >
                     <Flex alignItems="center">
                         <Box   paddingRight="0" color="green.400">{isVerified &&  <GoVerified />}</Box>
-                        <Text fontWeight="bold" fontSize="sm"> ريال يمني  {millify(property_price)| 'none'}{rentFrequency && `/${rentFrequency}`}</Text>
+                        <Text fontWeight="bold" fontSize="sm"> ريال يمني  {property_price| 'none'}{rentFrequency && `/${rentFrequency}`}</Text>
                     </Flex>
                 </Flex>
                 
@@ -62,10 +62,10 @@ const HorizonalCard = (
 <Box display={"flex"} flexWrap='noWrap'   fontSize={['sm','md']} alignItems="center" p="1" justifyContent="right" w="100%" color="#000">
                 <Box display={"flex"} alignItems="center" ml={2}>  {rooms} <FaBed  /> </Box> 
                 <Box display={"flex"} alignItems="center" ml={2}>  {baths} <FaBath /> </Box>
-                <Box display={"flex"} alignItems="center" ml={2}>{millify(area)} sqft <BsGridFill/></Box>
+                <Box display={"flex"} alignItems="center" ml={2}>{millify(sqrt_area)} sqft <BsGridFill/></Box>
                 </Box>
-                <Grid width={'100%'} position={'absolute'} bottom={1}   templateColumns='repeat(3, 1fr)' gap={1} >
-                <MainBtn  icon={<FaWhatsapp fontSize={'sm'} content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={'#28b16d'} color={'#fff'}  />
+                <Grid  width={'100%'} position={'absolute'} bottom={1}   templateColumns='repeat(3, 1fr)' gap={1} >
+                <MainBtn  icon={<FaWhatsapp color="rgb(23 116 113)" fontSize={'sm'} content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={'#28b16d'} color={'#fff'}  />
                 <MainBtn icon={<FaEnvelope fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} />
                 <MainBtn icon={<FaPhone fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'}  />
                 {/* <Link href={`/agencies`}>

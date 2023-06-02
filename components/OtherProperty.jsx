@@ -4,14 +4,12 @@ import Image from 'next/image';
 import image from "../assets/images/img1.jpg";
 import {Divider,
     Img,
-  Avatar,CardBody,Flex,ButtonGroup,Button,Text, Card,Stack, CardFooter,Heading, Box } from '@chakra-ui/react'
+  Avatar,CardBody,Flex,Text, Card,Stack, CardFooter,Heading, Box } from '@chakra-ui/react'
 import millify from 'millify';
-import {FaBed , FaBath,FaGripHorizontal} from 'react-icons/fa';
-import { BsGridFill } from 'react-icons/bs';
 import { GoVerified,GoKebabVertical } from 'react-icons/go';
-const MainCard = (
-  {property:{id,coverPhoto,property_price,rent_frequency,rooms,property_title,baths,sqrt_area
-    ,agency,isVerified,externalID,timestamp}}  
+const OtherProperty = (
+  {property:{id,coverPhoto,property_price,rent_frequency,property_title
+    ,agency,isVerified,timestamp}}  
   ) => {
     console.log(timestamp)
     const date = new Date(timestamp);
@@ -37,9 +35,9 @@ const MainCard = (
       <Img  
                 src={coverPhoto ? coverPhoto:DefaultImage} 
                 borderRadius={10}
-               width={[160,170,250]} 
-                height={[170,200]}
-                minH={[170,200]}
+               width={[150]} 
+                height={[108,140]}
+                minH={[108,140]}
                  style={{objectFit:'cover'}}
                   alt="default house" />    
           </Link>
@@ -53,7 +51,7 @@ const MainCard = (
          borderRadius="5px" padding="0 3px"
          fontSize="14px"
          >
-       <small >جديد-منذ {checkCreatedFunc(created)} </small>
+       {/* <small >جديد-منذ {checkCreatedFunc(created)} </small> */}
    </Box>
        <Box >
         <Flex paddingTop="0" alignItems="center" justifyContent="space-between" >
@@ -63,21 +61,12 @@ const MainCard = (
             </Flex>
         </Flex>
        <Heading size='sm'>{property_title.length < 30 ?property_title:`${property_title.substring(0,30)}...`}</Heading>
-                <Flex alignItems="center" p="1" justifyContent="space-between" w="250" color="blue.400">
-                    {rooms} <FaBed /> | {baths} <FaBath /> | {millify(sqrt_area)} sqft <BsGridFill />
-                </Flex>
-                <Box>
-                <Text hei fontSize="md"  >
-                    {property_title.length > 30 ? `${property_title.substring(0,25)}...`:property_title}
-                </Text>
-                </Box>
             </Box>
    </CardBody>
-   <Divider />
  
  </Card>
  
   )
 }
 
-export default MainCard
+export default OtherProperty

@@ -2,13 +2,12 @@ import axios from 'axios';
 import React from 'react'
 import { Box } from '@chakra-ui/react';
 import { useState,useEffect,useContext } from 'react';
-import { fetchApi,createApi, fetchApi2 } from '../utils/fetchApi';
-import Form1 from "../components/MultiSteps";
+import MultiSteps from "../components/MultiSteps";
 import typeProperty from "../utils/selectedData";
 import yemenGis from "../utils/yemenGis.json"
 import gadm41_YEM_1 from "../utils/gadm41_YEM_1.json";
 import AuthContext from '../context/AuthContext';
-const create = () => {
+const Create = () => {
   const {user} = useContext(AuthContext)
   // const [city , setCity] = useState("")
   // const [state , setState] = useState("")
@@ -30,7 +29,7 @@ const create = () => {
 
 //   //   const asyncData = async () =>{
 //   //     try{
-//   //       const response = await fetch('http://https://fortestmimd.pythonanywhere.com/api/list-persons/',{
+//   //       const response = await fetch('http://127.0.0.1:8000/api/list-persons/',{
 //   //       method:'POST',
 //   //       credentials: "include",
 //   //       headers: {
@@ -54,22 +53,43 @@ const create = () => {
 //   const handleStateChange = (e)=>{
 //     setState(e.target.value)
 //   }
-  
+const [myData,setData] = useState(
+  {
+  property_title:"",
+  coverPhoto:null,
+  // "location":{  
+  //       latitude:"",
+  //       longitude:""},
+  proType:"",
+  purpose:"",
+  rentFrequency:"",
+  rentFrequency:"",
+  city:"",
+  state:"",
+  directorate:"",
+  district:"",
+  district:"",
+  street:"",
+  isForRent:true,
+
+  //form2
+  title:"",
+  img:"",
+})
   return (
     <>
     {user?
     <Box>
-      <Form1/>
-      </Box>:window.location.replace("/accounts/login")}
+      <MultiSteps myData={myData} setData={setData}/>
+      </Box>:window.location.replace("/accounts/register")}
       </>
-    
   )
 }
 
-export default create
+export default Create
 
 // export async function getStaticProps() {
-//   const data =await fetchApi('http://https://fortestmimd.pythonanywhere.com/api/list-persons/')
+//   const data =await fetchApi('http://127.0.0.1:8000/api/list-persons/')
 //  return {
 //     props:{
 //       data:data?.results

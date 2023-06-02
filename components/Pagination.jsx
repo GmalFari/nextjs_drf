@@ -26,8 +26,8 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange,setProperties }
      <>
      
      <ul 
-      
-     style={{"display":"flex","justifyContent":"center","listStyle":"none"}}
+
+     style={{"display":"flex","justifyContent":"center","listStyle":"none","marginTop":"50px"}}
    //   className={styles.pagination}
      >
        {pages.map((page) => (
