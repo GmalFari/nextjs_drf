@@ -35,7 +35,7 @@ const MainCard = (
       <CardBody >
     <Link href={`/property/${id}`} passHref dir='rtl'>
       <Img  
-                src={coverPhoto ? coverPhoto:DefaultImage} 
+                src={coverPhoto ? coverPhoto:image} 
                 borderRadius={10}
                width={[160,170,250]} 
                 height={[170,200]}

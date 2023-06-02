@@ -14,10 +14,9 @@ const Carousel = () => {
   return (
       <Box>
         <Box className="carousel-inner">
-          <Box  backgroundImage={img2} backgroundSize="cover" className="carousel-item active">
+          <Box backgroundImage={img2} backgroundSize="cover" className="carousel-item active">
                 <Image
-           
-                    width="100%" minwidth="100%"
+                width="100%" minwidth="100%"
                     // boxSize='100px'
                     style={{objectFit:"cover"}}
                     src={img2}

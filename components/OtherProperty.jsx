@@ -33,7 +33,7 @@ const OtherProperty = (
       <CardBody >
     <Link href={`/property/${id}`} passHref dir='rtl'>
       <Img  
-                src={coverPhoto ? coverPhoto:DefaultImage} 
+                src={coverPhoto ? coverPhoto:image} 
                 borderRadius={10}
                width={[150]} 
                 height={[108,140]}
