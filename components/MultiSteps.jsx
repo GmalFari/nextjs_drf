@@ -544,6 +544,7 @@ export default function Multistep({myData,setData}) {
       maxWidth: '100%',
     },
   });
+
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(33.33);
 
@@ -554,23 +555,22 @@ export default function Multistep({myData,setData}) {
  //  //form2
      const [img,setImg] = useState("")
   // const [data,setData] = useState(myData)
-  
    //form3
    const [propertyLocation,setPropertyLocation] = useState({
           longitude:44.20729970272413,latitude:15.348533564724178})
    function ChooseLocation(position){
     setPropertyLocation({longitude:position['longitude'],latitude:position['latitude']})
 }
-  
-  let testApi = async()=>{
-    let token = JSON.parse(localStorage.getItem("authTokens"))
-    let accessToken = token?.access
-    const myform = new FormData()
-    {myData.coverPhoto &&myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
-    myform.append("property_title",myData.property_title);
-    myform.append("purpose",myData.purpose);
-    myform.append("rent_frequency",myData.rent_frequency);
-    myform.append("purpose",myData.property_price);
+let testApi = async()=>{
+  let token = JSON.parse(localStorage.getItem("authTokens"))
+  let accessToken = token?.access
+  const myform = new FormData()
+  {myData.coverPhoto &&myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
+  myform.append("property_title",myData.property_title);
+  myform.append("purpose",myData.purpose);
+  myform.append("rent_frequency",myData.rent_frequency);
+  myform.append("purpose",myData.property_price);
+ 
     const url = 'https://fortestmimd.pythonanywhere.com/api/list-properties/'
      const options = {
         method: 'POST',
@@ -622,14 +622,13 @@ export default function Multistep({myData,setData}) {
   return (
     <>
       <Box 
-        onSubmit={handleSubmit}
         borderWidth="1px"
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
         maxWidth={800}
         p={6}
         m="10px auto"
-        as="form"
+        type=""
         >
         <Progress
           hasStripe
@@ -679,13 +678,13 @@ export default function Multistep({myData,setData}) {
               </Button>
             </Flex>
             {step === 3?(
-      <Button
+              <form onSubmit={handleSubmit} enctype="multipart/form-data">   
+              <Button
                 type="submit"
                 w="8rem"
                 colorScheme="teal"
                 variant="solid"
-                onClick={
-                  () => {submitted?
+                onClick={() => {submitted?
         
               toast({
                 title: `لقد تم إضافة العقار`,
@@ -696,22 +695,25 @@ export default function Multistep({myData,setData}) {
             :
               toast({
                 title: ` خطأ`,
-                description:'لم يتم إضافه العقار هنالك خطأ'
-  //   newData.map((m,i)=>(
-                  //  <>
-                     // {m.key}: {m.value}
-                  //  </>
-               // ))
+                description:"error"
+                // newData.map((m,i)=>(
+                //     <>
+                //       {m.key}: {m.value}
+                //     </>
+                // )
+                // )
                 ,
                 status: 'error',
                 isClosable: true,
               })
             
-                }
-            }
+                }}
                 >
                 إضافة عقار
-              </Button>):null}
+                </Button>
+              
+        </form>
+      ):null}
           </Flex>
         </ButtonGroup>
         

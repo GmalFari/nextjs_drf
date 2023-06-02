@@ -55,8 +55,7 @@ useEffect(()=>{
       localStorage.setItem("authTokens", JSON.stringify(data));
       console.log(response.status)
       alert("لقد تم تسجيل الدخول")
-      router
-      // history.back();
+      history.back();
       // Router.back()
     } else {
         // alert("Something went wrong!");
@@ -108,7 +107,6 @@ useEffect(()=>{
      alert(err)
     }
   };
-  
   const logoutUser = () => {
     setAuthTokens(null);
     setUser(null);
