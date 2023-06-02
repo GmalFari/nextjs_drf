@@ -3,7 +3,7 @@ import { Box } from '@chakra-ui/react'
 
 const Footer1 = () => {
   return (
-    <Box position="fixed" left="50%" transform="translateX(-50%)" bottom="0" textAlign="center" p="5" color="gray.600" borderTop="1px" borderColor="gray.100" >
+    <Box bottom="0" textAlign="center" p="5" color="gray.600" borderTop="1px" borderColor="gray.100" >
      2023 LibnaHouse ,Inc.
     </Box>
   )
