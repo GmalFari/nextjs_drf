@@ -30,8 +30,8 @@ const Banner = ({purpose , property_title,title2,desc1,desc2,buttonText,linkName
 
 export default function Home({propertiesForSale,propertiesForRent}) {
   return (
-  
-   <Box>
+  <>
+     <Box>
        <Container maxW='1600px'>
     <Carousel />
     </Container>
@@ -68,7 +68,9 @@ export default function Home({propertiesForSale,propertiesForRent}) {
       </Box>
       </Container>
    </Box>
-  )
+    
+    </>
+     )
 }
  
 
