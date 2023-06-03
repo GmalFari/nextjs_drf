@@ -58,6 +58,19 @@ const  LoginComponent=()=> {
             <FormControl>
               <FormLabel htmlFor="email">البريد الإلكتروني</FormLabel>
               <Input
+                id="phone"
+                name="phone"
+                type="text"
+                variant="filled"
+                required
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+
+              />
+            </FormControl>
+<FormControl>
+              <FormLabel htmlFor="email">البريد الإلكتروني</FormLabel>
+              <Input
                 id="email"
                 name="email"
                 type="email"
