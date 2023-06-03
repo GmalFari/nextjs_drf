@@ -144,18 +144,18 @@ export default function SignupCard() {
                  <small>{errors?.email?errors.email:null}</small>
                  </FormLabel>
              </FormControl>
-<FormLabel htmlFor="phone"> رقم التلفون</FormLabel>
-              <Input
-                id="phone"
-                name="phone"
-                type="text"
-                variant="filled"
-                required
-               // value={email}
-               // onChange={e => setEmail(e.target.value)}
-
-              />
-            </FormControl>
+              <FormControl id="phone" isRequired>
+                <FormLabel> (اختياري) رقم التلفون</FormLabel>
+                <Input type="text"
+                  name="phone"
+                 // value={email}
+                 // onChange={e=>setEmail(e.target.value)}
+               />
+                 <FormLabel display={errors?.email?'flex':'none'}>
+                 <small>{errors?.email?errors.email:null}</small>
+                 </FormLabel>
+             </FormControl>
+           
               <FormControl id="password" isRequired>
                 <FormLabel>كلمة السر </FormLabel>
                 <InputGroup>
