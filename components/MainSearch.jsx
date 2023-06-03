@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { Box } from '@chakra-ui/react'
+import { Box,Button } from '@chakra-ui/react'
 import {
     FormControl,
     FormLabel,
@@ -35,10 +35,10 @@ const MainSearch = () => {
     <Box background="#0000009c" borderRadius="20px" padding={0}   className="card-body">
       <Box  background="#0000009c" borderRadius="10px" className="rent-sale"  display="flex" justifyContent="space-around" position="absolute" top="-30">
       <Link href="/search?purpose=for-sale" passHref>
-        <button  className="sale">للبيع</button>
+        <Button fontWeight={'bold'}  className="sale">للبيع</button>
       </Link>
       <Link href="/search?purpose=for-rent" passHref>
-        <button className="rent">للإيجار</button>
+        <Button fontWeight={'bold'}   className="rent">للإيجار</button>
         </Link>
       </Box>
       <FormControl 
