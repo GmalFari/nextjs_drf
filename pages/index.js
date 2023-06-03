@@ -43,7 +43,7 @@ export default function Home({propertiesForSale,propertiesForRent}) {
       fontWeight="bold">   تصفح اَخر العقارت
       </Box>
       <Box overflowX={"scoll"}  justifyContent={"center"}   display="flex"  flexWrap="nowrap" overflowY="hidden" >
-      {propertiesForRent.map((property) => <MainCard  property={property} key={property.id} />)}
+      {propertiesForSale.map((property) => <MainCard  property={property} key={property.id} />)}
     </Box>
     <Spacer/>
       <Box mt="100" display={['Flex']} 
