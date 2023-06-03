@@ -56,15 +56,15 @@ const  LoginComponent=()=> {
         <form onSubmit={loginUser}>
           <VStack spacing={4} align="flex-start">
             <FormControl>
-              <FormLabel htmlFor="email">البريد الإلكتروني</FormLabel>
+              <FormLabel htmlFor="phone">(اختياري) رقم التلفون</FormLabel>
               <Input
                 id="phone"
                 name="phone"
                 type="text"
                 variant="filled"
                 required
-                value={email}
-                onChange={e => setEmail(e.target.value)}
+               // value={email}
+                //onChange={e => setEmail(e.target.value)}
 
               />
             </FormControl>
