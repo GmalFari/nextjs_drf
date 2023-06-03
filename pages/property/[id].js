@@ -17,27 +17,27 @@ const PropertyDetails = ({propertyDetails:
     isVerified,type,photos,amenities,furnishingStatus,geography}})=>{
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
-    let encodedParams = new URLSearchParams();
-    encodedParams.append("q", "English is hard, but detectably so");
+    // let encodedParams = new URLSearchParams();
+    // encodedParams.append("q", "English is hard, but detectably so");
 
-  const options = {
-  method: 'POST',
-  url: 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect',
-  headers: {
-    'content-type': 'application/x-www-form-urlencoded',
-    'Accept-Encoding': 'application/gzip',
-    'X-RapidAPI-Key': '6cb10cae22mshe83ac21e4eb1de3p1897c1jsn0b3893d5488f',
-    'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
-  },
-  data: encodedParams
-   };
+//   const options = {
+//   method: 'POST',
+//   url: 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect',
+//   headers: {
+//     'content-type': 'application/x-www-form-urlencoded',
+//     // 'Accept-Encoding': 'application/gzip',
+//     'X-RapidAPI-Key': '6cb10cae22mshe83ac21e4eb1de3p1897c1jsn0b3893d5488f',
+//     'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
+//   },
+//   data: encodedParams
+//    };
 
-   axios.request(options).then(function (response) {
-   t =respose.data	
-console.log(response.data);
-   }).catch(function (error) {
-	console.error(error);
-   });
+//    axios.request(options).then(function (response) {
+//    t =respose.data	
+// console.log(response.data);
+//    }).catch(function (error) {
+// 	console.error(error);
+//    });
     return(
 <Box maxWidth="1000px" margin="auto" p="4">
         <Flex>

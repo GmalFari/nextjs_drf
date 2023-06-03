@@ -33,13 +33,14 @@ const MainSearch = () => {
 
   return (
     <Box className="card">
-    <Box background="#0000009c" borderRadius="20px" padding={0}   className="card-body">
-      <Box  background="#0000009c" borderRadius="10px" className="rent-sale"  display="flex" justifyContent="space-around" position="absolute" top="-30">
-      <Link href="/search?purpose=for-sale" passHref>
+    <Box background="#0000009c"  borderRadius="20px" padding={0}   className="card-body">
+      <Box  background="#0000009c"  borderRadius="10px" width={{"base":"160px","md":"initial"}}
+        height={{"base":"60px","md":"initial"}} className="rent-sale"  display="flex" justifyContent="space-around" position="absolute" top="-30">
+      <Link href="/search?purpose=for-sale"passHref>
         <Button fontWeight={'bold'}  className="sale">للبيع</Button>
       </Link>
       <Link href="/search?purpose=for-rent" passHref>
-        <Button fontWeight={'bold'}   className="rent">للإيجار</Button>
+        <Button  fontWeight={'bold'}   className="rent">للإيجار</Button>
         </Link>
       </Box>
       <FormControl 
@@ -47,7 +48,7 @@ const MainSearch = () => {
            padding="5px" 
            background="white" 
            borderRadius={10} width="100%" 
-           position="absolute" top="20px" >
+           position="absolute" top={["30px"]} >
           <Input paddingLeft="60px" onInput={(e)=>{setSearchTerm(e.target.value)}} color="black" border="none"  type='text' placeholder='أبحث بأسم المدينة المنطقة أو النوع'   />
         <Button width="20px" zIndex="10" borderRadius="30%" position="absolute" left="10px" color="white" background="#187875">
           <Link href={`/search?query=${searchTerm}`} passHref>
