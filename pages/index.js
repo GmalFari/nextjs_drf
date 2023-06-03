@@ -28,7 +28,7 @@ const Banner = ({purpose , property_title,title2,desc1,desc2,buttonText,linkName
 )
 
 
-export default function Home({propertiesForSale,propertiesForRent}) {
+export default function Home({propertiesForRent}) {
   return (
   <>
      <Box>
@@ -43,7 +43,7 @@ export default function Home({propertiesForSale,propertiesForRent}) {
       fontWeight="bold">   تصفح اَخر العقارت
       </Box>
       <Box overflowX={"scoll"}  justifyContent={"center"}   display="flex"  flexWrap="nowrap" overflowY="hidden" >
-      {propertiesForSale.map((property) => <MainCard  property={property} key={property.id} />)}
+      {propertiesForRent.map((property) => <MainCard  property={property} key={property.id} />)}
     </Box>
     <Spacer/>
       <Box mt="100" display={['Flex']} 
