@@ -62,7 +62,7 @@ const  LoginComponent=()=> {
                 name="phone"
                 type="text"
                 variant="filled"
-                required
+                
                // value={email}
                 //onChange={e => setEmail(e.target.value)}
 
