@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { Box,Button } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import {
     FormControl,
     FormLabel,
