@@ -65,7 +65,7 @@ const HorizonalCard = (
                 <Box display={"flex"} alignItems="center" ml={2}>{millify(sqrt_area)} sqft <BsGridFill/></Box>
                 </Box>
                 <Grid  width={'100%'} position={'absolute'} bottom={1}   templateColumns='repeat(3, 1fr)' gap={1} >
-                <MainBtn  icon={<FaWhatsapp fontSize={'sm'} content="whatsapp" fontWeight={'bold'}  color='white' />}/>
+                <MainBtn  icon={<FaWhatsapp fontSize={'sm'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
                 <MainBtn icon={<FaEnvelope fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} />
                 <MainBtn icon={<FaPhone fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'}  />
                 {/* <Link href={`/agencies`}>

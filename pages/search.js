@@ -60,7 +60,7 @@ const Search = ({data}) => {
           .catch((error) => {
             console.log(error);
           });
-      }, []);
+      }, [currentPage, itemsCount]);
 
     const listingsH = [properties.map((property) =>(
                <HorizonalCard   property={property} key={property.id} /> 
@@ -120,7 +120,7 @@ const Search = ({data}) => {
        </Box>:listingsH}
           </Flex>
           {properties.length !== 0&& <Flex justifyContent={"center"}>
-         <Box style={{
+         <Box  style={{
            "display": "flex",
           "justify-content": "center",
          " align-items": "center",

@@ -569,8 +569,8 @@ let testApi = async()=>{
   myform.append("property_title",myData.property_title);
   myform.append("purpose",myData.purpose);
   myform.append("rent_frequency",myData.rent_frequency);
-  myform.append("purpose",myData.property_price);
- 
+  myform.append("property_price",myData.property_price);
+
     const url = 'https://fortestmimd.pythonanywhere.com/api/list-properties/'
      const options = {
         method: 'POST',
@@ -692,20 +692,21 @@ let testApi = async()=>{
                 status:'success',
                 isClosable: true,
               })
-            :
-              toast({
-                title: ` خطأ`,
-                description:"error"
-                // newData.map((m,i)=>(
-                //     <>
-                //       {m.key}: {m.value}
-                //     </>
-                // )
-                // )
-                ,
-                status: 'error',
-                isClosable: true,
-              })
+            : null
+              // toast(
+              //   // {
+              //   // title: ` خطأ`,
+              //   // description:"error"
+              //   // newData.map((m,i)=>(
+              //   //     <>
+              //   //       {m.key}: {m.value}
+              //   //     </>
+              //   // )
+              //   // )
+              //   ,
+              //   status: 'error',
+              //   isClosable: true,
+              // })
             
                 }}
                 >
