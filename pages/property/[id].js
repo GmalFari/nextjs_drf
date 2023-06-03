@@ -134,7 +134,7 @@ console.log(response.data);
 
 export default PropertyDetails
 export async function getServerSideProps({params: {id}}){
-    const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/${id}`)
+    const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/${encodeURIComponent(id)}`)
     return {
         props : {
             propertyDetails:data
