@@ -1,5 +1,9 @@
+
 import axios from "axios";
-import {Flex,Grid,Select ,Box,Text,Input,Avatar,Spinner,Icon,Button} from '@chakra-ui/react';
+import {Flex,Grid,Select
+     ,Box,Text,Input,
+     Avatar,Container
+     ,Button,} from '@chakra-ui/react';
 import {FaBed,FaBath,FaImages,FaWhatsapp,FaEnvelope,FaPhone,FaShare,FaDownload,FaRegHeart} from 'react-icons/fa';
 import { Img } from '@chakra-ui/react';
 import {BsGridFill} from 'react-icons/bs';
@@ -11,6 +15,9 @@ import {useState, createContext } from 'react';
 import {baseUrl,fetchApi} from '../../utils/fetchApi';
 import { BasicUsage } from '../../components/BasicUsage';
 import MainBtn from '../../components/MainBtn';
+import PropertyTable from "../../components/property/PropertyTable";
+import UserProfile from "../accounts/userprofile";
+
 const PropertyDetails = ({propertyDetails:
     {coverPhoto,price,rentFrequency,rooms,purpose
     ,property_title,description_l1,baths,area,agency,
@@ -39,10 +46,13 @@ const PropertyDetails = ({propertyDetails:
 // 	console.error(error);
 //    });
     return(
-<Box maxWidth="1000px" margin="auto" p="4">
-        <Flex>
-            <BasicUsage coverPhoto={coverPhoto} photos={photos}  geography={geography} />
-          </Flex>
+        <Box  marginLeft={["auto","auto","100px"]}
+            marginRight={["auto","auto","100px"]}
+            display={["block","block","flex"]} >
+            <Box width={['100%','80vh']} ms={"20px"} me={"20px"} maxWidth="1000px"  p="2">
+        <Box display={['block','block','block']}>
+            <BasicUsage coverPhoto={coverPhoto} photos={photos}   geography={geography} />
+          </Box>
           <Box position={'relative'}>
           <Flex bg='rgba(255,255,255,0.8)' position={'absolute'} bottom={0} mb={2} justifyContent={'left'} templateColumns='repeat(3, 1fr)' gap={2} >
                 <MainBtn icon={<FaShare fontWeight={'bold'} color='#006169' />}  color={'#fff'} />
@@ -77,7 +87,7 @@ const PropertyDetails = ({propertyDetails:
                 {property_title.replace('صنعاء','دبي')}
             </Text>
             <Box p={0} bg='#fff' position={['fixed','fixed','fixed','relative']} left={0} bottom={'0'} width={'100%'}>
-            <Grid  templateColumns='repeat(3, 1fr)' gap={2} >
+            <Grid backgroundColor={"white"} padding={"7px"} templateColumns='repeat(3, 1fr)' gap={2} >
                 <MainBtn icon={<FaWhatsapp fontWeight={'bold'} color='#006169' />} bgcolor={'#28b16d'} color={'#fff'} content={'وتس أب'} />
                 <MainBtn icon={<FaEnvelope fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'الإيميل'} />
                 <MainBtn icon={<FaPhone fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'إتصال'} />
@@ -105,6 +115,7 @@ const PropertyDetails = ({propertyDetails:
                 )
                 }
                 <Box>
+                <PropertyTable/>
                     {/* {amenities.length && <Text fontSize="2xl" fontWeight="black"  marginTop="5"  >
                         Amenities
                     </Text>} */}
@@ -128,7 +139,13 @@ const PropertyDetails = ({propertyDetails:
                 </Box>
            </Flex> 
             </Box>
-</Box>
+            </Box>
+            <Box mt={"60px"}  width={"20vw"} display={["none","none","block"]} background={"#ddd"}
+             height={"100vh"}>
+            <Img  src={coverPhoto} width={"100%"} height={"150px"} />
+                <UserProfile/>
+            </Box>
+        </Box>
 )}
 
 

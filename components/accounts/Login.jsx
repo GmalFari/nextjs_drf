@@ -19,6 +19,7 @@ import { useRouter } from "next/router";
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useState,useEffect,useContext } from "react";
 import AuthContext from "../../context/AuthContext";
+import SocialMedia from "./SocialMedia";
 const  LoginComponent=()=> {
   let {loginUser,errors} = useContext(AuthContext)
 
@@ -45,17 +46,12 @@ const  LoginComponent=()=> {
       setLoading(false);
     }
   }, []);
-
-
-
-
-
   return (
     <Flex bg="gray.100" align="center" justify="center" h="100vh">
       <Box bg="white" p={6} rounded="md">
         <form onSubmit={loginUser}>
-          <VStack spacing={4} align="flex-start">
-            <FormControl>
+          <VStack spacing={3} align="flex-start">
+            {/* <FormControl>
               <FormLabel htmlFor="phone">(اختياري) رقم التلفون</FormLabel>
               <Input
                 id="phone"
@@ -67,7 +63,7 @@ const  LoginComponent=()=> {
                 //onChange={e => setEmail(e.target.value)}
 
               />
-            </FormControl>
+            </FormControl> */}
 <FormControl>
               <FormLabel htmlFor="email">البريد الإلكتروني</FormLabel>
               <Input
@@ -114,8 +110,10 @@ const  LoginComponent=()=> {
             </Button>
           </VStack>
         </form>
-        <Stack pt={6}>
-          <Button 
+        <Stack pt={3}>
+        
+        <SocialMedia/>
+        <Button 
           onClick={() => {!submitted?
                  toast({
                     title: apiMessage,
@@ -131,10 +129,11 @@ const  LoginComponent=()=> {
                     isClosable: true,
                   })
                 }}
-            align={'center'}>
+            align={'center'} bg={"transparent"} fontWeight={"normal"}
+            >
             ليس لديك حساب <Link href="/accounts/register" color={'blue.400'}>إضافة حساب </Link>
           </Button>
-        </Stack>
+          </Stack>
       </Box>
     </Flex>
   );

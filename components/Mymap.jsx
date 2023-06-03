@@ -10,7 +10,8 @@ import "mapbox-gl/dist/mapbox-gl.css";
 const MyMap = ({geoDetail,sizes,ChooseLocation}) =>{
   const map = useRef(null);
   console.log(geoDetail)
-    const [lat,lng] = [...geoDetail]
+    const [lat,lng] =[0,0]
+    // {geoDetail?[...geoDetail]}
     console.log(lat )
     const {mapW ,mapH} = {...sizes}
   const [viewport,setViewport] = useState({latitude:lat,longitude:lng});

@@ -12,7 +12,6 @@ import Sell from "../assets/images/Sell_a_home.webp";
 import Buy from "../assets/images/Buy_a_home.webp";
 import HorizonalCard from "../components/HorizonalCard";
 import { BsNodePlusFill } from 'react-icons/bs';
-import OtherProperty from '../components/OtherProperty';
 const Banner = ({purpose , property_title,title2,desc1,desc2,buttonText,linkName,imageUrl }) => 
 (
   <Flex  flexWrap="wrap" m="10">
@@ -60,15 +59,7 @@ export default function Home({propertiesForRent}) {
         </Link>
         <Section1  image={Sell} title="بيع عقار " content="بغض النظر عن المسار الذي تسلكه لبيع منزلك ، يمكننا مساعدتك في اجتياز عملية بيع ناجحة." />
       </Box>
-      <Box  mt="100px" textAlign="center">
-        <Box mt="100px" mb={"100px"} >
-        <Box textAlign="center" margin='10px' fontSize="40px" 
-      fontWeight="bold">      عقارت أخرى
-      </Box>
-      <Box overflowX={"scoll"}  justifyContent={"center"}   display="flex"  flexWrap="nowrap" overflowY="scroll" >
-      {propertiesForRent.map((property) => <OtherProperty  property={property}  key={property.id} />)}
-    </Box>
-    </Box>
+      <Box  mt="100px" textAlign="center"  >
       <Heading fontFamily={'body'} as="h2">
       العقارات الأكثر بحثاً
       </Heading>
