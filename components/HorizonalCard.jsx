@@ -13,7 +13,8 @@ import { Card,CardBody,CardFooter,Stack,Heading,Button } from "@chakra-ui/react"
 import MainBtn from "./MainBtn";
 import Horizontal from './Horizontal';
 const HorizonalCard = (
-    {property:{id,coverPhoto,property_title,sqrt_area
+    {property:{id,coverPhoto,property_title,sqrt_area,
+               property_town
         ,property_price,rentFrequency,
         location,rooms,
         baths,area,agency,isVerified,externalID,geography}}) => {
