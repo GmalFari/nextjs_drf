@@ -611,7 +611,7 @@ let testApi = async()=>{
         toast(
                {
               title: ` خطأ`,
-              description:{result},
+              description:{result.property_title},
                 status: 'error',
                isClosable: true
               })
