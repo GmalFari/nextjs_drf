@@ -593,7 +593,7 @@ let testApi = async()=>{
           toast(
               {
               title: ` لقد تم إضافة العقار`,
-              description:""
+              description:"",
               //   // newData.map((m,i)=>(
               //   //     <>
               //   //       {m.key}: {m.value}
@@ -602,7 +602,7 @@ let testApi = async()=>{
               //   // )
               //   ,
                 status: 'success',
-                isClosable: true,
+                isClosable: true
                })
             
           setData({...myData,property_title:""})
