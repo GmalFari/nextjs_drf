@@ -613,7 +613,7 @@ let testApi = async()=>{
         toast(
                {
               title: ` خطأ`,
-              description:"error"
+              description:"error",
               //   // newData.map((m,i)=>(
               //   //     <>
               //   //       {m.key}: {m.value}
@@ -622,7 +622,7 @@ let testApi = async()=>{
               //   // )
               //   ,
                 status: 'error',
-               isClosable: true,
+               isClosable: true
               })
             
       }
