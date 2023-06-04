@@ -1,16 +1,12 @@
 import React from 'react'
 import { Button,Box } from '@chakra-ui/react';
+import Link from 'next/link';
+// import EmailPopover from "./popoverModals/ContactModals";
 
 const MainBtn = ({icon,bgcolor,color,content}) => {
   return (
-      <Button pt={0}  pb={0} ps={5} pe={5} bg={bgcolor} colorScheme={bgcolor} 
-      fontSize fontWeight={700} variant='inline' 
-      color={color}
-      height={'2.1rem'}
-      >
-              {icon}<small>
-                {content||''}</small>
-        </Button>
+    <></>
+    // < EmailPopover icon={icon} bg={bgcolor} color={color} content={content}/>
   )
 }
 

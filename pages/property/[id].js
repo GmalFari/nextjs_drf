@@ -17,7 +17,7 @@ import { BasicUsage } from '../../components/BasicUsage';
 import MainBtn from '../../components/MainBtn';
 import PropertyTable from "../../components/property/PropertyTable";
 import UserProfile from "../accounts/userprofile";
-
+import { AspectRatio } from "@chakra-ui/react";
 const PropertyDetails = ({propertyDetails:
     {coverPhoto,price,rentFrequency,rooms,purpose
     ,property_title,description_l1,baths,area,agency,
@@ -49,7 +49,7 @@ const PropertyDetails = ({propertyDetails:
         <Box  marginLeft={["auto","auto","100px"]}
             marginRight={["auto","auto","100px"]}
             display={["block","block","flex"]} >
-            <Box width={['100%','80vh']} ms={"20px"} me={"20px"} maxWidth="1000px"  p="2">
+        <Box width={['100%','80vh']} ms={"20px"} me={"20px"} maxWidth="1000px"  p="2">
         <Box display={['block','block','block']}>
             <BasicUsage coverPhoto={coverPhoto} photos={photos}   geography={geography} />
           </Box>
@@ -143,6 +143,11 @@ const PropertyDetails = ({propertyDetails:
             <Box mt={"60px"}  width={"20vw"} display={["none","none","block"]} background={"#ddd"}
              height={"100vh"}>
             <Img  src={coverPhoto} width={"100%"} height={"150px"} />
+            <AspectRatio ratio={4/3}>
+            <iframe
+                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng'
+            />
+            </AspectRatio>
                 <UserProfile/>
             </Box>
         </Box>

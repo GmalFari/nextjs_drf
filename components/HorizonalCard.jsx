@@ -12,6 +12,7 @@ import {FaBed , FaBath} from 'react-icons/fa';
 import { Card,CardBody,CardFooter,Stack,Heading,Button } from "@chakra-ui/react";
 import MainBtn from "./MainBtn";
 import Horizontal from './Horizontal';
+import ContactPopover from "./popoverModals/ContactModals";
 
 const Mailto = ({ email, subject, body, children }) => {
   return (
@@ -19,7 +20,7 @@ const Mailto = ({ email, subject, body, children }) => {
   );
 };
 const HorizonalCard = (
-    {property:{id,coverPhoto,property_title,sqrt_area,
+    {property:{id,owner,coverPhoto,property_title,sqrt_area,phone,
                property_town
         ,property_price,rentFrequency,
         location,rooms,
@@ -61,7 +62,7 @@ const HorizonalCard = (
                      {property_title}
                 </Text>
                 <Flex isTruncated flexWrap='noWrap' display={'flex'}  pt={[1,2]} fontSize={['11px','sm','md']} color={'#006169'} >
-                <BsFillGeoAltFill />sana'a
+                <BsFillGeoAltFill />sanaa
                 {/* {`${loc1}`},
                 {`${loc3}`},
                 {`${loc2}`} */}
@@ -72,13 +73,10 @@ const HorizonalCard = (
                 <Box display={"flex"} alignItems="center" ml={2}>{millify(sqrt_area)} sqft <BsGridFill/></Box>
                 </Box>
                 <Grid  width={'100%'} position={'absolute'} bottom={1}   templateColumns='repeat(3, 1fr)' gap={1} >
-                <Link href="https://wa.me/967776278868"
-                class="whatsapp_float"
-                target="_blank"
-                 rel="noopener noreferrer"><MainBtn  icon={<FaWhatsapp fontSize={'sm'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
-                 </Link>
-                <MainBtn icon={<FaEnvelope fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} />
-                <MainBtn icon={<FaPhone fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'}  />
+                
+                <ContactPopover contentType="w" contactWith={`967${phone|'776278868'}`}  icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
+                <ContactPopover contentType="e" contactWith={'gmalfari@gmail.com'} icon={<FaEnvelope fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} />
+                <ContactPopover contentType="p" icon={<FaPhone fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'}  />
                 {/* <Link href={`#`}>
                     <Avatar ms="70%"   size="sm" src={agency?.logo?.url} />
                     </Link> */}
