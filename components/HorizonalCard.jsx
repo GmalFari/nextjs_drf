@@ -55,12 +55,12 @@ const HorizonalCard = (
                      {property_title}
                 </Text>
                 <Flex isTruncated flexWrap='noWrap' display={'flex'}  pt={[1,2]} fontSize={['11px','sm','md']} color={'#006169'} >
-                <BsFillGeoAltFill />{property_town | "sana'a"}
+                <BsFillGeoAltFill />sana'a
                 {/* {`${loc1}`},
                 {`${loc3}`},
                 {`${loc2}`} */}
                 </Flex>
-<Box display={"flex"} flexWrap='noWrap'   fontSize={['sm','md']} alignItems="center" p="1" justifyContent="right" w="100%" color="#000">
+            <Box display={"flex"} flexWrap='noWrap'   fontSize={['sm','md']} alignItems="center" p="1" justifyContent="right" w="100%" color="#000">
                 <Box display={"flex"} alignItems="center" ml={2}>  {rooms} <FaBed  /> </Box> 
                 <Box display={"flex"} alignItems="center" ml={2}>  {baths} <FaBath /> </Box>
                 <Box display={"flex"} alignItems="center" ml={2}>{millify(sqrt_area)} sqft <BsGridFill/></Box>
