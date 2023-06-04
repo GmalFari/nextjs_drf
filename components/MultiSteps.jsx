@@ -686,13 +686,7 @@ let testApi = async()=>{
                 variant="solid"
                 onClick={() => {submitted?
         
-              toast({
-                title: `لقد تم إضافة العقار`,
-
-                status:'success',
-                isClosable: true,
-              })
-            : null
+              
               // toast(
               //   // {
               //   // title: ` خطأ`,
