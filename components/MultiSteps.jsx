@@ -590,18 +590,41 @@ let testApi = async()=>{
           setSubmitted(true)
           setApiMessage(result)
           console.log(result)
+          toast(
+              {
+              title: ` لقد تم إضافة العقار`,
+              description:""
+              //   // newData.map((m,i)=>(
+              //   //     <>
+              //   //       {m.key}: {m.value}
+              //   //     </>
+              //   // )
+              //   // )
+              //   ,
+                status: 'success',
+                isClosable: true,
+               })
+            
           setData({...myData,property_title:""})
           console.log(myform)
-        }else {
-          // setSubmitted(false)
-          setApiMessage(result)
-        }          
+        }
       } catch (error) {
-        // setApiMessage()
-        console.log(error)
-        setSubmitted(false)
-        alert(error)
-        setApiMessage(error)
+        
+        toast(
+               {
+              title: ` خطأ`,
+              description:"error"
+              //   // newData.map((m,i)=>(
+              //   //     <>
+              //   //       {m.key}: {m.value}
+              //   //     </>
+              //   // )
+              //   // )
+              //   ,
+                status: 'error',
+               isClosable: true,
+              })
+            
       }
     }
     const handleSubmit = async e => {
