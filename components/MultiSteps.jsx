@@ -707,7 +707,7 @@ let testApi = async()=>{
                 w="8rem"
                 colorScheme="teal"
                 variant="solid"
-                onClick={() => {submitted?
+               // onClick={() => {submitted?
         
               
               // toast(
@@ -725,7 +725,7 @@ let testApi = async()=>{
               //   isClosable: true,
               // })
             
-                }}
+                //}}
                 >
                 إضافة عقار
                 </Button>
