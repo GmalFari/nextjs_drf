@@ -13,7 +13,7 @@ import { Card,CardBody,CardFooter,Stack,Heading,Button } from "@chakra-ui/react"
 import MainBtn from "./MainBtn";
 import Horizontal from './Horizontal';
 const HorizonalCard = (
-    {property:{coverPhoto,property_title,sqrt_area
+    {property:{id,coverPhoto,property_title,sqrt_area
         ,property_price,rentFrequency,
         location,rooms,
         baths,area,agency,isVerified,externalID,geography}}) => {
@@ -31,7 +31,7 @@ const HorizonalCard = (
             paddingTop="0" 
             justifyContent="flex-start" 
             cursor="pointer">
-            <Link  href={`/property/${externalID}`} passHref>
+            <Link  href={`/property/${id}`} passHref>
             <Box  height={'100%'} me="4" >
                 <Img src={coverPhoto ? coverPhoto:DefaultImage} 
                 borderRadius={2}
@@ -54,7 +54,7 @@ const HorizonalCard = (
                      {property_title}
                 </Text>
                 <Flex isTruncated flexWrap='noWrap' display={'flex'}  pt={[1,2]} fontSize={['11px','sm','md']} color={'#006169'} >
-                <BsFillGeoAltFill />
+                <BsFillGeoAltFill />{property_town | "sana'a"}
                 {/* {`${loc1}`},
                 {`${loc3}`},
                 {`${loc2}`} */}
@@ -65,10 +65,14 @@ const HorizonalCard = (
                 <Box display={"flex"} alignItems="center" ml={2}>{millify(sqrt_area)} sqft <BsGridFill/></Box>
                 </Box>
                 <Grid  width={'100%'} position={'absolute'} bottom={1}   templateColumns='repeat(3, 1fr)' gap={1} >
-                <MainBtn  icon={<FaWhatsapp fontSize={'sm'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
+                <Link href="https://wa.me/967776278868"
+                class="whatsapp_float"
+                target="_blank"
+                 rel="noopener noreferrer"><MainBtn  icon={<FaWhatsapp fontSize={'sm'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
+                 </Link>
                 <MainBtn icon={<FaEnvelope fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} />
                 <MainBtn icon={<FaPhone fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'}  />
-                {/* <Link href={`/agencies`}>
+                {/* <Link href={`#`}>
                     <Avatar ms="70%"   size="sm" src={agency?.logo?.url} />
                     </Link> */}
             </Grid>
