@@ -607,6 +607,14 @@ let testApi = async()=>{
             
           setData({...myData,property_title:""})
           console.log(myform)
+        }else{
+        toast(
+               {
+              title: ` خطأ`,
+              description:{result},
+                status: 'error',
+               isClosable: true
+              })
         }
       } catch (error) {
         
@@ -614,13 +622,6 @@ let testApi = async()=>{
                {
               title: ` خطأ`,
               description:"error",
-              //   // newData.map((m,i)=>(
-              //   //     <>
-              //   //       {m.key}: {m.value}
-              //   //     </>
-              //   // )
-              //   // )
-              //   ,
                 status: 'error',
                isClosable: true
               })
