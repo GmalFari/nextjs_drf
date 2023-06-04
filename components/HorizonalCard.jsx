@@ -12,6 +12,12 @@ import {FaBed , FaBath} from 'react-icons/fa';
 import { Card,CardBody,CardFooter,Stack,Heading,Button } from "@chakra-ui/react";
 import MainBtn from "./MainBtn";
 import Horizontal from './Horizontal';
+
+const Mailto = ({ email, subject, body, children }) => {
+  return (
+    <a href={`mailto:${email}?subject=${encodeURIComponent(subject) || ''}&body=${encodeURIComponent(body) || ''}`}>{children}</a>
+  );
+};
 const HorizonalCard = (
     {property:{id,coverPhoto,property_title,sqrt_area,
                property_town
