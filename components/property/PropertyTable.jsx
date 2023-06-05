@@ -8,14 +8,15 @@ import {
     Td,
     TableCaption,
     TableContainer,
-    Grid,
+    Flex,
   } from '@chakra-ui/react'
 
 const PropertyTable =()=>{
   return (
     <>
-<Grid ms="20px" me="20px" width={'100%'} bottom={1}   templateColumns='repeat(2, 1fr)' gap={2} >
-     <TableContainer >
+<Flex ms="20px" me="20px" width={'100%'} 
+    justifyConten='center' flexWrap='wrap'>
+     <TableContainer>
   <Table variant='striped' colorScheme='#ddd'>
     <TableCaption placement='top'>
        معلومات العقار</TableCaption>
@@ -79,7 +80,7 @@ const PropertyTable =()=>{
     </Tfoot>
   </Table>
 </TableContainer>
-</Grid>
+</Flex>
     </>
   )
 
