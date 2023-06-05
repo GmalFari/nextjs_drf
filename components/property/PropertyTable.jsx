@@ -21,15 +21,16 @@ const PropertyTable =()=>{
   <Table variant='striped'>
     
     <Thead>
-      <Tr>
-        <Th>المدينه</Th>
-        <Th>صنعاء</Th>
-        
-      </Tr>
+      
     </Thead>
     <Tbody>
       <Tr>
-        <Td>الحي / المنطق</Td>
+        <Td>المدينه</Td>
+        <Td>صنعاء</Td>
+        
+      </Tr>
+      <Tr>
+        <Td>الحي / المنطقه</Td>
         <Td>سعوان </Td>
         
       </Tr>
