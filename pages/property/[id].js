@@ -87,7 +87,7 @@ const PropertyDetails = ({propertyDetails:
         </Flex>
         <Flex  w={250} alignItems='center' p='1' justifyContent='space-between'  color='#006169' >
           {rooms}
-          <FaBed /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill />  
+          <FaBed /> | {baths} <FaBath /> | {millify(area)|'22 م٢'} sqft <BsGridFill />  
           {/* {toggleMap ? 
           <Button onClick={()=>{setToggleMap(!toggleMap)}} ></Button> 
            : <MyMap geoDetail={geography} />} */}
