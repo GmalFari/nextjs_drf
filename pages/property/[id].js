@@ -20,7 +20,6 @@ import PropertyTable from "../../components/property/PropertyTable";
 import UserProfile from "../accounts/userprofile";
 import { AspectRatio } from "@chakra-ui/react";
 import {FaMapMarked,FaYoutube} from 'react-icons/fa';
-
 const PropertyDetails = ({propertyDetails:
     {coverPhoto,price,rentFrequency,rooms,purpose
     ,property_title,description_l1,baths,area,agency,
@@ -67,8 +66,8 @@ const PropertyDetails = ({propertyDetails:
           </Box>
           <Box position={'relative'}>
           <Flex bg='rgba(255,255,255,0.8)' position={'absolute'} bottom={0} mb={2} justifyContent={'left'} templateColumns='repeat(3, 1fr)' gap={2} >
-                <MainBtn icon={<FaShare fontWeight={'bold'} color='#006169' />}  color={'#fff'} />
                 <MainBtn icon={<FaRegHeart fontWeight={'bold'} color='#006169' />} color={'#fff'}  />
+                <MainBtn icon={<FaShare fontWeight={'bold'} color='#006169' />}  color={'#fff'} />
                 <MainBtn icon={<FaDownload fontWeight={'bold'} color='#006169' />} color={'#fff'}  />
             </Flex>
             {coverPhoto && <Img src={coverPhoto} ms="2px" me="2px" width={"100%"} height={"100%"} />}
@@ -93,6 +92,8 @@ const PropertyDetails = ({propertyDetails:
            : <MyMap geoDetail={geography} />} */}
         
         </Flex>
+        <PropertyTable/>
+
       </Box>
         <Box marginTop="2">
             <Text fontSize="lg" marginBottom="2" fontWeight="bold">
@@ -127,7 +128,6 @@ const PropertyDetails = ({propertyDetails:
                 )
                 }
                 <Box>
-                <PropertyTable/>
                     {/* {amenities.length && <Text fontSize="2xl" fontWeight="black"  marginTop="5"  >
                         Amenities
                     </Text>} */}

@@ -8,45 +8,80 @@ import {
     Td,
     TableCaption,
     TableContainer,
+    Grid,
   } from '@chakra-ui/react'
 
 const PropertyTable =()=>{
-<TableContainer>
-  <Table variant='simple'>
-    <TableCaption>Imperial to metric conversion factors</TableCaption>
+  return (
+    <>
+<Grid ms="20px" me="20px" width={'100%'} bottom={1}   templateColumns='repeat(2, 1fr)' gap={2} >
+     <TableContainer overflow={'hidden'}>
+  <Table variant='striped' colorScheme='teal'>
+    <TableCaption placement='top'>
+       معلومات العقار</TableCaption>
     <Thead>
-      <Tr>
+      {/* <Tr>
         <Th>To convert</Th>
         <Th>into</Th>
-        <Th isNumeric>multiply by</Th>
-      </Tr>
+      </Tr> */}
     </Thead>
     <Tbody>
       <Tr>
         <Td>inches</Td>
         <Td>millimetres (mm)</Td>
-        <Td isNumeric>25.4</Td>
       </Tr>
       <Tr>
         <Td>feet</Td>
         <Td>centimetres (cm)</Td>
-        <Td isNumeric>30.48</Td>
       </Tr>
       <Tr>
         <Td>yards</Td>
         <Td>metres (m)</Td>
-        <Td isNumeric>0.91444</Td>
       </Tr>
     </Tbody>
     <Tfoot>
       <Tr>
         <Th>To convert</Th>
         <Th>into</Th>
-        <Th isNumeric>multiply by</Th>
       </Tr>
     </Tfoot>
   </Table>
 </TableContainer>
+ <TableContainer overflow={'hidden'}>
+  <Table variant='striped' colorScheme='teal'>
+    <TableCaption placement='top'>
+       معلومات العقار</TableCaption>
+    <Thead>
+      {/* <Tr>
+        <Th>To convert</Th>
+        <Th>into</Th>
+      </Tr> */}
+    </Thead>
+    <Tbody>
+      <Tr>
+        <Td>inches</Td>
+        <Td>millimetres (mm)</Td>
+      </Tr>
+      <Tr>
+        <Td>feet</Td>
+        <Td>centimetres (cm)</Td>
+      </Tr>
+      <Tr>
+        <Td>yards</Td>
+        <Td>metres (m)</Td>
+      </Tr>
+    </Tbody>
+    <Tfoot>
+      <Tr>
+        <Th>To convert</Th>
+        <Th>into</Th>
+      </Tr>
+    </Tfoot>
+  </Table>
+</TableContainer>
+</Grid>
+    </>
+  )
 
 }
 
