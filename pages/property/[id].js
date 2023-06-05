@@ -48,8 +48,9 @@ const PropertyDetails = ({propertyDetails:
 // 	console.error(error);
 //    });
     return(
-        <Box  marginLeft={["auto","auto","100px"]}
-            marginRight={["auto","auto","100px"]}
+        <Box
+         //marginLeft={["auto","auto","100px"]}
+           // marginRight={["auto","auto","100px"]}
             display={["block","block","flex"]} >
         <Box width={['100%','80vh']} ms={"20px"} me={"20px"} maxWidth="1000px"  p="2">
         <Box display={['block','block','block']}>
