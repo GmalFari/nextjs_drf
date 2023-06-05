@@ -20,6 +20,8 @@ import PropertyTable from "../../components/property/PropertyTable";
 import UserProfile from "../accounts/userprofile";
 import { AspectRatio } from "@chakra-ui/react";
 import {FaMapMarked,FaYoutube} from 'react-icons/fa';
+import ContactPopover from "../../components/popoverModals/ContactModals";
+
 const PropertyDetails = ({propertyDetails:
     {coverPhoto,price,rentFrequency,rooms,purpose,
      property_area
@@ -94,23 +96,26 @@ const PropertyDetails = ({propertyDetails:
            : <MyMap geoDetail={geography} />} */}
         
         </Flex>
-        <PropertyTable/>
-
-      </Box>
-        <Box marginTop="2">
+             <Box marginTop="2">
             <Text fontSize="lg" marginBottom="2" fontWeight="bold">
-                {property_title.replace('صنعاء','دبي')}
+                {property_title}
             </Text>
             <Box p={0} bg='#fff' position={['fixed','fixed','fixed','relative']} left={0} bottom={'0'} width={'100%'}>
             <Grid backgroundColor={"white"} padding={"7px"} templateColumns='repeat(3, 1fr)' gap={2} >
-                <MainBtn icon={<FaWhatsapp fontWeight={'bold'} color='#006169' />} bgcolor={'#28b16d'} color={'#fff'} content={'وتس أب'} />
-                <MainBtn icon={<FaEnvelope fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'الإيميل'} />
-                <MainBtn icon={<FaPhone fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'إتصال'} />
-            </Grid>
+                <ContactPopover contentType="w" contactWith={`967${phone|'776278868'}`}  icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
+                <ContactPopover contentType="e" contactWith={'gmalfari@gmail.com'} icon={<FaEnvelope fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} />
+                <ContactPopover contentType="p" icon={<FaPhone fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'}  />
+            
+                 </Grid>
             </Box>
+        <PropertyTable/>
+
+      </Box>
+        
             <Box lineHeight="2" color="gray.600">
                  {t}
                 {description_l1}
+
             </Box>
         </Box>
             <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
