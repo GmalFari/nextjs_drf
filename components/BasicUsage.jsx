@@ -74,7 +74,7 @@ export function BasicUsage({coverPhoto,geography,photos,icon,btnContent,comId}) 
       >
           <FaMapMarked /> <small style={{padding:"5px"}}  >الموقع</small>     
       </Button>
-      <Button  onClick={()=>{setRenderId("V")}} color='#006169' width="100%" colorScheme='teal' variant='outline' onClick={onOpen}>
+      <Button  onClick={()=>{setRenderId("V")}} color='#006169' width="100%" colorScheme='teal' variant='outline' >
           <FaYoutube /> <small style={{padding:"5px"}}  >الفيديو</small>     
       </Button>
 
