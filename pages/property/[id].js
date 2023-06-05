@@ -52,7 +52,7 @@ const PropertyDetails = ({propertyDetails:
          //marginLeft={["auto","auto","100px"]}
            // marginRight={["auto","auto","100px"]}
             display={["block","block","flex"]} >
-        <Box width={['100%','80vh']} ms={"20px"} me={"20px"} maxWidth="1000px"  p="2">
+        <Box width={['100%','80vh']}  maxWidth="1000px"  p="2">
         <Box display={['block','block','block']}>
         <Box width="100%" >
         <Grid mb={2} templateColumns='repeat(3, 1fr)' gap={2}>
