@@ -15,8 +15,8 @@ const PropertyTable =()=>{
   return (
     <>
 <Grid ms="20px" me="20px" width={'100%'} bottom={1}   templateColumns='repeat(2, 1fr)' gap={2} >
-     <TableContainer overflow={'hidden'}>
-  <Table variant='striped' colorScheme='teal'>
+     <TableContainer >
+  <Table variant='striped' colorScheme='#ddd'>
     <TableCaption placement='top'>
        معلومات العقار</TableCaption>
     <Thead>
