@@ -74,8 +74,6 @@ const PropertyTable =()=>{
     </Tfoot>
   </Table>
 </TableContainer>
- <TableContainer overflow={'hidden'}>
- 
 </Flex>
     </>
   )
