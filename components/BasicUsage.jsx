@@ -5,6 +5,7 @@ import {FaWhatsapp,FaEnvelope,FaPhone,FaShare,FaDownload,FaRegHeart} from 'react
 import MyMap from "./Mymap";
 import ImageScrollbar from './ImageScrollbar';
 import MainBtn from './MainBtn';
+import ContactPopover from "./popoverModals/ContactModals";
 //popup window
 import { useDisclosure,AspectRatio } from '@chakra-ui/react';
 import {
@@ -16,88 +17,88 @@ import {
     ModalBody,
     ModalCloseButton,
   } from '@chakra-ui/react';
-export function BasicUsage({coverPhoto,geography,photos}) {
+import { useEffect,useRef,useState } from 'react';
+import { render } from 'nprogress';
+export function BasicUsage({coverPhoto,geography,photos,icon,btnContent,comId}) {
+  const looping = [1,2,34,5,6,7,7,8]
   const { isOpen: isOpen , onOpen: onOpen, onClose: onClose } = useDisclosure()
-  const { isOpen: isVideoOpen , onOpen: onVideoOpen, onClose: onVideoClose } = useDisclosure()
-  const { isOpen: isPictureOpen , onOpen: onPictureOpen, onClose: onPictureClose } = useDisclosure()
+  const [renderId,setRenderId]=useState()
+  
+  let mainContent = useRef(null);
+  useEffect(()=>{
+    if(comId=="I"){
+      mainContent.current = <ImageScrollbar coverPhoto={coverPhoto} data={photos} />
+      setRenderId("I")
+    }
+      else if(comId=="M") {
+        setRenderId("M")
+        mainContent.current =
+        <MyMap sizes={{mapW:"100vw",mapH:"80vh"}}  geoDetail={geography} />
+      }
+     else if(comId=="V"){
+      setRenderId("M")
+        mainContent.current =        
+                <AspectRatio  ratio={1}>
+                  <iframe
+                    title='naruto'
+                    src='https://www.youtube.com/embed/WkflInhRuqE'
+                    allowFullScreen
+                  />
+                </AspectRatio>              
+    }
+    const handleClick=()=>{
+      
+    }
+   
+// eslint-disable-next-line react-hooks/exhaustive-deps
+},[renderId])
   return (
-      <Box width="100%" ms={5} me={5}>
-        <Grid mb={2} templateColumns='repeat(3, 1fr)' gap={2} >
-        <Button color='#006169'  colorScheme='teal' variant='outline' onClick={onPictureOpen}>
-        <FaImages /> <small style={{padding:"5px"}}  >الصور</small>     
+      <Box width="100%">
+        {/* <Grid mb={2} templateColumns='repeat(3, 1fr)' gap={2} > */}
+        <Button color='#006169' width="100%" colorScheme='teal' variant='outline'
+         onClick={onOpen}>
+          {icon} <small style={{padding:"5px"}}  >{btnContent}</small>     
       </Button>
-          <Button  colorScheme='black' variant='outline' padding='1px' color='#006169'  onClick={onOpen}>
-                <FaMapMarked /> <small style={{padding:"5px"}}  >  الخريطة</small></Button>       
-          <Button colorScheme='teal' variant='outline'padding='2px' color='#006169'  onClick={onVideoOpen}>
-              <FaYoutube  /> <small style={{padding:"5px"}}>
-                فيديو</small>
-        </Button>
-
-        </Grid>
-        <Modal size={"full"} blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+      <Modal size={"full"} blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-       
-          <ModalHeader textAlign={"center"} >عرض العقارات على الخريطة</ModalHeader>
-            <ModalBody ps={0} pe={0} width="100%" minW="100%">
+          <ModalHeader textAlign={"center"} >
+          <Grid  templateColumns='repeat(3, 1fr)' gap={2} >
+          
+          <Button onClick={()=>{setRenderId("I")}}
+           color='#006169' width="100%" colorScheme='teal' variant='outline'>
+          <FaImages /> <small style={{padding:"5px"}}  >الصور</small>     
+      </Button>
+      <Button onClick={()=>{setRenderId("M")}} color='#006169' width="100%" 
+      colorScheme='teal' variant='outline'
+      >
+          <FaMapMarked /> <small style={{padding:"5px"}}  >الموقع</small>     
+      </Button>
+      <Button  onClick={()=>{setRenderId("V")}} color='#006169' width="100%" colorScheme='teal' variant='outline' onClick={onOpen}>
+          <FaYoutube /> <small style={{padding:"5px"}}  >الفيديو</small>     
+      </Button>
+
+                {/* <MainBtn icon={<FaEnvelope fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'الإيميل'} />
+                <MainBtn icon={<FaPhone fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'إتصال'} /> */}
+            </Grid></ModalHeader>
+            <ModalBody  ps={0}>
             <ModalCloseButton  position="fixed" zIndex="9999" top="10%" left="90%" bg='#006169'  />
-              <MyMap sizes={{mapW:"100vw",mapH:"100vh"}} geoDetail={geography} />
+              {mainContent.current}
             </ModalBody>
           <ModalFooter>
-            <Box p={0} bg='#fff' position={['fixed','fixed','fixed','relative']} left={0} bottom={'0'} width={'100%'}>
-            <Grid  templateColumns='repeat(3, 1fr)' gap={2} >
-                <MainBtn icon={<FaWhatsapp fontWeight={'bold'} color='#006169' />} bgcolor={'#28b16d'} color={'#fff'} content={'وتس أب'} />
-                <MainBtn icon={<FaEnvelope fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'الإيميل'} />
-                <MainBtn icon={<FaPhone fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'إتصال'} />
+          <Grid  width={'100%'} position={'absolute'} bottom={1}   templateColumns='repeat(3, 1fr)' gap={1} >
+                
+                <ContactPopover contentType="w" contactWith={`967${'776278868'}`}  icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
+                <ContactPopover contentType="e" contactWith={'gmalfari@gmail.com'} icon={<FaEnvelope fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} />
+                <ContactPopover contentType="p" icon={<FaPhone fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'}  />
+                {/* <Link href={`#`}>
+                    <Avatar ms="70%"   size="sm" src={agency?.logo?.url} />
+                    </Link> */}
             </Grid>
-            </Box>
           </ModalFooter>
           </ModalContent>
         </Modal>
-        <Modal size={'full'}    blockScrollOnMount={false} isOpen={isVideoOpen} onClose={onVideoClose}>
-          <ModalOverlay />
-          <ModalContent  width="100%">
-            <ModalBody ps={0} pe={0}>
-            <ModalCloseButton  position="fixed" zIndex="9999" top="10%" left="90%" bg='#006169'  />
-              <ModalHeader >فيديو </ModalHeader>
-              <AspectRatio  ratio={1}>
-                <iframe
-                  title='naruto'
-                  src='https://www.youtube.com/embed/WkflInhRuqE'
-                  allowFullScreen
-                />
-              </AspectRatio>
-            </ModalBody>
-<ModalFooter>
-            <Box p={0} bg='#fff' position={['fixed','fixed','fixed','relative']} left={0} bottom={'0'} width={'100%'}>
-            <Grid  templateColumns='repeat(3, 1fr)' gap={2} >
-                <MainBtn icon={<FaWhatsapp fontWeight={'bold'} color='#006169' />} bgcolor={'#28b16d'} color={'#fff'} content={'وتس أب'} />
-                <MainBtn icon={<FaEnvelope fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'الإيميل'} />
-                <MainBtn icon={<FaPhone fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'إتصال'} />
-            </Grid>
-            </Box>
-          </ModalFooter>
-          </ModalContent>
-        </Modal>
-        <Modal p="0" placement="top-end"  size={"full"} blockScrollOnMount={false} isOpen={isPictureOpen} onClose={onPictureClose}>
-          <ModalOverlay />
-          <ModalContent  w="100%" >
-            <ModalBody pe={0} ps={0}>
-            <ModalCloseButton  position="fixed" zIndex="9999" top="10%" left="90%" bg="blue.50" />
-            {photos && <ImageScrollbar coverPhoto={coverPhoto} data={photos} />}
-            </ModalBody>
- 
-<ModalFooter>
-            <Box p={0} bg='#fff' position={['fixed','fixed','fixed','relative']} left={0} bottom={'0'} width={'100%'}>
-            <Grid  templateColumns='repeat(3, 1fr)' gap={2} >
-                <MainBtn icon={<FaWhatsapp fontWeight={'bold'} color='#006169' />} bgcolor={'#28b16d'} color={'#fff'} content={'وتس أب'} />
-                <MainBtn icon={<FaEnvelope fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'الإيميل'} />
-                <MainBtn icon={<FaPhone fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'إتصال'} />
-            </Grid>
-            </Box>
-          </ModalFooter>
-</ModalContent>
-        </Modal>
+        
       </Box>
     )
   }

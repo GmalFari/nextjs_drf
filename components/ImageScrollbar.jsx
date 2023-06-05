@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import Image from 'next/image'
 import { AspectRatio, Img } from '@chakra-ui/react';
-import {Box,Icon,Flex,Grid} from '@chakra-ui/react';
+import {Box,Icon,Flex,Center,Grid} from '@chakra-ui/react';
 import { ScrollMenu , VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { FaArrowAltCircleLeft,FaArrowAltCircleRight, FaArrowCircleRight } from 'react-icons/fa';
 import { useState,useEffect,useRef } from 'react';
@@ -36,8 +36,9 @@ const RightArrow = () =>{
 }
 
 const ImageScrollbar = ({data,coverPhoto}) => {
-     data = [...data,coverPhoto]
-    console.log(data.length )
+    const testmap = [1,2,4,4,6,4,32,2,3,3,3];
+    //  data = [...data,coverPhoto]
+    // console.log(data.length )
     const [defaultImg, setDefaultImg] = useState(coverPhoto.url);
     const [imgWH ,setImgWH] =useState({width:"100%",
                                         height:"700px"})
@@ -53,34 +54,40 @@ const ImageScrollbar = ({data,coverPhoto}) => {
         }
     },[defaultImg])
   return (
-    <>
-        <Box overflow={"hidden"}  pt={"10%"} borderRadius="2px"   
+    <Box left={['0','0','0',"10%"]} position="relative" textAlign={"center"} maxW={"1000px"}>
+        <Box  overflow={"hidden"}  pt={"10%"} borderRadius="2px"   
                 textAlign="center">
-            <AspectRatio>
-            <Img src={defaultImg} width="auto" height="auto" overflow="hidden" ref={imageRef}  alt="" objectFit="cover"  />
-            </AspectRatio>
+            <Img style={{"objectFit":"cover"}}
+             src={coverPhoto} height={"50rm"}
+              overflow="hidden" ref={imageRef}  alt=""
+              sizes="(max-width: 500px) 100px, (max-width: 1023px) 400px, 1000px"                
+  />
         </Box>
+        <Box>
         <ScrollMenu position={'initial'} LeftArrow={LeftArrow} RightArrow={RightArrow} style={{overflow:"scroll"}}>
-        {data.map((item) =>(
+        {testmap.map((item) =>(
             <Box       
                     border={item.url === defaultImg?"4px solid #127578":"none"}
-                    onClick={()=>{setDefaultImg(item.url)}} 
-                    key={item.id} width="100px" height="100px" itemID={item.id} overflow="hidden" p="1">
+                    onClick={()=>{setDefaultImg(coverPhoto)}} 
+                    key={item.id} width="100px" height="100px" itemID={item.id}
+                     overflow="hidden" p="1">
                 <Img
                 placeholder='blur' 
                 // blurDataURL={item.url} 
-                src={item.url} 
+                src={coverPhoto} 
                 width="100%"
                 height="100%"
                 alt="property"
-                sizes="(max-width: 500px) 100px, (max-width: 1023px) 400px, 1000px"                
+                sizes="(max-width: 500px) 100px, (max-width: 1023px) 400px"     
+                objectFit={"cover"}           
                 />
             </Box>
             
         ))}
         </ScrollMenu>
-        </>
-  )
+        </Box>
+
+</Box>)
 }
 
 export default ImageScrollbar;

@@ -4,7 +4,8 @@ import {Flex,Grid,Select
      ,Box,Text,Input,
      Avatar,Container
      ,Button,} from '@chakra-ui/react';
-import {FaBed,FaBath,FaImages,FaWhatsapp,FaEnvelope,FaPhone,FaShare,FaDownload,FaRegHeart} from 'react-icons/fa';
+import {FaBed,FaBath,FaImages,
+    FaWhatsapp,FaEnvelope,FaPhone,FaShare,FaDownload,FaRegHeart, FaVideo} from 'react-icons/fa';
 import { Img } from '@chakra-ui/react';
 import {BsGridFill} from 'react-icons/bs';
 import {GoVerified} from 'react-icons/go';
@@ -18,6 +19,8 @@ import MainBtn from '../../components/MainBtn';
 import PropertyTable from "../../components/property/PropertyTable";
 import UserProfile from "../accounts/userprofile";
 import { AspectRatio } from "@chakra-ui/react";
+import {FaMapMarked,FaYoutube} from 'react-icons/fa';
+
 const PropertyDetails = ({propertyDetails:
     {coverPhoto,price,rentFrequency,rooms,purpose
     ,property_title,description_l1,baths,area,agency,
@@ -51,7 +54,16 @@ const PropertyDetails = ({propertyDetails:
             display={["block","block","flex"]} >
         <Box width={['100%','80vh']} ms={"20px"} me={"20px"} maxWidth="1000px"  p="2">
         <Box display={['block','block','block']}>
-            <BasicUsage coverPhoto={coverPhoto} photos={photos}   geography={geography} />
+        <Box width="100%" >
+        <Grid mb={2} templateColumns='repeat(3, 1fr)' gap={2}>
+            <BasicUsage comId="I" icon={<FaImages />}
+             btnContent={"الصور"} coverPhoto={coverPhoto} photos={photos}   geography={geography} />
+            <BasicUsage comId="M" icon={<FaMapMarked />} 
+            btnContent={"الخريطة"}   coverPhoto={coverPhoto} photos={photos}   geography={geography} />
+            <BasicUsage comId="V" icon={<FaYoutube />} 
+             btnContent={"الفيديو"}  coverPhoto={coverPhoto} photos={photos}   geography={geography} />
+        </Grid>
+        </Box>
           </Box>
           <Box position={'relative'}>
           <Flex bg='rgba(255,255,255,0.8)' position={'absolute'} bottom={0} mb={2} justifyContent={'left'} templateColumns='repeat(3, 1fr)' gap={2} >
@@ -59,7 +71,7 @@ const PropertyDetails = ({propertyDetails:
                 <MainBtn icon={<FaRegHeart fontWeight={'bold'} color='#006169' />} color={'#fff'}  />
                 <MainBtn icon={<FaDownload fontWeight={'bold'} color='#006169' />} color={'#fff'}  />
             </Flex>
-            {coverPhoto && <Img src={coverPhoto} width={"100%"} height={"100%"} />}
+            {coverPhoto && <Img src={coverPhoto} ms="2px" me="2px" width={"100%"} height={"100%"} />}
           </Box>
         <Box w="full" p="6">
         
@@ -143,11 +155,11 @@ const PropertyDetails = ({propertyDetails:
             <Box mt={"60px"}  width={"20vw"} display={["none","none","block"]} background={"#ddd"}
              height={"100vh"}>
             <Img  src={coverPhoto} width={"100%"} height={"150px"} />
-            <AspectRatio ratio={4/3}>
+            {/* <AspectRatio ratio={4/3}>
             <iframe
                 src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng'
             />
-            </AspectRatio>
+            </AspectRatio> */}
                 <UserProfile/>
             </Box>
         </Box>
