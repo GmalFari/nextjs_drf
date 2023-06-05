@@ -16,70 +16,66 @@ const PropertyTable =()=>{
     <>
 <Flex ms="20px" me="20px" width={'100%'} 
     justifyConten='center' flexWrap='wrap'>
-     <TableContainer>
-  <Table variant='striped' colorScheme='#ddd'>
-    <TableCaption placement='top'>
-       معلومات العقار</TableCaption>
+     <TableContainer dir='rtl' maxW='100%'>
+
+  <Table variant='striped'>
+    
     <Thead>
-      {/* <Tr>
-        <Th>To convert</Th>
-        <Th>into</Th>
-      </Tr> */}
+      <Tr>
+        <Th>المدينه</Th>
+        <Th>صنعاء</Th>
+        
+      </Tr>
     </Thead>
     <Tbody>
       <Tr>
-        <Td>inches</Td>
-        <Td>millimetres (mm)</Td>
+        <Td>الحي / المنطق</Td>
+        <Td>سعوان </Td>
+        
       </Tr>
       <Tr>
-        <Td>feet</Td>
-        <Td>centimetres (cm)</Td>
+        <Td>عدد الغرف </Td>
+        <Td>٤ غرف نوم</Td>
+        
       </Tr>
       <Tr>
-        <Td>yards</Td>
-        <Td>metres (m)</Td>
+        <Td>عدد الحمامات </Td>
+        <Td> حمامين</Td>
+        
       </Tr>
+      <Tr>
+        <Td>مساحة البناء</Td>
+        <Td>20 م٢ </Td>
+        
+      </Tr>
+      <Tr>
+        <Td>مساحة الأرض
+</Td>
+        <Td>22 م٢ </Td>
+        
+      </Tr>
+      <Tr>
+        <Td>عدد الطوابق</Td>
+        <Td>طابقين</Td>
+        
+      </Tr>
+      <Tr>
+        <Td> عمر البناء
+ </Td>
+        <Td>قيد الإنشاء</Td>
+        
+      </Tr>
+      
     </Tbody>
     <Tfoot>
-      <Tr>
-        <Th>To convert</Th>
-        <Th>into</Th>
-      </Tr>
+      
+        
+      
     </Tfoot>
   </Table>
 </TableContainer>
  <TableContainer overflow={'hidden'}>
-  <Table variant='striped' colorScheme='teal'>
-    <TableCaption placement='top'>
-       معلومات العقار</TableCaption>
-    <Thead>
-      {/* <Tr>
-        <Th>To convert</Th>
-        <Th>into</Th>
-      </Tr> */}
-    </Thead>
-    <Tbody>
-      <Tr>
-        <Td>inches</Td>
-        <Td>millimetres (mm)</Td>
-      </Tr>
-      <Tr>
-        <Td>feet</Td>
-        <Td>centimetres (cm)</Td>
-      </Tr>
-      <Tr>
-        <Td>yards</Td>
-        <Td>metres (m)</Td>
-      </Tr>
-    </Tbody>
-    <Tfoot>
-      <Tr>
-        <Th>To convert</Th>
-        <Th>into</Th>
-      </Tr>
-    </Tfoot>
-  </Table>
-</TableContainer>
+ 
 </Flex>
     </>
   )
