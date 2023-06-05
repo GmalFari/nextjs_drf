@@ -15,9 +15,13 @@ import {
     Box,
     Center,
     Textarea,
+    Checkbox,
+    IconButton
   } from '@chakra-ui/react';
+import { FaEnvelope,FaWhatsapp,FaPhone } from 'react-icons/fa';
 import Link from 'next/link';
 import { useDisclosure } from '@chakra-ui/react';
+
 const ContactPopover=({icon,bgcolor,color,content,contactWith,
     contentType,    
     })=> {
@@ -61,8 +65,8 @@ const ContactPopover=({icon,bgcolor,color,content,contactWith,
         let mainContent = ''
     if(contentType === "e"){
       mainContent = 
-      <>
-        <FormControl>
+      <Box dir="rtl" fontSize={"sm"}>
+        <FormControl >
                 <FormLabel> البريد الإلكتروني</FormLabel>
                 <Input ref={initialRef} value={contactWith} name="email"
             onChange={onChange} placeholder='البريد الإلكتروني' />
@@ -70,62 +74,63 @@ const ContactPopover=({icon,bgcolor,color,content,contactWith,
               <FormControl mt={4}>
                 <FormLabel>المحتوى</FormLabel>
                 <Textarea>
-
+                مرحباً، أرغب بالاستفسار عن عقارك رقم:  1799-Ap-S-1838. أرجو منك الاتصال بي في أقرب وقت ممكن.
                 </Textarea>
                 
               </FormControl>
-              <Button 
-               pt={0}
-      //     pb={0} ps={5} pe={5} 
-          bg={bgcolor}
-       colorScheme={bgcolor} 
-      // fontSize fontWeight={700} variant='inline' 
-      // color={color}
-      // height={'2.1rem'}
-      >
-        إرسال</Button>
-              <FormControl>
-
+              <FormControl mt={4}>
+              <Checkbox size='sm' colorScheme='green' defaultChecked>
+              أعلمني عن العقارات المشابهه
+            </Checkbox>
               </FormControl>
-      </>
+              <FormControl mt={4}>
+              <Button width={"full"} leftIcon={<FaEnvelope />} colorScheme='teal' variant='solid'>
+                </Button>
+              </FormControl>
+      </Box>
     }
     else if (contentType=="w"){
       mainContent = <>
-      <Center>
-      <Link href={`https://wa.me/${contactWith}`}
+      <Link width={"full"} href={`https://wa.me/${contactWith}`}
       target={"_blank"}>
-        
-        <Button 
-          onClick={onOpen} pt={0}
-      //     pb={0} ps={5} pe={5} 
-          bg={bgcolor}
-       colorScheme={bgcolor} 
-      // fontSize fontWeight={700} variant='inline' 
-      // color={color}
-      // height={'2.1rem'}
-      >
-        
-        الذهاب للوتس أب
-        </Button>
+             
+       <FormControl mt={4}>
+              <Button width={"full"} leftIcon={<FaWhatsapp />} bg={"#28b16d"}
+              color={"white"}
+               variant='solid'>
+                  وتس أب
+                </Button>
+              </FormControl>
       </Link>
-      </Center>
       </>
     }
     else if (contentType === "p"){
       mainContent = <>
-        open contact
-        <Link href={`tel:${776278868}`}>
-        <Button 
-          onClick={onOpen} pt={0}
-      //     pb={0} ps={5} pe={5} 
-          bg={bgcolor}
-       colorScheme={bgcolor} 
-      // fontSize fontWeight={700} variant='inline' 
-      // color={color}
-      // height={'2.1rem'}
-      >
-        أتصل        </Button>
-        </Link>
+        <FormControl mt={4}>
+              <Center>
+              <Link href={"tel:+96776278868"} color="teal">+96776278868  
+              {/* <IconButton
+                ms={"20px"}
+                colorScheme='teal'
+
+                borderRadius={"50%"}
+                aria-label='Search database'
+                icon={<FaPhone />}
+              /> */}
+              </Link>
+              </Center>
+             </FormControl>
+        <FormControl mt={4}>
+        <Link href={"tel:+96776278868"} color="teal">
+
+              <Button width={"full"} leftIcon={<FaPhone />}
+              colorScheme='teal'
+              color={"white"}
+               variant='solid'>
+                                   أتصل
+                </Button>
+                </Link>
+              </FormControl>
       </>
       
     }
@@ -151,6 +156,7 @@ const ContactPopover=({icon,bgcolor,color,content,contactWith,
           I Will receive focus on close
         </Button> */}
         <Modal
+          size="sm"
           initialFocusRef={initialRef}
           finalFocusRef={finalRef}
           isOpen={isOpen}
@@ -158,13 +164,11 @@ const ContactPopover=({icon,bgcolor,color,content,contactWith,
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>مراسلة مع {contactWith}</ModalHeader>
+            <ModalHeader dir="rtl" textAlign={"center"} >تواصل لمزيد من المعلومات</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
             {mainContent}
             </ModalBody>
-            <ModalFooter>
-            </ModalFooter>
             {numberEmptyError && (
           <Box className="errors">Mobile number cannot be empty!</Box>
         )}
