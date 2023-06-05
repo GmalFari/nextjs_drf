@@ -21,7 +21,8 @@ import UserProfile from "../accounts/userprofile";
 import { AspectRatio } from "@chakra-ui/react";
 import {FaMapMarked,FaYoutube} from 'react-icons/fa';
 const PropertyDetails = ({propertyDetails:
-    {coverPhoto,price,rentFrequency,rooms,purpose
+    {coverPhoto,price,rentFrequency,rooms,purpose,
+     property_area
     ,property_title,description_l1,baths,area,agency,
     isVerified,type,photos,amenities,furnishingStatus,geography}})=>{
     let [toggleMap,setToggleMap ] = useState(true)
@@ -87,7 +88,7 @@ const PropertyDetails = ({propertyDetails:
         </Flex>
         <Flex  w={250} alignItems='center' p='1' justifyContent='space-between'  color='#006169' >
           {rooms}
-          <FaBed /> | {baths} <FaBath /> | {millify(area)|'22 م٢'} sqft <BsGridFill />  
+          <FaBed /> | {baths} <FaBath /> | {millify(property_area)|'22 م٢'} sqft <BsGridFill />  
           {/* {toggleMap ? 
           <Button onClick={()=>{setToggleMap(!toggleMap)}} ></Button> 
            : <MyMap geoDetail={geography} />} */}
