@@ -32,6 +32,7 @@ import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import AuthContext from "../context/AuthContext";
 
+import { useRouter } from 'next/router';
 
 const Form1 = ({data,
                 handleChange,
@@ -522,6 +523,7 @@ dir="ltr"          id="typeProperty"
 };
 
 export default function Multistep({myData,setData}) {
+  const router = useRouter();
   const [submitted,setSubmitted]=useState(null);
   const [apiMessage,setApiMessage]= useState([])
  const newData = Object.keys(apiMessage).map((key) => {
@@ -590,7 +592,8 @@ let testApi = async()=>{
           setSubmitted(true)
           setApiMessage(result)
           alert(result.id)
-          alert(result.id)
+          alert(result.property_title)
+          router.push(`/property/${result.id}`)
           console.log(result)
           toast(
               {
