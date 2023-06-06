@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image';
-import {Flex,Box,Text,Icon,Spacer,Heading} from '@chakra-ui/react';
+import {Flex,Box,Text,Icon,Divider,Heading} from '@chakra-ui/react';
 import {BsFilter } from 'react-icons/bs'; 
 import SearchFilter from '../components/SearchFilter';
 import Main_search from "../components/MainSearch";
@@ -13,8 +13,8 @@ import Section2 from "../components/Section2";
 
 import noresult from '../assets/images/noresult.svg';
 import {baseUrl,fetchApi} from '../utils/fetchApi';
-import Autocomplete from '../components/AutoComplete';
 import Map, { GeolocateControl } from "react-map-gl";
+import SearchAutoComplete from '../components/SearchAutoComplete';
 
 import {GoKebabVertical } from 'react-icons/go';
 import { BsSortDown } from 'react-icons/bs';
@@ -23,6 +23,7 @@ import axios from 'axios';
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Button } from '@chakra-ui/react';
 import Pagination from '../components/Pagination';
+
 // import { paginate } from '../helper/paginate';
 const Search = ({data}) => {
     const myproperties = data?.results
@@ -72,7 +73,7 @@ const Search = ({data}) => {
         ))]
   return (
     <Box>
-        <Flex
+        {/* <Flex
         cursor="pointer" 
         bg="gray.100"
         borderBottom="1px"
@@ -86,8 +87,17 @@ const Search = ({data}) => {
         >
         <Text> البحث المتقدم  </Text>
         <Icon paddingLeft="2" w="7" as={BsFilter} />
+        </Flex> */}
+        {/* {searchFilter && */}
+        <Flex mt="4" mb="4" justifyContent={"center"}>
+        <Box  display="flex">
+        <SearchAutoComplete/><Button me="2" ms="2" colorScheme='teal' variant='outline'>بحث</Button>
+        </Box>
+         <SearchFilter setProperties={setProperties}/>
         </Flex>
-        {searchFilter && <SearchFilter setProperties={setProperties}/>}
+        <Divider/>
+
+         {/* } */}
         <Flex justifyContent={'space-between'} fontSize={['md','xl','xl','2xl']} p="4" fontWeight="bold">
         <Flex color={'#006169'} flexGrow={1} justifyContent={'right'} >
         <Icon             
@@ -167,7 +177,7 @@ const Search = ({data}) => {
             </Flex>
         )}
 
-        <Spacer />
+        <Divider />
         <Box mt="100px" mb={"100px"} >
         <Box textAlign="center" margin='10px' fontSize="40px" 
       fontWeight="bold">      عقارت أخرى

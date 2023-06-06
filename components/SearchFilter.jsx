@@ -1,12 +1,29 @@
 import React from 'react'
 import { useEffect,useState } from 'react';
-import {Flex,Select ,Box,Text,Input,Spinner,Icon,Button} from '@chakra-ui/react';
+import {Flex,Select,Stack ,Box,Text,Input,Spinner,Icon,Button} from '@chakra-ui/react';
 import  { useRouter } from 'next/router';
 import {MdCancel} from 'react-icons/md';
 import Image from 'next/image';
 import noresult from "../assets/images/Noresult.jpg"
 import {filterData,getFilterValues} from "../utils/filterData";
+import { useDisclosure } from '@chakra-ui/react';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
+  Portal,
+} from '@chakra-ui/react'
+
+import { BsFilter } from 'react-icons/bs';
 const SearchFilter = () => {
+  const { onOpen, onClose, isOpen } = useDisclosure()
+
   const [filters] = useState(filterData);
   const [searchTerm, setSearchTerm] = useState('');
   const [locationData, setLocationData] = useState();
@@ -42,12 +59,28 @@ const SearchFilter = () => {
   
   
   return (
-  <Flex bg='gray.100' p='4' justifyContent='center' flexWrap='wrap'>
+    <>
+    <Popover isOpen={isOpen}
+        onOpen={onOpen}
+        onClose={onClose}
+        closeOnBlur={true}>
+  <PopoverTrigger>
+  <Button rightIcon={<BsFilter />} colorScheme='teal' variant='solid'>
+  البحث المتقدم 
+</Button>
+  </PopoverTrigger>
+  <Portal>
+    <PopoverContent>
+      <PopoverArrow />
+      <PopoverHeader>Header</PopoverHeader>
+      <PopoverCloseButton />
+      <PopoverBody>
+      <Flex  p='4' justifyContent='center' flexWrap='wrap'>
       {filters?.map((filter) => (
         <Box key={filter.queryName}>
           <Select onChange={(e) => searchProperties({ [filter.queryName]: e.target.value })} placeholder={filter.placeholder} w='fit-content' p='2' >
             {filter?.items?.map((item) => (
-              <option value={item.value} key={item.value}>
+              <option fontWeight={"bold"} value={item.value} key={item.value}>
                 {item.name}
               </option>
             ))}
@@ -109,6 +142,23 @@ const SearchFilter = () => {
         )} */}
       </Flex>
     </Flex>
+      </PopoverBody>
+      <PopoverFooter>
+      <Stack direction='row' spacing={4}>
+  <Button width="50%" colorScheme='teal' variant='solid'>
+    تم
+  </Button>
+  <Button width="50%" colorScheme='teal' variant='outline'>
+        ألغاء
+  </Button>
+</Stack>
+      {/* <Button><Box me="4"></Box><Box><PopoverCloseButton/></Box> </Button> */}
+      </PopoverFooter>
+    </PopoverContent>
+  </Portal>
+</Popover>
+  
+    </>
   )
 }
 

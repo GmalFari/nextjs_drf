@@ -2,10 +2,12 @@
 import axios from "axios";
 import {Flex,Grid,Select
      ,Box,Text,Input,
-     Avatar,Container
-     ,Button,} from '@chakra-ui/react';
+     Avatar,Container,Divider
+     ,Button} from '@chakra-ui/react';
+
 import {FaBed,FaBath,FaImages,
-    FaWhatsapp,FaEnvelope,FaPhone,FaShare,FaDownload,FaRegHeart, FaVideo} from 'react-icons/fa';
+    FaWhatsapp,FaEnvelope,FaPhone,FaShare,FaDownload,
+    FaRegHeart, FaVideo} from 'react-icons/fa';
 import { Img } from '@chakra-ui/react';
 import {BsGridFill} from 'react-icons/bs';
 import {GoVerified} from 'react-icons/go';
@@ -17,10 +19,14 @@ import {baseUrl,fetchApi} from '../../utils/fetchApi';
 import { BasicUsage } from '../../components/BasicUsage';
 import MainBtn from '../../components/MainBtn';
 import PropertyTable from "../../components/property/PropertyTable";
-import UserProfile from "../accounts/userprofile";
 import { AspectRatio } from "@chakra-ui/react";
+
 import {FaMapMarked,FaYoutube} from 'react-icons/fa';
 import ContactPopover from "../../components/popoverModals/ContactModals";
+import ExpandableText from "../../components/ReadMoreLess";
+import MyBreadcrumb from "../../components/MyBreadcrumb";
+import Head from "next/head";
+
 
 const PropertyDetails = ({propertyDetails:
     {coverPhoto,price,rentFrequency,rooms,purpose,
@@ -51,10 +57,14 @@ const PropertyDetails = ({propertyDetails:
 // 	console.error(error);
 //    });
     return(
+        <>
+        <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}> <MyBreadcrumb /></Box>
         <Box
          //marginLeft={["auto","auto","100px"]}
            // marginRight={["auto","auto","100px"]}
-            display={["block","block","flex"]} >
+            display={["block","block","flex"]}
+            justifyContent="center"
+             >
         <Box width={['100%','80vh']}  maxWidth="1000px"  p="2">
         <Box display={['block','block','block']}>
         <Box width="100%" >
@@ -96,10 +106,31 @@ const PropertyDetails = ({propertyDetails:
            : <MyMap geoDetail={geography} />} */}
         
         </Flex>
-             <Box marginTop="2">
+             <Box mt={"4"} mb={"4"}>
             <Text fontSize="lg" marginBottom="2" fontWeight="bold">
                 {property_title}
             </Text>
+            <Divider/>
+            <Box mt={"4"} mb={"4"}>
+                <Box as="h2" fontWeight={"bold"} >الوصف</Box>
+                <ExpandableText description={`
+                عماره للايجار بالكامل في بيت بوس خلف المستشفى الملكي
+
+                    تتكون من سبعة ادوار وملحق وطير مانه
+
+                    الدور يتكون من شقتين بدور
+
+                    العماره فيها ديكور كامل
+
+                    مصعد
+
+                    للايجار شقق مفروشه
+
+                    السعر 4000دولار بالشهر
+                                    `}
+                                    />
+            </Box>
+            <Divider/>
             <Box p={0} bg='#fff' position={['fixed','fixed','fixed','relative']} left={0} bottom={'0'} width={'100%'}>
             <Grid backgroundColor={"white"} padding={"7px"} templateColumns='repeat(3, 1fr)' gap={2} >
                 <ContactPopover contentType="w" contactWith={`967${'776278868'}`}  icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
@@ -108,7 +139,12 @@ const PropertyDetails = ({propertyDetails:
             
                  </Grid>
             </Box>
-        <PropertyTable/>
+            <Box  mt={"4"} mb={"4"}>
+            <Text as="h2" fontSize="lg" marginBottom="2" fontWeight="bold">
+            معلومات العقار
+            </Text>
+            <PropertyTable/>
+            </Box>
 
       </Box>
         
@@ -123,7 +159,8 @@ const PropertyDetails = ({propertyDetails:
                     <Text> Type</Text>
                     <Text fontWeight="bold" >{type}</Text>
                 </Flex>
-                <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">
+                <Flex justifyContent="space-between" w="400px"
+                  borderBottom="1px" borderColor="gray.100" p="3">
                     <Text> purpose</Text>
                     <Text fontWeight="bold" >{purpose}</Text>
                 </Flex>
@@ -167,9 +204,9 @@ const PropertyDetails = ({propertyDetails:
                 src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng'
             />
             </AspectRatio> */}
-                <UserProfile/>
             </Box>
         </Box>
+        </>
 )}
 
 

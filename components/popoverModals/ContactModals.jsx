@@ -74,7 +74,7 @@ const ContactPopover=({icon,bgcolor,color,content,contactWith,
               <FormControl mt={4}>
                 <FormLabel>المحتوى</FormLabel>
                 <Textarea>
-                مرحباً، أرغب بالاستفسار عن عقارك رقم:  1799-Ap-S-1838. أرجو منك الاتصال بي في أقرب وقت ممكن.
+                مرحباً، أرغب بالاستفسار عن عقارك رقم:  1799-1838. أرجو منك الاتصال بي في أقرب وقت ممكن.
                 </Textarea>
                 
               </FormControl>
@@ -84,7 +84,8 @@ const ContactPopover=({icon,bgcolor,color,content,contactWith,
             </Checkbox>
               </FormControl>
               <FormControl mt={4}>
-              <Button width={"full"} leftIcon={<FaEnvelope />} colorScheme='teal' variant='solid'>
+              <Button width={"full"} leftIcon={<FaEnvelope />} colorScheme='teal' 
+              variant='solid'>مراسلة 
                 </Button>
               </FormControl>
       </Box>

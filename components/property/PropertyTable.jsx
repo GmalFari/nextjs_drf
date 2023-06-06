@@ -14,7 +14,7 @@ import {
 const PropertyTable =()=>{
   return (
     <>
-<Flex ms="20px" me="20px" width={'100%'} 
+<Flex  width={'100%'} minW="100%"
     justifyConten='center' flexWrap='wrap'>
      <TableContainer dir='rtl' maxW='100%'>
 

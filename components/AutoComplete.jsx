@@ -29,8 +29,8 @@ export default function Autocomplete() {
   return (
     <div>
       <CUIAutoComplete
-        label="Choose preferred work locations"
-        placeholder="Type a Country"
+        // label="Choose preferred work locations"
+        placeholder="أبحث الأن"
         onCreateItem={handleCreateItem}
         items={pickerItems}
         selectedItems={selectedItems}
