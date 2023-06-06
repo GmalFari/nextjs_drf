@@ -685,8 +685,11 @@ let testApi = async()=>{
                 colorScheme="teal"
                 variant="solid"
                 w="7rem"
-                mr="5%">
-                Back
+                mr="5%"
+                ms="5px"
+                me="5px"
+                >
+                رجوع
               </Button>
               <Button
                 w="7rem"
@@ -701,7 +704,7 @@ let testApi = async()=>{
                 }}
                 colorScheme="teal"
                 variant="outline">
-                Next
+                القادم
               </Button>
             </Flex>
             {step === 3?(

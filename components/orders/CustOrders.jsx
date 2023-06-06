@@ -22,16 +22,16 @@ import {
   InputRightElement,
 } from '@chakra-ui/react';
 import { useContext } from 'react';
-import useAxios from '../utils/useAxios';
-import Autocomplete from './AutoComplete';
-import MyMap from './Mymap';
-import yemenGis from "../utils/yemenGis.json";
-import gadm41_YEM_1 from "../utils/gadm41_YEM_1.json";
-import {typeProperty} from "../utils/selectedData";
-import {viewList} from "../utils/viewList";
+import useAxios from '../../utils/useAxios';
+import Autocomplete from '../AutoComplete';
+import MyMap from '../Mymap';
+import yemenGis from "../../utils/yemenGis.json";
+import gadm41_YEM_1 from "../../utils/gadm41_YEM_1.json";
+import {typeProperty} from "../../utils/selectedData";
+import {viewList} from "../../utils/viewList";
 import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
-import AuthContext from "../context/AuthContext";
+import AuthContext from "../../context/AuthContext";
 
 const Form1 = ({data,
                 handleChange,
@@ -57,7 +57,7 @@ const Form1 = ({data,
            نوع العقار
         </FormLabel>
         <Select
-          direction="rtl"
+          dir="ltr"
           id="typeProperty"
           name="typeProperty"
           autoComplete="typeProperty"
@@ -88,7 +88,7 @@ const Form1 = ({data,
            الغرض 
         </FormLabel>
         <Select
-          direction="rtl"
+          dir="ltr"
           id="purpose"
           name="purpose"
           autoComplete="purpose"
@@ -109,7 +109,7 @@ const Form1 = ({data,
           عقد الإيجار
           </FormLabel>
         <Select
-          direction="rtl"
+          dir="ltr"
           id="typeProperty"
           name="typeProperty"
           autoComplete="typeProperty"
@@ -139,6 +139,7 @@ const Form1 = ({data,
       إسم المدينة
         </FormLabel>
         <Select
+          dir="ltr"
           id="city"
           name="city"
           autoComplete="city"
@@ -171,6 +172,7 @@ const Form1 = ({data,
                   إسم المديرية
         </FormLabel>
         <Select
+          dir="ltr"
           id="city"
           name="city"
           autoComplete="city"
@@ -278,10 +280,11 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
             _dark={{
               color: 'gray.50',
             }}>
-            التفاصيل الكاملة للعقار
+          التفاصيل الكاملة للطلب
           </FormLabel>
           <Textarea
-          
+            
+            width="full"
             rows={4}
             shadow="sm"
             focusBorderColor="brand.400"
@@ -290,7 +293,6 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
             }}
           />
           <FormHelperText>
-          التفاصيل الكاملة للطلب
           </FormHelperText>
         </FormControl>
         
@@ -328,7 +330,7 @@ const Form3 = () => {
           الإطلالة
           </FormLabel>
         <Select
-          direction="rtl"
+          dir="ltr"
           id="typeProperty"
           name="typeProperty"
           autoComplete="typeProperty"
@@ -416,63 +418,9 @@ export default function CustOrders({myData,setData}) {
    //form3
   
 
-  let testApi = async(e)=>{
-    let token = JSON.parse(localStorage.getItem("authTokens"))
-    let accessToken = token?.access
-    e.preventDefault();
-    const url = 'http://127.0.0.1:8000/api/list-properties/'
-        const options = {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',            
-            // 'Content-Disposition':"none",
-       
-          // 'Content-Disposition':"none",
-          'Accept-Encoding': 'gzip',
-          // 'content-type': 'application/x-www-form-urlencoded',
 
-          // 'Content-Type':'application/x-www-form-urlencoded',
-          "Authorization" : `Bearer ${accessToken}`,
-        },
-
-        body: JSON.stringify(
-          {...myData
-            
-          }
-        )
-      };
-
-      try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        if (response.status ===201){
-          setSubmitted(true)
-          // setApiMessage(result)
-          console.log(result)
-        }else {
-          setSubmitted(false)
-          setApiMessage(result)
-          console.log(result)
-        }
-          
     
-      } catch (error) {
-        // setApiMessage(error)
-        console.log(error)
-        setSubmitted(false)
-        alert(error)
-        setApiMessage(error)
-
-      }
-    }
     
-    const handleSubmit = async e => {
-    
-      e.preventDefault();
-      testApi();
-    };
-
     const handleChange = (e) => {
       console.log(myData.order_title)
 
@@ -484,7 +432,8 @@ export default function CustOrders({myData,setData}) {
     };
   return (
     <>
-      <div
+      <Box
+        dir="rtl"
         borderWidth="1px"
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
@@ -509,8 +458,10 @@ export default function CustOrders({myData,setData}) {
                           <Form3  />}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
-            <Flex>
+            <Flex >
               <Button
+                ms="5px"
+                me="5px"
                 onClick={() => {
                   setStep(step - 1);
                   setProgress(progress - 33.33);
@@ -520,10 +471,11 @@ export default function CustOrders({myData,setData}) {
                 variant="solid"
                 w="7rem"
                 mr="5%">
-                Back
+                رجوع
               </Button>
               <Button
                 w="7rem"
+                
                 isDisabled={step === 3}
                 onClick={() => {
                   setStep(step + 1);
@@ -535,37 +487,16 @@ export default function CustOrders({myData,setData}) {
                 }}
                 colorScheme="teal"
                 variant="outline">
-                Next
+                القادم
               </Button>
             </Flex>
             {step === 3 ? (
-              <form onSubmit={testApi}>  
+              <form>  
                           <Button
                 type="submit"
                 w="8rem"
                 colorScheme="teal"
                 variant="solid"
-                onClick={() => {submitted?
-        
-              toast({
-                title: `لقد تم إضافة الطلب`,
-
-                status:'success',
-                isClosable: true,
-              })
-            :
-              toast({
-                title: ` خطأ`,
-                description:newData.map((m,i)=>(
-                    <>
-                      {m.key}: {m.value}
-                    </>
-                )),
-                status: 'error',
-                isClosable: true,
-              })
-            
-                }}
                 >
                 إضافة طلب
               </Button>
@@ -574,7 +505,7 @@ export default function CustOrders({myData,setData}) {
           </Flex>
         </ButtonGroup>
         
-      </div>
+      </Box>
     </>
   );
 }

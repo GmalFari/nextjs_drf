@@ -1,4 +1,9 @@
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react';
+import { Flex,Avatar,Box,Heading,Text,IconButton ,Button} from '@chakra-ui/react';
+import { FaEllipsisV } from 'react-icons/fa';
+import {BiLike,BiChat,BiShare} from "react-icons/bi";
+import { StarIcon } from '@chakra-ui/icons';
+
 const  UserInfo=()=> {
       return (
 <Card maxW='md' dir='rtl'>
@@ -6,7 +11,6 @@ const  UserInfo=()=> {
     <Flex spacing='2'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
         <Avatar name='Jamal Farea'  />
-
         <Box>
           <Heading size='sm'>جمال فارع</Heading>
           <Text>لبنة هاوس</Text>
@@ -16,7 +20,7 @@ const  UserInfo=()=> {
         variant='ghost'
         colorScheme='gray'
         aria-label='See menu'
-        icon={<BsThreeDotsVertical />}
+        icon={<FaEllipsisV />}
       />
     </Flex>
   </CardHeader>

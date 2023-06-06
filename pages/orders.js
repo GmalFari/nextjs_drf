@@ -1,35 +1,105 @@
-import React from 'react'
-import CurstOrders from '../components/CustOrders'
-import { useState } from 'react'
-const Orders = () => {
-    const [data,setData] = useState(
-        {
-        property_title:"jamal",
-        // coverPhoto:"",
-        // "location":{  
-        //       latitude:"",
-        //       longitude:""},
-        proType:"",
-        purpose:"",
-        rentFrequency:"",
-        rentFrequency:"",
-        city:"",
-        state:"",
-        directorate:"",
-        district:"",
-        district:"",
-        street:"",
-        isForRent:true,
-      
-        //form2
-        title:"",
-        img:"",
-      })
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Stack,StackDivider,Button,Box,Heading,Text,Badge, } from '@chakra-ui/react';
+import OrderCreateDrower from '../components/orders/CreateOrderDrower';
+import Link from "next/link"
+const Orders = () =>{
+  
   return (
     <>
-      <CurstOrders myData={data} />
+      <Card dir='rtl' ms="5px" me="5px">
+  <CardHeader display="flex" justifyContent={["right","space-between"]} ms={"10px"} me="10px">
+    <Box>
+    <Heading style={{lineHeight:"2.2 !important"}}  ms="2" me="2" color="#006179" textAlign={"center"} size={['sm','md']}>
+    <Link href="#" pt="2">
+  طلبات العقارات
+  </Link>
+    </Heading>
+    </Box>
+    <OrderCreateDrower/>
+  </CardHeader>
+
+  <CardBody>
+    <Stack divider={<StackDivider />} spacing='4'>
+      <Box>
+        <Heading color="#006179" size='xs' textTransform='uppercase'>
+        <Link href="#">
+          مطلوب بيت من غرفتين وصالة في صنعاء
+          </Link>
+        </Heading>
+        <Text pt='2' fontSize='sm'>
+      مطلوب شقه سكنيةمن المالك مباشر استوديو او غرفة او ثلاث غرف شخصي الدلالين لو سمحتو بعدين
+              </Text>
+              <Box display='flex' alignItems='base line' mt={4}> 
+          <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
+           جديد
+          </Badge>
+          <Box
+            color='gray.500'
+            fontWeight='semibold'
+            letterSpacing='wide'
+            fontSize='xs'
+            textTransform='uppercase'
+            ml='2'
+          >
+      4غرف  &bull;  2حمامات
+          </Box>
+        </Box>
+      </Box>
+      <Box>
+        <Heading color="#006179" size='xs' textTransform='uppercase'>
+        <Link href="#">
+        مطلوب بيت من غرفتين وصالة في صنعاء
+        </Link>
+        </Heading>
+        <Text pt='2' fontSize='sm'>
+      مطلوب شقه سكنيةمن المالك مباشر استوديو او غرفة او ثلاث غرف شخصي الدلالين لو سمحتو بعدين
+              </Text>
+              <Box display='flex' alignItems='base line' mt={4}> 
+          <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
+           جديد
+          </Badge>
+          <Box
+            color='gray.500'
+            fontWeight='semibold'
+            letterSpacing='wide'
+            fontSize='xs'
+            textTransform='uppercase'
+            ml='2'
+          >
+      4غرف  &bull;  2حمامات
+          </Box>
+        </Box>
+      </Box>
+      <Box>
+        <Heading color="#006179" size='xs' textTransform='uppercase'>
+        <Link href="#">
+
+        مطلوب عمارة للبيع  
+        </Link>   
+           </Heading>
+        <Text pt='2' fontSize='sm'>
+        مطلوب عمارة للبيع بالدخل المحدود · مطلوب شقة عوائل                    </Text>
+              <Box display='flex' alignItems='base line' mt={4}> 
+          <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
+           جديد
+          </Badge>
+          <Box
+            color='gray.500'
+            fontWeight='semibold'
+            letterSpacing='wide'
+            fontSize='xs'
+            textTransform='uppercase'
+            ml='2'
+          >
+      4غرف  &bull;  2حمامات
+          </Box>
+        </Box>
+      </Box>
+    </Stack>
+  </CardBody>
+</Card>
     </>
   )
 }
 
-export default Orders
+export default Orders;

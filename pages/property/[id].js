@@ -155,10 +155,10 @@ const PropertyDetails = ({propertyDetails:
             </Box>
         </Box>
             <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
-                <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">
+                {/* <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">
                     <Text> Type</Text>
                     <Text fontWeight="bold" >{type}</Text>
-                </Flex>
+                </Flex> */}
                 <Flex justifyContent="space-between" w="400px"
                   borderBottom="1px" borderColor="gray.100" p="3">
                     <Text> purpose</Text>
@@ -196,7 +196,8 @@ const PropertyDetails = ({propertyDetails:
            </Flex> 
             </Box>
             </Box>
-            <Box mt={"60px"}  width={"20vw"} display={["none","none","block"]} background={"#ddd"}
+            <Box mt={"60px"}  width={"20vw"} display={["none","none","block"]}
+             background={"#ddd"}
              height={"100vh"}>
             <Img  src={coverPhoto} width={"100%"} height={"150px"} />
             {/* <AspectRatio ratio={4/3}>
