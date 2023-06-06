@@ -89,8 +89,8 @@ const Search = ({data}) => {
         <Icon paddingLeft="2" w="7" as={BsFilter} />
         </Flex> */}
         {/* {searchFilter && */}
-        <Flex mt="4" mb="4" justifyContent={"center"}>
-        <Box  display="flex">
+        <Flex mt="4" mb="4" oLLP={"center"}>
+        <Box  display="flex" flexWrap="wrap">
         <SearchAutoComplete/><Button me="2" ms="2" colorScheme='teal' variant='outline'>بحث</Button>
         </Box>
          <SearchFilter setProperties={setProperties}/>
