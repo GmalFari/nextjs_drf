@@ -21,32 +21,32 @@ import { useRouter } from 'next/router';
 const UserProfile =()=>{
   const {user,authTokens} = useContext(AuthContext);
   const [userDetail,setuserDetail]=useState()
-    let getuserdetail = async ()=>{
-        console.log('update tokens')
-        try{
-          let response = await fetch('https://fortestmimd.pythonanywhere.com/auth/users/me/',{
-          method:'GET',
-          headers:{
-            'Content-Type':'application/json',
-            'Authorization':`Bearer ${authTokens?.access}`
+    // let getuserdetail = async ()=>{
+    //     console.log('update tokens')
+    //     try{
+    //       let response = await fetch('https://fortestmimd.pythonanywhere.com/auth/users/me/',{
+    //       method:'GET',
+    //       headers:{
+    //         'Content-Type':'application/json',
+    //         'Authorization':`Bearer ${authTokens?.access}`
     
-          },
-        })
-        let data = await response.json()
-        if (response.status === 200) {
-          setuserDetail(data)
-          console.log(userDetail)
-          // router.push("/")
-        }else {
-          alert(data)
-        }
-        }catch(errors){
-          alert(errors)
-        }
-      }
-      useEffect(()=>{
-        getuserdetail()
-      },[])
+    //       },
+    //     })
+    //     let data = await response.json()
+    //     if (response.status === 200) {
+    //       setuserDetail(data)
+    //       console.log(userDetail)
+    //       // router.push("/")
+    //     }else {
+    //       alert(data)
+    //     }
+    //     }catch(errors){
+    //       alert(errors)
+    //     }
+    //   }
+      // useEffect(()=>{
+      //   getuserdetail()
+      // },[])
     return(
     <Box  paddingTop={"100px"}>
    <Center>

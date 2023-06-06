@@ -2,7 +2,10 @@
 import axios from "axios";
 import {Flex,Grid,Select
      ,Box,Text,Input,
-     Avatar,Container,Divider
+     Avatar,
+     Container,
+     Divider,
+     Heading
      ,Button} from '@chakra-ui/react';
 
 import {FaBed,FaBath,FaImages,
@@ -20,7 +23,7 @@ import { BasicUsage } from '../../components/BasicUsage';
 import MainBtn from '../../components/MainBtn';
 import PropertyTable from "../../components/property/PropertyTable";
 import { AspectRatio } from "@chakra-ui/react";
-
+import UserInfo from '../../components/accounts/userInfo';
 import {FaMapMarked,FaYoutube} from 'react-icons/fa';
 import ContactPopover from "../../components/popoverModals/ContactModals";
 import ExpandableText from "../../components/ReadMoreLess";
@@ -148,22 +151,29 @@ const PropertyDetails = ({propertyDetails:
 
       </Box>
         
-            <Box lineHeight="2" color="gray.600">
+            <Box lineHeight="2" >
                  {t}
                 {description_l1}
-
             </Box>
+        </Box>
+        <Divider/>
+
+        <Box display={['block','none']}>
+            <Text as="h2" fontSize="lg" marginBottom="2" fontWeight="bold">
+            المعلن
+            </Text>
+                <UserInfo />
         </Box>
             <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
                 {/* <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">
                     <Text> Type</Text>
                     <Text fontWeight="bold" >{type}</Text>
                 </Flex> */}
-                <Flex justifyContent="space-between" w="400px"
+                {/* <Flex justifyContent="space-between" w="400px"
                   borderBottom="1px" borderColor="gray.100" p="3">
                     <Text> purpose</Text>
                     <Text fontWeight="bold" >{purpose}</Text>
-                </Flex>
+                </Flex> */}
                 {furnishingStatus &&(
                     <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">
                         <Text> furnishingStatus</Text>
@@ -197,9 +207,15 @@ const PropertyDetails = ({propertyDetails:
             </Box>
             </Box>
             <Box mt={"60px"}  width={"20vw"} display={["none","none","block"]}
-             background={"#ddd"}
+             background={"#fff"}
              height={"100vh"}>
             <Img  src={coverPhoto} width={"100%"} height={"150px"} />
+            <Box display={['none','block']}>
+            <Text as="h2" fontSize="lg" marginBottom="2" fontWeight="bold">
+            المعلن
+            </Text>
+                <UserInfo />
+            </Box>
             {/* <AspectRatio ratio={4/3}>
             <iframe
                 src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng'
