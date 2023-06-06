@@ -590,15 +590,13 @@ let testApi = async()=>{
         const result = await response.json();
         if (response.status ===201){
           setSubmitted(true)
-          setApiMessage(result)
-          alert(result.id)
-          alert(result.property_title)
+          setApiMessage(result)          
           router.push(`/property/${result.id}`)
           console.log(result)
           toast(
               {
               title: ` لقد تم إضافة العقار`,
-              description:"",
+              description:`${result.property_title}`,
               //   // newData.map((m,i)=>(
               //   //     <>
               //   //       {m.key}: {m.value}
