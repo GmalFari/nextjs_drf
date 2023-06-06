@@ -589,7 +589,8 @@ let testApi = async()=>{
         if (response.status ===201){
           setSubmitted(true)
           setApiMessage(result)
-          alert(result)
+          alert(result.id)
+          alert(result.id)
           console.log(result)
           toast(
               {
