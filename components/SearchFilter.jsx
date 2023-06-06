@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect,useState } from 'react';
-import {Flex,Select,Stack ,Box,Text,Input,Spinner,Icon,Button} from '@chakra-ui/react';
+import {Flex,Select,Stack ,Box,Text,Input,Spinner,Icon,Button, IconButton} from '@chakra-ui/react';
 import  { useRouter } from 'next/router';
 import {MdCancel} from 'react-icons/md';
 import Image from 'next/image';
@@ -65,14 +65,16 @@ const SearchFilter = () => {
         onClose={onClose}
         closeOnBlur={true}>
   <PopoverTrigger>
-  <Button rightIcon={<BsFilter />} colorScheme='teal' variant='solid'>
-  البحث المتقدم 
-</Button>
+  <IconButton  margin="0"
+            border="none" icon={<BsFilter />} 
+            borderRadius={"40%"}  fontSize="lg" colorScheme='teal' 
+            variant='outline'>
+</IconButton>
   </PopoverTrigger>
   <Portal>
     <PopoverContent>
       <PopoverArrow />
-      <PopoverHeader>Header</PopoverHeader>
+      <PopoverHeader></PopoverHeader>
       <PopoverCloseButton />
       <PopoverBody>
       <Flex  p='4' justifyContent='center' flexWrap='wrap'>

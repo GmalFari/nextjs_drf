@@ -54,14 +54,16 @@ const SearchAutoComplete = () => {
   }
   return (
     <div className="App">
-        <Box style={{ width: 400 }}>
+        <Box width={["50vw"]}>
           <ReactSearchAutocomplete
+            autoFocus={false}
+            styling={{borderRadius:"10px"}}
+            showIcon={false}
             items={items}
             onSearch={handleOnSearch}
             onHover={handleOnHover}
             onSelect={handleOnSelect}
             onFocus={handleOnFocus}
-            autoFocus
             formatResult={formatResult}
           />
         </Box>

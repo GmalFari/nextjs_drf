@@ -18,10 +18,11 @@ import SearchAutoComplete from '../components/SearchAutoComplete';
 
 import {GoKebabVertical } from 'react-icons/go';
 import { BsSortDown } from 'react-icons/bs';
-import {FaGripHorizontal,FaList} from 'react-icons/fa';
+import {FaGripHorizontal,FaList
+  ,FaSearch} from 'react-icons/fa';
 import axios from 'axios';
 import "mapbox-gl/dist/mapbox-gl.css";
-import { Button } from '@chakra-ui/react';
+import { IconButton } from '@chakra-ui/react';
 import Pagination from '../components/Pagination';
 
 // import { paginate } from '../helper/paginate';
@@ -90,10 +91,17 @@ const Search = ({data}) => {
         </Flex> */}
         {/* {searchFilter && */}
         <Flex mt="4" mb="4" justifyContent={"center"}>
-        <Box  display="flex">
-        <SearchAutoComplete/><Button me="2" ms="2" colorScheme='teal' variant='outline'>بحث</Button>
+        <Box  display="flex" position="relative">
+        <Box>
+        <SearchAutoComplete />
         </Box>
+        <Box position="absolute"
+                 left="10px" top="2px" >
+                 <IconButton margin="0"    border="transparent" 
+                icon={<FaSearch/>}  me="2"  colorScheme='teal' variant='outline'></IconButton>
          <SearchFilter setProperties={setProperties}/>
+                 </Box>
+        </Box>
         </Flex>
         <Divider/>
 
