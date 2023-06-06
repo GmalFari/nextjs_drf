@@ -1,3 +1,5 @@
+const  UserInfo=()=> {
+      return (
 <Card maxW='md' dir='rtl'>
   <CardHeader>
     <Flex spacing='2'>
@@ -58,3 +60,5 @@
         </Box>
   </CardFooter>
 </Card>
+)}
+export default UserInfo;
