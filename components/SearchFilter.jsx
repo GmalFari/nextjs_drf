@@ -6,6 +6,7 @@ import {MdCancel} from 'react-icons/md';
 import Image from 'next/image';
 import noresult from "../assets/images/Noresult.jpg"
 import {filterData,getFilterValues} from "../utils/filterData";
+import OurLogo from './Logo';
 import { useDisclosure } from '@chakra-ui/react';
 import {
   Popover,
@@ -77,6 +78,7 @@ const SearchFilter = () => {
       <PopoverHeader></PopoverHeader>
       <PopoverCloseButton />
       <PopoverBody>
+      <OurLogo />
       <Flex  p='4' justifyContent='center' flexWrap='wrap'>
       {filters?.map((filter) => (
         <Box key={filter.queryName}>

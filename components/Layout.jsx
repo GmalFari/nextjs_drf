@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import {Container, Box, Button, Heading } from '@chakra-ui/react';
-
 import Navbar from './Navbar';
 import Carousel from './Carousel';
 import Sidebar from "./Sidebar";

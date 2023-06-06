@@ -24,6 +24,7 @@ import {
   MenuItem,
   MenuList,
 } from '@chakra-ui/react';
+import OurLogo from "./Logo";
 import { FaSearch } from 'react-icons/fa';
 
 import {
@@ -199,7 +200,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         fontSize="2xl"
         fontWeight="bold">
         <Link href="/" passHref>
-          لبنة هاوس
+          <OurLogo />
         </Link>
       </Text>
       <HStack spacing={{ base: '0', md: '6' }}>

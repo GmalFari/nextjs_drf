@@ -5,7 +5,7 @@ const nextConfig = {
   images : {
     domains:[
       // 'bayut-production.s3.eu-central-1.amazonaws.com',
-    'fortestmimd.pythonanywhere.com']
+    'fortestmimd.pythonanywhere.com','photos.app.goo.gl']
   }
 
 }

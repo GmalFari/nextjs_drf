@@ -10,6 +10,8 @@ import Property from '../components/Property';
 import HorizonalCard from "../components/HorizonalCard";
 import OtherProperty from '../components/OtherProperty';
 import Section2 from "../components/Section2";
+import { Img } from '@chakra-ui/react';
+import Logo from '../components/Logo';
 
 import noresult from '../assets/images/noresult.svg';
 import {baseUrl,fetchApi} from '../utils/fetchApi';
@@ -24,6 +26,7 @@ import axios from 'axios';
 import "mapbox-gl/dist/mapbox-gl.css";
 import { IconButton } from '@chakra-ui/react';
 import Pagination from '../components/Pagination';
+import OurLogo from '../components/Logo';
 
 // import { paginate } from '../helper/paginate';
 const Search = ({data}) => {
@@ -90,15 +93,17 @@ const Search = ({data}) => {
         <Icon paddingLeft="2" w="7" as={BsFilter} />
         </Flex> */}
         {/* {searchFilter && */}
+        
         <Flex mt="4" mb="4" justifyContent={"center"}>
         <Box  display="flex" position="relative">
         <Box>
         <SearchAutoComplete />
+        <Divider orientation='vertical' />
         </Box>
         <Box position="absolute"
                  left="10px" top="2px" >
-                 <IconButton margin="0"    border="transparent" 
-                icon={<FaSearch/>}  me="2"  colorScheme='teal' variant='outline'></IconButton>
+                 <IconButton   border="transparent" 
+                icon={<FaSearch/>}  me="2" ms="2" colorScheme='teal' variant='outline'></IconButton>
          <SearchFilter setProperties={setProperties}/>
                  </Box>
         </Box>
