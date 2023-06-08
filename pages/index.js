@@ -32,13 +32,13 @@ export default function Home({propertiesForRent}) {
   return (
   <>
      <Box>
-    {/*   
+
     <Container maxW='1600px'>
     <Carousel />
     </Container>
-       */}
+     
     <Container maxW='1400px'>
-      <Box 
+        {/*<Box 
      ms={['2px','50px','100px']}
      m={['2px','50px','100px']}> 
       <Box textAlign="center" margin='10px' fontSize="40px" 
@@ -48,7 +48,7 @@ export default function Home({propertiesForRent}) {
       {propertiesForRent.map((property) => <MainCard  property={property} key={property.id} />)}
     </Box>
     <Spacer/>
-      {/*
+    
       <Box mt="100" display={['Flex']} 
          flexDirection={['column','column','column','column','row']}  
         justifyContent="center"
