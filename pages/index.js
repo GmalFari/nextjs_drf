@@ -32,11 +32,13 @@ export default function Home({propertiesForRent}) {
   return (
   <>
      <Box>
-       <Container maxW='1600px'>
+    {/*   
+    <Container maxW='1600px'>
     <Carousel />
     </Container>
+       */}
     <Container maxW='1400px'>
-    {/*  <Box 
+      <Box 
      ms={['2px','50px','100px']}
      m={['2px','50px','100px']}> 
       <Box textAlign="center" margin='10px' fontSize="40px" 
@@ -61,7 +63,7 @@ export default function Home({propertiesForRent}) {
       </Box>
           
       </Box>
-   */}
+
       </Container>
    </Box>
     
