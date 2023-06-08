@@ -48,6 +48,7 @@ export default function Home({propertiesForRent}) {
       {propertiesForRent.map((property) => <MainCard  property={property} key={property.id} />)}
     </Box>
     <Spacer/>
+      {/*
       <Box mt="100" display={['Flex']} 
          flexDirection={['column','column','column','column','row']}  
         justifyContent="center"
@@ -61,6 +62,7 @@ export default function Home({propertiesForRent}) {
         </Link>
         <Section1  image={Sell} title="بيع عقار " content="بغض النظر عن المسار الذي تسلكه لبيع منزلك ، يمكننا مساعدتك في اجتياز عملية بيع ناجحة." />
       </Box>
+      */}
           
       </Box>
 
