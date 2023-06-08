@@ -199,12 +199,13 @@ const Search = ({data}) => {
       {properties.map((property) => <OtherProperty  property={property}  key={property.id} />)}
     </Box>
         </Box>
-      <Box  mt="100px" textAlign="center"  >
+      {/* <Box  mt="100px" textAlign="center"  >
       <Heading fontFamily={'body'} as="h2">
       العقارات الأكثر بحثاً
       </Heading>
       <Section2 />
-      </Box>  
+      </Box> */}  
+ 
     </Box>
   )
 }
