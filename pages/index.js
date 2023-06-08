@@ -59,12 +59,7 @@ export default function Home({propertiesForRent}) {
         </Link>
         <Section1  image={Sell} title="بيع عقار " content="بغض النظر عن المسار الذي تسلكه لبيع منزلك ، يمكننا مساعدتك في اجتياز عملية بيع ناجحة." />
       </Box>
-      <Box  mt="100px" textAlign="center"  >
-      <Heading fontFamily={'body'} as="h2">
-      العقارات الأكثر بحثاً
-      </Heading>
-      <Section2 />
-      </Box>     
+          
       </Box>
       </Container>
    </Box>
