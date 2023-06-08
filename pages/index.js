@@ -62,9 +62,10 @@ export default function Home({propertiesForRent}) {
         </Link>
         <Section1  image={Sell} title="بيع عقار " content="بغض النظر عن المسار الذي تسلكه لبيع منزلك ، يمكننا مساعدتك في اجتياز عملية بيع ناجحة." />
       </Box>
-      */}
+      
           
       </Box>
+      */}
 
       </Container>
    </Box>
