@@ -61,7 +61,12 @@ const PropertyDetails = ({propertyDetails:
 //    });
     return(
         <>
-        <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}> <MyBreadcrumb /></Box>
+        <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}> 
+         <Container>
+       
+                    <MyBreadcrumb />
+         </Container>
+         </Box>
         <Box
          //marginLeft={["auto","auto","100px"]}
            // marginRight={["auto","auto","100px"]}
