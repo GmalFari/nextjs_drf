@@ -22,9 +22,9 @@ export default function Layout({ children }) {
     <Box dir="rtl">
       <Box>
       <Container >
-{/*     maxW='1400px' */}
+  maxW='1400px'
   
-  {/*  <Sidebar />*/}
+  <Sidebar />
           </Container>
         <main>{children}</main>
       </Box>
