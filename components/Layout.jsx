@@ -21,9 +21,9 @@ export default function Layout({ children }) {
   return (
     <Box dir="rtl">
       <Box>
-      <Container 
+      <Container >
 {/*     maxW='1400px' */}
-    >
+  
   {/*  <Sidebar />*/}
           </Container>
         <main>{children}</main>
