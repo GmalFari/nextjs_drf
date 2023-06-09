@@ -24,7 +24,7 @@ const Carousel = () => {
                     src={"https://fortestmimd.pythonanywhere.com/media/media/15645428.png"}
                     alt='carousel image'
                   /> */}
-            <Box className="carousel-caption">
+            <Box className="carousel-caption" style={{"top":"21 !important"}}>
               <Heading fontSize={["2xl","3xl"]} mb="2px"  style={{"fontFamily":"Cairo,sans-serif"}}>أبحث الأن عن بيت الأحلام</Heading>
               <Text fontWeight={"bold"}  fontSize={"xl"}>نوفر لك جميع ماتحتاجة عن العقارات في مكان واحد</Text>
               <MainSearch />
