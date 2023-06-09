@@ -5,7 +5,7 @@ const OurLogo = () => {
   return (
     <>
 
-    <Img src={"https://fortestmimd.pythonanywhere.com/media/media/rmbg.png"}
+    <Img src={"https://fortestmimd.pythonanywhere.com/media/media/logo1.png"}
      width="90px" height="60px" />
     </>
   )
