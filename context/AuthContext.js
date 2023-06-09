@@ -95,6 +95,7 @@ useEffect(()=>{
 
     if (response.status === 201) {
       console.log(response.status)
+      alert("لقد تم إضافة حسابك بنجاح أنتقل لصفحة تسجيل الدخول لتسجيل الخول")
       router.push('/accounts/login')
     } else {
       setErrors(data)
