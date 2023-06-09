@@ -6,7 +6,7 @@ const OurLogo = () => {
     <>
 
     <Img src={"https://fortestmimd.pythonanywhere.com/media/media/logo1.png"}
-     width="90px" height="60px" />
+     width="141px" height="60px" />
     </>
   )
 }
