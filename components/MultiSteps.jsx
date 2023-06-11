@@ -734,7 +734,7 @@ let testApi = async()=>{
                 status: 'error',
                isClosable: true
               })
-              elert(result)
+              elert(error)
         }
       } catch (error) {
         
