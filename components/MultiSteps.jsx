@@ -59,7 +59,7 @@ const Form1 = ({data,
         </FormLabel>
         <Select
             dir="ltr"
-          id="typeProperty"
+          id="property_type"
           name="property_type"
           value={data.property_type}
           onChange={handleChange}
@@ -113,7 +113,7 @@ const Form1 = ({data,
           </FormLabel>
         <Select
          dir="ltr"
-          id="typeProperty"
+          id="rent_frequency"
           name="rent_frequency"
           onChange={handleChange}
           value={data.rent_frequency}
@@ -144,7 +144,7 @@ const Form1 = ({data,
         </FormLabel>
         <Select
         dir="ltr"
-          id="city"
+          id="property_town"
           name="property_town"
           value={data.property_town}
           onChange={handleChange}
@@ -260,8 +260,6 @@ const Form1 = ({data,
 };
 
 const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
-  let {loginUser} = useContext(AuthContext)
-  console.log()
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal">
@@ -284,7 +282,7 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
         <Input
           type="text"
           name="property_title"
-          id="title"
+          id="property_title"
           focusBorderColor="brand.400"
           shadow="sm"
           size="sm"
@@ -311,7 +309,7 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
         <Input
           type="text"
           name="property_number"
-          id="title"
+          id="property_number"
           focusBorderColor="brand.400"
           shadow="sm"
           size="sm"
@@ -339,7 +337,7 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
         <Input
           type="text"
           name="property_price"
-          id="title"
+          id="property_price"
           focusBorderColor="brand.400"
           shadow="sm"
           size="sm"
@@ -368,7 +366,7 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
           value={myData.currency}
           onChange={handleChange}
           autoComplete="typeProperty"
-          placeholder=" نوع العقار"
+          placeholder=" نوع العملة"
           focusBorderColor="brand.400"
           shadow="sm"
           size="sm"
@@ -448,10 +446,11 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
             التفاصيل الكاملة للعقار
           </FormLabel>
           <Textarea
+            id="property_description"
             name="property_description"
             value={myData.property_description}
             onChange={handleChange}
-            rows={4}
+            rows={"full"}
             shadow="sm"
             focusBorderColor="brand.400"
             fontSize={{
@@ -503,7 +502,7 @@ const Form3 = ({data,handleChange,setPropertyLocation,ChooseLocation}) => {
           </FormLabel>
         <Select
           dir="ltr"          
-          id="typeProperty"
+          id="building_facade"
           name="building_facade"
           value={data.building_facade}
           onChange={handleChange}
@@ -552,9 +551,9 @@ const Form3 = ({data,handleChange,setPropertyLocation,ChooseLocation}) => {
           </FormLabel>
         <Select
             dir="ltr"
-           id="typeProperty"
-          name="typeProperty"
-          autoComplete="typeProperty"
+           id="is_negotiable"
+          name="is_negotiable"
+          autoComplete="is_negotiable"
           placeholder=""
           focusBorderColor="brand.400"
           shadow="sm"
@@ -613,6 +612,7 @@ const Form3 = ({data,handleChange,setPropertyLocation,ChooseLocation}) => {
 };
 
 export default function Multistep({myData,setData}) {
+  let {loginUser,user} = useContext(AuthContext)
   const router = useRouter();
   const [submitted,setSubmitted]=useState(null);
   const [apiMessage,setApiMessage]= useState([])
@@ -659,15 +659,15 @@ let testApi = async()=>{
   
   {/*  myform.append("property_number",myData.property_number);
    */}
-    
+    myform.append("owner",user.user_id);
     myform.append("property_title",myData.property_title);
     myform.append("property_type",myData.property_type);
-  
-    {/*
-    myform.append("coverPhoto",myData.coverPhoto,"picture.jpg");
-   
+    
+    {myData.coverPhoto && myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
+                                                        
     myform.append("purpose",myData.purpose);
     myform.append("property_town",myData.property_town);
+  
     myform.append("property_district",myData.property_district);
     myform.append("property_area",myData.property_area);
     myform.append("property_street",myData.property_street);
@@ -688,7 +688,6 @@ let testApi = async()=>{
     myform.append("building_age",myData.building_age);
     myform.append("state",myData.state);
     myform.append("directorate",myData.directorate); 
-    */}
 
 
 
@@ -732,27 +731,28 @@ let testApi = async()=>{
             
           setData({...myData,property_title:""})
           console.log(result)
+          alert(JSON.stringify(result))
+
+
 
         }else{
         toast(
                {
               title: ` خطأ`,
-              description:'خطأ بالبيانات',
+              description:`${JSON.stringify(result)}`,
                 status: 'error',
                isClosable: true
               })
-              alert(result)
         }
       } catch (error) {
         
         toast(
                {
               title: ` خطأ`,
-              description:"error",
+              description:`${JSON.stringify(result)}`,
                 status: 'error',
                isClosable: true
               })
-            alert(error)
       }
     }
     const handleSubmit = async e => {
