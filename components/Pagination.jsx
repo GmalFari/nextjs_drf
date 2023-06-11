@@ -12,7 +12,7 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange,setProperties }
     }
       if (pagesCount === 1) return null;
       const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
-      const fetchedPages= pages.map((page) => (
+      const fetchedPages= pages.slice(0,3).map((page) => (
          <li 
          key={page}
          style={{
@@ -55,7 +55,7 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange,setProperties }
      style={{"display":"flex","justifyContent":"center","listStyle":"none","marginTop":"50px"}}
    //   className={styles.pagination}
      >
-       {pages.length > 5? {fetchedPages.slice(0,3)} :{fetchedPages}
+       {pages.length > 5? {fetchedPages} :{fetchedPages}
         }
      </ul>
 
