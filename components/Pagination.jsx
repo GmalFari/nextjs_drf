@@ -55,7 +55,7 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange,setProperties }
      style={{"display":"flex","justifyContent":"center","listStyle":"none","marginTop":"50px"}}
    //   className={styles.pagination}
      >
-       {pages.length > 5? 'true' :{fetchedPages}
+       {pages.length > 5? {fetchedPages.slice(0,3)} :{fetchedPages}
         }
      </ul>
 
