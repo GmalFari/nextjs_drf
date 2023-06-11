@@ -30,7 +30,7 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange,setProperties }
      style={{"display":"flex","justifyContent":"center","listStyle":"none","marginTop":"50px"}}
    //   className={styles.pagination}
      >
-       {pages.length > 5? return 'true' :pages.map((page) => (
+       {pages.length > 5? 'true' :pages.map((page) => (
          <li 
          key={page}
          style={{
