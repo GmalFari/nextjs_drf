@@ -658,6 +658,7 @@ let testApi = async()=>{
   const myform = new FormData()
   {
     myform.append("property_number",myData.property_number);
+    {/* 
     myform.append("property_title",myData.property_title);
     myform.append("property_type",myData.property_type);
     myData.coverPhoto &&myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
@@ -681,7 +682,7 @@ let testApi = async()=>{
     myform.append("building_facade",myData.building_facade);
     myform.append("building_age",myData.building_age);
     myform.append("state",myData.state);
-    myform.append("directorate",myData.directorate);
+    myform.append("directorate",myData.directorate); */}
 
 
 
