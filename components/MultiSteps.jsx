@@ -657,11 +657,11 @@ let testApi = async()=>{
   let accessToken = token?.access
   const myform = new FormData()
   
-    myform.append("property_number",myData.property_number);
-   
+  {/*  myform.append("property_number",myData.property_number);
+   */}
     
     myform.append("property_title",myData.property_title);
-    myform.append("property_type",myData.property_type);
+   {/* myform.append("property_type",myData.property_type);
   
     myform.append("coverPhoto",myData.coverPhoto,"picture.jpg");
     myform.append("purpose",myData.purpose);
@@ -670,7 +670,7 @@ let testApi = async()=>{
     myform.append("property_area",myData.property_area);
     myform.append("property_street",myData.property_street);
     myform.append("rent_frequency",myData.rent_frequency);
-  {/*
+  
     myform.append("property_description",myData.property_description);
     myform.append("property_price",myData.property_price);
     myform.append("currency",myData.currency);
