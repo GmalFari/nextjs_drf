@@ -652,6 +652,7 @@ export default function Multistep({myData,setData}) {
     setPropertyLocation({longitude:position['longitude'],latitude:position['latitude']})
 }
 let testApi = async()=>{
+
   let token = JSON.parse(localStorage.getItem("authTokens"))
   let accessToken = token?.access
   const myform = new FormData()
@@ -733,6 +734,7 @@ let testApi = async()=>{
                 status: 'error',
                isClosable: true
               })
+              elert(result)
         }
       } catch (error) {
         
@@ -743,7 +745,7 @@ let testApi = async()=>{
                 status: 'error',
                isClosable: true
               })
-            
+            elert(result)
       }
     }
     const handleSubmit = async e => {
