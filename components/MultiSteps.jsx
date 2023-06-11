@@ -664,9 +664,10 @@ let testApi = async()=>{
     myform.append("property_type",myData.property_type);
   
     myform.append("coverPhoto",myData.coverPhoto,"picture.jpg");
-    {/*
+   
     myform.append("purpose",myData.purpose);
     myform.append("property_town",myData.property_town);
+    {/*
     myform.append("property_district",myData.property_district);
     myform.append("property_area",myData.property_area);
     myform.append("property_street",myData.property_street);
