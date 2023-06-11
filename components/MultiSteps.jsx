@@ -657,10 +657,11 @@ let testApi = async()=>{
   let accessToken = token?.access
   const myform = new FormData()
   {
-    myform.append("property_number",myData.property_number);
-    {/* 
+   {/* myform.append("property_number",myData.property_number);
+   */}
+    
     myform.append("property_title",myData.property_title);
-    myform.append("property_type",myData.property_type);
+   {/* myform.append("property_type",myData.property_type);
     myData.coverPhoto &&myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
     myform.append("purpose",myData.purpose);
     myform.append("property_town",myData.property_town);
