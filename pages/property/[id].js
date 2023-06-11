@@ -63,8 +63,16 @@ const PropertyDetails = ({propertyDetails:
 //    });
     return(
         <>
+<<<<<<< HEAD
         <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}>
          <MyBreadcrumb /> 
+=======
+        <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}> 
+         <Container>
+       
+                    <MyBreadcrumb />
+         </Container>
+>>>>>>> 5f1548592c72143795cef95be92bf93309615796
          </Box>
         <Box
          //marginLeft={["auto","auto","100px"]}

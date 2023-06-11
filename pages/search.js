@@ -204,7 +204,8 @@ const Search = ({data}) => {
       العقارات الأكثر بحثاً
       </Heading>
       <Section2 />
-      </Box>  
+      </Box>   
+ 
     </Box>
   )
 }

@@ -13,7 +13,7 @@ import '@coreui/coreui/dist/css/coreui.min.css';
 const Carousel = () => {
   return (
         <Box height={["60vh","70vh"]} className="carousel-inner">
-          <Box backgroundImage={img2} backgroundSize="cover" className="carousel-item active">
+          <Box backgroundImage={"https://fortestmimd.pythonanywhere.com/media/media/15645428.png"} backgroundSize="cover" className="carousel-item active">
                 
                 {/* <Image
                 width="100%" minwidth="100%"
@@ -21,10 +21,10 @@ const Carousel = () => {
                 minW={"100%"} minH="100%"
                     // boxSize='100px'
                     style={{objectFit:"cover"}}
-                    src={img2}
+                    src={"https://fortestmimd.pythonanywhere.com/media/media/15645428.png"}
                     alt='carousel image'
                   /> */}
-            <Box className="carousel-caption">
+            <Box className="carousel-caption" style={{"top":"21 !important"}}>
               <Heading fontSize={["2xl","3xl"]} mb="2px"  style={{"fontFamily":"Cairo,sans-serif"}}>أبحث الأن عن بيت الأحلام</Heading>
               <Text fontWeight={"bold"}  fontSize={"xl"}>نوفر لك جميع ماتحتاجة عن العقارات في مكان واحد</Text>
               <MainSearch />

@@ -114,13 +114,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
       w="full"
       pos="fixed"
-      // overflowY="scroll"
+      // overflo/>wY="scroll"
       h="full"
       {...rest}>
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text style={{"fontFamily":"font-family: 'Cairo', sans-serif"}} fontSize="2xl"  fontWeight="bold">
         <Link href="/" passHref>
-          لبنة هاوس
+          <OurLogo/>
         </Link>
         </Text>
 
