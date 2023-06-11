@@ -661,7 +661,7 @@ let testApi = async()=>{
    */}
     
     myform.append("property_title",myData.property_title);
-   {/* myform.append("property_type",myData.property_type);
+    myform.append("property_type",myData.property_type);
     myData.coverPhoto &&myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
     myform.append("purpose",myData.purpose);
     myform.append("property_town",myData.property_town);
@@ -669,6 +669,7 @@ let testApi = async()=>{
     myform.append("property_area",myData.property_area);
     myform.append("property_street",myData.property_street);
     myform.append("rent_frequency",myData.rent_frequency);
+  {*/
     myform.append("property_description",myData.property_description);
     myform.append("property_price",myData.property_price);
     myform.append("currency",myData.currency);
