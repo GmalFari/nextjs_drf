@@ -57,6 +57,7 @@ const Create = () => {
 //   }
 const [myData,setData] = useState(
   {
+  property_number:null,
   property_title:"",
   property_type:"",
   coverPhoto:null,
@@ -65,7 +66,9 @@ const [myData,setData] = useState(
     //       latitude:"",
     //       longitude:""},
     property_town:"",
+    property_district:"",
   property_area:"",
+  property_street:"",
   rent_frequency:"",
   property_description:"",
   property_price:0,
@@ -80,8 +83,7 @@ const [myData,setData] = useState(
   state:"",
   directorate:"",
   district:"",
-  district:"",
-  street:"",
+  building_age:"",
   isForRent:true,
 
   // //form2

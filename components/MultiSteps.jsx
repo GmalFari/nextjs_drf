@@ -61,6 +61,8 @@ const Form1 = ({data,
             dir="ltr"
           id="typeProperty"
           name="property_type"
+          value={data.property_type}
+          onChange={handleChange}
           autoComplete="typeProperty"
           placeholder=" نوع العقار"
           focusBorderColor="brand.400"
@@ -68,8 +70,6 @@ const Form1 = ({data,
           size="sm"
           w="full"
           rounded="md"
-          onChange={handleChange}
-          value={data.property_type}
           >
           {typeProperty.map((typeP)=>{
         return (
@@ -93,14 +93,14 @@ const Form1 = ({data,
             dir="ltr"
           id="purpose"
           name="purpose"
+          value={data.purpose}
+          onChange={handleChange}
           autoComplete="purpose"
           focusBorderColor="brand.400"
           shadow="sm"
           size="sm"
           w="full"
           rounded="md"
-          onChange={handleChange}
-          value={data.purpose}
           >
           {purposeList.map((purposeItem,index)=>(
           <option key={index} >{purposeItem}</option>
@@ -114,15 +114,15 @@ const Form1 = ({data,
         <Select
          dir="ltr"
           id="typeProperty"
-          name="typeProperty"
+          name="rent_frequency"
+          onChange={handleChange}
+          value={data.rent_frequency}
           autoComplete="typeProperty"
           focusBorderColor="brand.400"
           shadow="sm"
           size="md"
           w="full"
           rounded="md"
-          onChange={handleChange}
-          value={data.rent_frequency}
           >
           {rentFrequencyList.map((propertyview)=>{
         return (
@@ -145,7 +145,9 @@ const Form1 = ({data,
         <Select
         dir="ltr"
           id="city"
-          name="city"
+          name="property_town"
+          value={data.property_town}
+          onChange={handleChange}
           autoComplete="city"
           placeholder="إسم المدينة"
           focusBorderColor="brand.400"
@@ -154,7 +156,6 @@ const Form1 = ({data,
           w="full"
           rounded="md"
           required="required"
-          onChange={handleChange}
           >
          {gadm41_YEM_1.features.map((city,index)=>{
       return (
@@ -177,10 +178,11 @@ const Form1 = ({data,
         </FormLabel>
         <Select
         dir="ltr"
-          id="city"
-          name="city"
-          autoComplete="city"
+          id="property_district"
+          name="property_district"
+          autoComplete="property_district"
           placeholder="إسم المديرية"
+          // value={}
           focusBorderColor="brand.400"
           shadow="sm"
           size="sm"
@@ -190,7 +192,7 @@ const Form1 = ({data,
           onChange={handleChange}
           >
          {yemenGis.features.filter(Directorate => 
-            Directorate['properties']['NL_NAME_1'] ==data.city
+            Directorate['properties']['NL_NAME_1'] ==data.property_town
         ).map((Directorate,index) =>(
           <option key={index} value={`${Directorate['properties']['NL_NAME_2']}`}>{`${Directorate['properties']['NL_NAME_2']}`}</option>
         ))
@@ -211,8 +213,11 @@ const Form1 = ({data,
         </FormLabel>
         <Input
           type="text"
-          name=""
-          id=""
+          id="property_area" 
+          name="property_area"
+          value={data.property_area}
+          onChange={handleChange}
+
           autoComplete="city"
           focusBorderColor="brand.400"
           shadow="sm"
@@ -236,9 +241,11 @@ const Form1 = ({data,
         </FormLabel>
         <Input
           type="text"
-          name="street_address"
-          id="street_address"
-          autoComplete="street-address"
+          id="property_street" 
+          name="property_street"
+          value={data.property_street}
+          onChange={handleChange}
+          autoComplete="property_street"
           focusBorderColor="brand.400"
           shadow="sm"
           size="sm"
@@ -261,6 +268,7 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
       بيانات العقار
       </Heading>
       <SimpleGrid columns={1} spacing={6}>
+      {/* عنوان الاعلان */}
       <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
         <FormLabel
           htmlFor="title"
@@ -271,7 +279,7 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
             color: 'gray.50',
           }}
           mt="2%">
-          عنوان الإعلان بالعربي
+          عنوان الإعلان 
         </FormLabel>
         <Input
           type="text"
@@ -287,7 +295,36 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
           // onChange={e=>{setTitle(e.target.value)}}
         />
       </FormControl>
+      {/* رقم الإعلان */}
       <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
+        <FormLabel
+          htmlFor="property_number"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}
+          mt="2%">
+          رقم العقار المسجل 
+        </FormLabel>
+        <Input
+          type="text"
+          name="property_number"
+          id="title"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          value={myData.property_number}
+          onChange={handleChange}
+          // onChange={e=>{setTitle(e.target.value)}}
+        />
+      </FormControl>
+    {/* السعر */}
+      <FormControl display={"flex"} as={GridItem} colSpan={[6, 6, null, 2]}>
+        <Box ms={"10px"} me={"10px"}>
         <FormLabel
           htmlFor="title"
           fontSize="sm"
@@ -312,6 +349,39 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
           onChange={handleChange}
           // onChange={e=>{setTitle(e.target.value)}}
         />
+        </Box>
+        <Box>
+        <FormLabel
+          htmlFor="typeProperty"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}>
+           نوع العملة
+        </FormLabel>
+        <Select
+            dir="ltr"
+          id="currency"
+          name="currency"
+          value={myData.currency}
+          onChange={handleChange}
+          autoComplete="typeProperty"
+          placeholder=" نوع العقار"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          >
+          {['ريال يمني','ريال سعودي','دولار'].map((typeP,index)=>{
+        return (
+            <option key={index} value={typeP}>{typeP}</option>
+        )
+  })}
+        </Select>
+        </Box>
       </FormControl>
       <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
         <FormLabel
@@ -340,7 +410,7 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
         /> 
       </FormControl>
         
-      
+          {/* رابط الفيديو ع اليوتيوب */}
       <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
         <FormLabel
           htmlFor="videoURL"
@@ -366,7 +436,7 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
           placeholder='https://www.youtube.com/watch?v=MGrQa4ElR8M'
         />
       </FormControl>
-
+         {/*  التفاصيل الكاملة للعقار */}
         <FormControl as={GridItem} id="email" mt={1}>
           <FormLabel
             fontSize="sm"
@@ -378,24 +448,25 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
             التفاصيل الكاملة للعقار
           </FormLabel>
           <Textarea
-          
+            name="property_description"
+            value={myData.property_description}
+            onChange={handleChange}
             rows={4}
             shadow="sm"
             focusBorderColor="brand.400"
             fontSize={{
               sm: 'sm',
+
             }}
           />
           <FormHelperText>
-          التفاصيل الكاملة للعقار
-          </FormHelperText>
+         </FormHelperText>
         </FormControl>
-        
       </SimpleGrid>
     </>
   );
 };
-const Form3 = ({setPropertyLocation,ChooseLocation}) => {
+const Form3 = ({data,handleChange,setPropertyLocation,ChooseLocation}) => {
   const [selectView ,setSelectView] =useState()
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
@@ -417,7 +488,13 @@ const Form3 = ({setPropertyLocation,ChooseLocation}) => {
           <FormLabel htmlFor="space" fontWeight={'normal'}>
           المساحة بالمتر
           </FormLabel>
-          <Input type="number" id="space" placeholder="المساحة" />
+          <Input 
+            type="number"
+            id="sqrt_area"
+            name="sqrt_area"
+            value={data.sqrt_area}
+            onChange={handleChange}
+            placeholder="المساحة" />
         </Box>
         
         <Box width={["100%","fit-content"]}>
@@ -425,16 +502,19 @@ const Form3 = ({setPropertyLocation,ChooseLocation}) => {
           الإطلالة
           </FormLabel>
         <Select
-dir="ltr"          id="typeProperty"
-          name="typeProperty"
-          autoComplete="typeProperty"
+          dir="ltr"          
+          id="typeProperty"
+          name="building_facade"
+          value={data.building_facade}
+          onChange={handleChange}
+
+          autoComplete="building_facade"
           placeholder="الإطلالة"
           focusBorderColor="brand.400"
           shadow="sm"
           size="md"
           w="full"
           rounded="md"
-          onChange={handleViewChange}
           >
           {viewList.map((propertyview)=>{
         return (
@@ -447,21 +527,32 @@ dir="ltr"          id="typeProperty"
           <FormLabel htmlFor="rooms" fonsSize={'sm'} fontWeight={'normal'}>
           عدد الغرف
           </FormLabel>
-          <Input id="price" placeholder="عدد الغرف" />
+          <Input
+
+           id="rooms"
+           name="rooms"
+           value={data.rooms}
+           onChange={handleChange}
+            placeholder="عدد الغرف" />
         </Box>
         <Box width={["100%","fit-content"]}>
           <FormLabel htmlFor="baths" fonsSize={'sm'} fontWeight={'normal'}>
           عدد الحمامات
           </FormLabel>
-          <Input id="price" placeholder="عدد الحمامات" />
+          <Input 
+              id="baths"
+              name="baths"
+              value={data.baths}
+              onChange={handleChange}
+               placeholder="عدد الحمامات" />
         </Box>
         <Box width={["100%","fit-content"]}>
         <FormLabel htmlFor="view" fontWeight={'normal'}>
          قابلية للتفاوض
           </FormLabel>
         <Select
-        dir="ltr"
-        id="typeProperty"
+            dir="ltr"
+           id="typeProperty"
           name="typeProperty"
           autoComplete="typeProperty"
           placeholder=""
@@ -481,13 +572,19 @@ dir="ltr"          id="typeProperty"
           <FormLabel htmlFor="baths" fonsSize={'sm'} fontWeight={'normal'}>
           سنة الإنشاء
           </FormLabel>
-          <Input type="number" id="price"  placeholder='2010:مثال'/>
+          <Input 
+          type="number" 
+          id="building_age"
+          name="building_age"
+          onChange={handleChange}
+            placeholder='2010:مثال'/>
         </Box>
         <Box width={["100%","fit-content"]}>
         <FormLabel htmlFor="view" fontWeight={'normal'}>
           نوع التشطيب
           </FormLabel>
         <Select
+          dir="ltr"
           id="typeProperty"
           name="typeProperty"
           autoComplete="typeProperty"
@@ -505,14 +602,7 @@ dir="ltr"          id="typeProperty"
         </Select>
         </Box>
         </Grid>
-        <FormControl>
-        <FormLabel htmlFor="password" fontWeight={'normal'} mt="2%">
-          عنوان العقار
-        </FormLabel>
-          <Input
-            pr="4.5rem"
-            type={'text'}
-          />
+        <FormControl t={"20px"}>
            <MyMap sizes={{mapW:"100%",mapH:400}} 
                   setPropertyLocation={setPropertyLocation} 
                   ChooseLocation={ChooseLocation} 
@@ -549,9 +639,7 @@ export default function Multistep({myData,setData}) {
 
   const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(33.33);
-
   //form1
-
   const purposeList = ['للإيجار','للبيع']
   const rentFrequencyList = ['يومي','اسبوعي','شهري','سنوي','نصف سنوي','ربع سنوي']
  //  //form2
@@ -567,11 +655,39 @@ let testApi = async()=>{
   let token = JSON.parse(localStorage.getItem("authTokens"))
   let accessToken = token?.access
   const myform = new FormData()
-  {myData.coverPhoto &&myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
-  myform.append("property_title",myData.property_title);
-  myform.append("purpose",myData.purpose);
-  myform.append("rent_frequency",myData.rent_frequency);
-  myform.append("property_price",myData.property_price);
+  {
+    myform.append("property_number",myData.property_number);
+    myform.append("property_title",myData.property_title);
+    myform.append("property_type",myData.property_type);
+    myData.coverPhoto &&myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
+    myform.append("purpose",myData.purpose);
+    myform.append("property_town",myData.property_town);
+    myform.append("property_district",myData.property_district);
+    myform.append("property_area",myData.property_area);
+    myform.append("property_street",myData.property_street);
+    myform.append("rent_frequency",myData.rent_frequency);
+    myform.append("property_description",myData.property_description);
+    myform.append("property_price",myData.property_price);
+    myform.append("currency",myData.currency);
+    myform.append("is_negotiable",myData.is_negotiable);
+    myform.append("phone",myData.phone);
+    myform.append("rooms",myData.rooms);
+    myform.append("baths",myData.baths);
+    myform.append("is_negotiable",myData.is_negotiable);
+    myform.append("sqrt_area",myData.sqrt_area);
+
+    myform.append("furnishingStatus",myData.furnishingStatus);
+    myform.append("building_facade",myData.building_facade);
+    myform.append("building_age",myData.building_age);
+    myform.append("state",myData.state);
+    myform.append("directorate",myData.directorate);
+
+
+
+
+
+
+
     const url = 'https://fortestmimd.pythonanywhere.com/api/list-properties/'
      const options = {
         method: 'POST',
@@ -591,10 +707,9 @@ let testApi = async()=>{
           setSubmitted(true)
           setApiMessage(result)          
           router.push(`/property/${result.id}`)
-          console.log(result)
           toast(
               {
-              title: ` لقد تم تعديل بيانات العقار`,
+              title: ` لقد تم  إضافة العقار`,
               description:`${result.property_title}`,
               //   // newData.map((m,i)=>(
               //   //     <>
@@ -608,7 +723,8 @@ let testApi = async()=>{
                })
             
           setData({...myData,property_title:""})
-          console.log(myform)
+          console.log(result)
+
         }else{
         toast(
                {
@@ -671,7 +787,11 @@ let testApi = async()=>{
                          : step === 2 ? <Form2 myData={myData}
                           setData={setData} handleChange={handleChange}
                            title={myData.property_title}  setImg={setImg} /> :
-                          <Form3 setPropertyLocation={setPropertyLocation} ChooseLocation={ChooseLocation} />}
+                          <Form3                       
+                           data={myData}
+                           handleChange={handleChange}
+                           setPropertyLocation={setPropertyLocation} 
+                           ChooseLocation={ChooseLocation} />}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex>
@@ -733,7 +853,7 @@ let testApi = async()=>{
             
                 //}}
                 >
-                تعديل  العقار 
+                إضافة  عقار 
                 </Button>
               
         </form>
