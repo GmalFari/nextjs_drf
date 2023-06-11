@@ -59,14 +59,24 @@ const [myData,setData] = useState(
   {
   property_title:"",
   property_type:"",
-  property_price:0,
   coverPhoto:null,
-  // "location":{  
-  //       latitude:"",
-  //       longitude:""},
   purpose:"",
+  // "location":{  
+    //       latitude:"",
+    //       longitude:""},
+    property_town:"",
+  property_area:"",
   rent_frequency:"",
-  property_town:"",
+  property_description:"",
+  property_price:0,
+  currency:"",
+  is_negotiable:"",
+  phone:"",
+  rooms:"",
+  baths:"",
+  furnishingStatus:"",
+  building_facade:"",
+  building_age:"",
   state:"",
   directorate:"",
   district:"",
@@ -74,19 +84,19 @@ const [myData,setData] = useState(
   street:"",
   isForRent:true,
 
-  //form2
-  title:"",
-  img:"",
+  // //form2
+  // title:"",
+  // img:"",
 })
   return (
     <>
     {user?
     <Box>
-    <Box mt="30px" textAlign={"center"}>
+    {/* <Box mt="30px" textAlign={"center"}>
     <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
         تعديل العقار
     </Button>
-    <MainAlert /></Box>
+    <MainAlert /></Box> */}
       <MultiSteps myData={myData} setData={setData}/>
       </Box>:window.location.replace("/accounts/login")}
       </>

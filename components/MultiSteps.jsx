@@ -572,7 +572,6 @@ let testApi = async()=>{
   myform.append("purpose",myData.purpose);
   myform.append("rent_frequency",myData.rent_frequency);
   myform.append("property_price",myData.property_price);
-
     const url = 'https://fortestmimd.pythonanywhere.com/api/list-properties/'
      const options = {
         method: 'POST',
