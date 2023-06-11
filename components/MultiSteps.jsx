@@ -656,7 +656,7 @@ let testApi = async()=>{
   let token = JSON.parse(localStorage.getItem("authTokens"))
   let accessToken = token?.access
   const myform = new FormData()
-  {
+  
    {/* myform.append("property_number",myData.property_number);
    */}
     
@@ -683,7 +683,8 @@ let testApi = async()=>{
     myform.append("building_facade",myData.building_facade);
     myform.append("building_age",myData.building_age);
     myform.append("state",myData.state);
-    myform.append("directorate",myData.directorate); */}
+    myform.append("directorate",myData.directorate); 
+    */}
 
 
 
