@@ -30,7 +30,7 @@ const MainAlert=()=> {
   return (
     <>
 <Button   onClick={onOpen} colorScheme='red' variant='outline'>
- تسجيل الخروج؟
+ تسجيل الخروج 
   </Button>      <AlertDialog
         motionPreset='slideInBottom'
         leastDestructiveRef={cancelRef}
@@ -42,7 +42,7 @@ const MainAlert=()=> {
         <AlertDialogOverlay />
 
         <AlertDialogContent >
-          <AlertDialogHeader flexBasis={"1"}> تجيل خروج </AlertDialogHeader>
+          <AlertDialogHeader flexBasis={"1"}> تسجيل خروج </AlertDialogHeader>
           <AlertDialogCloseButton  />
           <AlertDialogBody>
           هل أنت متأكد أنك تريد تسجيل الخروج ؟
