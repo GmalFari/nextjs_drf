@@ -467,8 +467,8 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
   );
 };
 const Form3 = ({data,handleChange,setPropertyLocation,ChooseLocation}) => {
-  const [selectView ,setSelectView] =useState()
-  const [show, setShow] = React.useState(false);
+  // const [selectView ,setSelectView] =useState()
+  // const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   const handleViewChange = (e)=>{
     setSelectView(e.target.value)
@@ -561,7 +561,7 @@ const Form3 = ({data,handleChange,setPropertyLocation,ChooseLocation}) => {
           size="md"
           w="full"
           rounded="md"
-          onChange={handleViewChange}
+          onChange={handleChange}
           >
             <option value={'قابل للتفاوض'} >قابل للتفاوض</option>
             <option value={'غير قابل للتفاوض'} > غير قابل للتفاوض</option>
@@ -594,7 +594,7 @@ const Form3 = ({data,handleChange,setPropertyLocation,ChooseLocation}) => {
           size="md"
           w="full"
           rounded="md"
-          onChange={handleViewChange}
+          onChange={handleChange}
           >
             <option value={' تشطيب كامل'} >تشطيب كامل </option>
             <option value={' عظم '} >  عظم </option>
@@ -602,12 +602,12 @@ const Form3 = ({data,handleChange,setPropertyLocation,ChooseLocation}) => {
         </Select>
         </Box>
         </Grid>
-        <FormControl t={"20px"}>
+        {/* <FormControl t={"20px"}>
            <MyMap sizes={{mapW:"100%",mapH:400}} 
                   setPropertyLocation={setPropertyLocation} 
                   ChooseLocation={ChooseLocation} 
                   geoDetail={["24.50685","54.407687"]} />
-      </FormControl>
+      </FormControl> */}
     </>
   );
 };
@@ -663,11 +663,11 @@ let testApi = async()=>{
     myform.append("property_title",myData.property_title);
     myform.append("property_type",myData.property_type);
   
+    {/*
     myform.append("coverPhoto",myData.coverPhoto,"picture.jpg");
    
     myform.append("purpose",myData.purpose);
     myform.append("property_town",myData.property_town);
-    {/*
     myform.append("property_district",myData.property_district);
     myform.append("property_area",myData.property_area);
     myform.append("property_street",myData.property_street);
@@ -800,7 +800,8 @@ let testApi = async()=>{
                            data={myData}
                            handleChange={handleChange}
                            setPropertyLocation={setPropertyLocation} 
-                           ChooseLocation={ChooseLocation} />}
+                           ChooseLocation={ChooseLocation}
+                            />}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex>
