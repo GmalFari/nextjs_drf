@@ -741,7 +741,7 @@ let testApi = async()=>{
                 status: 'error',
                isClosable: true
               })
-              elert(result)
+              alert(result)
         }
       } catch (error) {
         
@@ -752,7 +752,7 @@ let testApi = async()=>{
                 status: 'error',
                isClosable: true
               })
-            elert(error)
+            alert(error)
       }
     }
     const handleSubmit = async e => {
