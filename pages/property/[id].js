@@ -29,7 +29,8 @@ import ContactPopover from "../../components/popoverModals/ContactModals";
 import ExpandableText from "../../components/ReadMoreLess";
 import MyBreadcrumb from "../../components/MyBreadcrumb";
 import Head from "next/head";
-
+import MainAlert from "../../components/MainAlert"
+import AuthContext from "../../context/AuthContext";
 
 const PropertyDetails = ({propertyDetails:
     {coverPhoto,price,rentFrequency,rooms,purpose,
@@ -38,6 +39,7 @@ const PropertyDetails = ({propertyDetails:
     isVerified,type,photos,amenities,furnishingStatus,geography}})=>{
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
+    let {user } = createContext(AuthContext)
     // let encodedParams = new URLSearchParams();
     // encodedParams.append("q", "English is hard, but detectably so");
 
@@ -61,7 +63,9 @@ const PropertyDetails = ({propertyDetails:
 //    });
     return(
         <>
-        <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}> <MyBreadcrumb /></Box>
+        <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}>
+         <MyBreadcrumb /> 
+         </Box>
         <Box
          //marginLeft={["auto","auto","100px"]}
            // marginRight={["auto","auto","100px"]}
@@ -90,7 +94,16 @@ const PropertyDetails = ({propertyDetails:
             {coverPhoto && <Img src={coverPhoto} ms="2px" me="2px" width={"100%"} height={"100%"} />}
           </Box>
         <Box w="full" p="6">
-        
+        {user && (
+            <>
+                <Box display={"flex "} justifyContent={"space-around"} w="full" mt="2" mb="2" >
+                <MainAlert />
+                <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
+                تعديل العقار
+            </Button>
+            </Box>
+            </>
+        )}
         <Box w='full'>
         <Flex paddingTop='2' alignItems='center' justifyContent='space-between'>
           <Flex alignItems='center'>

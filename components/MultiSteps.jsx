@@ -595,7 +595,7 @@ let testApi = async()=>{
           console.log(result)
           toast(
               {
-              title: ` لقد تم إضافة العقار`,
+              title: ` لقد تم تعديل بيانات العقار`,
               description:`${result.property_title}`,
               //   // newData.map((m,i)=>(
               //   //     <>
@@ -734,7 +734,7 @@ let testApi = async()=>{
             
                 //}}
                 >
-                إضافة عقار
+                تعديل  العقار 
                 </Button>
               
         </form>

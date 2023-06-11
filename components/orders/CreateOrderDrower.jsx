@@ -10,9 +10,11 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Button
+  ,Box
+
 } from '@chakra-ui/react';
 import { FaPlus } from 'react-icons/fa';
-
+import MainAlert from "../MainAlert"
 import { useDisclosure } from '@chakra-ui/react';
 
 const OrderCreateDrower = () => {
@@ -58,7 +60,14 @@ const OrderCreateDrower = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>إضافة طلب جديد</DrawerHeader>
+          <DrawerHeader>
+
+          <Box mt="30px" textAlign={"center"}>
+    <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
+        تعديل الطلب
+    </Button>
+    <MainAlert  /></Box>
+          </DrawerHeader>
           <DrawerBody>
             <CustOrders myData={data} />
           </DrawerBody>

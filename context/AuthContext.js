@@ -4,9 +4,15 @@ import jwt_decode from "jwt-decode";
 import api from "../services/api"
 const AuthContext = createContext();
 import { useRouter } from "next/router";
+import { useToast } from '@chakra-ui/react';
+import MainToast from "../components/MainToast";
+import { mainModule } from "process";
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
+  
+
+
   let myAuthToken = null;
   let myUser = null;
   const router = useRouter()
@@ -92,19 +98,27 @@ useEffect(()=>{
     console.log(response.json)
     // return response.status
 
-
     if (response.status === 201) {
       console.log(response.status)
       router.push('/accounts/login')
+      MainToast({"title":"خطاء بالبيانات ","description":"خطأ بالبيانات"
+      ,"statusOutput":"error","duration":"5000"})
+       
     } else {
       setErrors(data)
+
+      MainToast({"title":"خطاء بالبيانات ","description":"خطأ بالبيانات"
+      ,"statusOutput":"error","duration":"5000"})
       // alert("Something went wrong!");
       // console.log(response.status)
       // console.log(data)
-
+      console.log(data)
     }
     }catch(err){
      alert(err)
+     
+     MainToast(title="خطاء بالبيانات ",description="خطأ بالبيانات"
+     ,statusOutput="error",duration="5000")
     }
   };
   const logoutUser = () => {

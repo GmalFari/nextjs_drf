@@ -420,7 +420,9 @@ export default function CustOrders({myData,setData}) {
 
 
     
-    
+    const handleSubmit = (e)=>{
+      e.preventDefault();
+    }
     const handleChange = (e) => {
       console.log(myData.order_title)
 
@@ -469,12 +471,12 @@ export default function CustOrders({myData,setData}) {
                 isDisabled={step === 1}
                 colorScheme="teal"
                 variant="solid"
-                w="7rem"
+                w="70px"
                 mr="5%">
                 رجوع
               </Button>
               <Button
-                w="7rem"
+                w="70px"
                 
                 isDisabled={step === 3}
                 onClick={() => {
@@ -491,16 +493,23 @@ export default function CustOrders({myData,setData}) {
               </Button>
             </Flex>
             {step === 3 ? (
-              <form>  
-                          <Button
-                type="submit"
-                w="8rem"
+                          <Button 
+                          w="95px"
                 colorScheme="teal"
                 variant="solid"
+                onClick={()=>{
+                  toast({
+                title: 'Account created.',
+                description: "لقد تم تعديل طلبك بنجاج",
+                
+                status: 'success',
+                duration: 9000,
+                isClosable: true,
+              })
+                }}
                 >
-                إضافة طلب
+              تعديل الطلب
               </Button>
-        </form>
             ) : null}
           </Flex>
         </ButtonGroup>

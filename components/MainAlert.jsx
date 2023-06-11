@@ -5,6 +5,7 @@ import AuthContext from "../context/AuthContext";
 import { useRouter } from 'next/router';
 import { useDisclosure } from '@chakra-ui/react'
 import { useState,useEffect } from 'react';
+import {FiTrash} from "react-icons/fi"
 import {
   AlertDialog,
   AlertDialogBody,
@@ -27,10 +28,10 @@ const MainAlert=()=> {
       }
   },[islogout, logoutUser])
   return (
-
     <>
-      <Button  onClick={onOpen}>تسجيل خروج</Button>
-      <AlertDialog
+<Button  leftIcon={<FiTrash />} onClick={onOpen} colorScheme='red' variant='outline'>
+    حذف العقار
+  </Button>      <AlertDialog
         motionPreset='slideInBottom'
         leastDestructiveRef={cancelRef}
         onClose={onClose}
@@ -41,18 +42,18 @@ const MainAlert=()=> {
         <AlertDialogOverlay />
 
         <AlertDialogContent >
-          <AlertDialogHeader flexBasis={"1"}> تسجيل الخروج؟</AlertDialogHeader>
+          <AlertDialogHeader flexBasis={"1"}> حذف العقار</AlertDialogHeader>
           <AlertDialogCloseButton  />
           <AlertDialogBody>
-          هل أنت متأكد أنك تريد تسجيل الخروج
+          هل أنت متأكد أنك تريد  حذف العقار ؟
           </AlertDialogBody>
           <AlertDialogFooter>
             <Button ref={cancelRef} onClick={onClose} >
-              No
+              لا 
             </Button>
             <form onSubmit={logoutUser}>
               <Button  type="submit" onClick={onClose} colorScheme='red' ml={3}>
-              Yes
+              نعم
             </Button>
             </form>
           </AlertDialogFooter>

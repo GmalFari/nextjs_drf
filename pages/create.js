@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React from 'react'
-import { Box } from '@chakra-ui/react';
+import { Box,Button } from '@chakra-ui/react';
 import { useState,useEffect,useContext } from 'react';
 import MultiSteps from "../components/MultiSteps";
 import typeProperty from "../utils/selectedData";
 import yemenGis from "../utils/yemenGis.json"
 import gadm41_YEM_1 from "../utils/gadm41_YEM_1.json";
 import AuthContext from '../context/AuthContext';
+import MainAlert from "../components/MainAlert";
+import  {FiTrash} from "react-icons/fi"
 const Create = () => {
   const {user} = useContext(AuthContext)
   // const [city , setCity] = useState("")
@@ -80,6 +82,11 @@ const [myData,setData] = useState(
     <>
     {user?
     <Box>
+    <Box mt="30px" textAlign={"center"}>
+    <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
+        تعديل العقار
+    </Button>
+    <MainAlert /></Box>
       <MultiSteps myData={myData} setData={setData}/>
       </Box>:window.location.replace("/accounts/login")}
       </>
