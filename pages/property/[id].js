@@ -7,7 +7,6 @@ import {Flex,Grid,Select
      Divider,
      Heading
      ,Button} from '@chakra-ui/react';
-
 import {FaBed,FaBath,FaImages,
     FaWhatsapp,FaEnvelope,FaPhone,FaShare,FaDownload,
     FaRegHeart, FaVideo} from 'react-icons/fa';
@@ -17,8 +16,8 @@ import {GoVerified} from 'react-icons/go';
 import millify from 'millify';
 import ImageScrollbar from '../../components/ImageScrollbar';
 import Link from 'next/link';
-import {useState, createContext } from 'react';
-import {baseUrl,fetchApi} from '../../utils/fetchApi';
+import {useState, createContext, useContext } from 'react';
+import {baseUrl,deleteProperty,fetchApi} from '../../utils/fetchApi';
 import { BasicUsage } from '../../components/BasicUsage';
 import MainBtn from '../../components/MainBtn';
 import PropertyTable from "../../components/property/PropertyTable";
@@ -31,9 +30,9 @@ import MyBreadcrumb from "../../components/MyBreadcrumb";
 import Head from "next/head";
 import MainAlert from "../../components/MainAlert"
 import AuthContext from "../../context/AuthContext";
-
 const PropertyDetails = ({propertyDetails:
     {   id,
+        owner,
         property_number,
         property_title,
         coverPhoto,
@@ -61,9 +60,17 @@ const PropertyDetails = ({propertyDetails:
         property_area,
         rentFrequency,
         photos,amenities,geography}})=>{
+    const headerContent = " حذف العقار";
+    const alertDialogHeader = "حذف العقار ";
+    const alertDialogBody = "هل أنت متأكد أنك تريد حذف العقار ؟"
+
+    let token = JSON.parse(localStorage.getItem("authTokens"))
+    let accessToken = token?.access    
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
-    let {user } = createContext(AuthContext)
+    const {user} = useContext(AuthContext)
+
+
     // let encodedParams = new URLSearchParams();
     // encodedParams.append("q", "English is hard, but detectably so");
 
@@ -85,11 +92,29 @@ const PropertyDetails = ({propertyDetails:
 //    }).catch(function (error) {
 // 	console.error(error);
 //    });
-    return(
+        const handleSubmit = (e) =>{
+            e.preventDefault();
+            deleteProperty(id,accessToken)
+        }
+return(
         <>
         <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}>
          <MyBreadcrumb /> 
          </Box>
+
+            {user?.user_id == owner ? 
+                <Box display={"flex "} justifyContent={"space-around"} w="full" mt="2" mb="2" >
+                    <MainAlert headerContent={headerContent} 
+                    alertDialogHeader={alertDialogHeader} 
+                    alertDialogBody={alertDialogBody} 
+                    handleSubmit={handleSubmit} />
+                        
+        <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
+        تعديل العقار
+    </Button>
+</Box>
+        
+               :null }
         <Box
          //marginLeft={["auto","auto","100px"]}
            // marginRight={["auto","auto","100px"]}
@@ -117,18 +142,9 @@ const PropertyDetails = ({propertyDetails:
             </Flex>
             {coverPhoto && <Img src={coverPhoto} ms="2px" me="2px" width={"100%"} height={"100%"} />}
           </Box>
-        <Box w="full" p="6">
-        {user == id?  (
-            <>
-                <Box display={"flex "} justifyContent={"space-around"} w="full" mt="2" mb="2" >
-                <MainAlert />
-                <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
-                تعديل العقار
-            </Button>
-            </Box>
-            </>
-        )
-        :null}
+        
+        
+        
         <Box w='full'>
         <Flex paddingTop='2' alignItems='center' justifyContent='space-between'>
           <Flex alignItems='center'>
@@ -260,7 +276,6 @@ const PropertyDetails = ({propertyDetails:
             />
             </AspectRatio> */}
             </Box>
-        </Box>
         </>
 )}
 

@@ -21,31 +21,8 @@ import UserProfile from './userprofile';
 
 const  Profile =()=> {
   const {user,authTokens} = useContext(AuthContext);
-const [userDetail,setuserDetail]=useState()
-const router = useRouter();
-  let getuserdetail = async ()=>{
-    console.log('update tokens')
-    try{
-      let response = await fetch('https://fortestmimd.pythonanywhere.com/auth/users/me/',{
-      method:'GET',
-      headers:{
-        'Content-Type':'application/json',
-        'Authorization':`Bearer ${authTokens?.access}`
+  const router = useRouter();
 
-      },
-    })
-    let data = await response.json()
-    if (response.status === 200) {
-      setuserDetail(data)
-      console.log(userDetail)
-      // router.push("/")
-    }else {
-      alert(error)
-    }
-    }catch(errors){
-      alert(errors)
-    }
-  }
   useEffect(()=>{
     getuserdetail()
   },[])

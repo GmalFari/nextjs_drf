@@ -6,7 +6,6 @@ const AuthContext = createContext();
 import { useRouter } from "next/router";
 import { useToast } from '@chakra-ui/react';
 import MainToast from "../components/MainToast";
-import { mainModule } from "process";
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
@@ -164,6 +163,7 @@ useEffect(()=>{
   //     if(authTokens){
   //       updateToken()
   //     }
+  
   //   },FiveMinutes)
   //   return ()=> clearInterval(interval)
   // },[authTokens,loading])

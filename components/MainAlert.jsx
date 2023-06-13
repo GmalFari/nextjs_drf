@@ -16,7 +16,7 @@ import {
   AlertDialogCloseButton,
 } from '@chakra-ui/react'
 import { useToast } from '@chakra-ui/react';
-const MainAlert=()=> {
+const MainAlert=({headerContent,alertDialogHeader,alertDialogBody,handleSubmit})=> {
   const {logoutUser}=useContext(AuthContext)
   const opens = true;
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -30,7 +30,7 @@ const MainAlert=()=> {
   return (
     <>
 <Button   onClick={onOpen} colorScheme='red' variant='outline'>
- تسجيل الخروج 
+  {headerContent} 
   </Button>      <AlertDialog
         motionPreset='slideInBottom'
         leastDestructiveRef={cancelRef}
@@ -42,16 +42,16 @@ const MainAlert=()=> {
         <AlertDialogOverlay />
 
         <AlertDialogContent >
-          <AlertDialogHeader flexBasis={"1"}> تسجيل خروج </AlertDialogHeader>
+          <AlertDialogHeader flexBasis={"1"}> {alertDialogHeader}   </AlertDialogHeader>
           <AlertDialogCloseButton  />
           <AlertDialogBody>
-          هل أنت متأكد أنك تريد تسجيل الخروج ؟
+          {alertDialogBody}
           </AlertDialogBody>
           <AlertDialogFooter>
             <Button ref={cancelRef} onClick={onClose} >
               لا 
             </Button>
-            <form onSubmit={logoutUser}>
+            <form onSubmit={handleSubmit}>
               <Button  type="submit" onClick={onClose} colorScheme='red' ml={3}>
               نعم
             </Button>
