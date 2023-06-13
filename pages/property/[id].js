@@ -93,7 +93,7 @@ const PropertyDetails = ({propertyDetails:
 // 	console.error(error);
 //    });
         const handleSubmit = (e) =>{
-            e.preventDefault();
+          //  e.preventDefault();
             deleteProperty(id,accessToken)
         }
 return(
