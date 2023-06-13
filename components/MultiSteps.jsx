@@ -601,12 +601,12 @@ const Form3 = ({data,handleChange,setPropertyLocation,ChooseLocation}) => {
         </Select>
         </Box>
         </Grid>
-        {/* <FormControl t={"20px"}>
+        <FormControl t={"20px"}>
            <MyMap sizes={{mapW:"100%",mapH:400}} 
                   setPropertyLocation={setPropertyLocation} 
                   ChooseLocation={ChooseLocation} 
                   geoDetail={["24.50685","54.407687"]} />
-      </FormControl> */}
+      </FormControl>
     </>
   );
 };
@@ -682,18 +682,18 @@ let testApi = async()=>{
     myform.append("baths",myData.baths);
     myform.append("is_negotiable",myData.is_negotiable);
     myform.append("sqrt_area",myData.sqrt_area);
-
     myform.append("furnishingStatus",myData.furnishingStatus);
     myform.append("building_facade",myData.building_facade);
     myform.append("building_age",myData.building_age);
     myform.append("state",myData.state);
     myform.append("directorate",myData.directorate); 
-
-
-
-
-
-
+    myform.append("location",`{
+      "type": "Point",
+      "coordinates": [
+          ${e.target.latitude.value},
+          ${e.target.longitude.value}
+      ]
+  }`)
 
     const url = 'https://fortestmimd.pythonanywhere.com/api/list-properties/'
      const options = {
@@ -800,7 +800,6 @@ let testApi = async()=>{
                            data={myData}
                            handleChange={handleChange}
                            setPropertyLocation={setPropertyLocation} 
-                           ChooseLocation={ChooseLocation}
                             />}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">

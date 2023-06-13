@@ -11,31 +11,35 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange,setProperties }
 
     }
       if (pagesCount === 1) return null;
+      if (pagesCount >= 5) return null;
       const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
-      const fetchedPages= pages.slice(0,3).map((page) => (
-         <li 
-         key={page}
-         style={{
-           "display": "flex",
-          "justify-content": "center",
-         " align-items": "center",
-          "width": "2rem",
-          "height": "2rem",
-          "border": "1px solid #eaeaea",
-          "border-radius": "0.5rem",
-          "cursor": "pointer"
-          }}
-         //   className={
-         //     page === currentPage ? styles.pageItemActive : styles.pageItem
-         //   }
-         >
-           <a style={{ "cursor": "pointer"}}
-           onClick={() => onPageChange(page)}
-           >
-             {page}
-           </a>
-         </li>
-       ))
+      console.log(pagesCount)
+      // const fetchedPages=()=>{ pages.slice(0,3).map((page) => (
+      //    <li 
+      //    key={page}
+      //    style={{
+      //      "display": "flex",
+      //     "justify-content": "center",
+      //    " align-items": "center",
+      //     "width": "2rem",
+      //     "height": "2rem",
+      //     "border": "1px solid #eaeaea",
+      //     "border-radius": "0.5rem",
+      //     "cursor": "pointer"
+      //     }}
+          
+      //    //   className={
+      //    //     page === currentPage ? styles.pageItemActive : styles.pageItem
+      //    //   }
+      //    >
+      //      <a style={{ "cursor": "pointer"}}
+      //      onClick={() => onPageChange(page)}
+      //      >
+      //        {fetchedPages}
+      //      </a>
+      //    </li>
+      //  ))
+      //   }
       // useEffect(() => {
       
       //   // axios.get(`http://127.0.0.1:8000/api/list-properties/?page=${currentPage}`)
@@ -55,8 +59,8 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange,setProperties }
      style={{"display":"flex","justifyContent":"center","listStyle":"none","marginTop":"50px"}}
    //   className={styles.pagination}
      >
-       {pages.length > 5? {fetchedPages} :{fetchedPages}
-        }
+       {pages}
+        
      </ul>
 
    
