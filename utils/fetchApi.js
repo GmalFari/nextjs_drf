@@ -35,7 +35,7 @@ export const deleteProperty = async (id,authToken)=>{
    try {
      const response = await fetch(url, options);
      const result = await response.json();
-     if (response.ok){
+     if (response.status === 204){
                 
        router.push(`/`)
        alert(JSON.stringify(result))
