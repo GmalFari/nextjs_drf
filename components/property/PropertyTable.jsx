@@ -11,7 +11,28 @@ import {
     Flex,
   } from '@chakra-ui/react'
 
-const PropertyTable =()=>{
+const PropertyTable =({property_number,
+  purpose,
+  property_town,
+  property_district,
+  rent_frequency,
+  ownership_type,
+  property_street,
+  property_description,
+  currency,
+  is_negotiable,
+  phone,
+  rooms,
+  baths,
+  furnishingStatus,
+  building_facade,
+  building_age,
+  sqrt_area,
+  omities,
+  timestamp,
+  updated,
+      property_price,
+  property_area})=>{
   return (
     <>
 <Flex  width={'100%'} minW="100%"
@@ -24,107 +45,61 @@ const PropertyTable =()=>{
       
     </Thead>
     <Tbody>
+    <Tr>
+        <Td> رقم التواصل     </Td>
+        <Td> {phone}</Td>
+        
+      </Tr>
+      <Tr>
+        <Td> السعر      </Td>
+        <Td> {property_price}</Td>
+        
+      </Tr>
       <Tr>
         <Td>المدينه</Td>
-        <Td>صنعاء</Td>
-        
+        <Td>{property_town}</Td>
       </Tr>
       <Tr>
         <Td>الحي / المنطقه</Td>
-        <Td>سعوان </Td>
-        
+        <Td>{property_area} </Td>
       </Tr>
       <Tr>
         <Td>عدد الغرف </Td>
-        <Td>٤ غرف نوم</Td>
-        
+        <Td>{rooms}</Td>
       </Tr>
       <Tr>
         <Td>عدد الحمامات </Td>
-        <Td> حمامين</Td>
-        
+        <Td> {baths}</Td>
       </Tr>
       <Tr>
         <Td>مساحة البناء</Td>
-        <Td>20 م٢ </Td>
-        
-      </Tr>
-      <Tr>
-        <Td>مساحة الأرض
-</Td>
-        <Td>22 م٢ </Td>
-        
-      </Tr>
-      <Tr>
-        <Td>عدد الطوابق</Td>
-        <Td>طابقين</Td>
+        <Td>{sqrt_area}</Td>
         
       </Tr>
       <Tr>
         <Td> عمر البناء
- </Td>
-        <Td>قيد الإنشاء</Td>
+      </Td>
+        <Td> {building_age}</Td>
+        
+      </Tr>
+      <Tr>
+        <Td> واجهة المبنى 
+      </Td>
+        <Td> {building_facade}</Td>
+        
+      </Tr>
+      <Tr>
+        <Td> مفروشة /غير مفروشة      </Td>
+        <Td> {furnishingStatus?"مفروشة":"غير مفروشة"}</Td>
+        
+      </Tr>
+      <Tr>
+        <Td>قابلية التفاوض  
+      </Td>
+        <Td> {is_negotiable}</Td>
         
       </Tr>
       
-    </Tbody>
-    <Tfoot>
-      
-        
-      
-    </Tfoot>
-  </Table>
-</TableContainer>
-<TableContainer display={['none','block']} dir='rtl' maxW='100%'>
-
-  <Table variant='striped'>
-    
-    <Thead>
-      
-    </Thead>
-    <Tbody>
-    <Tr>
-        <Td>المدينه</Td>
-        <Td>صنعاء</Td>
-        
-      </Tr>
-      <Tr>
-        <Td>الحي / المنطق</Td>
-        <Td>سعوان </Td>
-        
-      </Tr>
-      <Tr>
-        <Td>عدد الغرف </Td>
-        <Td>٤ غرف نوم</Td>
-        
-      </Tr>
-      <Tr>
-        <Td>عدد الحمامات </Td>
-        <Td> حمامين</Td>
-        
-      </Tr>
-      <Tr>
-        <Td>مساحة البناء</Td>
-        <Td>20 م٢ </Td>
-        
-      </Tr>
-      <Tr>
-        <Td>مساحة الأرض
-</Td>
-        <Td>22 م٢ </Td>
-        
-      </Tr>
-      <Tr>
-        <Td>عدد الطوابق</Td>
-        <Td>طابقين</Td>
-        
-      </Tr>
-      <Tr>
-        <Td> عمر البناء
- </Td>
-        <Td>قيد الإنشاء</Td>
-        
-      </Tr>
       
     </Tbody>
     <Tfoot>

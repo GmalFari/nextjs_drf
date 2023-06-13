@@ -118,7 +118,7 @@ const PropertyDetails = ({propertyDetails:
             {coverPhoto && <Img src={coverPhoto} ms="2px" me="2px" width={"100%"} height={"100%"} />}
           </Box>
         <Box w="full" p="6">
-        {user.id == id?  (
+        {user == id?  (
             <>
                 <Box display={"flex "} justifyContent={"space-around"} w="full" mt="2" mb="2" >
                 <MainAlert />
@@ -132,11 +132,11 @@ const PropertyDetails = ({propertyDetails:
         <Box w='full'>
         <Flex paddingTop='2' alignItems='center' justifyContent='space-between'>
           <Flex alignItems='center'>
-            <Box paddingRight='3' color='green.400'>{isVerified && <GoVerified />}</Box>
-            <Text fontWeight='bold' fontSize='lg'>ريال يمني  {price}{rentFrequency && `/${rentFrequency}`}</Text>
+            <Box paddingRight='3' color='green.400'><GoVerified /></Box>
+            <Text fontWeight='bold' fontSize='lg'>ريال يمني  {property_price}{rentFrequency && `/${rentFrequency}`}</Text>
           </Flex>
           <Link href={`/agencies`}>
-            <Avatar size='sm' src={agency?.logo?.url}></Avatar>
+            <Avatar size='sm' src="#"></Avatar>
           </Link>
         </Flex>
         <Flex  w={250} alignItems='center' p='1' justifyContent='space-between'  color='#006169' >
@@ -153,23 +153,13 @@ const PropertyDetails = ({propertyDetails:
             </Text>
             <Divider/>
             <Box mt={"4"} mb={"4"}>
-                <Box as="h2" fontWeight={"bold"} >الوصف</Box>
-                <ExpandableText description={`
-                عماره للايجار بالكامل في بيت بوس خلف المستشفى الملكي
-
-                    تتكون من سبعة ادوار وملحق وطير مانه
-
-                    الدور يتكون من شقتين بدور
-
-                    العماره فيها ديكور كامل
-
-                    مصعد
-
-                    للايجار شقق مفروشه
-
-                    السعر 4000دولار بالشهر
-                                    `}
-                                    />
+                {property_description &&
+                <>
+                <Box as="h2" fontWeight={"bold"} >الوصف
+                </Box>
+                <ExpandableText description={property_description}/>
+            </>
+                }
             </Box>
             <Divider/>
             <Box p={0} bg='#fff' position={['fixed','fixed','fixed','relative']} left={0} bottom={'0'} width={'100%'}>
@@ -184,15 +174,25 @@ const PropertyDetails = ({propertyDetails:
             <Text as="h2" fontSize="lg" marginBottom="2" fontWeight="bold">
             معلومات العقار
             </Text>
-            <PropertyTable/>
+            <PropertyTable property_town={property_town}
+                        property_district={property_district}
+                        property_area={property_area}
+                        property_street={property_street}
+                        property_price={property_price}
+                        is_negotiable={is_negotiable}
+                        phone={phone}
+                        rooms={rooms}
+                        baths={baths}
+                        furnishingStatus={furnishingStatus}
+                        building_facade={building_facade}
+                        building_age={building_age}
+                        sqrt_area={sqrt_area}
+
+                        
+                    /> 
             </Box>
 
       </Box>
-        
-            <Box lineHeight="2" >
-                 {t}
-                {description_l1}
-            </Box>
         </Box>
         <Divider/>
 
