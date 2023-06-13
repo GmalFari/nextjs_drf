@@ -33,10 +33,35 @@ import MainAlert from "../../components/MainAlert"
 import AuthContext from "../../context/AuthContext";
 
 const PropertyDetails = ({propertyDetails:
-    {coverPhoto,price,rentFrequency,rooms,purpose,
-     property_area
-    ,property_title,description_l1,baths,area,agency,
-    isVerified,type,photos,amenities,furnishingStatus,geography}})=>{
+    {   id,
+        property_number,
+        property_title,
+        coverPhoto,
+        purpose,
+        location,
+        property_town,
+        property_district,
+        rent_frequency,
+        ownership_type,
+        property_street,
+        property_description,
+        currency,
+        is_negotiable,
+        phone,
+        rooms,
+        baths,
+        furnishingStatus,
+        building_facade,
+        building_age,
+        sqrt_area,
+        omities,
+        timestamp,
+        updated,
+            property_price,
+        property_area,
+        rentFrequency,
+        rooms,
+        photos,amenities,geography}})=>{
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
     let {user } = createContext(AuthContext)
@@ -94,7 +119,7 @@ const PropertyDetails = ({propertyDetails:
             {coverPhoto && <Img src={coverPhoto} ms="2px" me="2px" width={"100%"} height={"100%"} />}
           </Box>
         <Box w="full" p="6">
-        {user && (
+        {user.id == id?  (
             <>
                 <Box display={"flex "} justifyContent={"space-around"} w="full" mt="2" mb="2" >
                 <MainAlert />
@@ -103,7 +128,8 @@ const PropertyDetails = ({propertyDetails:
             </Button>
             </Box>
             </>
-        )}
+        )
+        :null}
         <Box w='full'>
         <Flex paddingTop='2' alignItems='center' justifyContent='space-between'>
           <Flex alignItems='center'>
