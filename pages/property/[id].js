@@ -60,7 +60,6 @@ const PropertyDetails = ({propertyDetails:
             property_price,
         property_area,
         rentFrequency,
-        rooms,
         photos,amenities,geography}})=>{
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
