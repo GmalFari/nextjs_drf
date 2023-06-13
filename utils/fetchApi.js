@@ -20,7 +20,7 @@ export const fetchApi = async (url) => {
 
 
 export const deleteProperty = async (id,authToken)=>{
-  const router = useRouter()
+  
   console.log(authToken)
   const url = `https://fortestmimd.pythonanywhere.com/api/list-properties/${id}/`
   const options = {
@@ -35,9 +35,9 @@ export const deleteProperty = async (id,authToken)=>{
    try {
      const response = await fetch(url, options);
      const result = await response.json();
-     if (response.status === 204){
+     if (response.status == 204){
                 
-       router.push(`/`)
+       
        alert(JSON.stringify(result))
          console.log(result)
       //  setData({...myData,property_title:""})
