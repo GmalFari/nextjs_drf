@@ -259,7 +259,7 @@ const Form1 = ({data,
   );
 };
 
-const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
+const Form2 = ({ errors,myData,setData,title,handleChange,setTitle,setImg}) => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal">
@@ -280,6 +280,7 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
           عنوان الإعلان 
         </FormLabel>
         <Input
+          borderColor={errors?.sqrt_area?'red':'none'}
           type="text"
           name="property_title"
           id="property_title"
@@ -292,6 +293,9 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
           onChange={handleChange}
           // onChange={e=>{setTitle(e.target.value)}}
         />
+         <FormLabel color={"red"} display={errors?.property_title?'flex':'none'}>
+                 <small>{errors?.property_title?errors.property_title:null}</small>
+                 </FormLabel>
       </FormControl>
       {/* رقم الإعلان */}
       <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
@@ -465,7 +469,7 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
     </>
   );
 };
-const Form3 = ({data,handleChange,setPropertyLocation,ChooseLocation}) => {
+const Form3 = ({errors, data,handleChange,setPropertyLocation,ChooseLocation}) => {
   // const [selectView ,setSelectView] =useState()
   // const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
@@ -488,14 +492,18 @@ const Form3 = ({data,handleChange,setPropertyLocation,ChooseLocation}) => {
           المساحة بالمتر
           </FormLabel>
           <Input 
+            borderColor={errors?.sqrt_area?'red':'none'}
             type="number"
             id="sqrt_area"
             name="sqrt_area"
+            default={0}
             value={data.sqrt_area}
             onChange={handleChange}
             placeholder="المساحة" />
+        <FormLabel color={"red"} display={errors?.sqrt_area?'flex':'none'}>
+                 <small>{errors?.sqrt_area?errors.sqrt_area:null}</small>
+                 </FormLabel>
         </Box>
-        
         <Box width={["100%","fit-content"]}>
         <FormLabel htmlFor="view" fontWeight={'normal'}>
           الإطلالة
@@ -651,6 +659,7 @@ export default function Multistep({myData,setData}) {
    function ChooseLocation(position){
     setPropertyLocation({longitude:position['longitude'],latitude:position['latitude']})
 }
+const [errors,setErrors] = useState()
 let testApi = async()=>{
 
   let token = JSON.parse(localStorage.getItem("authTokens"))
@@ -687,13 +696,7 @@ let testApi = async()=>{
     myform.append("building_age",myData.building_age);
     myform.append("state",myData.state);
     myform.append("directorate",myData.directorate); 
-    myform.append("location",`{
-      "type": "Point",
-      "coordinates": [
-        15.3673937,
-        44.18043,17
-      ]
-  }`)
+   
 
     const url = 'https://fortestmimd.pythonanywhere.com/api/list-properties/'
      const options = {
@@ -736,6 +739,7 @@ let testApi = async()=>{
 
 
         }else{
+          setErrors(result)
         toast(
                {
               title: ` خطأ`,
@@ -792,10 +796,13 @@ let testApi = async()=>{
                         rentFrequencyList={rentFrequencyList}
                         handleChange={handleChange}
                         />
-                         : step === 2 ? <Form2 myData={myData}
+                         : step === 2 ? <Form2 
+                         errors={errors}
+                         myData={myData}
                           setData={setData} handleChange={handleChange}
                            title={myData.property_title}  setImg={setImg} /> :
-                          <Form3                       
+                          <Form3   
+                          errors={errors}                    
                            data={myData}
                            handleChange={handleChange}
                            setPropertyLocation={setPropertyLocation} 
