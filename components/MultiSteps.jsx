@@ -690,8 +690,8 @@ let testApi = async()=>{
     myform.append("location",`{
       "type": "Point",
       "coordinates": [
-          ${e.target.latitude.value},
-          ${e.target.longitude.value}
+        15.3673937,
+        44.18043,17
       ]
   }`)
 
@@ -749,7 +749,7 @@ let testApi = async()=>{
         toast(
                {
               title: ` خطأ`,
-              description:`${JSON.stringify(result)}`,
+              description:`${JSON.stringify(error)}`,
                 status: 'error',
                isClosable: true
               })
