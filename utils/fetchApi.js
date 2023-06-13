@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from 'next/router'
 import axios from "axios";
 const initialState = {
   access: typeof window !== "undefined" ? window.localStorage.getItem('authTokens') : false,
@@ -19,6 +20,7 @@ export const fetchApi = async (url) => {
 
 
 export const deleteProperty = async (id,authToken)=>{
+  const router = useRouter()
   console.log(authToken)
   const url = `https://fortestmimd.pythonanywhere.com/api/list-properties/${id}/`
   const options = {
@@ -33,7 +35,7 @@ export const deleteProperty = async (id,authToken)=>{
    try {
      const response = await fetch(url, options);
      const result = await response.json();
-     if (response.status==204){
+     if (response.ok){
                 
        router.push(`/`)
        alert(JSON.stringify(result))
