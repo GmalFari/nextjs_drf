@@ -802,8 +802,9 @@ const handleSubmit = async e => {
                 size='xl'
                 position={'absolute'} 
                 transform={'translate(-50%, -50%)'}
-                top='70%'
+                top='50vh'
                 left='50%'
+                
                 zIndex='9999999999'
                 />:null}
         <Progress
