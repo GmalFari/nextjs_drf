@@ -782,8 +782,9 @@ const handleSubmit = async e => {
     };
   return (
     <>
-    {loading?<Spinner />:null}
+
       <Box 
+        position={'relative'}
         dir={"rtl"}
         borderWidth="1px"
         rounded="lg"
@@ -793,6 +794,13 @@ const handleSubmit = async e => {
         m="10px auto"
         type=""
         >
+         {loading?<Spinner 
+                position={'absolute'} 
+                transform: {'translate(-50%, -50%)'}
+                top='50%'
+                left='50%'
+                zIndex='9999999999'
+                />:null}
         <Progress
           hasStripe
           value={progress}
