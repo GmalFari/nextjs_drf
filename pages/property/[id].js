@@ -66,8 +66,6 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
     let t = ''
     const {user} = useContext(AuthContext)
 
-
-
 return(
         <>
         <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}>

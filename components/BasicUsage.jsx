@@ -59,7 +59,7 @@ export function BasicUsage({coverPhoto,geography,photos,icon,btnContent,comId}) 
          onClick={onOpen}>
           {icon} <small style={{padding:"5px"}}  >{btnContent}</small>     
       </Button>
-      <Modal size={"full"} blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+      <Modal size={"full"} padding={"0"} blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
           <ModalHeader textAlign={"center"} >
@@ -81,12 +81,12 @@ export function BasicUsage({coverPhoto,geography,photos,icon,btnContent,comId}) 
                 {/* <MainBtn icon={<FaEnvelope fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'الإيميل'} />
                 <MainBtn icon={<FaPhone fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} content={'إتصال'} /> */}
             </Grid></ModalHeader>
-            <ModalBody  ps={0}>
+            <ModalBody pe={0}  ps={0}>
             <ModalCloseButton  position="fixed" zIndex="9999" top="10%" left="90%" bg='#006169'  />
               {mainContent.current}
             </ModalBody>
-          <ModalFooter>
-          <Grid  width={'100%'} position={'absolute'} bottom={1}   templateColumns='repeat(3, 1fr)' gap={1} >
+          <ModalFooter textAlign={"center"}>
+          <Grid  width={'90%'}  position={'absolute'} bottom={1}   templateColumns='repeat(3, 1fr)' gap={1} >
                 
                 <ContactPopover contentType="w" contactWith={`967${'776278868'}`}  icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
                 <ContactPopover contentType="e" contactWith={'gmalfari@gmail.com'} icon={<FaEnvelope fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} />
