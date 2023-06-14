@@ -7,9 +7,11 @@ const OurLogo = () => {
   return (
     <>
 
-   {imgSrc ?{ <Img src={imgSrc} width="141px" 
-     height="60px" />} : 'لبنة بروبيرتي '}
-    
+   {imgSrc && <Img src={imgSrc} width="141px" 
+     height="60px" />      }
+    {!imgSrc && 
+    'لبنة بروبيرتي '
+}
     </>
   )
 }
