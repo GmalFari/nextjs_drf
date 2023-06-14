@@ -136,6 +136,7 @@ export const UpdateProperty= async(id,myData,authToken)=> {
     //        isClosable: true
     //       })
     alert("خظأفي  تعديل العقار ")
+    alert(JSON.stringify(result))
   }
 
 }
