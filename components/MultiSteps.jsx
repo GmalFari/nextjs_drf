@@ -621,7 +621,7 @@ const Form3 = ({errors, data,handleChange,setPropertyLocation,ChooseLocation}) =
 };
 
 export default function Multistep({myData,setData}) {
-  myData.coverPhoto = null ;
+//  myData.coverPhoto = null ;
   console.log(myData)
   let {loginUser,user} = useContext(AuthContext)
   const router = useRouter();
