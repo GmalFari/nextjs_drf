@@ -9,7 +9,7 @@ const OurLogo = () => {
 
    {imgSrc ?{ <Img src={imgSrc} width="141px" 
      height="60px" />} : 'لبنة بروبيرتي '}
-    }
+    
     </>
   )
 }
