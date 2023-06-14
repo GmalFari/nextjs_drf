@@ -1,5 +1,4 @@
 import React from 'react'
-import CustOrders from './CustOrders';
 import { useState } from 'react'
 import {
   Drawer,
@@ -13,41 +12,20 @@ import {
   ,Box
 
 } from '@chakra-ui/react';
+import Multistep from '../MultiSteps';
 import { FaPlus } from 'react-icons/fa';
 import MainAlert from "../MainAlert"
 import { useDisclosure } from '@chakra-ui/react';
 
-const OrderCreateDrower = () => {
+const UpdatePropertyDrower = ({propertyDetails}) => {
+    console.log(propertyDetails)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
   
-  const [data,setData] = useState(
-        {
-        property_title:"jamal",
-        // coverPhoto:"",
-        // "location":{  
-        //       latitude:"",
-        //       longitude:""},
-        proType:"",
-        purpose:"",
-        rentFrequency:"",
-        rentFrequency:"",
-        city:"",
-        state:"",
-        directorate:"",
-        district:"",
-        district:"",
-        street:"",
-        isForRent:true,
-      
-        //form2
-        title:"",
-        img:"",
-      })
+  const [myData,setData] = useState(propertyDetails)
       const headerContent = " حذف العقار";
     const alertDialogHeader = "حذف العقار ";
     const alertDialogBody = "هل أنت متأكد أنك تريد حذف العقار ؟";
-
     const handleDelete = async (e) =>{
         e.preventDefault();
         // deleteProperty(id,accessToken)
@@ -56,7 +34,7 @@ const OrderCreateDrower = () => {
     <>
 
      <Button leftIcon={< FaPlus/>}  ref={btnRef} colorScheme='teal' onClick={onOpen}>
-     إضافة طلب
+      تعديل العقار
       </Button>
       <Drawer
         isOpen={isOpen}
@@ -71,9 +49,6 @@ const OrderCreateDrower = () => {
           <DrawerHeader>
 
           <Box mt="30px" textAlign={"center"}>
-    <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
-        تعديل الطلب
-    </Button>
     <MainAlert headerContent={headerContent} 
                     alertDialogHeader={alertDialogHeader} 
                     alertDialogBody={alertDialogBody} 
@@ -82,7 +57,7 @@ const OrderCreateDrower = () => {
     </Box>
           </DrawerHeader>
           <DrawerBody>
-            <CustOrders myData={data} />
+          <Multistep myData={myData} setData={setData}/>
           </DrawerBody>
           {/* 
             <Button variant='outline' mr={3} onClick={onClose}>
@@ -99,4 +74,5 @@ const OrderCreateDrower = () => {
   )
 }
 
-export default OrderCreateDrower
+
+export default UpdatePropertyDrower

@@ -20,6 +20,8 @@ import {
   FormHelperText,
   InputRightElement,
 } from '@chakra-ui/react';
+
+import {UpdateProperty} from "../utils/fetchApi"
 import { useContext } from 'react';
 import useAxios from '../utils/useAxios';
 import Autocomplete from './AutoComplete';
@@ -411,7 +413,6 @@ const Form2 = ({ errors,myData,setData,title,handleChange,setTitle,setImg}) => {
           // onChange={e=>{e.target.mainImg.files[0]}}
         /> 
       </FormControl>
-        
           {/* رابط الفيديو ع اليوتيوب */}
       <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
         <FormLabel
@@ -620,6 +621,7 @@ const Form3 = ({errors, data,handleChange,setPropertyLocation,ChooseLocation}) =
 };
 
 export default function Multistep({myData,setData}) {
+  console.log(myData)
   let {loginUser,user} = useContext(AuthContext)
   const router = useRouter();
   const [submitted,setSubmitted]=useState(null);
@@ -660,10 +662,9 @@ export default function Multistep({myData,setData}) {
     setPropertyLocation({longitude:position['longitude'],latitude:position['latitude']})
 }
 const [errors,setErrors] = useState()
+let token = JSON.parse(localStorage.getItem("authTokens"))
+let accessToken = token?.access
 let testApi = async()=>{
-
-  let token = JSON.parse(localStorage.getItem("authTokens"))
-  let accessToken = token?.access
   const myform = new FormData()
   
   {/*  myform.append("property_number",myData.property_number);
@@ -758,12 +759,15 @@ let testApi = async()=>{
               })
       }
     }
-    const handleSubmit = async e => {
-      e.preventDefault();
-      testApi();
-    };
-    
-    
+
+const handleSubmit = async e => {
+  e.preventDefault();
+  // testApi()
+  {myData.id?UpdateProperty(myData.id,myData,accessToken):testApi()};
+  // {myData.id && router.reload(window.location.pathname)}
+
+};
+
     const handleChange = (e) => {
       console.log(myData.property_title)
 
@@ -776,6 +780,7 @@ let testApi = async()=>{
   return (
     <>
       <Box 
+        dir={"rtl"}
         borderWidth="1px"
         rounded="lg"
         shadow="1px 1px 3px rgba(0,0,0,0.3)"
@@ -868,7 +873,7 @@ let testApi = async()=>{
             
                 //}}
                 >
-                إضافة  عقار 
+                {myData.id?"تعديل العقار ":"إضافة عقار"}
                 </Button>
               
         </form>

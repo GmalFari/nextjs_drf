@@ -1,5 +1,4 @@
 
-import axios from "axios";
 import {Flex,Grid,Select
      ,Box,Text,Input,
      Avatar,
@@ -17,7 +16,7 @@ import millify from 'millify';
 import ImageScrollbar from '../../components/ImageScrollbar';
 import Link from 'next/link';
 import {useState, createContext, useContext } from 'react';
-import {baseUrl,deleteProperty,fetchApi} from '../../utils/fetchApi';
+import {baseUrl,fetchApi} from '../../utils/fetchApi';
 import { BasicUsage } from '../../components/BasicUsage';
 import MainBtn from '../../components/MainBtn';
 import PropertyTable from "../../components/property/PropertyTable";
@@ -31,7 +30,8 @@ import Head from "next/head";
 import MainAlert from "../../components/MainAlert"
 import AuthContext from "../../context/AuthContext";
 import { useRouter } from "next/router";
-const PropertyDetails = ({propertyDetails:
+import UpdateDeletebtns from '../../components/property/UpdateDeletebtns';
+const PropertyDetails = ({propertyDetails,propertyDetails:
     {   id,
         owner,
         property_number,
@@ -61,24 +61,13 @@ const PropertyDetails = ({propertyDetails:
         property_area,
         rentFrequency,
         photos,amenities,geography}})=>{
-    const headerContent = " حذف العقار";
-    const alertDialogHeader = "حذف العقار ";
-    const alertDialogBody = "هل أنت متأكد أنك تريد حذف العقار ؟"
-
-    let token = JSON.parse(localStorage.getItem("authTokens"))
-    let accessToken = token?.access    
-
-    const router = useRouter()
+        const router = useRouter()
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
     const {user} = useContext(AuthContext)
 
 
-const handleDelete = async (e) =>{
-            e.preventDefault();
-            deleteProperty(id,accessToken)
-            router.push("/")
-        }
+
 return(
         <>
         <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}>
@@ -86,17 +75,7 @@ return(
          </Box>
 
             {user?.user_id == owner ? 
-                <Box display={"flex "} justifyContent={"space-around"} w="full" mt="2" mb="2" >
-                    <MainAlert headerContent={headerContent} 
-                    alertDialogHeader={alertDialogHeader} 
-                    alertDialogBody={alertDialogBody} 
-                    handleSubmit={handleDelete} />
-                        
-        <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
-        تعديل العقار
-    </Button>
-</Box>
-        
+                <UpdateDeletebtns propertyDetails={propertyDetails} id={id} />
                :null }
         <Box
          //marginLeft={["auto","auto","100px"]}
