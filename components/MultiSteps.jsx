@@ -33,7 +33,7 @@ import {viewList} from "../utils/viewList";
 import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import AuthContext from "../context/AuthContext";
-
+import { Spinner } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
 const Form1 = ({data,
@@ -621,8 +621,8 @@ const Form3 = ({errors, data,handleChange,setPropertyLocation,ChooseLocation}) =
 };
 
 export default function Multistep({myData,setData}) {
-//  myData.coverPhoto = null ;
-  console.log(myData)
+//  myData.coverPhoto = null 
+  const [loading,setLoading] = useState(false)
   let {loginUser,user} = useContext(AuthContext)
   const router = useRouter();
   const [submitted,setSubmitted]=useState(null);
@@ -666,6 +666,7 @@ const [errors,setErrors] = useState()
 let token = JSON.parse(localStorage.getItem("authTokens"))
 let accessToken = token?.access
 let testApi = async()=>{
+  setLoading(true);
   const myform = new FormData()
   
   {/*  myform.append("property_number",myData.property_number);
@@ -759,6 +760,7 @@ let testApi = async()=>{
                isClosable: true
               })
       }
+      setLoading(false)
     }
 
 const handleSubmit = async e => {
@@ -780,6 +782,7 @@ const handleSubmit = async e => {
     };
   return (
     <>
+    {loading?<Spinner />:null}
       <Box 
         dir={"rtl"}
         borderWidth="1px"
