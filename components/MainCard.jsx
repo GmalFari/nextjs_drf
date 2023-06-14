@@ -13,6 +13,7 @@ const MainCard = (
   {property:{id,coverPhoto,property_price,rent_frequency,rooms,property_title,baths,sqrt_area
     ,agency,isVerified,externalID,timestamp}}  
   ) => {
+    const defaultImg = "https://www.pythonanywhere.com/user/fortestmimd/files/home/fortestmimd/realestate_restapi/mediafiles/No_Image_Available.jpg"
     console.log(timestamp)
     const date = new Date(timestamp);
     const currentDate = new Date()
@@ -35,7 +36,7 @@ const MainCard = (
       <CardBody >
     <Link href={`/property/${id}`} passHref dir='rtl'>
       <Img  
-                src={coverPhoto ? coverPhoto:image} 
+                src={coverPhoto ? coverPhoto:defaultImg} 
                 borderRadius={10}
                width={[160,170,250]} 
                 height={[170,200]}
