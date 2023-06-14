@@ -39,6 +39,7 @@ export const deleteProperty = async (id,authToken)=>{
       //   duration={"5000"}
       //    status={"success"} />
        alert(JSON.stringify(result))
+        location.reload()
          console.log(result)
       //  setData({...myData,property_title:""})
     }else{
@@ -59,11 +60,11 @@ export const UpdateProperty= async(id,myData,authToken)=> {
     myform.append("property_title",myData.property_title);
     myform.append("property_type",myData.property_type);
     
-    // {myData.coverPhoto && myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
+     {myData.coverPhoto && myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
                                                         
     myform.append("purpose",myData.purpose);
     myform.append("property_town",myData.property_town);
-  
+    {myData.coverPhoto && myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
     myform.append("property_district",myData.property_district);
     myform.append("property_area",myData.property_area);
     myform.append("property_street",myData.property_street);
