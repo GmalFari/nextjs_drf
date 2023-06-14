@@ -7,12 +7,12 @@ const OurLogo = () => {
   return (
     <>
 
-   {imgSrc && 
+   
     <Img src={imgSrc} width="141px" 
-     height="60px" />      } 
-    {!imgSrc && 
-   <Text color='#006275'> لبنة بروبيرتي </Text>
-}
+     height="60px" />      
+    
+
+
     </>
   )
 }
