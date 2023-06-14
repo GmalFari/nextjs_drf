@@ -11,7 +11,7 @@ const OurLogo = () => {
 
    
     {imgSrc && 
-   <Text color='#006275'> 'لبنة بروبيرتي '</Text>
+   <Text color='#006275'> لبنة بروبيرتي </Text>
 }
     </>
   )
