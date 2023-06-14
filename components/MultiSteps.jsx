@@ -766,7 +766,7 @@ let testApi = async()=>{
 const handleSubmit = async e => {
   e.preventDefault();
   // testApi()
-  {myData.id?UpdateProperty(myData.id,myData,accessToken):testApi()};
+  {myData.id?UpdateProperty(myData.id,myData,accessToken,loading,setLoading):testApi()};
   // {myData.id && router.reload(window.location.pathname)}
 
 };
