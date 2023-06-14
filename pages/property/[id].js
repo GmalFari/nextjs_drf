@@ -30,6 +30,7 @@ import MyBreadcrumb from "../../components/MyBreadcrumb";
 import Head from "next/head";
 import MainAlert from "../../components/MainAlert"
 import AuthContext from "../../context/AuthContext";
+import { useRouter } from "next/router";
 const PropertyDetails = ({propertyDetails:
     {   id,
         owner,
@@ -66,35 +67,17 @@ const PropertyDetails = ({propertyDetails:
 
     let token = JSON.parse(localStorage.getItem("authTokens"))
     let accessToken = token?.access    
+
+    const router = useRouter()
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
     const {user} = useContext(AuthContext)
 
 
-    // let encodedParams = new URLSearchParams();
-    // encodedParams.append("q", "English is hard, but detectably so");
-
-//   const options = {
-//   method: 'POST',
-//   url: 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect',
-//   headers: {
-//     'content-type': 'application/x-www-form-urlencoded',
-//     // 'Accept-Encoding': 'application/gzip',
-//     'X-RapidAPI-Key': '6cb10cae22mshe83ac21e4eb1de3p1897c1jsn0b3893d5488f',
-//     'X-RapidAPI-Host': 'google-translate1.p.rapidapi.com'
-//   },
-//   data: encodedParams
-//    };
-
-//    axios.request(options).then(function (response) {
-//    t =respose.data	
-// console.log(response.data);
-//    }).catch(function (error) {
-// 	console.error(error);
-//    });
-        const handleSubmit = (e) =>{
+const handleDelete = async (e) =>{
             e.preventDefault();
             deleteProperty(id,accessToken)
+            router.push("/")
         }
 return(
         <>
@@ -107,7 +90,7 @@ return(
                     <MainAlert headerContent={headerContent} 
                     alertDialogHeader={alertDialogHeader} 
                     alertDialogBody={alertDialogBody} 
-                    handleSubmit={handleSubmit} />
+                    handleSubmit={handleDelete} />
                         
         <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
         تعديل العقار

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import axios from "axios";
 const initialState = {
@@ -31,24 +32,19 @@ export const deleteProperty = async (id,authToken)=>{
      
    };
    try {
-     const response = await fetch(url, options);
+     const response = await fetch(url, options)
      const result = await response.json();
-     if (response.status==204){
+     console.log(result)
+     if (response.status==="204"){
                 
-       router.push(`/`)
        alert(JSON.stringify(result))
          console.log(result)
       //  setData({...myData,property_title:""})
-      alert(JSON.stringify(result))
-      
-      
-      
     }else{
       console.log(result)
      }
    } catch (error) {
     console.log(JSON.stringify(error))
-    alert(JSON.stringify(error))
   }
     
 }
