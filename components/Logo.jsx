@@ -1,6 +1,6 @@
 import React from 'react'
 import myLogo from "../assets/images/logo2.png"
-import { Img } from '@chakra-ui/react'
+import { Img,Text } from '@chakra-ui/react'
 const OurLogo = () => {
   const imgSrc ="https://fortestmimd.pythonanywhere.com/media/media/logo1.png"
      /*  {imgSrc && 
@@ -11,7 +11,7 @@ const OurLogo = () => {
 
    
     {imgSrc && 
-    'لبنة بروبيرتي '
+   <Text color='#006275'> 'لبنة بروبيرتي '</Text>
 }
     </>
   )
