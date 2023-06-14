@@ -39,7 +39,9 @@ const ImageScrollbar = ({data,coverPhoto}) => {
     const testmap = [1,2,4,4,6,4,32,2,3,3,3];
     //  data = [...data,coverPhoto]
     // console.log(data.length )
-    const [defaultImg, setDefaultImg] = useState(coverPhoto.url);
+    let mainImg = null
+    mainImg = coverPhoto?coverPhoto.url:"https://www.pythonanywhere.com/user/fortestmimd/files/home/fortestmimd/realestate_restapi/mediafiles/No_Image_Available.jpg"
+    const [defaultImg, setDefaultImg] = useState(mainImg);
     const [imgWH ,setImgWH] =useState({width:"100%",
                                         height:"700px"})
     const imageRef = useRef()
@@ -58,13 +60,13 @@ const ImageScrollbar = ({data,coverPhoto}) => {
         <Box  overflow={"hidden"}  pt={"10%"} borderRadius="2px"   
                 textAlign="center">
             <Img style={{"objectFit":"cover"}}
-             src={coverPhoto} height={"50rm"}
+             src={defaultImg} height={"50rm"}
               overflow="hidden" ref={imageRef}  alt=""
               sizes="(max-width: 500px) 100px, (max-width: 1023px) 400px, 1000px"                
   />
         </Box>
         <Box>
-        <ScrollMenu position={'initial'} LeftArrow={LeftArrow} RightArrow={RightArrow} style={{overflow:"scroll"}}>
+        {coverPhoto &&<ScrollMenu position={'initial'} LeftArrow={LeftArrow} RightArrow={RightArrow} style={{overflow:"scroll"}}>
         {testmap.map((item) =>(
             <Box       
                     border={item.url === defaultImg?"4px solid #127578":"none"}
@@ -85,6 +87,7 @@ const ImageScrollbar = ({data,coverPhoto}) => {
             
         ))}
         </ScrollMenu>
+        }
         </Box>
 
 </Box>)

@@ -38,7 +38,7 @@ const MainCard = (
       <Img  
                 src={coverPhoto ? coverPhoto:defaultImg} 
                 borderRadius={10}
-               width={[160,170,250]} 
+                width={[160,170,250]} 
                 height={[170,200]}
                 minH={[170,200]}
                  style={{objectFit:'cover'}}
