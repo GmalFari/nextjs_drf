@@ -54,7 +54,6 @@ const SearchAutoComplete = (onSearch,setOnSearch,setProperties) => {
       //   }
       // },[]);
       
-      
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.

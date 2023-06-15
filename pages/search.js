@@ -31,9 +31,9 @@ import OurLogo from '../components/Logo';
 // import { paginate } from '../helper/paginate';
 const Search = ({data}) => {
     const myproperties = data?.results
+    const [properties,setProperties] = useState(myproperties);
     const [pageCount,setPageCount] = useState(data?.count);
     const itemsCount = Math.round(pageCount)
-    const [properties,setProperties] = useState(myproperties);
     const [onSearch,setOnSearch] = useState(false)
     const [searchFilter,setSearchFilter] = useState(false);
     const [toggleVerticalCard,setToggleVerticalCard] = useState('true');

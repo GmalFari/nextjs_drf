@@ -4,16 +4,16 @@ import { FaEllipsisV } from 'react-icons/fa';
 import {BiLike,BiChat,BiShare} from "react-icons/bi";
 import { StarIcon } from '@chakra-ui/icons';
 
-const  UserInfo=()=> {
+const  UserInfo=({userDetail:{first_name,last_name,email,company}})=> {
       return (
 <Card maxW='md' dir='rtl'>
   <CardHeader>
     <Flex spacing='2'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-        <Avatar name='Jamal Farea'  />
+        <Avatar name={`${first_name && first_name} ${last_name && last_name}`}/>
         <Box>
-          <Heading size='sm'>جمال فارع</Heading>
-          <Text>لبنة هاوس</Text>
+          <Heading size='sm'>{first_name} {last_name} </Heading>
+        {company && <Text>{company} </Text>}
         </Box>
       </Flex>
       <IconButton

@@ -17,7 +17,7 @@ import { FaPlus } from 'react-icons/fa';
 import MainAlert from "../MainAlert"
 import { useDisclosure } from '@chakra-ui/react';
 
-const UpdatePropertyDrower = ({propertyDetails}) => {
+const UpdatePropertyDrower = ({isColumn,propertyDetails}) => {
     console.log(propertyDetails)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
@@ -31,7 +31,7 @@ const UpdatePropertyDrower = ({propertyDetails}) => {
         // deleteProperty(id,accessToken)
     }
   return (
-    <>
+    <Box display={"flex"} flexWrap={"wrap"} flexDirection={"column !important"}>
 
      <Button leftIcon={< FaPlus/>}  ref={btnRef} colorScheme='teal' onClick={onOpen}>
       تعديل العقار
@@ -70,7 +70,7 @@ const UpdatePropertyDrower = ({propertyDetails}) => {
 </DrawerFooter> 
         </DrawerContent>
       </Drawer>
-    </>
+    </Box>
   )
 }
 
