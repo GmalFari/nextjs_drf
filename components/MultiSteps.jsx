@@ -802,7 +802,7 @@ const handleSubmit = async e => {
                 size='xl'
                 position={'absolute'} 
                 transform={'translate(-50%, -50%)'}
-                top='50vh'
+                top='80%'
                 left='50%'
                 
                 zIndex='9999999999'

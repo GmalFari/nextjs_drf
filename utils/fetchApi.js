@@ -53,7 +53,7 @@ export const deleteProperty = async (id,authToken)=>{
 }
 
 
-export const UpdateProperty= async(id,myData,authToken)=> {
+export const UpdateProperty= async(id,myData,authToken,setLoading)=> {
   const myform = new FormData()
   {/*  myform.append("property_number",myData.property_number);
    */}
@@ -64,12 +64,11 @@ export const UpdateProperty= async(id,myData,authToken)=> {
                                                         
     myform.append("purpose",myData.purpose);
     myform.append("property_town",myData.property_town);
-    {myData.coverPhoto && myform.append("coverPhoto",myData.coverPhoto,"picture.jpg")};
+    // {myData.coverPhoto && myform.append("coverPhoto",myData.coverPhoto,`${Math.floor((Math.random() * 643400) + 9043400)}picture.jpg`)};
     myform.append("property_district",myData.property_district);
     myform.append("property_area",myData.property_area);
     myform.append("property_street",myData.property_street);
     myform.append("rent_frequency",myData.rent_frequency);
-  
     myform.append("property_description",myData.property_description);
     myform.append("property_price",myData.property_price);
     myform.append("currency",myData.currency);
@@ -95,6 +94,7 @@ export const UpdateProperty= async(id,myData,authToken)=> {
 
   options.body = myform;
   try {
+    setLoading(true)
     const response = await fetch(url, options);
     const result = await response.json();
     if (response.status ===200){        
@@ -138,5 +138,5 @@ export const UpdateProperty= async(id,myData,authToken)=> {
     alert("خظأفي  تعديل العقار ")
     alert(JSON.stringify(result))
   }
-
+  setLoading(false)
 }
