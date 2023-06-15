@@ -33,74 +33,95 @@ const PropertyTable =({property_number,
   updated,
       property_price,
   property_area})=>{
+  let  dateFormat = new Date(timestamp);
+  const date= new Date(timestamp);
+  dateFormat = date.getHours() + ":" + date.getMinutes() + ", "+ date.toDateString();
   return (
     <>
 <Flex  width={'100%'} minW="100%"
     justifyConten='center' flexWrap='wrap'>
-     <TableContainer dir='rtl' maxW='100%'>
+     <TableContainer width="100%" dir='rtl' maxW='100%'>
 
-  <Table variant='striped'>
+  <Table variant='striped' width="100%">
     
     <Thead>
       
     </Thead>
     <Tbody>
+    {phone && 
     <Tr>
         <Td> رقم التواصل     </Td>
         <Td> {phone}</Td>
         
       </Tr>
+      }
+      {property_price && 
       <Tr>
         <Td> السعر      </Td>
         <Td> {property_price}</Td>
         
       </Tr>
+      }
+      {property_town && 
       <Tr>
         <Td>المدينه</Td>
         <Td>{property_town}</Td>
       </Tr>
+      }
+      {property_area &&
       <Tr>
         <Td>الحي / المنطقه</Td>
         <Td>{property_area} </Td>
       </Tr>
+     }
+      {rooms && 
       <Tr>
         <Td>عدد الغرف </Td>
         <Td>{rooms}</Td>
       </Tr>
+      }
+      {baths &&
       <Tr>
         <Td>عدد الحمامات </Td>
-        <Td> {baths}</Td>
+        <Td> { baths}</Td>
       </Tr>
+      }
+      {sqrt_area && 
       <Tr>
         <Td>مساحة البناء</Td>
         <Td>{sqrt_area}</Td>
         
       </Tr>
+        }
+      {building_age && 
       <Tr>
         <Td> عمر البناء
       </Td>
         <Td> {building_age}</Td>
         
       </Tr>
+      }
+      {building_facade && 
       <Tr>
         <Td> واجهة المبنى 
       </Td>
         <Td> {building_facade}</Td>
         
       </Tr>
+    }
       <Tr>
         <Td> مفروشة /غير مفروشة      </Td>
         <Td> {furnishingStatus?"مفروشة":"غير مفروشة"}</Td>
         
       </Tr>
+      {is_negotiable&&
       <Tr>
         <Td>قابلية التفاوض  
       </Td>
         <Td> {is_negotiable}</Td>
         
       </Tr>
-      
-      
+      }
     </Tbody>
     <Tfoot>
       

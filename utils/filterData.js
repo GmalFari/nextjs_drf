@@ -1,18 +1,18 @@
 export const filterData = [
     {
       items: [
-        { name: 'للبيع', value: 'for-sale' },
-        { name: 'للشراء', value: 'for-rent' },
+        { name: 'للبيع', value: 'للبيع' },
+        { name: 'للإيجار', value: 'للإيجار' },
       ],
       placeholder: 'الغرض',
       queryName: 'purpose',
     },
     {
       items: [
-        { name: 'يومي', value: 'daily' },
-        { name: 'أسبوعي', value: 'weekly' },
-        { name: 'شهري', value: 'monthly' },
-        { name: 'سنوي', value: 'yearly' },
+        { name: 'يومي', value: 'يومي' },
+        { name: 'أسبوعي', value: 'أسبوعي' },
+        { name: 'شهري', value: 'شهري' },
+        { name: 'سنوي', value: 'سنوي' },
       ],
       placeholder: 'مدة الدفع',
       queryName: 'rentFrequency',
@@ -140,8 +140,8 @@ export const filterData = [
       minPrice,
       maxPrice,
       areaMax,
-      roomsMin,
-      bathsMin,
+      rooms,
+      baths,
       sort,
       locationExternalIDs,
     } = filterValues;
@@ -168,12 +168,12 @@ export const filterData = [
         value: areaMax,
       },
       {
-        name: 'roomsMin',
-        value: roomsMin,
+        name: 'rooms',
+        value: rooms,
       },
       {
-        name: 'bathsMin',
-        value: bathsMin,
+        name: 'baths',
+        value: baths,
       },
       {
         name: 'sort',

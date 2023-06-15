@@ -33,7 +33,8 @@ const Search = ({data}) => {
     const myproperties = data?.results
     const [pageCount,setPageCount] = useState(data?.count);
     const itemsCount = Math.round(pageCount)
-    const [properties,setProperties] = useState(myproperties)
+    const [properties,setProperties] = useState(myproperties);
+    const [onSearch,setOnSearch] = useState(false)
     const [searchFilter,setSearchFilter] = useState(false);
     const [toggleVerticalCard,setToggleVerticalCard] = useState('true');
     const router = useRouter()
@@ -41,11 +42,13 @@ const Search = ({data}) => {
     console.log(pageCount)
     const pageSize = 3;
 
+    const [onFilter,setOnFilter]=useState(false)
 
     const onPageChange = (page) => {
       setCurrentPage(page);
     };
     useEffect(() => {
+      if (!onFilter){
         if(currentPage < 1){
             setCurrentPage(1)
         }
@@ -65,6 +68,7 @@ const Search = ({data}) => {
           .catch((error) => {
             console.log(error);
           });
+        }
       }, [currentPage, itemsCount]);
 
     const listingsH = [properties.map((property) =>(
@@ -97,13 +101,13 @@ const Search = ({data}) => {
         <Flex mt="4" mb="4" justifyContent={"center"}>
         <Box  display="flex" position="relative">
         <Box>
-        <SearchAutoComplete />
+        <SearchAutoComplete onSearch={onSearch} setOnSearch={setOnSearch} setProperties={setProperties} />
         <Divider orientation='vertical' />
         </Box>
         <Box position="absolute"
                  left="10px" top="2px" >
                  <IconButton   border="transparent" 
-                icon={<FaSearch/>}  me="2" ms="2" colorScheme='teal' variant='outline'></IconButton>
+                icon={<FaSearch/>}   me="2" ms="2" colorScheme='teal' variant='outline'></IconButton>
          <SearchFilter setProperties={setProperties}/>
                  </Box>
         </Box>
@@ -113,22 +117,35 @@ const Search = ({data}) => {
          {/* } */}
         <Flex justifyContent={'space-between'} fontSize={['md','xl','xl','2xl']} p="4" fontWeight="bold">
         <Flex color={'#006169'} flexGrow={1} justifyContent={'right'} >
-        <Icon             
+        <Box width={"48px"} 
+            height={"48px"}
+            onClick={()=>{setToggleVerticalCard(!toggleVerticalCard)}} 
             cursor={ 'pointer'} 
+            >
+        <Icon           
             color={!toggleVerticalCard?'#006169':'#ddd'}
-             onClick={()=>{setToggleVerticalCard(!toggleVerticalCard)}} 
               ms={2} me={2}
              as={FaGripHorizontal}
               />
+        </Box>
+        <Box width={"48px"} 
+            height={"48px"}
+            onClick={()=>{setToggleVerticalCard(!toggleVerticalCard)}} 
+            cursor={ 'pointer'} 
+            >
               <Icon
                 cursor={'pointer'} 
             color={toggleVerticalCard?'#006169':'#ddd'}
              onClick={()=>{setToggleVerticalCard(!toggleVerticalCard)}} 
               ms={2} me={2}
                  as={FaList}/>
+            </Box>
+            <Box width={"48px"} 
+            height={"48px"}
+            cursor={ 'pointer'} 
+            >
                <Icon as={BsSortDown}/> 
-             
-
+          </Box>
         </Flex>
         <Text>
         </Text>
@@ -214,12 +231,12 @@ export default Search
 
 
 export async function getServerSideProps({query}) {
-    const purpose = query.purpose || 'for rent';
+    const purpose = query.purpose || 'for-rent';
     const rentFrequency = query.rentFrequency || 'yearly';
     const minPrice = query.minPrice || '0';
     const maxPrice = query.maxPrice || '1000000';
-    const bathsMin = query.bathsMin || '0';
-    const roomsMin = query.roomsMin || '0';
+    const baths = query.baths || '0';
+    const rooms = query.rooms || '0';
     const sort = query.sort || 'price-desc';
     const areaMax = query.areaMax || '35000';
     const locationExternalIDs = query.locationExternalIDs || '5002';

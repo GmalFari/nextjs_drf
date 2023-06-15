@@ -188,13 +188,13 @@ return(
                     <Text> purpose</Text>
                     <Text fontWeight="bold" >{purpose}</Text>
                 </Flex> */}
-                {furnishingStatus &&(
+                {/* {furnishingStatus &&(
                     <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">
                         <Text> furnishingStatus</Text>
                         <Text fontWeight="bold" >{furnishingStatus}</Text>
                     </Flex>
                 )
-                }
+                } */}
                 <Box>
                     {/* {amenities.length && <Text fontSize="2xl" fontWeight="black"  marginTop="5"  >
                         Amenities

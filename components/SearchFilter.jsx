@@ -24,7 +24,6 @@ import {
 import { BsFilter } from 'react-icons/bs';
 const SearchFilter = () => {
   const { onOpen, onClose, isOpen } = useDisclosure()
-
   const [filters] = useState(filterData);
   const [searchTerm, setSearchTerm] = useState('');
   const [locationData, setLocationData] = useState();
@@ -45,18 +44,18 @@ const SearchFilter = () => {
     }
     
   )
-  useEffect(()=>{
-    if(searchTerm !== ''){
-      const fetchData = async ()=>{
-        setLoading(true);
-        const data = await fetchApi(`{baseUrl}/auto-complete?query=${searchTerm}`)
-        setLoading(data?.hits);
-        setLoading(false);
-        searchTerm(data?.hits);
-        fetchData();
-        };
-    }
-  },[searchTerm]);
+  // useEffect(()=>{
+  //   if(searchTerm !== ''){
+  //     const fetchData = async ()=>{
+  //       setLoading(true);
+  //       const data = await fetchApi(`{baseUrl}/auto-complete?query=${searchTerm}`)
+  //       setLoading(data?.hits);
+  //       setLoading(false);
+  //       searchTerm(data?.hits);
+  //       fetchData();
+  //       };
+  //   }
+  // },[searchTerm]);
   
   
   return (

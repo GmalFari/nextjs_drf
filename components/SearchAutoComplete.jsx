@@ -1,7 +1,11 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { Box } from '@chakra-ui/react'
-const SearchAutoComplete = () => {
+import { useState,useEffect } from 'react';
+import axios from 'axios';
+const SearchAutoComplete = (onSearch,setOnSearch,setProperties) => {
+    const [searchValue,setSearchValue] = useState("property title")
     const items = [
         {
           id: 0,
@@ -24,13 +28,38 @@ const SearchAutoComplete = () => {
           name: 'بيوت'
         }
       ]
-    
+      const[loading,setLoading]=useState(false)
+      const router = useRouter();
+      const searchProperties = (
+        (property_title) =>{
+          const path = router.pathname;
+          const {query } = router;
+            query["property_title"] = property_title
+            router.push({pathname:path,query})
+
+          })
+        
+        
+      // useEffect(()=>{
+      //   searchProperties()
+      //   if(loading){
+      //     axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?property_title=${searchValue}`)
+      //     .then((response) => {
+      //       console.log(response.data)
+      //       // setProperties(response.json)
+      //         })
+      //     .catch((error) => {
+      //       console.log(error);
+      //     });
+      //   }
+      // },[]);
+      
+      
   const handleOnSearch = (string, results) => {
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
     console.log(string, results)
   }
-
   const handleOnHover = (result) => {
     // the item hovered
     console.log(result)
@@ -65,6 +94,8 @@ const SearchAutoComplete = () => {
             onSelect={handleOnSelect}
             onFocus={handleOnFocus}
             formatResult={formatResult}
+            className='ReactSearchAutoComplete'
+            
           />
         </Box>
     </div>
