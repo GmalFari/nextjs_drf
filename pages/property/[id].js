@@ -172,7 +172,7 @@ return(
         </Box>
         <Divider/>
 
-        <Box display={['block','none']}>
+        <Box display={['block','block']}>
             <Text as="h2" fontSize="lg" marginBottom="2" fontWeight="bold">
             المعلن
             </Text>
@@ -220,7 +220,7 @@ return(
            </Flex> 
             </Box>
             </Box>
-            <Box mt={"60px"}  width={"20vw"} display={["none","none","block"]}
+            <Box mt={"60px"}  width={"20vw"} display={["none","none","none"]}
              background={"#fff"}
              height={"100vh"}>
             <Img  src={coverPhoto} width={"100%"} height={"150px"} />
