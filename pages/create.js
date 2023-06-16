@@ -90,6 +90,9 @@ const [myData,setData] = useState(
   // title:"",
   // img:"",
 })
+
+const [imageFiles,setImageFiles]=useState([])
+
   return (
     <>
     {user?
@@ -99,7 +102,7 @@ const [myData,setData] = useState(
         تعديل العقار
     </Button>
     <MainAlert /></Box> */}
-      <MultiSteps myData={myData} setData={setData}/>
+      <MultiSteps imageFiles={imageFiles} setImageFiles={setImageFiles} myData={myData} setData={setData}/>
       </Box>:window.location.replace("/accounts/login")}
       </>
   )

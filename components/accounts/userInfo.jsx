@@ -3,17 +3,50 @@ import { Flex,Avatar,Box,Heading,Text,IconButton ,Button} from '@chakra-ui/react
 import { FaEllipsisV } from 'react-icons/fa';
 import {BiLike,BiChat,BiShare} from "react-icons/bi";
 import { StarIcon } from '@chakra-ui/icons';
+import { useContext,useState, useEffect } from 'react';
+import AuthContext from '../../context/AuthContext';
+const  UserInfo=()=> {
+  const {user,authTokens} = useContext(AuthContext);
+  const[userDetail,setUserDetail]=useState({
+    first_name:"",
+    last_name:"",
+    email:""
+  });
+  const getUserdetail = async ()=>{
+    console.log('update tokens')
+    try{
+      let response = await fetch('https://fortestmimd.pythonanywhere.com/auth/users/me/',{
+      method:'GET',
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization':`Bearer ${authTokens?.access}`
 
-const  UserInfo=({userDetail:{first_name,last_name,email,company}})=> {
+      },
+    })
+    let data = await response.json()
+    if (response.status === 200) {
+
+      setUserDetail(data)
+      // router.push("/")
+    }else {
+      alert(JSON.stringify(data))
+    }
+    }catch(errors){
+      alert(errors)
+    }
+  }
+  useEffect(()=>{
+    getUserdetail()
+  },[])
       return (
 <Card maxW='md' dir='rtl'>
   <CardHeader>
     <Flex spacing='2'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-        <Avatar name={`${first_name && first_name} ${last_name && last_name}`}/>
+        <Avatar name={`${userDetail.first_name && userDetail.first_name} ${userDetail.last_name && userDetail.last_name}`}/>
         <Box>
-          <Heading size='sm'>{first_name} {last_name} </Heading>
-        {company && <Text>{company} </Text>}
+          <Heading size='sm'>{userDetail.first_name&& userDetail.first_name} {userDetail.last_name &&userDetail.last_name} </Heading>
+        {userDetail.company && <Text>{userDetail.company} </Text>}
         </Box>
       </Flex>
       <IconButton

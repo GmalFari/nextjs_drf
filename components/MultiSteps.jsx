@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import React, { useState,useEffect } from 'react';
 import dayjs from 'dayjs';
 import {
@@ -21,6 +22,7 @@ import {
   InputRightElement,
 } from '@chakra-ui/react';
 
+import ImagesUpload from "./images/ImagesUpload";
 import {UpdateProperty} from "../utils/fetchApi"
 import { useContext } from 'react';
 import useAxios from '../utils/useAxios';
@@ -620,7 +622,10 @@ const Form3 = ({errors, data,handleChange,setPropertyLocation,ChooseLocation}) =
   );
 };
 
-export default function Multistep({myData,setData}) {
+export default function Multistep({
+  myData,setData,
+  imageFiles,setImageFiles
+            }) {
 //  myData.coverPhoto = null 
   const [loading,setLoading] = useState(false)
   let {loginUser,user} = useContext(AuthContext)
@@ -649,7 +654,7 @@ export default function Multistep({myData,setData}) {
   });
 
   const [step, setStep] = useState(1);
-  const [progress, setProgress] = useState(33.33);
+  const [progress, setProgress] = useState(25);
   //form1
   const purposeList = ['للإيجار','للبيع']
   const rentFrequencyList = ['يومي','اسبوعي','شهري','سنوي','نصف سنوي','ربع سنوي']
@@ -699,8 +704,6 @@ let testApi = async()=>{
     myform.append("building_age",myData.building_age);
     myform.append("state",myData.state);
     myform.append("directorate",myData.directorate); 
-   
-
     const url = 'https://fortestmimd.pythonanywhere.com/api/list-properties/'
      const options = {
         method: 'POST',
@@ -719,7 +722,7 @@ let testApi = async()=>{
         if (response.status ===201){
           setSubmitted(true)
           setApiMessage(result)          
-          router.push(`/property/${result.id}`)
+          // router.push(`/property/${result.id}`)
           toast(
               {
               title: ` لقد تم  إضافة العقار`,
@@ -738,9 +741,7 @@ let testApi = async()=>{
           setData({...myData,property_title:""})
           console.log(result)
           alert(JSON.stringify(result))
-
-
-
+          setStep(4)
         }else{
           setErrors(result)
         toast(
@@ -813,7 +814,8 @@ const handleSubmit = async e => {
           mb="5%"
           mx="5%"
           isAnimated></Progress>
-        {step === 1 ? <Form1 
+        {step === 1 ? 
+        <Form1 
                         data={myData}
                         purposeList={purposeList}
                         rentFrequencyList={rentFrequencyList}
@@ -824,19 +826,26 @@ const handleSubmit = async e => {
                          myData={myData}
                           setData={setData} handleChange={handleChange}
                            title={myData.property_title}  setImg={setImg} /> :
+                           step === 3?
                           <Form3   
                           errors={errors}                    
                            data={myData}
                            handleChange={handleChange}
                            setPropertyLocation={setPropertyLocation} 
-                            />}
+                            /> :
+                            <Box>
+                            <Box>أختر الصور للعقار</Box>
+                            <ImagesUpload 
+                            imageFiles={imageFiles} setImageFiles={setImageFiles} />
+                            </Box>
+                           }
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex>
               <Button
                 onClick={() => {
                   setStep(step - 1);
-                  setProgress(progress - 33.33);
+                  setProgress(progress -25);
                 }}
                 isDisabled={step === 1}
                 colorScheme="teal"
@@ -850,10 +859,10 @@ const handleSubmit = async e => {
               </Button>
               <Button
                 w="7rem"
-                isDisabled={step === 3}
+                isDisabled={step === 4}
                 onClick={() => {
                   setStep(step + 1);
-                  if (step === 3) {
+                  if (step === 4) {
                     setProgress(100);
                   } else {
                     setProgress(progress + 33.33);

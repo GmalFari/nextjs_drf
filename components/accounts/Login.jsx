@@ -46,10 +46,14 @@ const  LoginComponent=()=> {
       setLoading(false);
     }
   }, []);
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    loginUser(email,password)
+  }
   return (
     <Flex bg="gray.100" align="center" justify="center" h="100vh">
       <Box bg="white" p={6} rounded="md">
-        <form onSubmit={loginUser}>
+        <form onSubmit={handleSubmit}>
           <VStack spacing={3} align="flex-start">
             {/* <FormControl>
               <FormLabel htmlFor="phone">(اختياري) رقم التلفون</FormLabel>

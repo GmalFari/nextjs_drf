@@ -21,42 +21,16 @@ import AuthContext from '../../context/AuthContext';
 import { useRouter } from 'next/router';
 const Profile =({data})=>{
 const {user,authTokens} = useContext(AuthContext);
-const [userDetail,setUserDetail]=useState({})
 const myproperties = data?.results
 const [properties,setProperties] = useState(myproperties);
 const listingsH = [properties.filter(myProperty => myProperty.owner == user?.user_id).map((property) =>(
   <HorizonalCard   property={property} key={property.id} /> 
       ))]
-  const getUserdetail = async ()=>{
-      console.log('update tokens')
-      try{
-        let response = await fetch('https://fortestmimd.pythonanywhere.com/auth/users/me/',{
-        method:'GET',
-        headers:{
-          'Content-Type':'application/json',
-          'Authorization':`Bearer ${authTokens?.access}`
   
-        },
-      })
-      let data = await response.json()
-      if (response.status === 200) {
-
-        setUserDetail(data)
-        // router.push("/")
-      }else {
-        alert(JSON.stringify(data))
-      }
-      }catch(errors){
-        alert(errors)
-      }
-    }
-    useEffect(()=>{
-      getUserdetail()
-    },[])
   return(
   <Box  paddingTop={"100px"}>
  <Center>
-  <UserInfo userDetail={userDetail} />
+  <UserInfo />
   
   </Center> 
   <Flex flexDirection={['column']}  flexWrap="wrap" justifyContent="center" alignItems="center" >

@@ -23,7 +23,7 @@ import AuthContext from "../../context/AuthContext";
 import { useToast } from '@chakra-ui/react';
 export default function SignupCard() {
 
-  const {registerUser,errors} = useContext(AuthContext);
+  const {registerUser,loginUser,errors} = useContext(AuthContext);
 
   const [submitted,setSubmitted]=useState(false);
   const toast = useToast()
@@ -38,6 +38,7 @@ export default function SignupCard() {
   const handleSubmit = async e => {
     e.preventDefault();
     registerUser(firstname,lastname,email, password);
+    loginUser
   };
   console.log(errors)
   

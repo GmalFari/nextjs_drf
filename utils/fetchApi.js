@@ -140,3 +140,6 @@ export const UpdateProperty= async(id,myData,authToken,setLoading)=> {
   }
   setLoading(false)
 }
+
+
+

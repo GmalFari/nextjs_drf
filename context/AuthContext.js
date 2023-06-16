@@ -37,8 +37,8 @@ useEffect(()=>{
   ? jwt_decode(localStorage.getItem("authTokens"))
   : null)
 },[])
-  let loginUser = async (e) => {
-    e.preventDefault()
+  let loginUser = async (email,password) => {
+    // e.preventDefault()
     console.log("form submitted")
     
    try{
@@ -48,7 +48,7 @@ useEffect(()=>{
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-       "email":e.target.email.value,"password":e.target.password.value
+       "email":email,"password":password
       })
     });
     
@@ -56,7 +56,6 @@ useEffect(()=>{
     if (response.status === 200) {
         setAuthTokens(data);
       setUser(jwt_decode(data.access));
-      console.log(user)
       localStorage.setItem("authTokens", JSON.stringify(data));
       console.log(response.status)
       alert("لقد تم تسجيل الدخول")
@@ -99,6 +98,7 @@ useEffect(()=>{
 
     if (response.status === 201) {
       console.log(response.status)
+      loginUser(email,password)
       alert("لقد تم إضافة حسابك بنجاح أنتقل لصفحة تسجيل الدخول لتسجيل الخول")
       router.push('/accounts/login')
       MainToast({"title":"خطاء بالبيانات ","description":"خطأ بالبيانات"
