@@ -14,7 +14,6 @@ const Carousel = () => {
   return (
         <Box height={["60vh","70vh"]} className="carousel-inner">
           <Box backgroundImage={"https://fortestmimd.pythonanywhere.com/media/media/15645428.png"} backgroundSize="cover" className="carousel-item active">
-                
                 {/* <Image
                 width="100%" minwidth="100%"
                 height={"none"}

@@ -15,12 +15,30 @@ import {
     Label,
     useColorModeValue,
     Link,
+    Field,
+    FormErrorMessage,
+    Form,
   } from '@chakra-ui/react';
+
+import RegexPhoneNumberInput from "../RegexPhoneNumberInput" 
+
 import { useState,useContext} from 'react';
 import { ViewIcon, ViewOffIcon} from '@chakra-ui/icons';
 import { Formik, useFormik } from "formik";
 import AuthContext from "../../context/AuthContext";
 import { useToast } from '@chakra-ui/react';
+
+
+
+const validateName=(value)=> {
+  let error
+  if (!value) {
+    error = 'Name is required'
+  } else if (value.toLowerCase() !== 'naruto') {
+    error = "Jeez! You're not a fan 😱"
+  }
+  return error
+}
 export default function SignupCard() {
 
   const {registerUser,loginUser,errors} = useContext(AuthContext);
@@ -35,6 +53,10 @@ export default function SignupCard() {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const [loading,setLoading] = useState(true);
+
+  
+
+
   const handleSubmit = async e => {
     e.preventDefault();
     registerUser(firstname,lastname,email, password);
@@ -42,55 +64,6 @@ export default function SignupCard() {
   };
   console.log(errors)
   
-    // const { control, handleSubmit } = useForm({
-    //   defaultValues: {
-    //     firstName: '',
-    //     select: {}
-    //   }
-    // });
-
-  // const formik = useFormik({
-  //   initialValues: {
-  //     username:"",
-  //     email: "",
-  //     password1: "",
-  //     password2: "",
-
-  //     rememberMe: false
-  //   },
-    
-  //  onSubmit: values => {
-
-  //   // alert(JSON.stringify(values, null, 2))
-  //   const user = {
-  //     username:formik.values.username,
-  //     email: formik.values.email,
-  //     password1:formik.values.password1,
-  //     password2:formik.values.password2,
-  //   };
-  //   fetch('http://127.0.0.1:8000/auth/users/', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(user)
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       if (data) {
-  //         localStorage.clear();
-  //         localStorage.setItem('token', data.auth_token);
-  //         console.log(localStorage.getItem('token'))
-  //         window.location.replace('http://localhost:3000/accounts/login');
-
-  //       } else {
-  //         console.log('not found')
-  //         localStorage.clear();
-  //       }
-  //     });
-  // }
-  // });
-
     return (
       <Flex
         minH={'100vh'}
@@ -115,6 +88,21 @@ export default function SignupCard() {
            <form onSubmit={handleSubmit} >
             <Stack spacing={4}>
               <HStack>
+              <Box>
+            <Form>
+            <Field name='name' >
+            {({ field, form }) => (
+              <FormControl isInvalid={form.errors.name && form.touched.name}>
+                <FormLabel>First name</FormLabel>
+                <Input {...field} placeholder='name' />
+                <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+              </FormControl>
+            )}
+          </Field>
+            </Form>
+          
+            
+              </Box>
                 <Box>
                   <FormControl id="firstName" isRequired>
                     <FormLabel>الإسم الأول</FormLabel>
@@ -147,11 +135,12 @@ export default function SignupCard() {
              </FormControl>
               <FormControl id="phone" isRequired>
                 <FormLabel> (اختياري) رقم التلفون</FormLabel>
-                <Input type="text"
+                <RegexPhoneNumberInput/>
+                {/* <Input type="text"
                   name="phone"
                  // value={email}
                  // onChange={e=>setEmail(e.target.value)}
-               />
+               /> */}
                  <FormLabel display={errors?.email?'flex':'none'}>
                  <small>{errors?.email?errors.email:null}</small>
                  </FormLabel>

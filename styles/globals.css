@@ -24,3 +24,14 @@ a {
     background: black;
   }
 }
+
+
+.PhoneInput {
+  height:50px !important;
+}
+
+.PhoneInput #phone-input {
+  height:50px !important ;
+
+
+}

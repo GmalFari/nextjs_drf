@@ -99,11 +99,10 @@ useEffect(()=>{
     if (response.status === 201) {
       console.log(response.status)
       loginUser(email,password)
-      alert("لقد تم إضافة حسابك بنجاح أنتقل لصفحة تسجيل الدخول لتسجيل الخول")
+      alert("لقد تم إضافة حسابك بنجاح ")
       router.push('/accounts/login')
       MainToast({"title":"خطاء بالبيانات ","description":"خطأ بالبيانات"
       ,"statusOutput":"error","duration":"5000"})
-       
     } else {
       setErrors(data)
 

@@ -34,6 +34,7 @@ const Search = ({data}) => {
     const [properties,setProperties] = useState(myproperties);
     const [pageCount,setPageCount] = useState(data?.count);
     const itemsCount = Math.round(pageCount)
+    const [searchValue,setSearchValue] = useState(null)
     const [onSearch,setOnSearch] = useState(false)
     const [searchFilter,setSearchFilter] = useState(false);
     const [toggleVerticalCard,setToggleVerticalCard] = useState('true');
@@ -41,14 +42,13 @@ const Search = ({data}) => {
     const [currentPage, setCurrentPage] = useState(1);
     console.log(pageCount)
     const pageSize = 3;
-
-    const [onFilter,setOnFilter]=useState(false)
+   const [onFilter,setOnFilter]=useState(false)
 
     const onPageChange = (page) => {
       setCurrentPage(page);
     };
     useEffect(() => {
-      if (!onFilter){
+      if (searchValue !== null){
         if(currentPage < 1){
             setCurrentPage(1)
         }
@@ -57,10 +57,13 @@ const Search = ({data}) => {
         }
         const path = router.pathname;
         const {query } = router;  
-        query["page"] = currentPage
+        // query["page"] = currentPage
         router.push({pathname:path,query})
-
-        axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?page=${currentPage}`)
+        
+        query['property_title'] = searchValue
+        console.log(query)
+        console.log(query['property_title'])
+        axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?property_title=${query['property_title']}`)
           .then((response) => {
             setPageCount(response.data.count)
             setProperties(response.data.results);
@@ -68,8 +71,35 @@ const Search = ({data}) => {
           .catch((error) => {
             console.log(error);
           });
-        }
-      }, [currentPage, itemsCount]);
+        }        
+
+      }, [searchValue]);
+      // useEffect(() => {
+      //   if (searchValue !== null){
+      //     if(currentPage < 1){
+      //         setCurrentPage(1)
+      //     }
+      //     if(currentPage > itemsCount){
+      //         setCurrentPage(itemsCount)
+      //     }
+      //     const path = router.pathname;
+      //     const {query } = router;  
+      //     query["page"] = currentPage
+      //     router.push({pathname:path,query})
+          
+      //     console.log(query['property_title'])
+      //     axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?property_title=${query['property_title']}`)
+      //       .then((response) => {
+      //         setPageCount(response.data.count)
+      //         setProperties(response.data.results);
+      //       })
+      //       .catch((error) => {
+      //         console.log(error);
+      //       });
+      //     }
+      //   }, []);
+      
+      console.log(setSearchValue)
 
     const listingsH = [properties.map((property) =>(
                <HorizonalCard   property={property} key={property.id} /> 
@@ -95,20 +125,30 @@ const Search = ({data}) => {
         >
         <Text> البحث المتقدم  </Text>
         <Icon paddingLeft="2" w="7" as={BsFilter} />
+
         </Flex> */}
         {/* {searchFilter && */}
         
         <Flex mt="4" mb="4" justifyContent={"center"}>
         <Box  display="flex" position="relative">
         <Box>
-        <SearchAutoComplete onSearch={onSearch} setOnSearch={setOnSearch} setProperties={setProperties} />
+        <SearchAutoComplete 
+                setSearchValue={setSearchValue}
+                searchValue={searchValue} 
+                onSearch={onSearch}
+          setOnSearch={setOnSearch} 
+          properties={properties}
+          setProperties={setProperties} />
         <Divider orientation='vertical' />
         </Box>
         <Box position="absolute"
                  left="10px" top="2px" >
                  <IconButton   border="transparent" 
                 icon={<FaSearch/>}   me="2" ms="2" colorScheme='teal' variant='outline'></IconButton>
-         <SearchFilter setProperties={setProperties}/>
+         <SearchFilter 
+         setProperties={setProperties}
+
+         />
                  </Box>
         </Box>
         </Flex>

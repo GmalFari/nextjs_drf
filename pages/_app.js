@@ -3,9 +3,13 @@ import Head from "next/head";
 import { ChakraProvider,extendTheme,Container } from "@chakra-ui/react";
 import Layout from '../components/Layout';
 import "nprogress/nprogress.css";
+
+// for validate phone number
+import 'react-phone-number-input/style.css'
 import NProgress  from "nprogress";
 import { useEffect,createContext } from "react";
 import "./carousel.scss";
+import "../styles/Home.module.css"
 import { AuthProvider } from "../context/AuthContext";
 import theme from"../styles/theme"
 const mapContext = createContext()

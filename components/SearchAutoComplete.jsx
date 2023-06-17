@@ -4,8 +4,8 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { Box } from '@chakra-ui/react'
 import { useState,useEffect } from 'react';
 import axios from 'axios';
-const SearchAutoComplete = (onSearch,setOnSearch,setProperties) => {
-    const [searchValue,setSearchValue] = useState("property title")
+const SearchAutoComplete = ({onSearch,searchValue,
+  setSearchValue,setOnSearch,properties}) => {
     const items = [
         {
           id: 0,
@@ -38,8 +38,6 @@ const SearchAutoComplete = (onSearch,setOnSearch,setProperties) => {
             router.push({pathname:path,query})
 
           })
-        
-        
       // useEffect(()=>{
       //   searchProperties()
       //   if(loading){
@@ -55,10 +53,20 @@ const SearchAutoComplete = (onSearch,setOnSearch,setProperties) => {
       // },[]);
       
   const handleOnSearch = (string, results) => {
+    setSearchValue(string)
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
-    console.log(string, results)
+    const path = router.pathname;
+    const {query } = router;
+    console.log(setSearchValue)
+    query["property_title"] = searchValue
+    router.push({pathname:path,query})
+    
+
+
+   
   }
+
   const handleOnHover = (result) => {
     // the item hovered
     console.log(result)
@@ -84,6 +92,7 @@ const SearchAutoComplete = (onSearch,setOnSearch,setProperties) => {
     <div className="App">
         <Box width={["95vw"]}>
           <ReactSearchAutocomplete
+          
             autoFocus={false}
             styling={{borderRadius:"10px"}}
             showIcon={false}
