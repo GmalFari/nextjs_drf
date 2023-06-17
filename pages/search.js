@@ -49,17 +49,18 @@ const Search = ({data}) => {
       console.log(currentPage)
     };
     useEffect(() => {
-      // const purpose = query['purpose']|| 'for-rent';
-      // const search = query['search']  || ''
-      // const rentFrequency = query['rentFrequency'] || 'yearly';
-      // const minPrice = query['min_price'] || '0';
-      // const maxPrice = query['max_price ']|| '1000000';
-      // const baths = query['baths'] || '0';
-      // const rooms = query['rooms'] || '0';
-      // const sort = query['sort'] || 'price-desc';
-      // const locationExternalIDs = query['locationExternalIDs'] || '5002';
-      // const categoryExternalID = query['categoryExternalID'] || '4'; 
-      // const lang = query['lang'] || 'ar';
+      const purpose = query['purpose']|| 'for-rent';
+      const search = query['search']  || ''
+      const rentFrequency = query['rentFrequency'] || 'yearly';
+      const minPrice = query['min_price'] || '0';
+      const maxPrice = query['max_price ']|| '1000000';
+      const baths = query['baths'] || '0';
+      const rooms = query['rooms'] || '0';
+      const sort = query['sort'] || 'price-desc';
+      const locationExternalIDs = query['locationExternalIDs'] || '5002';
+      const categoryExternalID = query['categoryExternalID'] || '4'; 
+      const lang = query['lang'] || 'ar';
+      console.log(purpose)
         if(currentPage < 1){
             setCurrentPage(1)
         }
@@ -72,8 +73,7 @@ const Search = ({data}) => {
         query["search"] = searchValue
         query["page"] = currentPage
         router.push({pathname:path,query})
-        axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/&search=${query['search']}&page=${currentPage}`)
-        // &purpose=${purpose}&rentFrequency=${rentFrequency}&min_price=${min_price}&max_price=${max_price}&baths=${baths}&rooms=${rooms}&sort=${sort}
+        axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/&search=${query['search']}&page=${currentPage}&purpose=${purpose}&rentFrequency=${rentFrequency}&min_price=${min_price}&max_price=${max_price}&baths=${baths}&rooms=${rooms}&sort=${sort}`)
           .then((response) => {
             console.log(response.data.results)
             setPageCount(response.data.count)
@@ -284,7 +284,7 @@ export default Search
 
 
 export async function getServerSideProps({query}) {
-    const purpose = query['purpose'] || 'for-rent';
+    const purpose = query.purpose || 'for-rent';
     const search = query.search  || ''
     const rentFrequency = query.rentFrequency || 'yearly';
     const minPrice = query.minPrice || '0';

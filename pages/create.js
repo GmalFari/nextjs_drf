@@ -95,8 +95,8 @@ const [imageFiles,setImageFiles]=useState([])
 
   return (
     <>
-    {/* {user?
-    <Box> */}
+    {user?
+    <Box>
     {/* <Box mt="30px" textAlign={"center"}>
     <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
         تعديل العقار
@@ -106,7 +106,7 @@ const [imageFiles,setImageFiles]=useState([])
           setImageFiles={setImageFiles}  
           myData={myData} 
           setData={setData}/>
-      {/* </Box>:window.location.replace("/accounts/login")} */}
+      </Box>:window.location.replace("/accounts/login")}
       </>
   )
 }
