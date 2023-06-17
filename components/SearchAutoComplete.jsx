@@ -115,7 +115,7 @@ const SearchAutoComplete = ({onSearch,searchValue,
             onFocus={handleOnFocus}
             formatResult={formatResult}
             className='ReactSearchAutoComplete'
-            inputSearchString={searchValue}
+           {/* inputSearchString={searchValue}  */}
            placeholder={'أبحث عن العقارات' }
           />
         </Box>
