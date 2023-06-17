@@ -72,7 +72,7 @@ const Search = ({data}) => {
         }        
       }, [searchValue]);
       useEffect(() => {
-        if (onSearch){
+        
           if(currentPage < 1){
               setCurrentPage(1)
           }
@@ -93,7 +93,7 @@ const Search = ({data}) => {
             .catch((error) => {
               console.log(error);
             });
-          }
+          
         }, []);
       
       console.log(setSearchValue)
