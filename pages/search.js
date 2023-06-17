@@ -85,7 +85,7 @@ const Search = ({data}) => {
           router.push({pathname:path,query})
           
           console.log(query['property_title'])
-          axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?property_title=${query['property_title']}`)
+          axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?search=${query['search']}`)
             .then((response) => {
               setPageCount(response.data.count)
               setProperties(response.data.results);
