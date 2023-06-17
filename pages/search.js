@@ -49,19 +49,15 @@ const Search = ({data}) => {
       setCurrentPage(page);
     };
     useEffect(() => {
-      if (onSearch){
-        if(currentPage < 1){
-            setCurrentPage(1)
-        }
-        if(currentPage > itemsCount){
-            setCurrentPage(itemsCount)
-        }
+      if (searchValue !==''){
+        
+        
         const path = router.pathname;
         const {query } = router;  
         // query["page"] = currentPage
         router.push({pathname:path,query})
         console.log(query['property_title'])
-        axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?property_title=${query['property_title']}`)
+        axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?property_title=${query['property_title]|''}`)
           .then((response) => {
             setPageCount(response.data.count)
             setProperties(response.data.results);
