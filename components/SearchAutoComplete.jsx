@@ -41,7 +41,7 @@ const SearchAutoComplete = ({onSearch,searchValue,
         (property_title) =>{
           const path = router.pathname;
           const {query } = router;
-            query["property_title"] = property_title
+            query["search"] = property_title
             router.push({pathname:path,query})
 
           })
@@ -66,10 +66,10 @@ const SearchAutoComplete = ({onSearch,searchValue,
     // the string searched and for the second the results.
     const path = router.pathname;
     const {query } = router;
-    query["property_title"] = string
+    query["search"] = string
     setSearchValue(string)
     console.log(searchValue)
-    query["property_title"] = searchValue
+    query["search"] = searchValue
     router.push({pathname:path,query})
     
 
