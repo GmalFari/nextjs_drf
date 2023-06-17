@@ -5,29 +5,36 @@ import { Box } from '@chakra-ui/react'
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 const SearchAutoComplete = ({onSearch,searchValue,
-  setSearchValue,setOnSearch,properties}) => {
-    const items = [
-        {
-          id: 0,
-          name: 'للبيع'
-        },
-        {
-          id: 1,
-          name: 'للإيجار'
-        },
-        {
-          id: 2,
-          name: 'صنعاء'
-        },
-        {
-          id: 3,
-          name: 'أراضي'
-        },
-        {
-          id: 4,
-          name: 'بيوت'
-        }
-      ]
+  setSearchValue,setOnSearch,properties,myproperties}) => {
+    const items = myproperties.map((v,i)=>(
+    {
+            id: v.id,
+            name: v.property_title
+          }
+    ))
+    console.log(items)
+    //  [
+    //     {
+    //       id: 0,
+    //       name: 'للبيع'
+    //     },
+    //     {
+    //       id: 1,
+    //       name: 'للإيجار'
+    //     },
+    //     {
+    //       id: 2,
+    //       name: 'صنعاء'
+    //     },
+    //     {
+    //       id: 3,
+    //       name: 'أراضي'
+    //     },
+    //     {
+    //       id: 4,
+    //       name: 'بيوت'
+    //     }
+    //   ]
       const[loading,setLoading]=useState(false)
       const router = useRouter();
       const searchProperties = (
@@ -53,12 +60,15 @@ const SearchAutoComplete = ({onSearch,searchValue,
       // },[]);
       
   const handleOnSearch = (string, results) => {
-    setSearchValue(string)
+    console.log(string)
+    setOnSearch(true)
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
     const path = router.pathname;
     const {query } = router;
-    console.log(setSearchValue)
+    query["property_title"] = string
+    setSearchValue(string)
+    console.log(searchValue)
     query["property_title"] = searchValue
     router.push({pathname:path,query})
     
@@ -75,6 +85,8 @@ const SearchAutoComplete = ({onSearch,searchValue,
   const handleOnSelect = (item) => {
     // the item selected
     console.log(item)
+    setSearchValue(item.name)
+
   }
 
   const handleOnFocus = () => {
@@ -83,8 +95,7 @@ const SearchAutoComplete = ({onSearch,searchValue,
   const formatResult = (item) => {
     return (
       <>
-        <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span>
-        <span style={{ display: 'block', textAlign: 'left' }}>name: {item.name}</span>
+        <Box cursor={"pointer !important"} style={{ display: 'block', textAlign: 'left' }}>{item.name}</Box>
       </>
     )
   }
@@ -92,10 +103,11 @@ const SearchAutoComplete = ({onSearch,searchValue,
     <div className="App">
         <Box width={["95vw"]}>
           <ReactSearchAutocomplete
-          
+          showClear={true}
             autoFocus={false}
-            styling={{borderRadius:"10px"}}
+            styling={{borderRadius:"10px",padding:"20px"}}
             showIcon={false}
+
             items={items}
             onSearch={handleOnSearch}
             onHover={handleOnHover}
@@ -103,7 +115,8 @@ const SearchAutoComplete = ({onSearch,searchValue,
             onFocus={handleOnFocus}
             formatResult={formatResult}
             className='ReactSearchAutoComplete'
-            
+            inputSearchString={searchValue}
+           placeholder={'أبحث عن العقارات' }
           />
         </Box>
     </div>

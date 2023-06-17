@@ -31,10 +31,11 @@ import OurLogo from '../components/Logo';
 // import { paginate } from '../helper/paginate';
 const Search = ({data}) => {
     const myproperties = data?.results
+  
     const [properties,setProperties] = useState(myproperties);
     const [pageCount,setPageCount] = useState(data?.count);
     const itemsCount = Math.round(pageCount)
-    const [searchValue,setSearchValue] = useState(null)
+    const [searchValue,setSearchValue] = useState('')
     const [onSearch,setOnSearch] = useState(false)
     const [searchFilter,setSearchFilter] = useState(false);
     const [toggleVerticalCard,setToggleVerticalCard] = useState('true');
@@ -48,7 +49,7 @@ const Search = ({data}) => {
       setCurrentPage(page);
     };
     useEffect(() => {
-      if (searchValue !== null){
+      if (onSearch){
         if(currentPage < 1){
             setCurrentPage(1)
         }
@@ -59,9 +60,6 @@ const Search = ({data}) => {
         const {query } = router;  
         // query["page"] = currentPage
         router.push({pathname:path,query})
-        
-        query['property_title'] = searchValue
-        console.log(query)
         console.log(query['property_title'])
         axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?property_title=${query['property_title']}`)
           .then((response) => {
@@ -72,32 +70,31 @@ const Search = ({data}) => {
             console.log(error);
           });
         }        
-
       }, [searchValue]);
-      // useEffect(() => {
-      //   if (searchValue !== null){
-      //     if(currentPage < 1){
-      //         setCurrentPage(1)
-      //     }
-      //     if(currentPage > itemsCount){
-      //         setCurrentPage(itemsCount)
-      //     }
-      //     const path = router.pathname;
-      //     const {query } = router;  
-      //     query["page"] = currentPage
-      //     router.push({pathname:path,query})
+      useEffect(() => {
+        if (onSearch){
+          if(currentPage < 1){
+              setCurrentPage(1)
+          }
+          if(currentPage > itemsCount){
+              setCurrentPage(itemsCount)
+          }
+          const path = router.pathname;
+          const {query } = router;  
+          query["page"] = currentPage
+          router.push({pathname:path,query})
           
-      //     console.log(query['property_title'])
-      //     axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?property_title=${query['property_title']}`)
-      //       .then((response) => {
-      //         setPageCount(response.data.count)
-      //         setProperties(response.data.results);
-      //       })
-      //       .catch((error) => {
-      //         console.log(error);
-      //       });
-      //     }
-      //   }, []);
+          console.log(query['property_title'])
+          axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?property_title=${query['property_title']}`)
+            .then((response) => {
+              setPageCount(response.data.count)
+              setProperties(response.data.results);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          }
+        }, []);
       
       console.log(setSearchValue)
 
@@ -133,6 +130,7 @@ const Search = ({data}) => {
         <Box  display="flex" position="relative">
         <Box>
         <SearchAutoComplete 
+                myproperties={myproperties}
                 setSearchValue={setSearchValue}
                 searchValue={searchValue} 
                 onSearch={onSearch}
