@@ -103,7 +103,7 @@ const SearchAutoComplete = ({onSearch,searchValue,
     <div className="App">
         <Box width={["95vw"]}>
           <ReactSearchAutocomplete
-          showClear={false}
+         
             autoFocus={false}
             styling={{borderRadius:"10px",padding:"20px"}}
             showIcon={false}
