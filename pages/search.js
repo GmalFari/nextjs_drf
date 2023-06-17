@@ -41,34 +41,50 @@ const Search = ({data}) => {
     const [toggleVerticalCard,setToggleVerticalCard] = useState('true');
     const router = useRouter()
     const [currentPage, setCurrentPage] = useState(1);
-    console.log(pageCount)
-    const pageSize = 3;
+    const pageSize = 5;
    const [onFilter,setOnFilter]=useState(false)
-
+   console.log(pageCount)
     const onPageChange = (page) => {
       setCurrentPage(page);
+      console.log(currentPage)
     };
     useEffect(() => {
-      if (searchValue !==''){
-        
-        
+      // const purpose = query['purpose']|| 'for-rent';
+      // const search = query['search']  || ''
+      // const rentFrequency = query['rentFrequency'] || 'yearly';
+      // const minPrice = query['min_price'] || '0';
+      // const maxPrice = query['max_price ']|| '1000000';
+      // const baths = query['baths'] || '0';
+      // const rooms = query['rooms'] || '0';
+      // const sort = query['sort'] || 'price-desc';
+      // const locationExternalIDs = query['locationExternalIDs'] || '5002';
+      // const categoryExternalID = query['categoryExternalID'] || '4'; 
+      // const lang = query['lang'] || 'ar';
+        if(currentPage < 1){
+            setCurrentPage(1)
+        }
+        if(currentPage > itemsCount){
+            setCurrentPage(itemsCount)
+        }
+        console.log(currentPage)
         const path = router.pathname;
         const {query } = router;  
         query["search"] = searchValue
-    
-        // query["page"] = currentPage
+        query["page"] = currentPage
         router.push({pathname:path,query})
-        console.log(query['property_title'])
-        axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?property_title=${query['property_title']}`)
+        axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/&search=${query['search']}&page=${currentPage}`)
+        // &purpose=${purpose}&rentFrequency=${rentFrequency}&min_price=${min_price}&max_price=${max_price}&baths=${baths}&rooms=${rooms}&sort=${sort}
           .then((response) => {
+            console.log(response.data.results)
             setPageCount(response.data.count)
             setProperties(response.data.results);
           })
           .catch((error) => {
             console.log(error);
           });
-        }        
-      }, [searchValue]);
+            
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [currentPage,searchValue]);
    
   /*
   useEffect(() => {
@@ -96,7 +112,6 @@ const Search = ({data}) => {
           
         }, []);
       */
-      console.log(setSearchValue)
 
     const listingsH = [properties.map((property) =>(
                <HorizonalCard   property={property} key={property.id} /> 
@@ -269,7 +284,8 @@ export default Search
 
 
 export async function getServerSideProps({query}) {
-    const purpose = query.purpose || 'for-rent';
+    const purpose = query['purpose'] || 'for-rent';
+    const search = query.search  || ''
     const rentFrequency = query.rentFrequency || 'yearly';
     const minPrice = query.minPrice || '0';
     const maxPrice = query.maxPrice || '1000000';
@@ -284,7 +300,7 @@ export async function getServerSideProps({query}) {
         const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/`)
                     return {
                         props:{
-                            data:data,
-                              }
+                          data:data,
+                        }
                     }
 }

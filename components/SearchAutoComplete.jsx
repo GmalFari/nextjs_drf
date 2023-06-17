@@ -12,7 +12,6 @@ const SearchAutoComplete = ({onSearch,searchValue,
             name: v.property_title
           }
     ))
-    console.log(items)
     //  [
     //     {
     //       id: 0,
@@ -60,7 +59,6 @@ const SearchAutoComplete = ({onSearch,searchValue,
       // },[]);
       
   const handleOnSearch = (string, results) => {
-    console.log(string)
     setOnSearch(true)
     // onSearch will have as the first callback parameter
     // the string searched and for the second the results.
@@ -79,12 +77,10 @@ const SearchAutoComplete = ({onSearch,searchValue,
 
   const handleOnHover = (result) => {
     // the item hovered
-    console.log(result)
   }
 
   const handleOnSelect = (item) => {
     // the item selected
-    console.log(item)
     setSearchValue(item.name)
 
   }
@@ -101,7 +97,7 @@ const SearchAutoComplete = ({onSearch,searchValue,
   }
   return (
     <div className="App">
-        <Box width={["95vw"]}>
+        <Box width={["95vw"]} zIndex={"999"}>
           <ReactSearchAutocomplete
          
             autoFocus={false}

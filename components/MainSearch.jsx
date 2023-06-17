@@ -15,7 +15,6 @@ import { useState,useEffect } from 'react';
 import { fetchApi,baseUrl } from '../utils/fetchApi';
 import { useRouter } from 'next/router';
 const MainSearch = () => {
-
   const [searchTerm, setSearchTerm] = useState('');
   const[loading,setLoading] = useState(false);
   const router = useRouter();

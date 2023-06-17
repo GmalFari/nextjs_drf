@@ -89,7 +89,7 @@ export default function SignupCard() {
             <Stack spacing={4}>
               <HStack>
               <Box>
-            <Form>
+            {/* <Form>
             <Field name='name' >
             {({ field, form }) => (
               <FormControl isInvalid={form.errors.name && form.touched.name}>
@@ -99,7 +99,7 @@ export default function SignupCard() {
               </FormControl>
             )}
           </Field>
-            </Form>
+            </Form> */}
           
             
               </Box>

@@ -67,7 +67,7 @@ const HorizonalCard = (
         <IconButton
         position={"absolute"}
         left={"2px"}
-        zIndex={"99999"}
+        zIndex={"9"}
         variant='ghost'
         colorScheme='gray'
         aria-label='See menu'
@@ -80,7 +80,7 @@ const HorizonalCard = (
         <UpdateDeletebtns  isColumn={true} propertyDetails={property} id={id} width={"70px"} fontSize={""} />
           
       :null} 
-       </PopoverBody >
+       </PopoverBody>
         </PopoverContent>
         </Popover>
 

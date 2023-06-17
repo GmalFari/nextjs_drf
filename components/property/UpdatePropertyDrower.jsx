@@ -31,7 +31,7 @@ const UpdatePropertyDrower = ({isColumn,propertyDetails}) => {
         // deleteProperty(id,accessToken)
     }
   return (
-    <Box position='relative' zIndex='9999' display={"flex"} flexWrap={"wrap"} flexDirection={"column !important"}>
+    <Box position='relative'  display={"flex"} flexWrap={"wrap"} flexDirection={"column !important"}>
 
      <Button leftIcon={< FaPlus/>}  ref={btnRef} colorScheme='teal' onClick={onOpen}>
       تعديل العقار
