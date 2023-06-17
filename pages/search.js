@@ -67,7 +67,9 @@ const Search = ({data}) => {
           });
         }        
       }, [searchValue]);
-      useEffect(() => {
+   
+  /*
+  useEffect(() => {
         
           if(currentPage < 1){
               setCurrentPage(1)
@@ -91,7 +93,7 @@ const Search = ({data}) => {
             });
           
         }, []);
-      
+      */
       console.log(setSearchValue)
 
     const listingsH = [properties.map((property) =>(
