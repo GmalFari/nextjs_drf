@@ -65,10 +65,10 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
     const {user} = useContext(AuthContext)
-
+alert(coverPhoto)
 return(
         <>
-     alert(coverPhoto)
+     
         <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}>
          <MyBreadcrumb /> 
          </Box>
