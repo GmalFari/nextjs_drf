@@ -56,7 +56,7 @@ const MyMap = ({geoDetail,sizes,ChooseLocation}) =>{
             <GeolocateControl
             positionOptions={viewport}
         />
-            <NavigationControl />
+            {/*<NavigationControl />*/}
       </Map>
       </div>
     {/* )} */}
