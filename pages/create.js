@@ -113,11 +113,11 @@ const [imageFiles,setImageFiles]=useState([])
 
 export default Create
 
-// export async function getStaticProps() {
-//   const data =await fetchApi('http://127.0.0.1:8000/api/list-persons/')
-//  return {
-//     props:{
-//       data:data?.results
-//     }
-//   }
-// }
+export async function getStaticProps() {
+  const data =await fetchApi('https://fortestmimd.pythonanywhere.com/api/list-properties/')
+ return {
+    props:{
+      data:data?.results
+    }
+  }
+}
