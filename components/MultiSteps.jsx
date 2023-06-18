@@ -698,7 +698,7 @@ let testApi = async()=>{
     myform.append("rooms",myData.rooms);
     myform.append("baths",myData.baths);
     myform.append("is_negotiable",myData.is_negotiable);
-    myform.append("sqrt_area",myData.sqrt_area);
+   {myData.sqrt_area !== null? myform.append("sqrt_area",myData.sqrt_area):null};
     myform.append("furnishingStatus",myData.furnishingStatus);
     myform.append("building_facade",myData.building_facade);
     myform.append("building_age",myData.building_age);
