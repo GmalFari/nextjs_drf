@@ -80,7 +80,6 @@ export default function Home({propertiesForRent}) {
 export async function getStaticProps() {
 //   const propertyForSale = await fetchApi(`http://127.0.0.1:8000/api/list-properties/`)
 //  const propertyForRent = await fetchApi(`http://127.0.0.1:8000/api/list-properties/`)
- 
    const propertyForSale = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/`)
    const propertyForRent = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/`)
   return {

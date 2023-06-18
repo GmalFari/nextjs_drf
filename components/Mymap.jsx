@@ -10,7 +10,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 const MyMap = ({geoDetail,sizes,ChooseLocation}) =>{
   const map = useRef(null);
   console.log(geoDetail)
-    const [lat,lng] =[0,0]
+    const [lat,lng] =[15.3590855,44.1733807]
     // {geoDetail?[...geoDetail]}
     console.log(lat )
     const {mapW ,mapH} = {...sizes}
