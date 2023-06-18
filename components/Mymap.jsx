@@ -3,16 +3,25 @@ import Head from 'next/head';
 import Map, {Marker  , NavigationControl} from 'react-map-gl';
 import { GeolocateControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { useState, useEffect,useContext,useRef } from "react";
+import { useState,useCallback, useEffect,useContext,useRef } from "react";
+import  {MarkerDragEvent, LngLat} from 'react-map-gl';
+
 const MAPBOX_TOKEN = "pk.eyJ1IjoiamFtYWxkb2UiLCJhIjoiY2xlMDAwZWlhMTM5OTN3b2F0YnVscHFoYSJ9.N_J3cEVw10zYYVBGf3dMmg"; // Set your mapbox token here
 import "mapbox-gl/dist/mapbox-gl.css";
 
-const MyMap = ({geoDetail,sizes,ChooseLocation}) =>{
+const initialViewState = {
+  latitude: 40,
+  longitude: -100,
+  zoom: 3.5
+};
+const MyMap = ({sizes,ChooseLocation}) =>{
+  const [events, logEvents] = useState({LngLat});
+  const [marker, setMarker] = useState({
+    latitude: 40,
+    longitude: -100
+  });
   const map = useRef(null);
-  console.log(geoDetail)
     const [lat,lng] =[15.3590855,44.1733807]
-    // {geoDetail?[...geoDetail]}
-    console.log(lat )
     const {mapW ,mapH} = {...sizes}
   const [viewport,setViewport] = useState({latitude:lat,longitude:lng});
   useEffect(()=>{
@@ -24,15 +33,36 @@ const MyMap = ({geoDetail,sizes,ChooseLocation}) =>{
         zoom:7
       })
     })
+    console.log(viewport.latitude)
   },[viewport])
   function onClickMap(e) {
     // console.log(e.lngLat);
  {ChooseLocation?
    ChooseLocation({latitude:e.lngLat.lat,longitude:e.lngLat.lng}):null}
 
-  alert({...viewport})
   }
+  const onMarkerDragStart = useCallback(event => {
+    logEvents(_events => ({..._events, onDragStart: event.lngLat}));
+  }, []);
+  const onMarkerDrag = useCallback(event => {
+    logEvents(_events => ({..._events, onDrag: event.lngLat}));
+    setViewport({
+      ...viewport,
+      latitude:event['lngLat'].lat,
+      longitude:event['lngLat'].lng,
+      zoom:7
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log(viewport)
 
+  const onMarkerDragEnd = useCallback(event => {
+    logEvents(_events => ({..._events, onDragEnd: event.lngLat}));
+    setMarker({
+      longitude: event.lngLat[0],
+      latitude: event.lngLat[1]
+    });
+  }, []);
   return (
     <div style={{width:mapW,height:mapH}}>
       {/* {viewport.latitude && viewport.longitude && ( */}
@@ -48,22 +78,26 @@ const MyMap = ({geoDetail,sizes,ChooseLocation}) =>{
         center={[lng,lng]}
         onClick={onClickMap}
        >
-      <Marker
-    
-              longitude={viewport.longitude}
-              latitude={viewport.latitude}
-            
-            />
+       
+       <Marker
+          longitude={viewport.longitude}
+          latitude={viewport.latitude}
+          offsetTop={-20}
+          offsetLeft={-10}
+          draggable={true}
+          onDragStart={onMarkerDragStart}
+          onDrag={onMarkerDrag}
+          onDragEnd={onMarkerDragEnd}
+        ></Marker>
+      
             <GeolocateControl
             positionOptions={viewport}
             trackUserLocation={true}
         />
-            {/*<NavigationControl />*/}
+            <NavigationControl />
       </Map>
       </div>
     {/* )} */}
-        
-
     
     </div>
   );

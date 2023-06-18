@@ -62,6 +62,8 @@ export const UpdateProperty= async(id,myData,authToken,setLoading)=> {
     
                                                            
     myform.append("purpose",myData.purpose);
+    myform.append("location",JSON.stringify(myData.location));
+    
     myform.append("property_town",myData.property_town);
     {myData.coverPhoto && myform.append("coverPhoto",myData.coverPhoto,`${Math.floor((Math.random() * 643400) + 9043400)}.jpg`)};
     myform.append("property_district",myData.property_district);

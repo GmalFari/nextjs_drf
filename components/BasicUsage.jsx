@@ -2,7 +2,7 @@ import {Flex,Grid,Select ,Box,Text,Input,Avatar,Spinner,Icon,Button,
      PopoverHeader,Center} from '@chakra-ui/react';
 import {FaBed,FaBath,FaMapMarked,FaYoutube,FaImages} from 'react-icons/fa';
 import {FaWhatsapp,FaEnvelope,FaPhone,FaShare,FaDownload,FaRegHeart} from 'react-icons/fa'
-import MyMap from "./Mymap";
+import PropertyMap from "./property/PropertyMap"
 import ImageScrollbar from './ImageScrollbar';
 import MainBtn from './MainBtn';
 import ContactPopover from "./popoverModals/ContactModals";
@@ -33,7 +33,7 @@ export function BasicUsage({coverPhoto,geography,photos,icon,btnContent,comId}) 
       else if(comId=="M") {
         setRenderId("M")
         mainContent.current =
-        <MyMap sizes={{mapW:"100vw",mapH:"80vh"}}  geoDetail={geography} />
+        <PropertyMap sizes={{mapW:"100vw",mapH:"80vh"}}  geoDetail={geography} />
       }
      else if(comId=="V"){
       setRenderId("M")

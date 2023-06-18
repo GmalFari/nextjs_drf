@@ -62,9 +62,13 @@ const [myData,setData] = useState(
   property_type:"",
   coverPhoto:null,
   purpose:"",
-  // "location":{  
-    //       latitude:"",
-    //       longitude:""},
+  "location":{  
+    "type": "Point",
+    "coordinates": [
+        15.3725629,
+        44.2396769
+    ]
+  },
     property_town:"",
     property_district:"",
   property_area:"",

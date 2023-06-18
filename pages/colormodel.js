@@ -11,12 +11,15 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
+import SecondMap from "../components/SecondMap";
+
 const ColorMode = () => {
   const { toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue('gray.100', 'gray.700');
 
   return (
     <Flex h="100vh" alignItems="center" justifyContent="center">
+      <SecondMap/>
       <Flex
         flexDirection="column"
         bg={formBackground}

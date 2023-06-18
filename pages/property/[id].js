@@ -87,11 +87,11 @@ return(
         <Box width="100%" >
         <Grid mb={2} templateColumns='repeat(3, 1fr)' gap={2}>
             <BasicUsage comId="I" icon={<FaImages />}
-             btnContent={"الصور"} coverPhoto={coverPhoto} photos={photos}   geography={geography} />
+             btnContent={"الصور"} coverPhoto={coverPhoto} photos={photos}/>
             <BasicUsage comId="M" icon={<FaMapMarked />} 
-            btnContent={"الخريطة"}   coverPhoto={coverPhoto} photos={photos}   geography={geography} />
+            btnContent={"الخريطة"}   coverPhoto={coverPhoto} photos={photos}   geography={location.coordinates} />
             <BasicUsage comId="V" icon={<FaYoutube />} 
-             btnContent={"الفيديو"}  coverPhoto={coverPhoto} photos={photos}   geography={geography} />
+             btnContent={"الفيديو"}  coverPhoto={coverPhoto} photos={photos}   />
         </Grid>
         </Box>
           </Box>

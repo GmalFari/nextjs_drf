@@ -616,7 +616,7 @@ const Form3 = ({errors, data,handleChange,setPropertyLocation,ChooseLocation}) =
            <MyMap sizes={{mapW:"100%",mapH:400}} 
                   setPropertyLocation={setPropertyLocation} 
                   ChooseLocation={ChooseLocation} 
-                  geoDetail={["24.50685","54.407687"]} />
+                  />
       </FormControl>
     </>
   );
@@ -684,7 +684,7 @@ let testApi = async()=>{
                                                         
     myform.append("purpose",myData.purpose);
     myform.append("property_town",myData.property_town);
-  
+    myform.append("location",JSON.stringify(myData.location));
     myform.append("property_district",myData.property_district);
     myform.append("property_area",myData.property_area);
     myform.append("property_street",myData.property_street);
