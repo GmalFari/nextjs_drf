@@ -68,6 +68,7 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
 
 return(
         <>
+     alert(coverPhoto)
         <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}>
          <MyBreadcrumb /> 
          </Box>
@@ -102,9 +103,6 @@ return(
             </Flex>
             {coverPhoto && <Img src={coverPhoto} ms="2px" me="2px" width={"100%"} height={"100%"} />}
           </Box>
-        
-        
-        
         <Box w='full'>
         <Flex paddingTop='2' alignItems='center' justifyContent='space-between'>
           <Flex alignItems='center'>
