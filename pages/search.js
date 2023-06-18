@@ -49,18 +49,6 @@ const Search = ({data}) => {
       console.log(currentPage)
     };
     useEffect(() => {
-      const purpose = query['purpose']|| 'for-rent';
-      const search = query['search']  || ''
-      const rentFrequency = query['rentFrequency'] || 'yearly';
-      const minPrice = query['min_price'] || '0';
-      const maxPrice = query['max_price ']|| '1000000';
-      const baths = query['baths'] || '0';
-      const rooms = query['rooms'] || '0';
-      const sort = query['sort'] || 'price-desc';
-      const locationExternalIDs = query['locationExternalIDs'] || '5002';
-      const categoryExternalID = query['categoryExternalID'] || '4'; 
-      const lang = query['lang'] || 'ar';
-      console.log(purpose)
         if(currentPage < 1){
             setCurrentPage(1)
         }
@@ -284,18 +272,6 @@ export default Search
 
 
 export async function getServerSideProps({query}) {
-    const purpose = query.purpose || 'for-rent';
-    const search = query.search  || ''
-    const rentFrequency = query.rentFrequency || 'yearly';
-    const minPrice = query.minPrice || '0';
-    const maxPrice = query.maxPrice || '1000000';
-    const baths = query.baths || '0';
-    const rooms = query.rooms || '0';
-    const sort = query.sort || 'price-desc';
-    const areaMax = query.areaMax || '35000';
-    const locationExternalIDs = query.locationExternalIDs || '5002';
-    const categoryExternalID = query.categoryExternalID || '4'; 
-    const lang = query.lang || 'ar';
     // const data = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=${locationExternalIDs}&purpose=${purpose}&hitsPerPage=6&rentFrequency=${rentFrequency}&minPrice=${minPrice}&maxPrice=${maxPrice}&bathsMin=${bathsMin}&roomsMin=${roomsMin}&sort=${sort}&areaMax=${areaMax}&categoryExternalID=${categoryExternalID}&lang=${lang}`);
         const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/`)
                     return {
