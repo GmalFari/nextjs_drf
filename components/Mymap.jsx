@@ -52,9 +52,11 @@ const MyMap = ({geoDetail,sizes,ChooseLocation}) =>{
     
               longitude={viewport.longitude}
               latitude={viewport.latitude}
+            
             />
             <GeolocateControl
             positionOptions={viewport}
+            trackUserLocation={true}
         />
             {/*<NavigationControl />*/}
       </Map>
