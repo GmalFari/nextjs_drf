@@ -65,7 +65,7 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
     const {user} = useContext(AuthContext)
-alert(coverPhoto)
+
 return(
         <>
      
