@@ -85,7 +85,7 @@ const [myData,setData] = useState(
   district:"",
   building_age:"",
   isForRent:true,
-
+  sqrt_area=null,
   // //form2
   // title:"",
   // img:"",
