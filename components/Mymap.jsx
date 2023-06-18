@@ -30,7 +30,7 @@ const MyMap = ({geoDetail,sizes,ChooseLocation}) =>{
  {ChooseLocation?
    ChooseLocation({latitude:e.lngLat.lat,longitude:e.lngLat.lng}):null}
 
-  alert(viewprt.latitude)
+  alert(viewport.latitude)
   }
 
   return (
