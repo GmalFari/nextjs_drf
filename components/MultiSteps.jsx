@@ -39,9 +39,13 @@ import { Spinner } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
 const Form1 = ({data,
+                setData,
+                myData=myData,
                 handleChange,
                 purposeList,
-                rentFrequencyList
+                rentFrequencyList,
+                setPropertyLocation,
+                propertyLocation,
                 })=> {
   return (
     <>
@@ -162,6 +166,8 @@ const Form1 = ({data,
           required="required"
           >
          {gadm41_YEM_1.features.map((city,index)=>{
+          {/* console.log(city['geometry']['coordinates'][0][0][0])
+          console.log(city['properties']['NL_NAME_1']) */}
       return (
       <option key={index} value={`${city['properties']['NL_NAME_1']}`}
       >{` ${city['properties']['NL_NAME_1']} `}</option>
@@ -193,13 +199,19 @@ const Form1 = ({data,
           w="full"
           rounded="md"
           required="required"
-          onChange={handleChange}
+          onChange={(e)=>{ 
+            setData({
+        ...data,
+        [e.target.name]: e.target.value,
+      });
+      }}  
           >
          {yemenGis.features.filter(Directorate => 
             Directorate['properties']['NL_NAME_1'] ==data.property_town
-        ).map((Directorate,index) =>(
-          <option key={index} value={`${Directorate['properties']['NL_NAME_2']}`}>{`${Directorate['properties']['NL_NAME_2']}`}</option>
-        ))
+        ).map((Directorate,index) =>{
+        return (
+          <option key={index} value={`${Directorate['properties']}`}>{`${Directorate['properties']['NL_NAME_2']}`}</option>
+        )})
         }
         </Select>
       </FormControl>
@@ -616,6 +628,7 @@ const Form3 = ({errors, data,handleChange,setPropertyLocation,ChooseLocation}) =
            <MyMap sizes={{mapW:"100%",mapH:400}} 
                   setPropertyLocation={setPropertyLocation} 
                   ChooseLocation={ChooseLocation} 
+
                   />
       </FormControl>
     </>
@@ -663,7 +676,7 @@ export default function Multistep({
   // const [data,setData] = useState(myData)
    //form3
    const [propertyLocation,setPropertyLocation] = useState({
-          longitude:44.20729970272413,latitude:15.348533564724178})
+          longitude:0,latitude:0})
    function ChooseLocation(position){
     setPropertyLocation({longitude:position['longitude'],latitude:position['latitude']})
 }
@@ -773,8 +786,7 @@ const handleSubmit = async e => {
 };
 
     const handleChange = (e) => {
-      console.log(myData.property_title)
-
+    
       setData({
         ...myData,
         [e.target.name]: e.target.value,
@@ -815,11 +827,13 @@ const handleSubmit = async e => {
           mx="5%"
           isAnimated></Progress>
         {step === 1 ? 
-        <Form1 
+        <Form1          setData={setData}
                         data={myData}
                         purposeList={purposeList}
                         rentFrequencyList={rentFrequencyList}
                         handleChange={handleChange}
+                        propertyLocation={propertyLocation}
+                        setPropertyLocation={setPropertyLocation} 
                         />
                          : step === 2 ? <Form2 
                          errors={errors}

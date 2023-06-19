@@ -10,7 +10,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 const PropertyMap = ({geoDetail,sizes,ChooseLocation}) =>{
   const map = useRef(null);
   console.log(geoDetail)
-    const [lat,lng] =[15.3590855,44.1733807]
+    const [lat,lng] =[[13.1918,45.4939],[13.1918,45.4949]]
     // {geoDetail?[...geoDetail]}
     console.log(geoDetail )
     const {mapW ,mapH} = {...sizes}

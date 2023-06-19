@@ -24,17 +24,17 @@ const MyMap = ({sizes,ChooseLocation}) =>{
     const [lat,lng] =[15.3590855,44.1733807]
     const {mapW ,mapH} = {...sizes}
   const [viewport,setViewport] = useState({latitude:lat,longitude:lng});
-  useEffect(()=>{
-    navigator.geolocation.getCurrentPosition((pos)=>{
-      setViewport({
-        ...viewport,
-        latitude:viewport.latitude,
-        longitude:viewport.longitude,
-        zoom:7
-      })
-    })
-    console.log(viewport.latitude)
-  },[viewport])
+  // useEffect(()=>{
+  //   navigator.geolocation.getCurrentPosition((pos)=>{
+  //     setViewport({
+  //       ...viewport,
+  //       latitude:viewport.latitude,
+  //       longitude:viewport.longitude,
+  //       zoom:7
+  //     })
+  //   })
+  //   console.log(viewport.latitude)
+  // },[viewport])
   function onClickMap(e) {
     // console.log(e.lngLat);
  {ChooseLocation?
