@@ -207,6 +207,7 @@ const Form1 = ({data,
       }}  
           >
          {yemenGis.features.filter(Directorate => 
+            
             Directorate['properties']['NL_NAME_1'] ==data.property_town
         ).map((Directorate,index) =>{
         return (
@@ -484,7 +485,7 @@ const Form2 = ({ errors,myData,setData,title,handleChange,setTitle,setImg}) => {
     </>
   );
 };
-const Form3 = ({errors, data,handleChange,setPropertyLocation,ChooseLocation}) => {
+const Form3 = ({errors, data,handleChange,setPropertyLocation,propertyLocation,chooseLocation}) => {
   // const [selectView ,setSelectView] =useState()
   // const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
@@ -626,8 +627,9 @@ const Form3 = ({errors, data,handleChange,setPropertyLocation,ChooseLocation}) =
         </Grid>
         <FormControl t={"20px"}>
            <MyMap sizes={{mapW:"100%",mapH:400}} 
+                  propertyLocation={propertyLocation}
                   setPropertyLocation={setPropertyLocation} 
-                  ChooseLocation={ChooseLocation} 
+                  chooseLocation={chooseLocation} 
 
                   />
       </FormControl>
@@ -675,11 +677,18 @@ export default function Multistep({
      const [img,setImg] = useState("")
   // const [data,setData] = useState(myData)
    //form3
-   const [propertyLocation,setPropertyLocation] = useState({
-          longitude:0,latitude:0})
-   function ChooseLocation(position){
-    setPropertyLocation({longitude:position['longitude'],latitude:position['latitude']})
+   const [propertyLocation,setPropertyLocation] = useState({  
+    "type": "Point",
+    "coordinates": [
+        15.3725629,
+        44.2396769
+    ]
+  })
+   function chooseLocation(position){
+    // setPropertyLocation({longitude:position['longitude'],latitude:position['latitude'],zoom:14})
 }
+
+console.log(propertyLocation['coordinates'])
 const [errors,setErrors] = useState()
 let token = JSON.parse(localStorage.getItem("authTokens"))
 let accessToken = token?.access
@@ -697,7 +706,7 @@ let testApi = async()=>{
                                                         
     myform.append("purpose",myData.purpose);
     myform.append("property_town",myData.property_town);
-    myform.append("location",JSON.stringify(myData.location));
+    myform.append("location",JSON.stringify(propertyLocation));
     myform.append("property_district",myData.property_district);
     myform.append("property_area",myData.property_area);
     myform.append("property_street",myData.property_street);
@@ -845,6 +854,7 @@ const handleSubmit = async e => {
                           errors={errors}                    
                            data={myData}
                            handleChange={handleChange}
+                           propertyLocation={propertyLocation}
                            setPropertyLocation={setPropertyLocation} 
                             /> :
                             <Box>

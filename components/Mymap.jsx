@@ -14,16 +14,19 @@ const initialViewState = {
   longitude: -100,
   zoom: 3.5
 };
-const MyMap = ({sizes,ChooseLocation}) =>{
+const MyMap = ({sizes,chooseLocation,propertyLocation,setPropertyLocation}) =>{
   const [events, logEvents] = useState({LngLat});
   const [marker, setMarker] = useState({
+    ...marker,
     latitude: 40,
     longitude: -100
   });
+  
   const map = useRef(null);
-    const [lat,lng] =[15.3590855,44.1733807]
+  const [lat,lng] =[15.36123110720797,44.187074029166894]
     const {mapW ,mapH} = {...sizes}
-  const [viewport,setViewport] = useState({latitude:lat,longitude:lng});
+  const [viewport,setViewport] = useState({latitude: 15.36123110720797,
+                       longitude:44.187074029166894,zoom:14});
   // useEffect(()=>{
   //   navigator.geolocation.getCurrentPosition((pos)=>{
   //     setViewport({
@@ -37,8 +40,8 @@ const MyMap = ({sizes,ChooseLocation}) =>{
   // },[viewport])
   function onClickMap(e) {
     // console.log(e.lngLat);
- {ChooseLocation?
-   ChooseLocation({latitude:e.lngLat.lat,longitude:e.lngLat.lng}):null}
+//  {chooseLocation?
+//    chooseLocation({latitude:e.lngLat.lat,longitude:e.lngLat.lng}):null}
 
   }
   const onMarkerDragStart = useCallback(event => {
@@ -52,16 +55,20 @@ const MyMap = ({sizes,ChooseLocation}) =>{
       longitude:event['lngLat'].lng,
       zoom:7
     })
+    setPropertyLocation({...propertyLocation,
+      coordinates:[event['lngLat'].lat,event['lngLat'].lng]
+              })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(viewport)
-
+  
+  
+  
   const onMarkerDragEnd = useCallback(event => {
     logEvents(_events => ({..._events, onDragEnd: event.lngLat}));
-    setMarker({
-      longitude: event.lngLat[0],
-      latitude: event.lngLat[1]
-    });
+    // setMarker({
+    //   longitude: event.lngLat[0],
+    //   latitude: event.lngLat[1]
+    // });
   }, []);
   return (
     <div style={{width:mapW,height:mapH}}>
