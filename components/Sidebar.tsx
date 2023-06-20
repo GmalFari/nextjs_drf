@@ -26,7 +26,7 @@ import {
 } from '@chakra-ui/react';
 import OurLogo from "./Logo";
 import { FaSearch } from 'react-icons/fa';
-
+import {FcAbout} from 'react-icons';
 import {
   
   FiHome,
@@ -60,7 +60,7 @@ const LinkItems: Array<LinkItemProps> = [
   { name:' اطلب عقار  ',url:'/orders', icon: FiHome },
   { name:' عقارات للبيع ',url:'/search?porpose=for sale', icon: BsFillHouseFill },
     { name:' عقارات للإيجار ',url:'/search?porpose=for rent', icon: BsFillHouseFill },
-  { name: 'من نحن',url:'/profile/aboutus', icon: },
+  { name: 'من نحن',url:'/profile/aboutus', icon:FcAbout },
 
     // { name: '',url:'/agencies', icon: FiStar },
   // { name: 'الإعدادات',url:'/', icon: FiSettings },
