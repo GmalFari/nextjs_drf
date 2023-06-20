@@ -1,3 +1,4 @@
+import { AddressAutofill } from '@mapbox/search-js-react';
 import React from 'react';
 import {
   Flex,
