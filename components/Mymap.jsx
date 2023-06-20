@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Head from 'next/head';
 import Map, {Marker,FullscreenControl   , NavigationControl} from 'react-map-gl';
-import { GeolocateControl,lngLat } from 'react-map-gl';
+import { GeolocateControl,LngLat } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useState,useCallback, useEffect,useContext,useRef } from "react";
 import  {MarkerDragEvent} from 'react-map-gl';
@@ -15,7 +15,7 @@ const initialViewState = {
   zoom: 3.5
 };
 const MyMap = ({sizes,chooseLocation,propertyLocation,setPropertyLocation}) =>{
-  const [events, logEvents] = useState({lngLat});
+  const [events, logEvents] = useState({LngLat});
   const [marker, setMarker] = useState({
     ...marker,
     latitude: 40,
