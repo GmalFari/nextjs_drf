@@ -254,25 +254,35 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal">
-      بيانات العقار
+      بيانات الطلب
       </Heading>
       <SimpleGrid columns={1} spacing={6}>
       <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
+      <FormLabel
+            fontSize="sm"
+            fontWeight="md"
+            color="gray.700"
+            _dark={{
+              color: 'gray.50',
+            }}>
+           عنوان للطلب
+          </FormLabel>
         <Input
           type="text"
-          name="order_title"
-          id="title"
+          name="req_order_title"
+          id="req_order_title"
           focusBorderColor="brand.400"
           shadow="sm"
           size="sm"
           w="full"
           rounded="md"
-          value={myData.order_title}
+          value={myData.req_order_title}
           onChange={handleChange}
           // onChange={e=>{setTitle(e.target.value)}}
         />
+        
       </FormControl>
-        <FormControl as={GridItem} id="desc" mt={1}>
+        <FormControl mt={1}>
           <FormLabel
             fontSize="sm"
             fontWeight="md"
@@ -283,7 +293,8 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
           التفاصيل الكاملة للطلب
           </FormLabel>
           <Textarea
-            
+            name="property_description"
+            id="property_description"
             width="full"
             rows={4}
             shadow="sm"
@@ -291,6 +302,8 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
             fontSize={{
               sm: 'sm',
             }}
+            value={myData.property_description}
+            onChange={handleChange}
           />
           <FormHelperText>
           </FormHelperText>
@@ -300,7 +313,7 @@ const Form2 = ({myData,setData,title,handleChange,setTitle,setImg}) => {
     </>
   );
 };
-const Form3 = () => {
+const Form3 = ({myData,handleChange}) => {
   const [selectView ,setSelectView] =useState()
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
@@ -353,13 +366,22 @@ const Form3 = () => {
           <FormLabel htmlFor="rooms" fonsSize={'sm'} fontWeight={'normal'}>
           عدد الغرف
           </FormLabel>
-          <Input id="price" placeholder="عدد الغرف" />
+          <Input name="rooms" id="rooms" 
+          onChange={handleChange}
+          value={myData.rooms}
+           placeholder="عدد الغرف" />
         </Box>
         <Box width={["100%","fit-content"]}>
-          <FormLabel htmlFor="baths" fonsSize={'sm'} fontWeight={'normal'}>
+          <FormLabel htmlFor="baths"
+           
+           fonsSize={'sm'} fontWeight={'normal'}>
           عدد الحمامات
           </FormLabel>
-          <Input id="price" placeholder="عدد الحمامات" />
+          <Input id="baths" 
+              name="baths" 
+              onChange={handleChange}
+              value={myData.baths}
+              placeholder="عدد الحمامات" />
         </Box>
         <Box width={["100%","fit-content"]}>
         <FormLabel htmlFor="view" fontWeight={'normal'}>
@@ -381,7 +403,7 @@ const Form3 = () => {
   );
 };
 
-export default function CustOrders({myData,setData}) {
+export default function CustOrders({myData,setData,handleSubmit}) {
   const [submitted,setSubmitted]=useState(false);
   const [apiMessage,setApiMessage]= useState([])
  const newData = Object.keys(apiMessage).map((key) => {
@@ -419,13 +441,9 @@ export default function CustOrders({myData,setData}) {
   
 
 
-    
-    const handleSubmit = (e)=>{
-      e.preventDefault();
-    }
+  
     const handleChange = (e) => {
-      console.log(myData.order_title)
-
+      // console.log(e.target.value)
       setData({
         ...myData,
         [e.target.name]: e.target.value,
@@ -456,8 +474,11 @@ export default function CustOrders({myData,setData}) {
                         rentFrequencyList={rentFrequencyList}
                         handleChange={handleChange}
                         />
-                         : step === 2 ? <Form2 myData={myData} setData={setData} handleChange={handleChange} title={myData.order_title}  setImg={setImg} /> :
-                          <Form3  />}
+                         : step === 2 ? <Form2 myData={myData} setData={setData} 
+                         handleChange={handleChange} title={myData.order_title}  setImg={setImg} /> :
+                          <Form3 myData={myData}                         
+                                handleChange={handleChange}
+/>}
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex >
@@ -497,18 +518,9 @@ export default function CustOrders({myData,setData}) {
                           w="95px"
                 colorScheme="teal"
                 variant="solid"
-                onClick={()=>{
-                  toast({
-                title: 'Account created.',
-                description: "لقد تم تعديل طلبك بنجاج",
-                
-                status: 'success',
-                duration: 9000,
-                isClosable: true,
-              })
-                }}
+                onClick={handleSubmit}
                 >
-              تعديل الطلب
+              إضافة الطلب
               </Button>
             ) : null}
           </Flex>

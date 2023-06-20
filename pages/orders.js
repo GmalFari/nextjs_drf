@@ -1,9 +1,79 @@
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 import { Stack,StackDivider,Button,Box,Heading,Text,Badge, } from '@chakra-ui/react';
 import OrderCreateDrower from '../components/orders/CreateOrderDrower';
-import Link from "next/link"
-const Orders = () =>{
-  
+import Link from "next/link";
+import { fetchApi } from '../utils/fetchApi';
+const Orders = ({orders}) =>{
+  console.log(orders)
+  // const [myOrders,setMyorders]=useState()
+  const OrdersApi = () =>{
+    const options = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5MjUwMDE2LCJpYXQiOjE2ODY2NTgwMTYsImp0aSI6IjFmYWE0Mzk4ZjQ4OTQyMDA4ZjRlOTdiYTU3OThmODg5IiwidXNlcl9pZCI6MX0.AKK2pRWie86HGGO8iFv0qRSCPq0R8fypONFwATTWt8s'
+      },
+      body: '{"req_order_title":"مطلوب شقة"}'
+    };
+    
+    fetch('https://fortestmimd.pythonanywhere.com/api/requests-app/', options)
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(err => console.error(err));
+  }
+  const myOrders = [orders.map((myOrder)=>(
+    <>
+        <Box>
+        <Heading color="#006179" size='xs' textTransform='uppercase'>
+        <Link href="#">
+          مطلوب بيت من غرفتين وصالة في صنعاء
+          </Link>
+        </Heading>
+        <Text pt='2' fontSize='sm'>
+      مطلوب شقه سكنيةمن المالك مباشر استوديو او غرفة او ثلاث غرف شخصي الدلالين لو سمحتو بعدين
+              </Text>
+              <Box display='flex' alignItems='base line' mt={4}> 
+          <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
+           جديد
+          </Badge>
+          <Box
+            color='gray.500'
+            fontWeight='semibold'
+            letterSpacing='wide'
+            fontSize='xs'
+            textTransform='uppercase'
+            ml='2'
+          >
+      4غرف  &bull;  2حمامات
+          </Box>
+        </Box>
+     
+        <Heading color="#006179" size='xs' textTransform='uppercase'>
+        <Link href="#">
+        مطلوب بيت من غرفتين وصالة في صنعاء
+        </Link>
+        </Heading>
+        <Text pt='2' fontSize='sm'>
+      مطلوب شقه سكنيةمن المالك مباشر استوديو او غرفة او ثلاث غرف شخصي الدلالين لو سمحتو بعدين
+              </Text>
+              <Box display='flex' alignItems='base line' mt={4}> 
+          <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
+           جديد
+          </Badge>
+          <Box
+            color='gray.500'
+            fontWeight='semibold'
+            letterSpacing='wide'
+            fontSize='xs'
+            textTransform='uppercase'
+            ml='2'
+          >
+      4غرف  &bull;  {myOrder.bathos}
+          </Box>
+        </Box>
+      </Box>
+    </>
+      ))]
   return (
     <>
       <Card dir='rtl' ms="5px" me="5px">
@@ -20,6 +90,7 @@ const Orders = () =>{
 
   <CardBody>
     <Stack divider={<StackDivider />} spacing='4'>
+      {myOrders}
       <Box>
         <Heading color="#006179" size='xs' textTransform='uppercase'>
         <Link href="#">
@@ -44,8 +115,7 @@ const Orders = () =>{
       4غرف  &bull;  2حمامات
           </Box>
         </Box>
-      </Box>
-      <Box>
+     
         <Heading color="#006179" size='xs' textTransform='uppercase'>
         <Link href="#">
         مطلوب بيت من غرفتين وصالة في صنعاء
@@ -103,3 +173,13 @@ const Orders = () =>{
 }
 
 export default Orders;
+export async function getStaticProps() {
+     const orders = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/requests-app/     `)
+    return {
+      props: {
+        // propertiesForSale:propertyForSale?.results,
+        orders:orders?.results,
+  
+      }
+    }
+  }
