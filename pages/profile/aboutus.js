@@ -1,13 +1,14 @@
 import React from 'react'
-import { Box,Text,Center } from '@chakra-ui/react'
+import { Box,Text,Center,Divider } from '@chakra-ui/react'
 import { useState } from 'react'
 const AboutUs = () => {
   return(
 
-      <Box mb="300px" height={"80rm"} display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} mt="100px">
-      <Box mb="30px"><Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >  من نحن</Text>
+      <Box ms='10px' me='10px' maxW={'400px'} mb="300px" height={"80rm"} display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} mt="100px">
+      <Box mb="30px">
+    <Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >  من نحن</Text>
 </Box>
-  <Box>
+  <Box mt={4} mb={4} >
   <Text maxW="500px">
   لبنة بروبرتي الموقع الرائد لتسويق العقارات في كافة مناطق ومدن
     الجمهورية اليمنيه 
@@ -19,14 +20,17 @@ const AboutUs = () => {
     
   </Text>
   </Box>
-  <Box mb="30px"><Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >   أهدافنا</Text>
-</Box>
-  <Box>
+      <Divider/>
+    
+    <Box mt={4} mb={4} ><Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >   أهدافنا</Text>
+
   <Text maxW="500px">
     توفير بيئة اَمنة وسهلة لكل من يريد بيع أوشراء العقارات في الجمهورية اليمنية .
   </Text>
   </Box>
-<Box mb="30px"><Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >   رؤيتنا</Text>
+      <Divider/>
+  <Box mt={4} mb={4} >
+      <Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >   رؤيتنا</Text>
 </Box>
   <Box>
   <Text maxW="500px">

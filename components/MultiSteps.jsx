@@ -743,8 +743,7 @@ let testApi = async()=>{
         if (response.status ===201){
           setSubmitted(true)
           setApiMessage(result)          
-          // router.push(`/property/${result.id}`)
-          toast(
+                   toast(
               {
               title: ` لقد تم  إضافة العقار`,
               description:`${result.property_title}`,
@@ -763,6 +762,8 @@ let testApi = async()=>{
           console.log(result)
           alert(JSON.stringify(result))
           setStep(4)
+           router.push(`/property/${result.id}`)
+
         }else{
           setErrors(result)
         toast(
@@ -855,13 +856,15 @@ const handleSubmit = async e => {
                            handleChange={handleChange}
                            propertyLocation={propertyLocation}
                            setPropertyLocation={setPropertyLocation} 
-                            /> :
+                            /> :null}
+          {/*
                             <Box>
                             <Box>أختر الصور للعقار</Box>
                             <ImagesUpload 
                             imageFiles={imageFiles} setImageFiles={setImageFiles} />
                             </Box>
-                           }
+                            */}
+                           
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex>
@@ -897,7 +900,9 @@ const handleSubmit = async e => {
               </Button>
             </Flex>
             {step === 3?(
-              <form  enctype="multipart/form-data">   
+              <form  enctype="multipart/form-data" 
+                onSubmit={handleSubmit}
+                >   
               <Button
                 type="submit"
                 w="8rem"
