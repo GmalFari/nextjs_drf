@@ -56,7 +56,8 @@ const ColorMode = () => {
         </FormControl>
       </Flex>
     </Flex>
-              <form>
+    {/*
+    <form>
 <AddressAutofill accessToken="pk.eyJ1IjoiamFtYWxkb2UiLCJhIjoiY2xlMDBycDFqMTc0ZDNucGhpdmZ0a3MxMyJ9._kaDvAK72eaDHxAyfsuJbA">
 <input
 name="address" placeholder="Address" type="text"
@@ -84,6 +85,7 @@ name="postcode" placeholder="Postcode" type="text"
 autoComplete="postal-code"
 />
 </form>
+*/}
             </>
   );
 };
