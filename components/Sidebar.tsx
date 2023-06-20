@@ -139,13 +139,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
        
       ))}
       <Box  
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        
-        
-        display={["none","flex"]}>
+        >
         <StyleColorMode/>
         </Box>
     </Box></>
