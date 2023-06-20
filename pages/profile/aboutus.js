@@ -4,7 +4,7 @@ import { useState } from 'react'
 const AboutUs = () => {
   return(
 
-      <Box maxW={'400px'} mb="300px" height={"80rm"} display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} mt="100px">
+      <Box ms='10px' me='10px' maxW={'400px'} mb="300px" height={"80rm"} display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} mt="100px">
       <Box mb="30px"><Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >  من نحن</Text>
 </Box>
   <Box>
