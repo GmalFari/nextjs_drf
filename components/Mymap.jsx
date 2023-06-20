@@ -4,7 +4,7 @@ import Map, {Marker,FullscreenControl   , NavigationControl} from 'react-map-gl'
 import { GeolocateControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useState,useCallback, useEffect,useContext,useRef } from "react";
-import  {MarkerDragEvent, LngLat} from '@react-map-gl';
+import  {MarkerDragEvent} from 'react-map-gl';
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiamFtYWxkb2UiLCJhIjoiY2xlMDAwZWlhMTM5OTN3b2F0YnVscHFoYSJ9.N_J3cEVw10zYYVBGf3dMmg"; // Set your mapbox token here
 import "mapbox-gl/dist/mapbox-gl.css";
