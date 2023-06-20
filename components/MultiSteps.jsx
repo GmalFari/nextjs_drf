@@ -743,7 +743,7 @@ let testApi = async()=>{
         if (response.status ===201){
           setSubmitted(true)
           setApiMessage(result)          
-          // router.push(`/property/${result.id}`)
+           router.push(`/property/${result.id}`)
           toast(
               {
               title: ` لقد تم  إضافة العقار`,
