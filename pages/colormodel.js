@@ -56,7 +56,7 @@ const ColorMode = () => {
       </Flex>
     </Flex>
               <form>
-<AddressAutofill accessToken="my-access-token-here">
+<AddressAutofill accessToken="pk.eyJ1IjoiamFtYWxkb2UiLCJhIjoiY2xlMDBycDFqMTc0ZDNucGhpdmZ0a3MxMyJ9._kaDvAK72eaDHxAyfsuJbA">
 <input
 name="address" placeholder="Address" type="text"
 autoComplete="address-line1"
