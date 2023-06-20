@@ -762,7 +762,7 @@ let testApi = async()=>{
           console.log(result)
           alert(JSON.stringify(result))
           setStep(4)
-           router.push(`/property/${result.id}`)
+          // router.push(`/property/${result.id}`)
 
         }else{
           setErrors(result)
