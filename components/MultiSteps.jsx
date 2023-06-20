@@ -898,7 +898,9 @@ const handleSubmit = async e => {
               </Button>
             </Flex>
             {step === 3?(
-              <form  enctype="multipart/form-data">   
+              <form  enctype="multipart/form-data" 
+                onSubmit={handlesubmit}
+                >   
               <Button
                 type="submit"
                 w="8rem"
