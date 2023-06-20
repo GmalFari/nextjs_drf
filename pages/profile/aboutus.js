@@ -20,11 +20,10 @@ const AboutUs = () => {
     
   </Text>
   </Box>
-      
-    <Box mt={4} mb={4} ><Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >   أهدافنا</Text>
-</Box>
       <Divider/>
-  <Box>
+    
+    <Box mt={4} mb={4} ><Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >   أهدافنا</Text>
+
   <Text maxW="500px">
     توفير بيئة اَمنة وسهلة لكل من يريد بيع أوشراء العقارات في الجمهورية اليمنية .
   </Text>
