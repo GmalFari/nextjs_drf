@@ -143,8 +143,8 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         p="4"
         mx="4"
         borderRadius="lg"
-        role="group"
-        cursor="pointer"
+        
+        
         display={["none","flex"]}>
         <StyleColorMode/>
         </Box>
