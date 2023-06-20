@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Head from 'next/head';
-import Map, {Marker  , NavigationControl} from 'react-map-gl';
+import Map, {Marker,FullscreenControl   , NavigationControl} from 'react-map-gl';
 import { GeolocateControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useState,useCallback, useEffect,useContext,useRef } from "react";
@@ -102,6 +102,7 @@ const MyMap = ({sizes,chooseLocation,propertyLocation,setPropertyLocation}) =>{
             trackUserLocation={true}
         />
             <NavigationControl />
+        <FullscreenControl />
       </Map>
       </div>
     {/* )} */}
