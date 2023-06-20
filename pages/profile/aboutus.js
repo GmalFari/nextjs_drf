@@ -5,7 +5,8 @@ const AboutUs = () => {
   return(
 
       <Box ms='10px' me='10px' maxW={'400px'} mb="300px" height={"80rm"} display={"flex"} justifyContent={"center"} alignItems={"center"} flexDirection={"column"} mt="100px">
-      <Box mb="30px"><Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >  من نحن</Text>
+      <Box mb="30px">
+    <Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >  من نحن</Text>
 </Box>
   <Box mt={4} mb={4} >
   <Text maxW="500px">
@@ -19,7 +20,8 @@ const AboutUs = () => {
     
   </Text>
   </Box>
-  <Box mb="30px"><Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >   أهدافنا</Text>
+      
+    <Box mt={4} mb={4} ><Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >   أهدافنا</Text>
 </Box>
       <Divider/>
   <Box>
@@ -28,7 +30,8 @@ const AboutUs = () => {
   </Text>
   </Box>
       <Divider/>
-<Box mb="30px"><Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >   رؤيتنا</Text>
+  <Box mt={4} mb={4} >
+      <Text fontSize={"xl"} fontWeight={"bold"} as="h1" textAlign={"center"} >   رؤيتنا</Text>
 </Box>
   <Box>
   <Text maxW="500px">
