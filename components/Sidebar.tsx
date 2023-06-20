@@ -26,7 +26,7 @@ import {
 } from '@chakra-ui/react';
 import OurLogo from "./Logo";
 import { FaSearch } from 'react-icons/fa';
-import {FcAbout} from 'react-icons';
+import {FcAbout} from 'react-icons/fc';
 import {
   
   FiHome,
