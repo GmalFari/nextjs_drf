@@ -9,11 +9,11 @@ import { Avatar } from "@chakra-ui/react";
 import {FaBed , FaBath} from 'react-icons/fa';
 import { Card,CardBody,CardFooter,Stack,Heading,Button } from "@chakra-ui/react";
 const Property = (
-    {property:{coverPhoto,property_price,owner,
+    {property:{id,coverPhoto,property_price,owner,
             rent_frequency,rooms,property_town,
             property_title,baths,sqrt_area,agency,isVerified,externalID,geography}}) => (
         <Flex flexWrap="wrap" flexDirection="column" overflow="hidden" m="2" paddingTop="0" justifyContent="flex-start" cursor="pointer">
-            <Link  href={`/property/${externalID}`} passHref>
+            <Link  href={`/property/${id}`} passHref>
             <Box overflow={"hidden"} me="4" height="200" minH="200" 
                     width="100%" minW="100%"  >
                 <Box 
