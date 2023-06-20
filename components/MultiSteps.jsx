@@ -688,7 +688,6 @@ export default function Multistep({
     // setPropertyLocation({longitude:position['longitude'],latitude:position['latitude'],zoom:14})
 }
 
-console.log(propertyLocation['coordinates'])
 const [errors,setErrors] = useState()
 let token = JSON.parse(localStorage.getItem("authTokens"))
 let accessToken = token?.access
