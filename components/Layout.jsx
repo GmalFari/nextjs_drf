@@ -19,12 +19,13 @@ export default function Layout({ children }) {
   }, [windowWidth]);
 
   return (
-    <Box dir="rtl">
+    <Box  dir="rtl">
       <Box>
       <Container 
   maxW='1400px'>
   
   <Sidebar />
+
           </Container>
         <main>{children}</main>
       </Box>

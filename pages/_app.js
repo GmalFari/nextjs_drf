@@ -1,6 +1,8 @@
 import Router from "next/router";
 import Head from "next/head";
 import { ChakraProvider,extendTheme,Container } from "@chakra-ui/react";
+import { Chakra } from "./Chakra";
+
 import Layout from '../components/Layout';
 import "nprogress/nprogress.css";
 
@@ -30,14 +32,14 @@ function MyApp({Component,pageProps,router}){
         };
       }, [router]);
     return (
-        
-        <ChakraProvider theme={theme}>
+      <Chakra theme={theme} cookies={pageProps.cookies}>
+
           <AuthProvider >
-                    <Layout>
+                    <Layout >
                         <Component {...pageProps} />
                     </Layout>
             </AuthProvider>
-        </ChakraProvider>
+        </Chakra>
     );
 }
 

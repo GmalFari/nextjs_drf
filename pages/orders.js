@@ -1,9 +1,13 @@
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter,
+      useColorMode,useColorModeValue,Switch } from '@chakra-ui/react'
 import { Stack,StackDivider,Button,Box,Heading,Text,Badge, } from '@chakra-ui/react';
 import OrderCreateDrower from '../components/orders/CreateOrderDrower';
 import Link from "next/link";
 import { fetchApi } from '../utils/fetchApi';
 const Orders = ({orders}) =>{
+  const { toggleColorMode } = useColorMode();
+  const formBackground = useColorModeValue('gray.100', 'gray.700');
+
   console.log(orders)
   // const [myOrders,setMyorders]=useState()
   const OrdersApi = () =>{
@@ -23,7 +27,7 @@ const Orders = ({orders}) =>{
   }
   const myOrders = [orders.map((myOrder)=>(
     <>
-        <Box>
+        <Box bg={formBackground}>
         <Heading color="#006179" size='xs' textTransform='uppercase'>
         <Link href="#">
           مطلوب بيت من غرفتين وصالة في صنعاء
@@ -167,6 +171,12 @@ const Orders = ({orders}) =>{
       </Box>
     </Stack>
   </CardBody>
+  <Switch
+            id="dark_mode"
+            colorScheme="teal"
+            size="lg"
+            onChange={toggleColorMode}
+          />
 </Card>
     </>
   )

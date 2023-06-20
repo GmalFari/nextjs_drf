@@ -2,10 +2,10 @@ import  { createContext,useContext, useState, useEffect, use } from "react";
 import jwt_decode from "jwt-decode";
 // import { useHistory } from "react-router-dom";
 import api from "../services/api"
-const AuthContext = createContext();
 import { useRouter } from "next/router";
 import { useToast } from '@chakra-ui/react';
 import MainToast from "../components/MainToast";
+const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {

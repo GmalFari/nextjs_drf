@@ -63,9 +63,9 @@ const OrderCreateDrower = () => {
         owner: null,
 
       })
-      const headerContent = "  حذف الطلب";
-    const alertDialogHeader = "حذف الطلب ";
-    const alertDialogBody = "هل أنت متأكد أنك تريد حذف الطلب ؟";
+      const headerContent = " حذف العقار";
+    const alertDialogHeader = "حذف العقار ";
+    const alertDialogBody = "هل أنت متأكد أنك تريد حذف العقار ؟";
     let requestApi = async()=>{
       // setLoading(true);
       const myform = new FormData()
@@ -191,9 +191,9 @@ const OrderCreateDrower = () => {
   return (
     <>
 
-     {/* <Button leftIcon={< FaPlus/>}  ref={btnRef} colorScheme='teal' onClick={onOpen}>
+     <Button leftIcon={< FaPlus/>}  ref={btnRef} colorScheme='teal' onClick={onOpen}>
      إضافة طلب
-      </Button> */}
+      </Button>
       <Drawer
         isOpen={isOpen}
         placement='right'
@@ -207,13 +207,13 @@ const OrderCreateDrower = () => {
           <DrawerHeader>
 
           <Box mt="30px" textAlign={"center"}>
-    {/* <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
+    <Button ms={"20px"} me={"20px"}  colorScheme='teal' variant='outline'>
         إضافة الطلب
-    </Button> */}
-    {/* <MainAlert headerContent={headerContent} 
+    </Button>
+    <MainAlert headerContent={headerContent} 
                     alertDialogHeader={alertDialogHeader} 
                     alertDialogBody={alertDialogBody} 
-                    handleSubmit={handleDelete} /> */}
+                    handleSubmit={handleDelete} />
                       
     </Box>
           </DrawerHeader>

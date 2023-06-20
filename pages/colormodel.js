@@ -1,4 +1,3 @@
-import { AddressAutofill } from '@mapbox/search-js-react';
 import React from 'react';
 import {
   Flex,
@@ -11,8 +10,6 @@ import {
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
-
-
 const ColorMode = () => {
   const { toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue('gray.100', 'gray.700');
@@ -55,38 +52,15 @@ const ColorMode = () => {
           />
         </FormControl>
       </Flex>
+
     </Flex>
-    {/*
-    <form>
-<AddressAutofill accessToken="pk.eyJ1IjoiamFtYWxkb2UiLCJhIjoiY2xlMDBycDFqMTc0ZDNucGhpdmZ0a3MxMyJ9._kaDvAK72eaDHxAyfsuJbA">
-<input
-name="address" placeholder="Address" type="text"
-autoComplete="address-line1"
-/>
-</AddressAutofill>
-<input
-name="apartment" placeholder="Apartment number" type="text"
-autoComplete="address-line2"
-/>
-<input
-name="city" placeholder="City" type="text"
-autoComplete="address-level2"
-/>
-<input
-name="state" placeholder="State" type="text"
-autoComplete="address-level1"
-/>
-<input
-name="country" placeholder="Country" type="text"
-autoComplete="country"
-/>
-<input
-name="postcode" placeholder="Postcode" type="text"
-autoComplete="postal-code"
-/>
-</form>
-*/}
-            </>
+    <Switch
+            id="dark_mode"
+            colorScheme="teal"
+            size="lg"
+            onChange={toggleColorMode}
+          />
+                </>
   );
 };
 

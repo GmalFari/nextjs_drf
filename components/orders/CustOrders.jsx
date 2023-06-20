@@ -531,4 +531,3 @@ export default function CustOrders({myData,setData,handleSubmit}) {
   );
 }
 
-// export default CustOrders;

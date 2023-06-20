@@ -23,7 +23,9 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  ColorModeContext,
 } from '@chakra-ui/react';
+import StyleColorMode from '../context/themeContexts';
 import OurLogo from "./Logo";
 import { FaSearch } from 'react-icons/fa';
 import {FcAbout} from 'react-icons/fc';
@@ -131,9 +133,21 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {LinkItems.map((link) => (
         <NavItem key={link.name} url={link.url} icon={link.icon}>
          {link.name}
-        
         </NavItem>
+         
+        
+       
       ))}
+      <Box  
+        align="center"
+        p="4"
+        mx="4"
+        borderRadius="lg"
+        role="group"
+        cursor="pointer"
+        display={["none","flex"]}>
+        <StyleColorMode/>
+        </Box>
     </Box></>
   );
 };
@@ -206,6 +220,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         </Link>
       </Text>
       <HStack spacing={{ base: '0', md: '6' }}>
+        <Box display={["none","flex"]}>
+        <StyleColorMode/>
+        </Box>
         <IconButton
           size="lg"
           variant="ghost"
