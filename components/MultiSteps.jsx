@@ -856,7 +856,7 @@ const handleSubmit = async e => {
                            handleChange={handleChange}
                            propertyLocation={propertyLocation}
                            setPropertyLocation={setPropertyLocation} 
-                            /> :null
+                            /> :null}
           {/*
                             <Box>
                             <Box>أختر الصور للعقار</Box>
@@ -864,7 +864,7 @@ const handleSubmit = async e => {
                             imageFiles={imageFiles} setImageFiles={setImageFiles} />
                             </Box>
                             */}
-                           }
+                           
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex>
