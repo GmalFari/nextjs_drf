@@ -50,7 +50,7 @@ const Search = ({data}) => {
       console.log(currentPage)
     };
     useEffect(() => {
-        if(currentPage < 1  ){
+        if(currentPage <= 1  ){
             setCurrentPage(1)
         }
         if(currentPage > itemsCount){
@@ -73,7 +73,7 @@ const Search = ({data}) => {
           });
             
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [currentPage,searchValue]);
+      }, [searchValue]);
    
   /*
   useEffect(() => {
