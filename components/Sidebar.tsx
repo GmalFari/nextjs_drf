@@ -215,7 +215,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         </Link>
       </Text>
       <HStack spacing={{ base: '0', md: '6' }}>
-        <Box display={["none"]}>
+        <Box display={["flex"]}>
         <StyleColorMode/>
         </Box>
         <IconButton
