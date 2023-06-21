@@ -130,7 +130,7 @@ const Search = ({data}) => {
         </Flex>
         <Divider/>
 
-         {/* } */}
+         
         <Flex justifyContent={'space-between'} fontSize={['md','xl','xl','2xl']} p="4" fontWeight="bold">
         <Flex color={'#006169'} flexGrow={1} justifyContent={'right'} >
         <Box width={"48px"} 
