@@ -34,7 +34,10 @@ const Orders = ({orders}) =>{
           </Link>
         </Heading>
         <Text pt='2' fontSize='sm'>
-      مطلوب شقه سكنيةمن المالك مباشر استوديو او غرفة او ثلاث غرف شخصي الدلالين لو سمحتو بعدين
+        {myOrder.property_description ?
+        myOrder.property_description:
+        myOrder.req_order_title}
+                               
               </Text>
               <Box display='flex' alignItems='base line' mt={4}> 
           <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
