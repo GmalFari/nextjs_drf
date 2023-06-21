@@ -90,7 +90,7 @@ const Search = ({data}) => {
          router.push({pathname:path,query})
           
           console.log(query['property_title'])
-          axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?search=${query['search']}&purpose=${query['purpose']}`)
+          axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?search=${query['search']}&page=${currentPage}`)
             .then((response) => { 
             if(response.data.count !== 0) {
               setNoData(false)
