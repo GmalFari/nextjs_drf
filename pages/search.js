@@ -75,38 +75,7 @@ const Search = ({data}) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [currentPage,searchValue]);
    
-  /*
-  useEffect(() => {
-        
-          if(currentPage < 1){
-              setCurrentPage(1)
-          }
-        //  if(currentPage > itemsCount){
-          //    setCurrentPage(itemsCount)
-         // }
-          const path = router.pathname;
-          const {query } = router;  
-          query["page"] = currentPage
-         router.push({pathname:path,query})
-          
-          console.log(query['property_title'])
-          axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?search=${query['search']}&page=${currentPage}`)
-            .then((response) => { 
-            if(response.data.count !== 0) {
-              setNoData(false)
-              setPageCount(response.data.count)
-              setProperties(response.data.results);
-            }else{
-            setNoData(true)
-            }
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-          
-        }, []);
-      */
-
+  
     const listingsH = [properties.map((property) =>(
                <HorizonalCard   property={property} key={property.id} /> 
                    ))]
