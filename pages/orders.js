@@ -27,40 +27,17 @@ const Orders = ({orders}) =>{
   }
   const myOrders = [orders.map((myOrder)=>(
     <>
-        <Box bg={formBackground}>
-        <Heading color="#006179" size='xs' textTransform='uppercase'>
-        <Link href="#">
-               {myOrder.req_order_title}
-          </Link>
-        </Heading>
-        <Text pt='2' fontSize='sm'>
-                                       
-              </Text>
-              <Box display='flex' alignItems='base line' mt={4}> 
-          <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
-           جديد
-          </Badge>
-          <Box
-            color='gray.500'
-            fontWeight='semibold'
-            letterSpacing='wide'
-            fontSize='xs'
-            textTransform='uppercase'
-            ml='2'
-          >
-      4غرف  &bull;  2حمامات
-          </Box>
+        <Box bg={formBackground}>      
+        
            
         <Heading color="#006179" size='xs' textTransform='uppercase'>
         <Link href="#">
             {myOrder.req_order_title}
            </Link>
         </Heading>
+        <Box>
         <Text pt='2' fontSize='sm'>
-      {myOrder.property_description ?
-        myOrder.property_description:
-        myOrder.req_order_title}
-
+      
             </Text>
       </Box>
               <Box display='flex' alignItems='base line' mt={4}> 
