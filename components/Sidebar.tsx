@@ -219,6 +219,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         <StyleColorMode/>
         </Box>
         <IconButton
+          display={'none'}
           size="lg"
           variant="ghost"
           aria-label="open menu"
