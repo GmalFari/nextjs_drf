@@ -34,10 +34,7 @@ const Orders = ({orders}) =>{
           </Link>
         </Heading>
         <Text pt='2' fontSize='sm'>
-        {myOrder.property_description ?
-        myOrder.property_description:
-        myOrder.req_order_title}
-                               
+                                       
               </Text>
               <Box display='flex' alignItems='base line' mt={4}> 
           <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
@@ -57,12 +54,15 @@ const Orders = ({orders}) =>{
      
         <Heading color="#006179" size='xs' textTransform='uppercase'>
         <Link href="#">
-        مطلوب بيت من غرفتين وصالة في صنعاء
-        </Link>
+            {myOrder.req_order_title}
+           </Link>
         </Heading>
         <Text pt='2' fontSize='sm'>
-      مطلوب شقه سكنيةمن المالك مباشر استوديو او غرفة او ثلاث غرف شخصي الدلالين لو سمحتو بعدين
-              </Text>
+      {myOrder.property_description ?
+        myOrder.property_description:
+        myOrder.req_order_title}
+
+            </Text>
               <Box display='flex' alignItems='base line' mt={4}> 
           <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
            جديد
