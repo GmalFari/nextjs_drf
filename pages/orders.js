@@ -55,7 +55,7 @@ const Orders = ({orders}) =>{
             textTransform='uppercase'
             ml='2'
           >
-      4غرف  &bull;  {myOrder.bathos}
+      4غرف  &bull;  
           </Box>
         </Box>
       </Box>
