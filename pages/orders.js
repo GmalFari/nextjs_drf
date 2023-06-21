@@ -30,7 +30,7 @@ const Orders = ({orders}) =>{
         <Box bg={formBackground}>
         <Heading color="#006179" size='xs' textTransform='uppercase'>
         <Link href="#">
-          مطلوب بيت من غرفتين وصالة في صنعاء
+               {myOrder.req_order_title}
           </Link>
         </Heading>
         <Text pt='2' fontSize='sm'>
