@@ -86,7 +86,7 @@ const Search = ({data}) => {
           const path = router.pathname;
           const {query } = router;  
           query["page"] = currentPage
-          router.push({pathname:path,query})
+        //  router.push({pathname:path,query})
           
           console.log(query['property_title'])
           axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?search=${query['search']}`)
