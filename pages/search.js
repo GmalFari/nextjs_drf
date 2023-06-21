@@ -30,6 +30,7 @@ import OurLogo from '../components/Logo';
 
 // import { paginate } from '../helper/paginate';
 const Search = ({data}) => {
+  const [noData,setNoData] =useState(false)
     const myproperties = data?.results
   
     const [properties,setProperties] = useState(myproperties);
@@ -49,7 +50,7 @@ const Search = ({data}) => {
       console.log(currentPage)
     };
     useEffect(() => {
-        if(currentPage < 1){
+        if(currentPage < 1  ){
             setCurrentPage(1)
         }
         if(currentPage > itemsCount){
@@ -90,9 +91,14 @@ const Search = ({data}) => {
           
           console.log(query['property_title'])
           axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?search=${query['search']}`)
-            .then((response) => {
+            .then((response) => { 
+            if(response.data.count !== 0) {
+              setNoData(false)
               setPageCount(response.data.count)
               setProperties(response.data.results);
+            }else{
+            setNoData(true)
+            }
             })
             .catch((error) => {
               console.log(error);
