@@ -62,7 +62,7 @@ const Search = ({data}) => {
         query["search"] = searchValue
         query["page"] = currentPage
         router.push({pathname:path,query})
-        axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?search=${query['search']}&page=${currentPage}`)
+        axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?search=${query['search']}&page=${currentPage}&purpose=${purpose}`)
           .then((response) => {
             console.log(response.data.results)
             setPageCount(response.data.count)
@@ -90,7 +90,7 @@ const Search = ({data}) => {
         //  router.push({pathname:path,query})
           
           console.log(query['property_title'])
-          axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?search=${query['search']}`)
+          axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?search=${query['search']}&purpose=${purpose}&`)
             .then((response) => { 
             if(response.data.count !== 0) {
               setNoData(false)
@@ -278,8 +278,9 @@ export default Search
 
 
 export async function getServerSideProps({query}) {
+  const purpose = query.purpose || 'for-rent';
     // const data = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=${locationExternalIDs}&purpose=${purpose}&hitsPerPage=6&rentFrequency=${rentFrequency}&minPrice=${minPrice}&maxPrice=${maxPrice}&bathsMin=${bathsMin}&roomsMin=${roomsMin}&sort=${sort}&areaMax=${areaMax}&categoryExternalID=${categoryExternalID}&lang=${lang}`);
-        const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/`)
+        const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/?purpose=${purpose}`)
                     return {
                         props:{
                           data:data,
