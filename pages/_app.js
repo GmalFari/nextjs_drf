@@ -15,7 +15,6 @@ import "../styles/Home.module.css"
 import { AuthProvider } from "../context/AuthContext";
 import theme from"../styles/theme"
 const mapContext = createContext()
-
 function MyApp({Component,pageProps,router}){
     useEffect(() => {
         const handleRouteStart = () => NProgress.start();
@@ -32,7 +31,7 @@ function MyApp({Component,pageProps,router}){
         };
       }, [router]);
     return (
-      <Chakra theme={theme} cookies={pageProps.cookies}>
+      <Chakra theme={theme} >
 
           <AuthProvider >
                     <Layout >
