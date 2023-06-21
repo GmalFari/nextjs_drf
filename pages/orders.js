@@ -37,7 +37,10 @@ const Orders = ({orders}) =>{
         </Heading>
         <Box>
         <Text pt='2' fontSize='sm'>
-      
+      {myOrder.property_description ?
+        myOrder.property_description:
+        myOrder.req_order_title}
+
             </Text>
       </Box>
               <Box display='flex' alignItems='base line' mt={4}> 
