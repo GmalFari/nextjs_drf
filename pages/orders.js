@@ -50,8 +50,7 @@ const Orders = ({orders}) =>{
           >
       4غرف  &bull;  2حمامات
           </Box>
-        </Box>
-     
+           
         <Heading color="#006179" size='xs' textTransform='uppercase'>
         <Link href="#">
             {myOrder.req_order_title}
@@ -63,6 +62,7 @@ const Orders = ({orders}) =>{
         myOrder.req_order_title}
 
             </Text>
+      </Box>
               <Box display='flex' alignItems='base line' mt={4}> 
           <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
            جديد
