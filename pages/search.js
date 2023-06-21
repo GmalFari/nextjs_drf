@@ -53,10 +53,10 @@ const Search = ({data}) => {
         if(currentPage <= 1  ){
             setCurrentPage(1)
         }
-        if(currentPage > itemsCount){
-            setCurrentPage(itemsCount)
-        }
-        console.log(currentPage)
+      //  if(currentPage > itemsCount){
+       //     setCurrentPage(itemsCount)
+       // }
+        
         const path = router.pathname;
         const {query } = router;  
         query["search"] = searchValue
@@ -73,7 +73,7 @@ const Search = ({data}) => {
           });
             
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [searchValue]);
+      }, [currentPage,searchValue]);
    
   /*
   useEffect(() => {
@@ -81,9 +81,9 @@ const Search = ({data}) => {
           if(currentPage < 1){
               setCurrentPage(1)
           }
-          if(currentPage > itemsCount){
-              setCurrentPage(itemsCount)
-          }
+        //  if(currentPage > itemsCount){
+          //    setCurrentPage(itemsCount)
+         // }
           const path = router.pathname;
           const {query } = router;  
           query["page"] = currentPage
