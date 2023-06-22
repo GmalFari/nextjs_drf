@@ -1,9 +1,10 @@
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-const PHONE_REGEX = new RegExp(/"^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"/gmi);
+const PHONE_REGEX = new RegExp(/"^(?:\+967|)\d{8}$"/gmi);
 
-const RegexPhoneNumberInput = () => {
+
+const RegexPhoneNumberInput = ({phonenumber,setPhonenumber}) => {
 
    const {
      handleSubmit,
@@ -22,26 +23,19 @@ const RegexPhoneNumberInput = () => {
    }
    return PHONE_REGEX.test(phoneNumber);
  }
-
+ 
    return (
         //  <form onSubmit={handleSubmit(onSubmit)} className="user-info-form">
            <div>
-               <Controller
-               name="phone-input"
-               control={control}
-               rules={{
-                 validate: (value) => handleValidate(value)
-               }}
-               render={({ field: { onChange, value } }) => (
-                   <PhoneInput
+                <PhoneInput
                     style={{"direction":"ltr","line-height":"44px",border:"1px solid #ddd"}}
-                     value={value}
-                     onChange={onChange}
+                    
+                    value={"+967"+phonenumber}
+                    onChange={e=>setPhonenumber(e)}
                      defaultCountry="YE"
                      id="phone-input"
+                    // placeholder={"+967 7********"}
                    />
-               )}
-               />
              {!!errors.phoneNumber && <p style={{color: 'red'}}>{errors.phoneNumber}</p>}
            </div>
         //  </form>

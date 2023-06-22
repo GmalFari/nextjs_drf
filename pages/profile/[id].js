@@ -9,11 +9,13 @@ import {
     Stack,
     Button,
     useColorModeValue,
-
+    Grid
   } from '@chakra-ui/react';
   
   
 import React, { useState,useEffect } from 'react'
+import ContactPopover from "../../components/popoverModals/ContactModals";
+
 import { fetchApi,baseUrl } from '../../utils/fetchApi'
 
 // import { Uploader } from "uploader";

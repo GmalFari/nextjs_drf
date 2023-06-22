@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import {useEffect,useState} from 'react';
 const CustDetail =({userId})=>{
+  
  const  [personalDetail,setPersonalDetail] =useState()
   useEffect(()=>{
   const options = {
@@ -22,9 +23,10 @@ const CustDetail =({userId})=>{
   
   fetch(`https://fortestmimd.pythonanywhere.com/api/users/${userId}/`, options)
     .then(response => response.json())
-    .then(response => {alert(JSON.stringify(response))})
+    .then(response => {setPersonalDetail(response)})
     .catch(err => console.error(err));}
     ,[])
+    console.log(personalDetail)
   return(
     <>
 <Stack mt={6} direction={'row'} spacing={4} align={'center'}>

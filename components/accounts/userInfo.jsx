@@ -5,12 +5,13 @@ import {BiLike,BiChat,BiShare} from "react-icons/bi";
 import { StarIcon } from '@chakra-ui/icons';
 import { useContext,useState, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';
-const  UserInfo=()=> {
+const  UserInfo=({setPhonenumber})=> {
   const {user,authTokens} = useContext(AuthContext);
   const[userDetail,setUserDetail]=useState({
     first_name:"",
     last_name:"",
-    email:""
+    email:"",
+    phonenumber:"",
   });
   const getUserdetail = async ()=>{
     console.log('update tokens')
@@ -26,18 +27,19 @@ const  UserInfo=()=> {
     let data = await response.json()
     if (response.status === 200) {
       setUserDetail(data)
-      console.log(userDetail)
       // router.push("/")
     }else {
       alert(JSON.stringify(data))
     }
-    }catch(errors){
-      alert(errors)
-    }
+  }catch(errors){
+    alert(errors)
   }
-  useEffect(()=>{
-    getUserdetail()
-  },[])
+}
+useEffect(()=>{
+  getUserdetail()
+},[])
+console.log(userDetail)
+  setPhonenumber(userDetail['phonenumber'])
       return (
 <Card maxW='md' dir='rtl'>
   <CardHeader>

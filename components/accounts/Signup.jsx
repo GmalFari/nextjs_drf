@@ -22,14 +22,11 @@ import {
 
 import RegexPhoneNumberInput from "../RegexPhoneNumberInput" 
 
-import { useState,useContext} from 'react';
+import { useState,useEffect,useContext} from 'react';
 import { ViewIcon, ViewOffIcon} from '@chakra-ui/icons';
 import { Formik, useFormik } from "formik";
 import AuthContext from "../../context/AuthContext";
 import { useToast } from '@chakra-ui/react';
-
-
-
 const validateName=(value)=> {
   let error
   if (!value) {
@@ -47,7 +44,8 @@ export default function SignupCard() {
   const toast = useToast()
 
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState();
+  const [phonenumber, setPhonenumber] = useState('');
   const [firstname,setFirstname]=useState('');
   const [lastname,setLastname]=useState('');
   const [password, setPassword] = useState('');
@@ -59,10 +57,10 @@ export default function SignupCard() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    registerUser(firstname,lastname,email, password);
+    registerUser(firstname,lastname,email,phonenumber, password);
     loginUser
   };
-  console.log(errors)
+  console.log(email)
   
     return (
       <Flex
@@ -135,17 +133,18 @@ export default function SignupCard() {
              </FormControl>
               <FormControl id="phone" isRequired>
                 <FormLabel> (اختياري) رقم التلفون</FormLabel>
-                <RegexPhoneNumberInput/>
+                <RegexPhoneNumberInput
+                      setPhonenumber={setPhonenumber} 
+                      value={phonenumber} />
                 {/* <Input type="text"
                   name="phone"
                  // value={email}
                  // onChange={e=>setEmail(e.target.value)}
                /> */}
                  <FormLabel display={errors?.email?'flex':'none'}>
-                 <small>{errors?.email?errors.email:null}</small>
+                 <small>{errors?.phonenumber?errors.phonenumber:null}</small>
                  </FormLabel>
              </FormControl>
-           
               <FormControl id="password" isRequired>
                 <FormLabel>كلمة السر </FormLabel>
                 <InputGroup>

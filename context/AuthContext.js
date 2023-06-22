@@ -75,7 +75,7 @@ useEffect(()=>{
 
    }
     };
-  const registerUser = async (firstname,lastname,email,password) => {
+  const registerUser = async (firstname,lastname,email,phonenumber,password) => {
     // e.preventDefault()
     try{
       const response = await fetch("https://fortestmimd.pythonanywhere.com/api/users/register/", {
@@ -88,6 +88,7 @@ useEffect(()=>{
         "first_name":firstname,
         "last_name":lastname,
         "email":email,
+        "phonenumber":phonenumber,
         "password":password
         // "re_password":e.target.password2.value
       })
@@ -101,13 +102,13 @@ useEffect(()=>{
       loginUser(email,password)
       alert("لقد تم إضافة حسابك بنجاح ")
       router.push('/accounts/login')
-      MainToast({"title":"خطاء بالبيانات ","description":"خطأ بالبيانات"
-      ,"statusOutput":"error","duration":"5000"})
+      // MainToast({"title":"خطاء بالبيانات ","description":"خطأ بالبيانات"
+      // ,"statusOutput":"error","duration":"5000"})
     } else {
       setErrors(data)
 
-      MainToast({"title":"خطاء بالبيانات ","description":"خطأ بالبيانات"
-      ,"statusOutput":"error","duration":"5000"})
+      // MainToast({"title":"خطاء بالبيانات ","description":"خطأ بالبيانات"
+      // ,"statusOutput":"error","duration":"5000"})
       // alert("Something went wrong!");
       // console.log(response.status)
       // console.log(data)
