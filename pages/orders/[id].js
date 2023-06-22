@@ -8,6 +8,8 @@ import {
   Avatar,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { fetchApi,baseUrl } from '../../utils/fetchApi'
+
 const OrderCard = ({userDetail}) => {
  alert('hgg')
   return (
