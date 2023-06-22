@@ -8,8 +8,10 @@ import {
   Avatar,
   useColorModeValue,
 } from '@chakra-ui/react';
-const OrderCard = ({orderDetail:{ req_order_title ,property_description,property_town,timestamp}}) => {
- alert(req_order_title)
+const OrderCard = (
+  //{orderDetail:{ req_order_title ,property_description,property_town,timestamp}}
+                  ) => {
+ alert('hgg')
   return (
     <Center py={6}>
       <Box
