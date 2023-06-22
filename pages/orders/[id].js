@@ -79,6 +79,6 @@ export default Orexport async function getServerSideProps({params: {id}}){
             orderDetail :data
         }
     }
-//}
+}
 
 
