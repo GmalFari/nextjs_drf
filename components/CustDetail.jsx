@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import {useEffect} from 'react';
 const CustDetail =({userId})=>{
-  alert(userId)
+  [personalDetail,setPersonalDetail] =useState()
   useEffect(()=>{
   const options = {
     method: 'GET',
@@ -20,9 +20,9 @@ const CustDetail =({userId})=>{
     },
       };
   
-  fetch('https://fortestmimd.pythonanywhere.com/api/users/2/', options)
+  fetch(`https://fortestmimd.pythonanywhere.com/api/users/${userId}/`, options)
     .then(response => response.json())
-    .then(response => {console.log(response)})
+    .then(response => {alert(JSON.stringify(response))})
     .catch(err => console.error(err));}
     ,[])
   return(
@@ -33,7 +33,7 @@ const CustDetail =({userId})=>{
             alt={'Author'}
           />
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600}>Achim Rolle</Text>
+            <Text fontWeight={600}>{userId }</Text>
             <Text color={'gray.500'}>Feb 08, 2021 · 6min read</Text>
           </Stack>
   </Stack>
