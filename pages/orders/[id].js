@@ -71,13 +71,11 @@ const OrderCard = () => {
   );
 }
 
-export default Orexport async function getServerSideProps({params: id}){
-    const data = await fetchApi(`http://fortestmimd.pythonanywhere.com/api/requests-app/34/`)
+export async function getServerSideProps({params: {id}}){
+    const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/users/${id}/`)
     return {
         props : {
-            orderDetail :data
+            userDetail:data
         }
     }
 }
-
-
