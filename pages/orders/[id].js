@@ -70,7 +70,7 @@ const OrderCard = () => {
     </Center>
   );
 }
-
+export default  OrderCard
 export async function getServerSideProps({params: {id}}){
     const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/users/${id}/`)
     return {
