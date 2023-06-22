@@ -101,7 +101,7 @@ const Search = ({data}) => {
           
         }, []);
       */
-
+  
     const listingsH = [properties.map((property) =>(
                <HorizonalCard   property={property} key={property.id} /> 
                    ))]

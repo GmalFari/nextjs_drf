@@ -138,7 +138,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         
        
       ))}
-      <Box  
+      <Box  ms={2}
         >
         <StyleColorMode/>
         </Box>
@@ -219,6 +219,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         <StyleColorMode/>
         </Box>
         <IconButton
+          display={'block'}
           size="lg"
           variant="ghost"
           aria-label="open menu"
