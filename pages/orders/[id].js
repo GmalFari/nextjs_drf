@@ -8,8 +8,7 @@ import {
   Avatar,
   useColorModeValue,
 } from '@chakra-ui/react';
-const OrderCard = (
-        ) => {
+const OrderCard = () => {
  alert('hgg')
   return (
     <Center py={6}>
@@ -73,7 +72,7 @@ const OrderCard = (
 }
 
 export default Orexport async function getServerSideProps({params: {id}}){
-    const data = await fetchApi(`http://fortestmimd.pythonanywhere.com/api/requests-app/${id}/`);
+    const data = await fetchApi(`http://fortestmimd.pythonanywhere.com/api/requests-app/34/`)
     return {
         props : {
             orderDetail :data
