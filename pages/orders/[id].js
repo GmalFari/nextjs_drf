@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { fetchApi,baseUrl } from '../../utils/fetchApi'
 
-const OrderCard = ({userDetail}) => {
+const OrderCard = ({orderDetail}) => {
  alert('hgg')
   return (
     <Center py={6}>
@@ -74,10 +74,10 @@ const OrderCard = ({userDetail}) => {
 }
 export default  OrderCard;
 export async function getServerSideProps({params: {id}}){
-    const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/users/${id}/`)
+    const data = await fetchApi(`http://fortestmimd.pythonanywhere.com/api/requests-app/${id}/`)
     return {
        props : {
-            userDetail:data
+            orderDetail:data
         }
     }
 }
