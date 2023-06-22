@@ -6,8 +6,8 @@ import {
   Text,
   Stack,
   Avatar,
-  Image,o
-  useColorModeValue,
+  Image,
+  useColorModeValue
 } from '@chakra-ui/react';
 import { fetchApi,baseUrl } from '../../utils/fetchApi'
 import { Img } from "@chakra-ui/react";
