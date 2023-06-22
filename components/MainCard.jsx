@@ -13,7 +13,7 @@ const MainCard = (
   {property:{id,coverPhoto,property_price,rent_frequency,rooms,property_title,baths,sqrt_area
     ,agency,isVerified,externalID,timestamp}}  
   ) => {
-    const defaultImg = "https://www.pythonanywhere.com/user/fortestmimd/files/home/fortestmimd/realestate_restapi/mediafiles/No_Image_Available.jpg"
+    const defaultImg = "https://upcdn.io/W142hzB/raw/uploads/2023/06/16/No_Image_Available.jpg"
     console.log(timestamp)
     const date = new Date(timestamp);
     const currentDate = new Date()

@@ -14,7 +14,6 @@ export default function Chakra({ cookies, children }) {
       typeof cookies === 'string'
         ? cookieStorageManagerSSR(cookies)
         : localStorageManager
-  
     return (
       <ChakraProvider theme={theme} colorModeManager={colorModeManager}>
         {children}

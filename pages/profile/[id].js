@@ -13,50 +13,63 @@ import {
   } from '@chakra-ui/react';
   
   
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { fetchApi,baseUrl } from '../../utils/fetchApi'
 
-import { Uploader } from "uploader";
-import { UploadDropzone,UploadButton } from "react-uploader";
+// import { Uploader } from "uploader";
+// import { UploadDropzone,UploadButton } from "react-uploader";
 
-// Initialize once (at the start of your app).
+// // Initialize once (at the start of your app).
 
-const uploader = Uploader({ apiKey: "public_W142hzBE4sj6JPVjh3KruK2CCKQZ" }); // Your real API key.
-const uploaderOptions = {
-  multi: true,
+// const uploader = Uploader({ apiKey: "public_W142hzBE4sj6JPVjh3KruK2CCKQZ" }); // Your real API key.
+// const uploaderOptions = {
+//   multi: true,
 
-  // Comment out this line & use 'onUpdate' instead of
-  // 'onComplete' to have the dropzone close after upload.
-  showFinishButton: true,
-  styles: {
-    colors: {
-      primary: "#377dff"
-    }
-  }
-}
+//   // Comment out this line & use 'onUpdate' instead of
+//   // 'onComplete' to have the dropzone close after upload.
+//   showFinishButton: true,
+//   styles: {
+//     colors: {
+//       primary: "#377dff"
+//     }
+//   }
+// }
 
 
 
-const Company = () => {
-  // console.log(agentsDetails)
+const UserDetail = ({userDetail}) => {
+  console.log(userDetail)
   const [imageFiles,setImageFiles]=useState([])
-const uploadMulti = 
-<UploadDropzone uploader={uploader}
-options={uploaderOptions}
-onUpdate={files => files.map(x => {
-          setImageFiles([...imageFiles,x.fileUrl]) 
-          } )
-          }
-onComplete={files => alert(files.map(x => x.fileUrl).join("\n"))}
-width="600px"
-height="375px"
-/>
-
+// // const uploadMulti = 
+// {/* <UploadDropzone uploader={uploader}
+// options={uploaderOptions}
+// onUpdate={files => files.map(x => {
+//           setImageFiles([...imageFiles,x.fileUrl]) 
+//           } ) */}
+//           }
+// onComplete={files => alert(files.map(x => x.fileUrl).join("\n"))}
+// width="600px"
+// height="375px"
+// />
+useEffect(()=>{
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5MjUwMDE2LCJpYXQiOjE2ODY2NTgwMTYsImp0aSI6IjFmYWE0Mzk4ZjQ4OTQyMDA4ZjRlOTdiYTU3OThmODg5IiwidXNlcl9pZCI6MX0.AKK2pRWie86HGGO8iFv0qRSCPq0R8fypONFwATTWt8s'
+    },
+    body: '{"name":"jamal","owner":1}'
+  };
+  
+  fetch('https://fortestmimd.pythonanywhere.com/api/users/2/', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));},[])
     return (
-      <>
-  {uploadMulti}
 
-<UploadButton uploader={uploader}
+      <>
+
+{/* <UploadButton uploader={uploader}
                 options={{ multi: true }}
                 onComplete={files => alert(files.map(x => x.fileUrl).join("\n"))}>
     {({onClick}) =>
@@ -64,7 +77,7 @@ height="375px"
         
       </button>
     }
-  </UploadButton>
+  </UploadButton> */}
 
       </>
     //     <Center py={6}>
@@ -140,14 +153,13 @@ height="375px"
   )
 }
 
-export default Company;
-
-// export async function getServerSideProps({params: {slug}}){
-//     const data = await fetchApi(`${baseUrl}/agencies/get-listings?agencySlug=${slug}&lang=ar`)
-//     return {
-//         props : {
-//             agentsDetails:data?.hits
-//         }
-//     }
-// }
+export default UserDetail;
+export async function getServerSideProps({params: {id}}){
+    const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/users/${id}/`)
+    return {
+        props : {
+            userDetail:data
+        }
+    }
+}
 

@@ -65,7 +65,7 @@ export async function getServerSideProps({query}) {
       const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/`)
                   return {
                       props:{
-                          data:data,
+                          data:data
                             }
                   }
 }
