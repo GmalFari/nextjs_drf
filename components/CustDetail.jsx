@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import {useEffect,useState} from 'react';
 const CustDetail =({userId})=>{
-  [personalDetail,setPersonalDetail] =useState()
+ const  [personalDetail,setPersonalDetail] =useState()
   useEffect(()=>{
   const options = {
     method: 'GET',
