@@ -10,7 +10,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { fetchApi,baseUrl } from '../../utils/fetchApi'
-
+import { Img } from "@chakra-ui/react";
 const OrderCard = ({orderDetail:{req_order_title,property_description,property_town}}) => {
  alert('hgg')
   return (
@@ -30,11 +30,15 @@ const OrderCard = ({orderDetail:{req_order_title,property_description,property_t
           mx={-6}
           mb={6}
           pos={'relative'}>
-          <Image
+          <Img
             src={
               'https://upcdn.io/kW15bRn/raw/No_Image_Available.jpg9'
                     }
-            layout={'fill'}
+            width={'full'} 
+                height={'full'}
+                minH={'full'}
+                 style={{objectFit:'cover'}}
+                  alt="default no img order"
               
               
           />
