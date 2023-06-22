@@ -6,11 +6,12 @@ import {
   Text,
   Stack,
   Avatar,
-  Image,
+  Image,o
   useColorModeValue,
 } from '@chakra-ui/react';
 import { fetchApi,baseUrl } from '../../utils/fetchApi'
 import { Img } from "@chakra-ui/react";
+import CustDetail from "../../components/CustDetail"
 const OrderCard = ({orderDetail:{req_order_title,property_description,property_town}}) => {
  alert('hgg')
  const defaultImg = "https://www.pythonanywhere.com/user/fortestmimd/files/home/fortestmimd/realestate_restapi/mediafiles/No_Image_Available.jpg"
@@ -62,16 +63,8 @@ const OrderCard = ({orderDetail:{req_order_title,property_description,property_t
               {property_description && property_description}
           </Text>
         </Stack>
-        <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-          <Avatar
-            src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
-            alt={'Author'}
-          />
-          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600}>Achim Rolle</Text>
-            <Text color={'gray.500'}>Feb 08, 2021 · 6min read</Text>
-          </Stack>
-        </Stack>
+        <CustDetail/>
+        
       </Box>
     </Center>
   );
