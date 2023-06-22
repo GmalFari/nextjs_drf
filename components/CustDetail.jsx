@@ -8,7 +8,22 @@ import {
   Image,
   useColorModeValue,
 } from '@chakra-ui/react';
+import {useEffect} from 'react';
 const CustDetail =()=>{
+  useEffect(()=>{
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+     // Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5MjUwMDE2LCJpYXQiOjE2ODY2NTgwMTYsImp0aSI6IjFmYWE0Mzk4ZjQ4OTQyMDA4ZjRlOTdiYTU3OThmODg5IiwidXNlcl9pZCI6MX0.AKK2pRWie86HGGO8iFv0qRSCPq0R8fypONFwATTWt8s'
+    },
+      };
+  
+  fetch('https://fortestmimd.pythonanywhere.com/api/users/2/', options)
+    .then(response => response.json())
+    .then(response => {console.log(response)})
+    .catch(err => console.error(err));}
+    ,[])
   return(
     <>
 <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
