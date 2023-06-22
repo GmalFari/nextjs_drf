@@ -8,7 +8,8 @@ import {
   Avatar,
   useColorModeValue,
 } from '@chakra-ui/react';
-const OrderCard = () => {
+const OrderCard = ({orderDetail:{ req_order_title ,property_description,property_town,timestamp}}) => {
+ alert(req_order_title)
   return (
     <Center py={6}>
       <Box
@@ -75,7 +76,7 @@ export async function getServerSideProps({params: {id}}){
     const data = await fetchApi(`http://fortestmimd.pythonanywhere.com/api/requests-app/${id}/`)
     return {
         props : {
-            userDetail:data
+            orderDetail :data
         }
     }
 }
