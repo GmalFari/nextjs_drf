@@ -33,10 +33,10 @@ const listingsH = [properties.filter(myProperty => myProperty.owner == user?.use
   <UserInfo />
   
   </Center> 
-  <Flex flexDirection={['column']}  flexWrap="wrap" justifyContent="center" alignItems="center" >
+  <Flex flexDirection={['column']}   flexWrap="wrap" justifyContent="center" alignItems="center" >
            
                 <Box display={['Flex']} 
-        flexDirection={['column','column','column','row']}  
+        flexDirection={['column','column','column']}  
        justifyContent="center"
        alignItems="center"
        >{listingsH}
@@ -67,5 +67,6 @@ export async function getServerSideProps({query}) {
                       props:{
                           data:data
                             }
+
                   }
 }

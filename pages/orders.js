@@ -27,7 +27,7 @@ const Orders = ({orders}) =>{
   }
   const myOrders = [orders.map((myOrder)=>(
     <>
-        <Box bg={formBackground}>      
+        <Box bg={formBackground} padding={4}>      
         
            
         <Heading color="#006179" size='xs' textTransform='uppercase'>
@@ -37,7 +37,7 @@ const Orders = ({orders}) =>{
         </Heading>
         <Box>
         <Text pt='2' fontSize='sm'>
-      {myOrder.property_description ?
+      {myOrder.property_description !== null ?
         myOrder.property_description:
         myOrder.req_order_title}
 
@@ -78,88 +78,8 @@ const Orders = ({orders}) =>{
   <CardBody>
     <Stack divider={<StackDivider />} spacing='4'>
       {myOrders}
-      <Box>
-        <Heading color="#006179" size='xs' textTransform='uppercase'>
-        <Link href="#">
-          مطلوب بيت من غرفتين وصالة في صنعاء
-          </Link>
-        </Heading>
-        <Text pt='2' fontSize='sm'>
-      مطلوب شقه سكنيةمن المالك مباشر استوديو او غرفة او ثلاث غرف شخصي الدلالين لو سمحتو بعدين
-              </Text>
-              <Box display='flex' alignItems='base line' mt={4}> 
-          <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
-           جديد
-          </Badge>
-          <Box
-            color='gray.500'
-            fontWeight='semibold'
-            letterSpacing='wide'
-            fontSize='xs'
-            textTransform='uppercase'
-            ml='2'
-          >
-      4غرف  &bull;  2حمامات
-          </Box>
-        </Box>
-     
-        <Heading color="#006179" size='xs' textTransform='uppercase'>
-        <Link href="#">
-        مطلوب بيت من غرفتين وصالة في صنعاء
-        </Link>
-        </Heading>
-        <Text pt='2' fontSize='sm'>
-      مطلوب شقه سكنيةمن المالك مباشر استوديو او غرفة او ثلاث غرف شخصي الدلالين لو سمحتو بعدين
-              </Text>
-              <Box display='flex' alignItems='base line' mt={4}> 
-          <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
-           جديد
-          </Badge>
-          <Box
-            color='gray.500'
-            fontWeight='semibold'
-            letterSpacing='wide'
-            fontSize='xs'
-            textTransform='uppercase'
-            ml='2'
-          >
-      4غرف  &bull;  2حمامات
-          </Box>
-        </Box>
-      </Box>
-      <Box>
-        <Heading color="#006179" size='xs' textTransform='uppercase'>
-        <Link href="#">
-
-        مطلوب عمارة للبيع  
-        </Link>   
-           </Heading>
-        <Text pt='2' fontSize='sm'>
-        مطلوب عمارة للبيع بالدخل المحدود · مطلوب شقة عوائل                    </Text>
-              <Box display='flex' alignItems='base line' mt={4}> 
-          <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
-           جديد
-          </Badge>
-          <Box
-            color='gray.500'
-            fontWeight='semibold'
-            letterSpacing='wide'
-            fontSize='xs'
-            textTransform='uppercase'
-            ml='2'
-          >
-      4غرف  &bull;  2حمامات
-          </Box>
-        </Box>
-      </Box>
     </Stack>
   </CardBody>
-  <Switch
-            id="dark_mode"
-            colorScheme="teal"
-            size="lg"
-            onChange={toggleColorMode}
-          />
 </Card>
     </>
   )

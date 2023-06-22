@@ -25,8 +25,8 @@ const  UserInfo=()=> {
     })
     let data = await response.json()
     if (response.status === 200) {
-
       setUserDetail(data)
+      console.log(userDetail)
       // router.push("/")
     }else {
       alert(JSON.stringify(data))
