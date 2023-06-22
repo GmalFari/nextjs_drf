@@ -9,8 +9,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 const OrderCard = (
-  //{orderDetail:{ req_order_title ,property_description,property_town,timestamp}}
-                  ) => {
+        ) => {
  alert('hgg')
   return (
     <Center py={6}>
@@ -74,13 +73,13 @@ const OrderCard = (
 }
 
 export default OrderCard
-export async function getServerSideProps({params: {id}}){
-    const data = await fetchApi(`http://fortestmimd.pythonanywhere.com/api/requests-app/${id}/`)
-    return {
-        props : {
-            orderDetail :data
-        }
-    }
-}
+//export async function getServerSideProps({params: {id}}){
+   // const data = await fetchApi(`http://fortestmimd.pythonanywhere.com/api/requests-app/${id}/`)
+   // return {
+      //  props : {
+         //   orderDetail :data
+    //    }
+  //  }
+//}
 
 
