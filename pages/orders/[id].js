@@ -1,4 +1,4 @@
-import Image from 'next/image';
+//import Image from 'next/image';
 import {
   Box,
   Center,
@@ -6,6 +6,7 @@ import {
   Text,
   Stack,
   Avatar,
+  Image,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { fetchApi,baseUrl } from '../../utils/fetchApi'
@@ -34,6 +35,8 @@ const OrderCard = ({orderDetail:{req_order_title,property_description,property_t
               'https://upcdn.io/kW15bRn/raw/No_Image_Available.jpg9'
                     }
             layout={'fill'}
+              
+              
           />
         </Box>
         <Stack>
