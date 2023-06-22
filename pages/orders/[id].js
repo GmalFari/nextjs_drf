@@ -78,4 +78,4 @@ export async function getServerSideProps({params: {id}}){
             userDetail:data
         }
     }
-//}
+}
