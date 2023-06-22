@@ -9,7 +9,8 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import {useEffect} from 'react';
-const CustDetail =()=>{
+const CustDetail =({userId})=>{
+  alert(userId)
   useEffect(()=>{
   const options = {
     method: 'GET',
