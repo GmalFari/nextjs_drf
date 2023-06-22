@@ -13,6 +13,8 @@ import { fetchApi,baseUrl } from '../../utils/fetchApi'
 import { Img } from "@chakra-ui/react";
 const OrderCard = ({orderDetail:{req_order_title,property_description,property_town}}) => {
  alert('hgg')
+ const defaultImg = "https://www.pythonanywhere.com/user/fortestmimd/files/home/fortestmimd/realestate_restapi/mediafiles/No_Image_Available.jpg"
+
   return (
     <Center py={6}>
       <Box
@@ -31,9 +33,7 @@ const OrderCard = ({orderDetail:{req_order_title,property_description,property_t
           mb={6}
           pos={'relative'}>
           <Img
-            src={
-              'https://upcdn.io/kW15bRn/raw/No_Image_Available.jpg9'
-                    }
+            src={defaultImg}
             width={'full'} 
                 height={'full'}
                 minH={'full'}
