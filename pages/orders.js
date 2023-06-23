@@ -2,7 +2,7 @@ import { Card, CardHeader, CardBody, CardFooter,
       useColorMode,useColorModeValue,Switch } from '@chakra-ui/react'
 import { Stack,StackDivider,Button,Box,Heading,Text,Badge, } from '@chakra-ui/react';
 import OrderCreateDrower from '../components/orders/CreateOrderDrower';
-import HorizonalOrder from '../components/HorizonalOrder';
+import HorizonalOrder from '../components/orders/HorizonalOrder';
 import Link from "next/link";
 import { fetchApi } from '../utils/fetchApi';
 const Orders = ({orders}) =>{
