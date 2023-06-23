@@ -34,7 +34,7 @@ return (
             <PopoverArrow />
             <PopoverBody display={"flex"} flexDirection={"column"}>
     {user?.user_id == owner ? 
-        <UpdateDeletebtns  isColumn={true} propertyDetails={property} id={id} width={"70px"} fontSize={""} />
+        <UpdateOrderDrower  isColumn={true} propertyDetail={''} id={''} width={"70px"} fontSize={""} />
           
       :null} 
        </PopoverBody>
