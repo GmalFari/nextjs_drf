@@ -31,7 +31,7 @@ const Orders = ({orders}) =>{
         
            
         <Heading color="#006179" size='xs' textTransform='uppercase'>
-        <Link href="#">
+        <Link href=`/orders/${myOrder.id}`>
             {myOrder.req_order_title}
            </Link>
         </Heading>
