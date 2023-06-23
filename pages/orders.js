@@ -28,7 +28,7 @@ const { toggleColorMode } = useColorMode();
   const myOrders = [orders.map((myOrder)=>(
     <>
         <Box position={relative} bg={formBackground} padding={4}>      
-      {/* <HorizonalOrder/>*/}
+
            
         <Heading color="#006179" size='xs' textTransform='uppercase'>
         <Link href={`/orders/${myOrder.id}`}>
