@@ -2,13 +2,12 @@ import { Card, CardHeader, CardBody, CardFooter,
       useColorMode,useColorModeValue,Switch } from '@chakra-ui/react'
 import { Stack,StackDivider,Button,Box,Heading,Text,Badge, } from '@chakra-ui/react';
 import OrderCreateDrower from '../components/orders/CreateOrderDrower';
+import HorizonalOrder from '../components/HorizonalOrder';
 import Link from "next/link";
 import { fetchApi } from '../utils/fetchApi';
 const Orders = ({orders}) =>{
-  const { toggleColorMode } = useColorMode();
+const { toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue('gray.100', 'gray.700');
-
-  console.log(orders)
   // const [myOrders,setMyorders]=useState()
   const OrdersApi = () =>{
     const options = {
@@ -27,8 +26,8 @@ const Orders = ({orders}) =>{
   }
   const myOrders = [orders.map((myOrder)=>(
     <>
-        <Box bg={formBackground} padding={4}>      
-        
+        <Box position={relative} bg={formBackground} padding={4}>      
+        <HorizonalOrder/>
            
         <Heading color="#006179" size='xs' textTransform='uppercase'>
         <Link href={`/orders/${myOrder.id}`}>
