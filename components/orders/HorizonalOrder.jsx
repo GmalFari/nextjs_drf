@@ -1,6 +1,20 @@
-
-
+import { FaEllipsisV } from 'react-icons/fa';
+import {
+    IconButton,
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+    PopoverHeader,
+    PopoverBody,
+    PopoverFooter,
+    PopoverArrow,
+    PopoverCloseButton,
+    PopoverAnchor,
+  } from '@chakra-ui/react'
+import {useContext} from "react"
 const HorizonalOrder = () =>{
+const {user} = useContext(AuthContext)
+
 return (
   <>
    <Popover width={"100px"} position={"asolute"}  dir={"ltr"} placement='bottom-end'>
