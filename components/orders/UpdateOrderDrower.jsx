@@ -18,7 +18,7 @@ import { useDisclosure } from '@chakra-ui/react';
 import OrderCreateDrower from './OrderCreateDrower';
 import { FaPlus } from 'react-icons/fa';
 import MainAlert from "../MainAlert"
-import { useDisclosure } from '@chakra-ui/react';
+
 
 const UpdateOrderDrower = ({isColumn,propertyDetails}) => {
       const { isOpen, onOpen, onClose } = useDisclosure()
