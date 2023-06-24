@@ -10,13 +10,13 @@ const  ExUserInfo=({userDetail,ownerId})=> {
 
   const {user,authTokens} = useContext(AuthContext);
   const [phonenumber,setPhonenumber]=useState()
-  const[userDetail,setUserDetail]=useState({
+/*  const[userDetail,setUserDetail]=useState({
     
     name:"",
     email:"",
     phonenumber:"",
   });
- /* const getUserdetail = async ()=>{
+  const getUserdetail = async ()=>{
     console.log('update tokens')
    
 }
