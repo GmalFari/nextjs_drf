@@ -16,6 +16,7 @@ import {
 import { FaPlus } from 'react-icons/fa';
 import MainAlert from "../MainAlert"
 import { useDisclosure,useToast } from '@chakra-ui/react';
+
 import AuthContext from '../../context/AuthContext';
 const OrderCreateDrower = () => {
   let {user} = useContext(AuthContext) ;
@@ -66,7 +67,7 @@ const OrderCreateDrower = () => {
       const headerContent = " حذف العقار";
     const alertDialogHeader = "حذف العقار ";
     const alertDialogBody = "هل أنت متأكد أنك تريد حذف العقار ؟";
-    let requestApi = async()=>{
+let requestApi = async()=>{
       // setLoading(true);
       const myform = new FormData()
       
@@ -91,8 +92,7 @@ const OrderCreateDrower = () => {
           method: 'POST',
           headers: {
             // 'Content-Type': 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5MjUwMDE2LCJpYXQiOjE2ODY2NTgwMTYsImp0aSI6IjFmYWE0Mzk4ZjQ4OTQyMDA4ZjRlOTdiYTU3OThmODg5IiwidXNlcl9pZCI6MX0.AKK2pRWie86HGGO8iFv0qRSCPq0R8fypONFwATTWt8s'
-          },
+            Authorization: `Bearer ${accessToken}`          },
           body: myform
           // JSON.stringify({"req_order_title":myData.req_order_title})
         };
@@ -112,6 +112,8 @@ const OrderCreateDrower = () => {
                status: 'success',
               isClosable: true
              })
+             location.reload()
+
           })
           .catch(err => {
             toast(

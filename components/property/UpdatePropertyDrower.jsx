@@ -28,12 +28,13 @@ const UpdatePropertyDrower = ({isColumn,propertyDetails}) => {
     const alertDialogBody = "هل أنت متأكد أنك تريد حذف العقار ؟";
     const handleDelete = async (e) =>{
         e.preventDefault();
-        // deleteProperty(id,accessToken)
+        deleteProperty(id,accessToken)
     }
   return (
     <Box position='relative'  display={"flex"} flexWrap={"wrap"} flexDirection={"column !important"}>
 
-     <Button leftIcon={< FaPlus/>}  ref={btnRef} colorScheme='teal' onClick={onOpen}>
+     <Button leftIcon={< FaPlus/>}  ref={btnRef} 
+     colorScheme='teal' onClick={onOpen}>
       تعديل العقار
       </Button>
       <Drawer

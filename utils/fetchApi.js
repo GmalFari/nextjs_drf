@@ -18,9 +18,9 @@ export const fetchApi = async (url) => {
 }
 
 
-export const deleteProperty = async (id,authToken)=>{
+export const deleteProperty = async (url,authToken)=>{
   console.log(authToken)
-  const url = `https://fortestmimd.pythonanywhere.com/api/list-properties/${id}/`
+  // const url = `https://fortestmimd.pythonanywhere.com/api/list-properties/${id}/`
   const options = {
      method: 'DELETE',
      headers: {
@@ -144,3 +144,82 @@ export const UpdateProperty= async(id,myData,authToken,setLoading)=> {
 
 
 
+
+// تعديل الطلب
+
+export const   updateOrderApi = async(myData,authToken)=>{
+  // setLoading(true);
+  const myform = new FormData()
+  
+  {/*  myform.append("property_number",myData.property_number);
+   */}
+   console.log(myData)
+    myform.append("req_order_title",myData.req_order_title);
+    myform.append("property_description",myData.property_description);
+    myform.append("purpose",myData.purpose);                                                            
+    myform.append("property_town",myData.property_town);
+    myform.append("rent_frequency",myData.rent_frequency);
+    // myform.append("property_price",myData.property_price);
+    myform.append("phone",myData.phone);
+    myform.append("rooms",myData.rooms);
+    myform.append("baths",myData.baths);
+    myform.append("is_negotiable",myData.is_negotiable);
+    myform.append("furnishingStatus",myData.furnishingStatus);
+    const url = `https://fortestmimd.pythonanywhere.com/api/requests-app/${myData.id}/`
+  const options = {
+  method: 'PUT',
+  headers: {
+    // 'Content-Type': 'application/json',
+    "Authorization" : `Bearer ${authToken}`,
+  }
+  };
+
+  options.body = myform ;
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    if (response.status ===200){        
+      // toast(
+      //     {
+      //     title: ` لقد تم  إضافة العقار`,
+      //     description:`${result.property_title}`,
+      //     //   // newData.map((m,i)=>(
+      //     //   //     <>
+      //     //   //       {m.key}: {m.value}
+      //     //   //     </>
+      //     //   // )
+      //     //   // )
+      //     //   ,
+      //       status: 'success',
+      //       isClosable: true
+      //      })
+      alert("تم تعديل العقار بنجاح")
+        location.reload()
+      // setData({...myData,property_title:""})
+      console.log(result)
+    }else{
+      console.log(result)
+      // setErrors(result)
+    // toast(
+    //        {
+    //       title: ` خطأ`,
+    //       description:`${JSON.stringify(result)}`,
+    //         status: 'error',
+    //        isClosable: true
+    //       })
+    alert("خطأ في بيانات  تعديل الطلب ")
+    }
+  } catch (error) {
+    // toast(
+    //        {
+    //       title: ` خطأ`,
+    //       description:`${JSON.stringify(error)}`,
+    //         status: 'error',
+    //        isClosable: true
+    //       })
+    alert("خظأفي  تعديل العقار ")
+    alert(JSON.stringify(result))
+  }
+
+ 
+  }

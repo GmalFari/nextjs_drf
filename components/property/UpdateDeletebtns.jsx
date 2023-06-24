@@ -12,10 +12,10 @@ const UpdateDeletebtns = ({propertyDetails,id}) => {
     const headerContent = " حذف العقار";
     const alertDialogHeader = "حذف العقار ";
     const alertDialogBody = "هل أنت متأكد أنك تريد حذف العقار ؟";
-
+    const url = `https://fortestmimd.pythonanywhere.com/api/list-properties/${id}/`
     const handleDelete = async (e) =>{
         e.preventDefault();
-        deleteProperty(id,accessToken)
+        deleteProperty(url,accessToken)
         router.push("/")
     }
   return (

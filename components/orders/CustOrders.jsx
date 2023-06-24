@@ -520,7 +520,7 @@ export default function CustOrders({myData,setData,handleSubmit}) {
                 variant="solid"
                 onClick={handleSubmit}
                 >
-              إضافة الطلب
+                {myData.id? "تعديل الطلب":"إضافة طلب"}
               </Button>
             ) : null}
           </Flex>

@@ -3,7 +3,7 @@ import { Card, CardHeader, CardBody, CardFooter,
       useColorMode,useColorModeValue,Switch } from '@chakra-ui/react'
 import { Stack,StackDivider,Button,Box,Heading,Text,Badge, } from '@chakra-ui/react';
 import OrderCreateDrower from '../components/orders/CreateOrderDrower';
-//import HorizonalOrder from '../components/orders/HorizonalOrder';
+import HorizonalOrder from "../components/orders/HorizonalOrder"
 import Link from "next/link";
 import { fetchApi } from '../utils/fetchApi';
 const Orders = ({orders}) =>{
@@ -25,11 +25,11 @@ const { toggleColorMode } = useColorMode();
       .then(response => console.log(response))
       .catch(err => console.error(err));
   }
+  
   const myOrders = [orders.map((myOrder)=>(
     <>
-        <Box position={relative} bg={formBackground} padding={4}>      
-
-           
+        <Box position={"relative"} bg={formBackground} padding={4}>      
+        <HorizonalOrder orderDetails={myOrder}/>
         <Heading color="#006179" size='xs' textTransform='uppercase'>
         <Link href={`/orders/${myOrder.id}`}>
             {myOrder.req_order_title}
@@ -63,7 +63,8 @@ const { toggleColorMode } = useColorMode();
       ))]
   return (
     <>
-      <Card dir='rtl' ms="5px" me="5px">
+      <Card  dir='rtl' ms="5px" me="5px">
+
   <CardHeader display="flex" justifyContent={["right","space-between"]} ms={"10px"} me="10px">
     <Box>
     <Heading style={{lineHeight:"2.2 !important"}}  ms="2" me="2" color="#006179" textAlign={"center"} size={['sm','md']}>
@@ -87,7 +88,7 @@ const { toggleColorMode } = useColorMode();
 
 export default Orders;
 export async function getStaticProps() {
-     const orders = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/requests-app/     `)
+     const orders = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/requests-app/?page=2`)
     return {
       props: {
         // propertiesForSale:propertyForSale?.results,
