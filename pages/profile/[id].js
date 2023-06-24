@@ -184,7 +184,7 @@
 //   )
 // }
 
-// export default UserDetail;
+export default UserDetail;
 // export async function getServerSideProps({params: {id}}){
 // //   // const {data} = await axios.get((`https://fortestmimd.pythonanywhere.com/auth/users/${id}/`), {
 // //   //   headers: {
