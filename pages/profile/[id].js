@@ -45,7 +45,7 @@
 
 
 
-// const UserDetail = ({userId}) => {
+const UserDetail = ({userId}) => {
 //   const router = useRouter()
 //   const {user,authTokens} = useContext(AuthContext);
 //   const userDetail = user;
@@ -96,7 +96,10 @@
 // //     .then(response => response.json())
 // //     .then(response => console.log(response))
 // //     .catch(err => console.error(err));},[])
-//     return (
+    return (
+        <>
+            
+        </>
 
 //       <>
 
@@ -181,8 +184,8 @@
 //     //   </Box>
 //     // </Center>
 
-//   )
-// }
+  )
+}
 
 export default UserDetail;
 // export async function getServerSideProps({params: {id}}){

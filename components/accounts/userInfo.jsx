@@ -18,28 +18,30 @@ const  UserInfo=({ownerId})=> {
   });
   const getUserdetail = async ()=>{
     console.log('update tokens')
-    try{
-      let response = await fetch(`https://fortestmimd.pythonanywhere.com/auth/users/${ownerId}`,{
-      method:'GET',
-      headers:{
-        'Content-Type':'application/json',
-        'Authorization':`Bearer ${authTokens?.access}`
-
-      },
-    })
-    let data = await response.json()
-    if (response.status === 200) {
-      setUserDetail(data)
-      // router.push("/")
-    }else {
-      alert(JSON.stringify(data))
-    }
-  }catch(errors){
-    alert(errors)
-  }
+   
 }
 useEffect(()=>{
-  getUserdetail()
+  try{
+    let response =  fetch(`https://fortestmimd.pythonanywhere.com/auth/users/${ownerId}`,{
+    method:'GET',
+    headers:{
+      'Content-Type':'application/json',
+      'Authorization':`Bearer ${authTokens?.access}`
+
+    },
+  })
+  let data =  response.json()
+  if (response.status === 200) {
+    setUserDetail(data)
+    // router.push("/")
+  }else {
+    alert(JSON.stringify(data))
+  }
+}catch(errors){
+  alert(errors)
+}
+  
+// eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 // console.log(userDetail)
 //   setPhonenumber(userDetail['phonenumber'])
