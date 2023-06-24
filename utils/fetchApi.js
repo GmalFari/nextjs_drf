@@ -117,6 +117,7 @@ export const UpdateProperty= async(id,myData,authToken,setLoading)=> {
         location.reload()
       // setData({...myData,property_title:""})
       console.log(result)
+      alert(JSON.stringify(result))
     }else{
       // setErrors(result)
     // toast(
@@ -127,6 +128,8 @@ export const UpdateProperty= async(id,myData,authToken,setLoading)=> {
     //        isClosable: true
     //       })
     alert("خطأ في بيانات  تعديل العقار ")
+      alert(JSON.stringify(result))
+
     }
   } catch (error) {
     // toast(
@@ -193,10 +196,12 @@ export const   updateOrderApi = async(myData,authToken)=>{
       //       status: 'success',
       //       isClosable: true
       //      })
-      alert("تم تعديل العقار بنجاح")
+      alert("تم تعديل الطلب بنجاح")
         location.reload()
       // setData({...myData,property_title:""})
       console.log(result)
+      alert(JSON.stringify(result))
+
     }else{
       console.log(result)
       // setErrors(result)
@@ -208,6 +213,8 @@ export const   updateOrderApi = async(myData,authToken)=>{
     //        isClosable: true
     //       })
     alert("خطأ في بيانات  تعديل الطلب ")
+      alert(JSON.stringify(result))
+
     }
   } catch (error) {
     // toast(
@@ -218,7 +225,7 @@ export const   updateOrderApi = async(myData,authToken)=>{
     //        isClosable: true
     //       })
     alert("خظأفي  تعديل العقار ")
-    alert(JSON.stringify(result))
+    alert(JSON.stringify(error))
   }
 
  
