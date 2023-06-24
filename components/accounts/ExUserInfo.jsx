@@ -35,7 +35,8 @@ useEffect(()=>{
 
     }
     }).then((res)=>{
-      setUserDetail(res.data)
+      alert(res.text())
+    //  setUserDetail(res.data)
     })
   }catch(error){
     alert(error)
