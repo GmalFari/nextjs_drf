@@ -178,7 +178,7 @@ return(
             <Text as="h2" fontSize="lg" marginBottom="2" fontWeight="bold">
             المعلن
             </Text>
-                <UserInfo ownerId={owner}  />
+                {/* <UserInfo ownerId={owner}  /> */}
         </Box>
             <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
                 {/* <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">
