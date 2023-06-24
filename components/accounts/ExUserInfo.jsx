@@ -45,7 +45,8 @@ useEffect(()=>{
 },[])
 // console.log(userDetail)
 //   setPhonenumber(userDetail['phonenumber'])
-      return (
+  alert(JSON.stringify(userDetail))
+  return (
 <Card maxW='md' dir='rtl'>
   <CardHeader>
     <Flex spacing='2'>
