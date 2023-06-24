@@ -21,8 +21,9 @@ const  ExUserInfo=({ownerId})=> {
    
 }
 useEffect(()=>{
+  const getData = async  ()=>{
   try{
-    let response =  fetch(`https://fortestmimd.pythonanywhere.com/auth/users/${ownerId}`,{
+    let response = await  fetch(`https://fortestmimd.pythonanywhere.com/auth/users/${ownerId}`,{
     method:'GET',
     headers:{
       'Content-Type':'application/json',
@@ -30,6 +31,7 @@ useEffect(()=>{
 
     },
   })
+
   let data =  response.json()
   if (response.status === 200) {
     setUserDetail(data)
@@ -40,7 +42,8 @@ useEffect(()=>{
 }catch(errors){
   alert(errors)
 }
-  
+  }
+  getData()
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 // console.log(userDetail)
