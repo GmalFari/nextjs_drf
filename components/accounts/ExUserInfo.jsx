@@ -6,7 +6,7 @@ import { StarIcon } from '@chakra-ui/icons';
 import { useContext,useState, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';
 import axios from 'axios'
-const  ExUserInfo=({ownerId})=> {
+const  ExUserInfo=({userDetail,ownerId})=> {
 
   const {user,authTokens} = useContext(AuthContext);
   const [phonenumber,setPhonenumber]=useState()
@@ -16,7 +16,7 @@ const  ExUserInfo=({ownerId})=> {
     email:"",
     phonenumber:"",
   });
-  const getUserdetail = async ()=>{
+ /* const getUserdetail = async ()=>{
     console.log('update tokens')
    
 }
@@ -29,7 +29,7 @@ useEffect(()=>{
       
     await axios.get(url).then((res)=>{
       alert(res.text())
-    //  setUserDetail(res.data)
+      setUserDetail(res.data)
     })
   }catch(error){
     alert(error)
@@ -38,8 +38,10 @@ useEffect(()=>{
   getData()
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
-// console.log(userDetail)
-//   setPhonenumber(userDetail['phonenumber'])
+ console.log(userDetail)
+ 
+  setPhonenumber(userDetail['phonenumber'])
+ */
   alert(JSON.stringify(userDetail))
   return (
 <Card maxW='md' dir='rtl'>
