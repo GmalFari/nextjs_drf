@@ -5,7 +5,7 @@ import {BiLike,BiChat,BiShare} from "react-icons/bi";
 import { StarIcon } from '@chakra-ui/icons';
 import { useContext,useState, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';
-
+import axios from 'axios'
 const  ExUserInfo=({ownerId})=> {
 
   const {user,authTokens} = useContext(AuthContext);
@@ -21,27 +21,20 @@ const  ExUserInfo=({ownerId})=> {
    
 }
 useEffect(()=>{
+  let url = `http://fortestmimd.pythonanywhere.com/api/users/3`
   const getData = async  ()=>{
   try{
-    let response = await  fetch(`https://fortestmimd.pythonanywhere.com/auth/users/${ownerId}`,{
-    method:'GET',
-    headers:{
+    
+      headers:{
       'Content-Type':'application/json',
       'Authorization':`Bearer ${authTokens?.access}`
 
-    },
-  })
-
-  let data =  response.json()
-  if (response.status === 200) {
-    setUserDetail(data)
-    // router.push("/")
-  }else {
-    alert(JSON.stringify(data))
-  }
-}catch(errors){
-  alert(errors)
-}
+    }
+    await axios.get((url),headers).then((res)=>{
+      setUserDetail(res.data)
+    })
+  }catch(error){
+    alert(error)
   }
   getData()
 // eslint-disable-next-line react-hooks/exhaustive-deps
