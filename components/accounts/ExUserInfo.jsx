@@ -27,14 +27,7 @@ useEffect(()=>{
   try{
     
       
-    await axios.get((url),{
-    headers:
-    {
-      'Content-Type':'application/json',
-      'Authorization':`Bearer ${authTokens?.access}`
-
-    }
-    }).then((res)=>{
+    await axios.get(url).then((res)=>{
       alert(res.text())
     //  setUserDetail(res.data)
     })
