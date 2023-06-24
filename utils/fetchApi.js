@@ -1,5 +1,6 @@
 import axios from "axios";
 import MainToast from "../components/MainToast";
+
 const initialState = {
   access: typeof window !== "undefined" ? window.localStorage.getItem('authTokens') : false,
   refresh: typeof window !== "undefined" ?  window.localStorage.getItem('refresh') : false,
@@ -7,11 +8,11 @@ const initialState = {
   user: null
 };
 export const fetchApi = async (url) => {
-  console.log(initialState)
+
   const {data} = await axios.get((url), {
       headers: {
           // 'Content-Type': 'application/json',
-    // Authorization: `Bearer ${initialState?.access.access}     `   
+    // Authorization: `Bearer ${myAuthToken}     `   
   },
   });
   return data; 

@@ -5,8 +5,11 @@ import {BiLike,BiChat,BiShare} from "react-icons/bi";
 import { StarIcon } from '@chakra-ui/icons';
 import { useContext,useState, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';
-const  UserInfo=({setPhonenumber})=> {
+
+const  UserInfo=({ownerId})=> {
+
   const {user,authTokens} = useContext(AuthContext);
+  const [phonenumber,setPhonenumber]=useState()
   const[userDetail,setUserDetail]=useState({
     first_name:"",
     last_name:"",
@@ -16,7 +19,7 @@ const  UserInfo=({setPhonenumber})=> {
   const getUserdetail = async ()=>{
     console.log('update tokens')
     try{
-      let response = await fetch('https://fortestmimd.pythonanywhere.com/auth/users/me/',{
+      let response = await fetch(`https://fortestmimd.pythonanywhere.com/auth/users/${ownerId}`,{
       method:'GET',
       headers:{
         'Content-Type':'application/json',
@@ -38,8 +41,8 @@ const  UserInfo=({setPhonenumber})=> {
 useEffect(()=>{
   getUserdetail()
 },[])
-console.log(userDetail)
-  setPhonenumber(userDetail['phonenumber'])
+// console.log(userDetail)
+//   setPhonenumber(userDetail['phonenumber'])
       return (
 <Card maxW='md' dir='rtl'>
   <CardHeader>

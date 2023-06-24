@@ -29,19 +29,17 @@ import ContactPopover from '../../components/popoverModals/ContactModals';
 
 
 const Profile =({data})=>{
-
-const {user,authTokens} = useContext(AuthContext);
+  const {user,authTokens} = useContext(AuthContext);
+  console.log(user.user_id)
 const myproperties = data?.results
 const [properties,setProperties] = useState(myproperties);
-const [phonenumber,setPhonenumber] = useState()
-console.log(phonenumber)
 const listingsH = [properties.filter(myProperty => myProperty.owner == user?.user_id).map((property) =>(
   <HorizonalCard   property={property} key={property.id} /> 
       ))]
   return(
   <Box  paddingTop={"100px"}>
  <Center>
-  <UserInfo setPhonenumber={setPhonenumber} />
+  <UserInfo ownerId={user.user_id} />
   
   </Center> 
   <Flex flexDirection={['column']}   flexWrap="wrap" justifyContent="center" alignItems="center" >
