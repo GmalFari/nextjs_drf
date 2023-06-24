@@ -87,7 +87,7 @@ const { toggleColorMode } = useColorMode();
 }
 
 export default Orders;
-export async function getStaticProps() {
+export async function getServerSideProps({query}) {
      const orders = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/requests-app/?page=2`)
     return {
       props: {
