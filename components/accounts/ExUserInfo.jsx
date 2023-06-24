@@ -11,8 +11,8 @@ const  ExUserInfo=({ownerId})=> {
   const {user,authTokens} = useContext(AuthContext);
   const [phonenumber,setPhonenumber]=useState()
   const[userDetail,setUserDetail]=useState({
-    first_name:"",
-    last_name:"",
+    
+    name:"",
     email:"",
     phonenumber:"",
   });
@@ -50,9 +50,9 @@ useEffect(()=>{
   <CardHeader>
     <Flex spacing='2'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-        <Avatar name={`${userDetail.name && userDetail.first_name} ${userDetail.last_name && userDetail.last_name}`}/>
+        <Avatar name={`${userDetail.name && userDetail.name} ${userDetail.name && userDetail.name}`}/>
         <Box>
-          <Heading size='sm'>{userDetail.first_name&& userDetail.first_name} {userDetail.last_name &&userDetail.last_name} </Heading>
+          <Heading size='sm'>{userDetail.name&& userDetail.name} {userDetail.name &&userDetail.name} </Heading>
         {userDetail.name && <Text>{userDetail.name} </Text>}
         </Box>
       </Flex>
