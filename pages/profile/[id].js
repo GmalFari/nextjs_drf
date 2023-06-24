@@ -1,26 +1,26 @@
 
-// import {
-//     Heading,
-//     Avatar,
-//     Box,
-//     Center,
-//     Image,
-//     Flex,
-//     Text,
-//     Stack,
-//     Button,
-//     useColorModeValue,
-//     Grid
-//   } from '@chakra-ui/react';
+import {
+    Heading,
+    Avatar,
+    Box,
+    Center,
+    Image,
+    Flex,
+    Text,
+    Stack,
+    Button,
+    useColorModeValue,
+    Grid
+  } from '@chakra-ui/react';
 
-// import axios from 'axios';
+import axios from 'axios';
 // import { useRouter } from 'next/router'
 
-// import React, { useState,useContext,useEffect } from 'react'
-// import ContactPopover from "../../components/popoverModals/ContactModals";
-
-// import { fetchApi,baseUrl } from '../../utils/fetchApi'
-// import AuthContext from '../../context/AuthContext';
+import React, { useState,useContext,useEffect } from 'react'
+import ContactPopover from "../../components/popoverModals/ContactModals";
+import UserInfo from '../../components/accounts/userInfo';
+import { fetchApi,baseUrl } from '../../utils/fetchApi'
+import AuthContext from '../../context/AuthContext';
 
 // // myAuthToken = document.localStorage.getItem('authTokens')?
 // // JSON.parse(document.localStorage.getItem('authTokens')):null
@@ -45,10 +45,10 @@
 
 
 
-const UserDetail = ({userId}) => {
+const UserDetail = ({userDetail}) => {
 //   const router = useRouter()
 //   const {user,authTokens} = useContext(AuthContext);
-//   const userDetail = user;
+console.log(userDetail)
 //   const testfetchApi = async (url) => {
 
 //       const {data} = await axios.get((url), {
@@ -98,7 +98,7 @@ const UserDetail = ({userId}) => {
 // //     .catch(err => console.error(err));},[])
     return (
         <>
-            
+            <UserInfo ownerId={userDetail.id} />
         </>
 
 //       <>
@@ -188,18 +188,12 @@ const UserDetail = ({userId}) => {
 }
 
 export default UserDetail;
-// export async function getServerSideProps({params: {id}}){
-// //   // const {data} = await axios.get((`https://fortestmimd.pythonanywhere.com/auth/users/${id}/`), {
-// //   //   headers: {
-// //   //       // 'Content-Type': 'application/json',
-// //   //     // Authorization: `Bearer ${myAuthToken}`   
-// //   //   },
-// //   //   });
-// //     const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/auth/users/${id}/`)
-//     return {
-//         props : {
-//           userId:id
-//         }
-//       }
-//     }
+export async function getServerSideProps({params: {id}}){
+  const {data} = await axios.get(`https://fortestmimd.pythonanywhere.com/api/users/${id}/`) 
+  return {
+        props : {
+          userDetail:data
+        }
+      }
+    }
 
