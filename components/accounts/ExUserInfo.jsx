@@ -23,14 +23,16 @@ const  ExUserInfo=({ownerId})=> {
 useEffect(()=>{
   let url = `http://fortestmimd.pythonanywhere.com/api/users/3`
   const getData = async  ()=>{
-  try{
-    
-      headers:{
+  let headers=
+    {
       'Content-Type':'application/json',
       'Authorization':`Bearer ${authTokens?.access}`
 
     }
-    await axios.get((url),headers).then((res)=>{
+  try{
+    
+      
+    await axios.get(url,headers).then((res)=>{
       setUserDetail(res.data)
     })
   }catch(error){
