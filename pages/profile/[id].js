@@ -18,7 +18,7 @@ import axios from 'axios';
 
 import React, { useState,useContext,useEffect } from 'react'
 import ContactPopover from "../../components/popoverModals/ContactModals";
-import UserInfo from '../../components/accounts/userInfo';
+import ExUserInfo from '../../components/accounts/ExUserInfo';
 import { fetchApi,baseUrl } from '../../utils/fetchApi'
 import AuthContext from '../../context/AuthContext';
 
@@ -98,7 +98,7 @@ console.log(userDetail)
 // //     .catch(err => console.error(err));},[])
     return (
         <>
-            <UserInfo ownerId={userDetail.id} />
+            <ExUserInfo ownerId={userDetail.id} />
         </>
 
 //       <>
