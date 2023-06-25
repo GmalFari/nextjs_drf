@@ -5,7 +5,8 @@ import {BiLike,BiChat,BiShare} from "react-icons/bi";
 import { StarIcon } from '@chakra-ui/icons';
 import { useContext,useState, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';
-import axios from 'axios'
+import axios from 'axios';
+import Share from '../share/AllShare';
 const  ExUserInfo=({userDetail,ownerId})=> {
 
   const {user,authTokens} = useContext(AuthContext);
@@ -42,7 +43,6 @@ useEffect(()=>{
  
   setPhonenumber(userDetail['phonenumber'])
  */
-  alert(JSON.stringify(userDetail))
   return (
 <Card maxW='md' dir='rtl'>
   <CardHeader>
@@ -50,8 +50,8 @@ useEffect(()=>{
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
         <Avatar name={`${userDetail.name && userDetail.name} ${userDetail.name && userDetail.name}`}/>
         <Box>
-          <Heading size='sm'>{userDetail.name&& userDetail.name} {userDetail.name &&userDetail.name} </Heading>
-        {userDetail.name && <Text>{userDetail.name} </Text>}
+          <Heading size='sm'> {userDetail.name &&userDetail.name} </Heading>
+        {userDetail.phonenumber ? <Text>{userDetail.phonenumber} </Text>: <Text>{"776278868"}</Text>}
         </Box>
       </Flex>
       <IconButton
@@ -85,9 +85,7 @@ useEffect(()=>{
     <Button flex='1' variant='ghost' leftIcon={<BiChat />}>
       Comment
     </Button>
-    <Button flex='1' variant='ghost' leftIcon={<BiShare />}>
-      Share
-    </Button>
+    <Share/>
     <Box display='flex' mt='2' alignItems='center'>
           {Array(5)
             .fill('')

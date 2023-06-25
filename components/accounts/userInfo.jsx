@@ -5,7 +5,10 @@ import {BiLike,BiChat,BiShare} from "react-icons/bi";
 import { StarIcon } from '@chakra-ui/icons';
 import { useContext,useState, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';
-
+import ShareBtns from '../share/ShareBtns';
+import ShareToWhatsApp from '../share/ShareToWhatsApp';
+import Share from '../share/AllShare';
+import SocialMedia from './SocialMedia';
 const  UserInfo=({ownerId})=> {
 
   const {user,authTokens} = useContext(AuthContext);
@@ -50,7 +53,8 @@ useEffect(()=>{
   <CardHeader>
     <Flex spacing='2'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-        <Avatar name={`${userDetail.first_name && userDetail.first_name} ${userDetail.last_name && userDetail.last_name}`}/>
+        <Avatar name={`${userDetail.first_name && userDetail.first_name} 
+        ${userDetail.last_name && userDetail.last_name}`}/>
         <Box>
           <Heading size='sm'>{userDetail.first_name&& userDetail.first_name} {userDetail.last_name &&userDetail.last_name} </Heading>
         {userDetail.company && <Text>{userDetail.company} </Text>}
@@ -87,9 +91,7 @@ useEffect(()=>{
     <Button flex='1' variant='ghost' leftIcon={<BiChat />}>
       Comment
     </Button>
-    <Button flex='1' variant='ghost' leftIcon={<BiShare />}>
-      Share
-    </Button>
+    <Share/>
     <Box display='flex' mt='2' alignItems='center'>
           {Array(5)
             .fill('')
@@ -103,6 +105,8 @@ useEffect(()=>{
             {4} reviews
           </Box>
         </Box>
+    <Box>
+    </Box>
   </CardFooter>
 </Card>
 )}

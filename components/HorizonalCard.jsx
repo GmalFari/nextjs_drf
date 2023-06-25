@@ -45,7 +45,8 @@ const HorizonalCard = (
     //   const loc1 = loc11.replace('Dubai','Sanaa');
     //   const loc2 = location[1]['name_l1'].replace('Dubai','Sanaa');
     //   const loc3 = location[2]['name_l1'].replace('Dubai','Sanaa');
-    const defaultImg = "https://www.pythonanywhere.com/user/fortestmimd/files/home/fortestmimd/realestate_restapi/mediafiles/No_Image_Available.jpg"
+    const defaultImg =
+     "https://www.pythonanywhere.com/user/fortestmimd/files/home/fortestmimd/realestate_restapi/mediafiles/No_Image_Available.jpg"
     const {user} = useContext(AuthContext)
 
       return (

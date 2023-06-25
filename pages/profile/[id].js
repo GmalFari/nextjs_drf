@@ -98,7 +98,7 @@ console.log(userDetail)
 // //     .catch(err => console.error(err));},[])
     return (
         <>
-            <ExUserInfo ownerId={userDetail.id} />
+            <ExUserInfo userDetail={userDetail} ownerId={userDetail.id} />
         </>
 
 //       <>
