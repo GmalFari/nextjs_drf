@@ -6,19 +6,8 @@ import Sidebar from "./Sidebar";
 import Footer1 from "./Footer1";
 import { useState, useEffect, ReactNode } from 'react';
 import { MetaHeadEmbed } from "@phntms/react-share";
-const Layout =  ({ children }:{children: ReactNode}) =>{
-  const [windowWidth, setWindowWidth] = useState(null);
-  useEffect(() => {
-    const isWindow = typeof window !== 'undefined';
-    const getWidth = () => isWindow ? window.innerWidth : windowWidth;
-    const resize = () => setWindowWidth(getWidth());
-    if(isWindow){
-      setWindowWidth(getWidth());
-        window.addEventListener('resize', resize);
-    }
-  //eslint-disable-next-line
-  }, [windowWidth]);
-
+const Layout: React.FC<{ children: ReactNode }> = ({children}) =>{
+ 
   return (
     <Box  dir="rtl">
     <MetaHeadEmbed
@@ -39,7 +28,8 @@ const Layout =  ({ children }:{children: ReactNode}) =>{
       }}
     />
       <Box>
-      <Container maxW='1400px'>
+      <Container 
+  maxW='1400px'>
   
   <Sidebar children={undefined} />
 
