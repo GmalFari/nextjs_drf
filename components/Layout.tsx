@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 import Head from 'next/head';
 import {Container, Box, Button, Heading } from '@chakra-ui/react';
 import Navbar from './Navbar';
@@ -6,7 +7,7 @@ import Sidebar from "./Sidebar";
 import Footer1 from "./Footer1";
 import { useState, useEffect, ReactNode } from 'react';
 import { MetaHeadEmbed } from "@phntms/react-share";
-const Layout: React.FC<{ children: ReactNode }> = ({children}) =>{
+const Layout: React.FC<{ children: any }> = ({children}) =>{
  
   return (
     <Box  dir="rtl">
@@ -28,12 +29,8 @@ const Layout: React.FC<{ children: ReactNode }> = ({children}) =>{
       }}
     />
       <Box>
-      <Container 
-  maxW='1400px'>
-  
   <Sidebar children={undefined} />
 
-          </Container>
         <main>{children}</main>
       </Box>
       <Footer1/>
