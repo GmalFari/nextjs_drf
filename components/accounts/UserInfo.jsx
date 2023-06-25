@@ -16,7 +16,7 @@ const  UserInfo=({ownerId})=> {
   const [reivew,setReview]=useState(False)
   const[userDetail,setUserDetail]=useState({
     first_name:"",
-  //  last_name:"",
+    last_name:"",
     email:"",
   //  name:"",
     phonenumber:"",
