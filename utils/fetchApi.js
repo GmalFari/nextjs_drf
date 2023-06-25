@@ -54,7 +54,7 @@ export const deleteProperty = async (url,authToken)=>{
 }
 
 
-export const UpdateProperty= async(id,myData,authToken,setLoading)=> {
+export const UpdateProperty= async(id,myData,imageFiles,authToken,setLoading)=> {
   const myform = new FormData()
   {/*  myform.append("property_number",myData.property_number);
    */}
@@ -85,6 +85,9 @@ export const UpdateProperty= async(id,myData,authToken,setLoading)=> {
     myform.append("building_age",myData.building_age);
     myform.append("state",myData.state);
     myform.append("directorate",myData.directorate); 
+  //imgs 
+    myform.append("text_of_imgs",JSON.stringify(imageFiles));
+
   const url = `https://fortestmimd.pythonanywhere.com/api/list-properties/${id}/`
   const options = {
   method: 'PUT',
