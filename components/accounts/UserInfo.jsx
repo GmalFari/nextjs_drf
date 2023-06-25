@@ -13,6 +13,7 @@ const  UserInfo=({ownerId})=> {
 
   const {user,authTokens} = useContext(AuthContext);
   const [phonenumber,setPhonenumber]=useState()
+  const [reivew,setReview]=useState(False)
   const[userDetail,setUserDetail]=useState({
     first_name:"",
     last_name:"",
@@ -93,8 +94,9 @@ useEffect(()=>{
             .fill('')
             .map((_, i) => (
               <StarIcon
+                onClick={(()=>{setReview(!review)})}
                 key={i}
-                color={i < 4 ? 'teal.500' : 'gray.300'}
+                color={review? 'teal.500' : 'gray.300'}
               />
             ))}
           <Box as='span' ml='2' color='gray.600' fontSize='sm'>
