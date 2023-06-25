@@ -42,8 +42,9 @@ const listingsH = [properties.filter(myProperty => myProperty.owner == user?.use
       ))]
   return(
   <Box  paddingTop={"100px"}>
- <Center>
-  {/* <UserInfo ownerId={id}  /> */}
+ <Center>  
+  <UserInfo ownerId={id}  />
+{/*     */}
   
   </Center> 
   <Flex flexDirection={['column']}   flexWrap="wrap" justifyContent="center" alignItems="center" >
