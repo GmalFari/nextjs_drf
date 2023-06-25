@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react';
+ import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react';
 import { Flex,Avatar,Box,Heading,Text,IconButton ,Button} from '@chakra-ui/react';
 import { FaEllipsisV } from 'react-icons/fa';
 import {BiLike,BiChat,BiShare} from "react-icons/bi";
@@ -22,7 +22,8 @@ const  UserInfo=({ownerId})=> {
     phonenumber:"",
   });
 
-useEffect(()=>{
+/*
+  useEffect(()=>{
   
   try{
     if(user){
@@ -49,6 +50,7 @@ useEffect(()=>{
   
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
+*/
 // console.log(userDetail)
 //   setPhonenumber(userDetail['phonenumber'])
       return (
