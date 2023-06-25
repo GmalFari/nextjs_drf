@@ -255,8 +255,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
               <MenuDivider />
               <MenuItem>
               {user?
-                <Link href="/accounts/profile" passHref>صفحتي</Link>
-              :<Link href="/accounts/register" passHref>إضافة حساب</Link>
+                <Link href={`/accounts/${user.user_id}`} passHref>صفحتي</Link>
+              :<Link href={"/accounts/register"} passHref>إضافة حساب</Link>
               }
               </MenuItem>
               <MenuItem>

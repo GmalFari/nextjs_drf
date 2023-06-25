@@ -18,7 +18,7 @@ import {FaBed,FaBath,FaImages,
 
 import { fetchApi } from '../../utils/fetchApi';
 import HorizonalCard from '../../components/HorizonalCard';
-import UserInfo from '../../components/accounts/userInfo';
+import UserInfo from '../../components/accounts/UserInfo';
 import axios from 'axios';
 import Link from 'next/link';
 import { FaHome } from 'react-icons/fa';
@@ -29,6 +29,10 @@ import ContactPopover from '../../components/popoverModals/ContactModals';
 
 
 const Profile =({data})=>{
+  const router = useRouter();
+  const {query } = router;  
+  const id = query['id']
+  console.log(id)
   const {user,authTokens} = useContext(AuthContext);
   console.log(user.user_id)
 const myproperties = data?.results
@@ -39,7 +43,7 @@ const listingsH = [properties.filter(myProperty => myProperty.owner == user?.use
   return(
   <Box  paddingTop={"100px"}>
  <Center>
-  <UserInfo ownerId={user.user_id} />
+  <UserInfo ownerId={id}  />
   
   </Center> 
   <Flex flexDirection={['column']}   flexWrap="wrap" justifyContent="center" alignItems="center" >

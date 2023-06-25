@@ -55,6 +55,7 @@ const ImageScrollbar = ({data,coverPhoto}) => {
 
         }
     },[defaultImg])
+    console.log(data)
   return (
     <Box left={['0','0','0',"10%"]} position="relative" textAlign={"center"} maxW={"1000px"}>
         <Box  overflow={"hidden"}  pt={"10%"} borderRadius="2px"   

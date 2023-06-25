@@ -186,7 +186,6 @@ console.log(userDetail)
 
   )
 }
-
 export default UserDetail;
 export async function getServerSideProps({params: {id}}){
   const {data} = await axios.get(`https://fortestmimd.pythonanywhere.com/api/users/${id}/`) 

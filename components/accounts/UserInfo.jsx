@@ -17,31 +17,27 @@ const  UserInfo=({ownerId})=> {
     first_name:"",
     last_name:"",
     email:"",
+    name:"",
     phonenumber:"",
   });
-  const getUserdetail = async ()=>{
-    console.log('update tokens')
-   
-}
+
 useEffect(()=>{
   try{
-    let response =  fetch(`https://fortestmimd.pythonanywhere.com/auth/users/${ownerId}`,{
+    fetch(`https://fortestmimd.pythonanywhere.com/api/users/me`,{
     method:'GET',
     headers:{
       'Content-Type':'application/json',
       'Authorization':`Bearer ${authTokens?.access}`
 
-    },
-  })
-  let data =  response.json()
-  if (response.status === 200) {
+    }
+  }).then(response=>response.json()).
+  then(data=>{
     setUserDetail(data)
-    // router.push("/")
-  }else {
-    alert(JSON.stringify(data))
-  }
+  })
+
 }catch(errors){
-  alert(errors)
+  alert("errors")
+  
 }
   
 // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,7 +53,7 @@ useEffect(()=>{
         ${userDetail.last_name && userDetail.last_name}`}/>
         <Box>
           <Heading size='sm'>{userDetail.first_name&& userDetail.first_name} {userDetail.last_name &&userDetail.last_name} </Heading>
-        {userDetail.company && <Text>{userDetail.company} </Text>}
+        {userDetail.email && <Text>{userDetail.email} </Text>}
         </Box>
       </Flex>
       <IconButton

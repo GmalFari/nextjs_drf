@@ -664,7 +664,6 @@ const Form3 = ({errors, data,handleChange,setPropertyLocation,propertyLocation,c
 
 export default function Multistep({
   myData,setData,
-  imageFiles,setImageFiles
             }) {
 //  myData.coverPhoto = null 
   const [loading,setLoading] = useState(false)
@@ -672,6 +671,8 @@ export default function Multistep({
   const router = useRouter();
   const [submitted,setSubmitted]=useState(null);
   const [apiMessage,setApiMessage]= useState([])
+  const [imageFiles,setImageFiles]=useState([])
+
  const newData = Object.keys(apiMessage).map((key) => {
     return {
       "key": key,
