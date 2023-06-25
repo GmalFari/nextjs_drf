@@ -35,7 +35,8 @@ useEffect(()=>{
     }
   }).then(response=>response.json()).
   then(data=>{
-    setUserDetail(data)
+    alert(data)
+    //setUserDetail(data)
   })
 
 }else {
