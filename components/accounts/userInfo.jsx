@@ -14,7 +14,8 @@ const  UserInfo=({ownerId})=> {
   const {user,authTokens} = useContext(AuthContext);
   const [phonenumber,setPhonenumber]=useState()
   const[userDetail,setUserDetail]=useState({
-    first_name:"",
+    name:"",
+    firsname:"",
     last_name:"",
     email:"",
     phonenumber:"",
