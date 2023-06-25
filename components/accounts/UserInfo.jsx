@@ -15,10 +15,10 @@ const  UserInfo=({ownerId})=> {
   const [phonenumber,setPhonenumber]=useState()
   const [reivew,setReview]=useState(False)
   const[userDetail,setUserDetail]=useState({
-   // first_name:"",
+    first_name:"",
   //  last_name:"",
     email:"",
-    name:"",
+  //  name:"",
     phonenumber:"",
   });
 
@@ -55,10 +55,10 @@ useEffect(()=>{
   <CardHeader>
     <Flex spacing='2'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-        <Avatar name={`${userDetail.name && userDetail.name} 
-        ${userDetail.name && userDetail.name}`}/>
+        <Avatar name={`${userDetail.first_name && userDetail.first_name} 
+        ${userDetail.last_name && userDetail.last_name}`}/>
         <Box>
-          <Heading size='sm'>{userDetail.name&& userDetail.name} {userDetail.name &&userDetail.name} </Heading>
+          <Heading size='sm'>{userDetail.first_name&& userDetail.first_name} {userDetail.last_name &&userDetail.last_name} </Heading>
         {userDetail.email && <Text>{userDetail.email} </Text>}
         </Box>
       </Flex>
