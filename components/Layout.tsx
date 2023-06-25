@@ -4,9 +4,9 @@ import Navbar from './Navbar';
 import Carousel from './Carousel';
 import Sidebar from "./Sidebar";
 import Footer1 from "./Footer1";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import { MetaHeadEmbed } from "@phntms/react-share";
-const Layout:React.FC =  ({ children }) =>{
+const Layout =  ({ children }:{children: ReactNode}) =>{
   const [windowWidth, setWindowWidth] = useState(null);
   useEffect(() => {
     const isWindow = typeof window !== 'undefined';
@@ -39,10 +39,9 @@ const Layout:React.FC =  ({ children }) =>{
       }}
     />
       <Box>
-      <Container 
-  maxW='1400px'>
+      <Container maxW='1400px'>
   
-  <Sidebar />
+  <Sidebar children={undefined} />
 
           </Container>
         <main>{children}</main>
