@@ -15,8 +15,8 @@ const  UserInfo=({ownerId})=> {
   const [phonenumber,setPhonenumber]=useState()
   const[userDetail,setUserDetail]=useState({
     name:"",
-    firsname:"",
-    last_name:"",
+  // firsname:"",
+  //  last_name:"",
     email:"",
     phonenumber:"",
   });
@@ -59,7 +59,7 @@ useEffect(()=>{
         <Box>
           <Heading size='sm'>{userDetail.name&& userDetail.name} 
                     </Heading>
-        {userDetail.company && <Text>{userDetail.company} </Text>}
+        {userDetail.name && <Text>{userDetail.name} </Text>}
         </Box>
       </Flex>
       <IconButton
