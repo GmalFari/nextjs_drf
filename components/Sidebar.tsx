@@ -240,9 +240,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   alignItems="flex-start"
                   spacing="1px"
                   ml="2">
-                  <Text fontSize="sm">Jamal Farea</Text>
+                  <Text fontSize="sm">{user&&user.first_name}</Text>
                   <Text fontSize="xs" color="gray.600">
-                    Admin
                   </Text>
                 </VStack>
                 <Box display={{ base: 'none', md: 'flex' }}>

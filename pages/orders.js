@@ -1,13 +1,17 @@
 /* eslint-disable no-console */
-import { Card, CardHeader, CardBody, CardFooter,
+import { useState,useEffect } from 'react';
+import { Card, CardHeader,Flex, CardBody, CardFooter,
       useColorMode,useColorModeValue,Switch } from '@chakra-ui/react'
 import { Stack,StackDivider,Button,Box,Heading,Text,Badge, } from '@chakra-ui/react';
 import OrderCreateDrower from '../components/orders/CreateOrderDrower';
 import HorizonalOrder from "../components/orders/HorizonalOrder"
 import Link from "next/link";
 import { fetchApi } from '../utils/fetchApi';
-const Orders = ({orders}) =>{
-const { toggleColorMode } = useColorMode();
+import Pagination from "../components/Pagination";
+import axios from 'axios';
+import { useRouter } from 'next/router';
+const Orders = ({data}) =>{
+  const { toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue('gray.100', 'gray.700');
   // const [myOrders,setMyorders]=useState()
   const OrdersApi = () =>{
@@ -15,7 +19,7 @@ const { toggleColorMode } = useColorMode();
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5MjUwMDE2LCJpYXQiOjE2ODY2NTgwMTYsImp0aSI6IjFmYWE0Mzk4ZjQ4OTQyMDA4ZjRlOTdiYTU3OThmODg5IiwidXNlcl9pZCI6MX0.AKK2pRWie86HGGO8iFv0qRSCPq0R8fypONFwATTWt8s'
+        // Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5MjUwMDE2LCJpYXQiOjE2ODY2NTgwMTYsImp0aSI6IjFmYWE0Mzk4ZjQ4OTQyMDA4ZjRlOTdiYTU3OThmODg5IiwidXNlcl9pZCI6MX0.AKK2pRWie86HGGO8iFv0qRSCPq0R8fypONFwATTWt8s'
       },
       body: '{"req_order_title":"مطلوب شقة"}'
     };
@@ -26,6 +30,46 @@ const { toggleColorMode } = useColorMode();
       .catch(err => console.error(err));
   }
   
+  const [orders,setOrders]= useState(data)
+  const router = useRouter();
+  //for pagination
+  const [pageCount,setPageCount] = useState(orders?.count);
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 5;
+  const itemsCount = Math.round(pageCount)
+  const onPageChange = (page) => {
+    setCurrentPage(page);
+    console.log(currentPage)
+  };
+
+// end for pagination
+  
+  useEffect(() => {
+    if(currentPage < 1){
+        setCurrentPage(1)
+    }
+    if(currentPage > itemsCount){
+        setCurrentPage(itemsCount)
+    }
+    console.log(currentPage)
+    const path = router.pathname;
+    const {query } = router;  
+    query["page"] = currentPage
+    router.push({pathname:path,query})
+     const data = axios.get(`https://fortestmimd.pythonanywhere.com/api/requests-app/?page=${query["page"]}`)
+      .then((response) => {
+        console.log(response.data.results)
+        setPageCount(response.data.count)
+        setOrders(response.data.results);
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+        
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
+
   const myOrders = [orders.map((myOrder)=>(
     <>
         <Box position={"relative"} bg={formBackground} padding={4}>      
@@ -82,17 +126,59 @@ const { toggleColorMode } = useColorMode();
     </Stack>
   </CardBody>
 </Card>
+{orders.length !== 0&& <Flex justifyContent={"center"}>
+         <Box  style={{
+           "display": "flex",
+          "justify-content": "center",
+         " align-items": "center",
+          "paddingRight": "0.5rem",
+          "paddingLeft": "0.5rem",
+          "margin":"0 20px",
+          "border": "1px solid #eaeaea",
+          "border-radius": "0.5rem",
+          "cursor": "pointer",
+          "marginTop":"50px",
+          "height":"30px",
+
+         }}
+         onClick={()=>{setCurrentPage(currentPage -1)}}
+         >السابق</Box>
+         <Pagination
+                items={itemsCount} // 100
+                currentPage={currentPage} // 1
+                pageSize={pageSize} // 10
+                onPageChange={onPageChange}
+            />
+            <Box style={{   
+              "display": "flex",
+          "justify-content": "center",
+         " align-items": "center",
+          "paddingRight": "0.5rem",
+          "paddingLeft": "0.5rem",
+          "margin":"0 20px",
+          "border": "1px solid #eaeaea",
+          "border-radius": "0.5rem",
+          "cursor": "pointer",
+          "marginTop":"50px",
+          "height":"30px",
+        }}
+        onClick={()=>{setCurrentPage(currentPage  + 1)}}
+        >
+                القادم
+            </Box>
+         </Flex>}
     </>
   )
 }
 
 export default Orders;
 export async function getServerSideProps({query}) {
-     const orders = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/requests-app/?page=2`)
+    
+     const orders = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/requests-app/?page=1`)
     return {
       props: {
         // propertiesForSale:propertyForSale?.results,
-        orders:orders?.results,
+        data:orders?.results,
   
       }
     }
