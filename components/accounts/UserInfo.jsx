@@ -23,7 +23,9 @@ const  UserInfo=({ownerId})=> {
   });
 
 useEffect(()=>{
+  
   try{
+    if(user){
     fetch(`https://fortestmimd.pythonanywhere.com/auth/users/${ownerId}`,{
     method:'GET',
     headers:{
@@ -36,7 +38,10 @@ useEffect(()=>{
     setUserDetail(data)
   })
 
-}catch(errors){
+}else {
+      alert('you are not login')
+    }
+  }catch(errors){
   alert("errors")
   
 }
