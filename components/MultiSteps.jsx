@@ -19,6 +19,7 @@ import {
   InputGroup,
   Textarea,
   FormHelperText,
+  FormErrorMessage,
   InputRightElement,
 } from '@chakra-ui/react';
 
@@ -277,6 +278,7 @@ const Form1 = ({data,
 };
 
 const Form2 = ({ errors,myData,setData,title,handleChange,setTitle,setImg}) => {
+  const [inputError,setInputError] = useState('')
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal">
@@ -310,9 +312,16 @@ const Form2 = ({ errors,myData,setData,title,handleChange,setTitle,setImg}) => {
           onChange={handleChange}
           // onChange={e=>{setTitle(e.target.value)}}
         />
-         <FormLabel color={"red"} display={errors?.property_title?'flex':'none'}>
+        {inputError === '' ? (
+        <FormHelperText fontSize={"10px"}>
+        هذا الحقل مطلوب
+        </FormHelperText>
+      ) : (
+        <FormErrorMessage>{errors.property_title}</FormErrorMessage>
+      )}
+         {/* <FormLabel color={"red"} display={errors?.property_title?'flex':'none'}>
                  <small>{errors?.property_title?errors.property_title:null}</small>
-                 </FormLabel>
+                 </FormLabel> */}
       </FormControl>
       {/* رقم الإعلان */}
       <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
@@ -340,6 +349,9 @@ const Form2 = ({ errors,myData,setData,title,handleChange,setTitle,setImg}) => {
           onChange={handleChange}
           // onChange={e=>{setTitle(e.target.value)}}
         />
+         <FormLabel color={"red"} display={errors?.property_number?'flex':'none'}>
+                 <small>{errors?.property_number?errors.property_number:null}</small>
+                 </FormLabel>
       </FormControl>
     {/* السعر */}
       <FormControl display={"flex"} as={GridItem} colSpan={[6, 6, null, 2]}>
@@ -368,7 +380,13 @@ const Form2 = ({ errors,myData,setData,title,handleChange,setTitle,setImg}) => {
           onChange={handleChange}
           // onChange={e=>{setTitle(e.target.value)}}
         />
+
         </Box>
+         <FormLabel color={"red"} display={errors?.property_price?'flex':'none'}>
+                 <small>{errors?.property_price?errors.property_price:null}</small>
+                 </FormLabel>
+        </FormControl>
+        <FormControl>
         <Box>
         <FormLabel
           htmlFor="typeProperty"
@@ -401,6 +419,9 @@ const Form2 = ({ errors,myData,setData,title,handleChange,setTitle,setImg}) => {
   })}
         </Select>
         </Box>
+        <FormLabel color={"red"} display={errors?.currency?'flex':'none'}>
+                 <small>{errors?.currency?errors.currency:null}</small>
+                 </FormLabel>
       </FormControl>
       <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
         <FormLabel
@@ -427,6 +448,9 @@ const Form2 = ({ errors,myData,setData,title,handleChange,setTitle,setImg}) => {
           onChange={(e)=>setData({...myData,coverPhoto:e.target.files[0]})}
           // onChange={e=>{e.target.mainImg.files[0]}}
         /> 
+        <FormLabel color={"red"} display={errors?.coverPhoto?'flex':'none'}>
+                 <small>{errors?.coverPhoto?errors.coverPhoto:null}</small>
+                 </FormLabel>
       </FormControl>
           {/* رابط الفيديو ع اليوتيوب */}
       <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
@@ -479,6 +503,7 @@ const Form2 = ({ errors,myData,setData,title,handleChange,setTitle,setImg}) => {
             }}
           />
           <FormHelperText>
+
          </FormHelperText>
         </FormControl>
       </SimpleGrid>
@@ -724,7 +749,10 @@ let testApi = async()=>{
     myform.append("building_facade",myData.building_facade);
     myform.append("building_age",myData.building_age);
     myform.append("state",myData.state);
-    myform.append("directorate",myData.directorate); 
+    myform.append("directorate",myData.directorate);
+    
+    //imgs 
+    myform.append("text_of_imgs",JSON.stringify(imageFiles));
     const url = 'https://fortestmimd.pythonanywhere.com/api/list-properties/'
      const options = {
         method: 'POST',
@@ -757,9 +785,8 @@ let testApi = async()=>{
                 status: 'success',
                 isClosable: true
                })
-            
           setData({...myData,property_title:""})
-          console.log(result)
+          console.log(myData)
           alert(JSON.stringify(result))
           setStep(4)
            router.push(`/property/${result.id}`)
@@ -856,14 +883,21 @@ const handleSubmit = async e => {
                            handleChange={handleChange}
                            propertyLocation={propertyLocation}
                            setPropertyLocation={setPropertyLocation} 
-                            /> :null}
-          {/*
-                            <Box>
+                            /> :
+                            step == 4?
+                            <>
                             <Box>أختر الصور للعقار</Box>
                             <ImagesUpload 
+
                             imageFiles={imageFiles} setImageFiles={setImageFiles} />
+                            </>:null
+                            
+                            }
+          
+                            <Box>
                             </Box>
-                            */}
+                            
+                           
                            
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
@@ -899,7 +933,7 @@ const handleSubmit = async e => {
                 القادم
               </Button>
             </Flex>
-            {step === 3?(
+            {step === 4?(
               <form  enctype="multipart/form-data" 
                 onSubmit={handleSubmit}
                 >   

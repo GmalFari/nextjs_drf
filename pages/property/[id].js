@@ -55,6 +55,7 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
         building_age,
         sqrt_area,
         omities,
+        text_of_imgs,
         timestamp,
         updated,
             property_price,
@@ -65,10 +66,10 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
     const {user} = useContext(AuthContext)
-
+    const images = JSON.parse(text_of_imgs)   
+    
 return(
         <>
-     
         <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}>
          <MyBreadcrumb /> 
          </Box>
@@ -87,7 +88,7 @@ return(
         <Box width="100%" >
         <Grid mb={2} templateColumns='repeat(3, 1fr)' gap={2}>
             <BasicUsage comId="I" icon={<FaImages />}
-             btnContent={"الصور"} coverPhoto={coverPhoto} photos={photos}/>
+             btnContent={"الصور"} coverPhoto={coverPhoto} photos={images}/>
             <BasicUsage comId="M" icon={<FaMapMarked />} 
             btnContent={"الخريطة"}   coverPhoto={coverPhoto} photos={photos}   geography={location.coordinates} />
             <BasicUsage comId="V" icon={<FaYoutube />} 

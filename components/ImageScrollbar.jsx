@@ -50,7 +50,7 @@ const ImageScrollbar = ({data,coverPhoto}) => {
            {imageRef.current.clientHeight  
             <= 700 ? setImgWH({width:"100%",
             height:imageRef.current.clientHeight}):
-             {width:"100%",height:"700px",}
+             {width:"70%",height:"700px",}
            }
 
         }
@@ -66,17 +66,18 @@ const ImageScrollbar = ({data,coverPhoto}) => {
   />
         </Box>
         <Box>
-        {coverPhoto &&<ScrollMenu position={'initial'} LeftArrow={LeftArrow} RightArrow={RightArrow} style={{overflow:"scroll"}}>
-        {testmap.map((item) =>(
+        {defaultImg &&<ScrollMenu position={'initial'} LeftArrow={LeftArrow}
+         RightArrow={RightArrow} style={{overflow:"scroll"}}>
+        {data.length >1 &&  data.map((item) =>(
             <Box       
-                    border={item.url === defaultImg?"4px solid #127578":"none"}
-                    onClick={()=>{setDefaultImg(coverPhoto)}} 
+                    border={item === defaultImg?"4px solid #127578":"none"}
                     key={item.id} width="100px" height="100px" itemID={item.id}
                      overflow="hidden" p="1">
                 <Img
+                    onClick={()=>{setDefaultImg(item)}} 
                 placeholder='blur' 
                 // blurDataURL={item.url} 
-                src={coverPhoto} 
+                src={item} 
                 width="100%"
                 height="100%"
                 alt="property"

@@ -90,6 +90,7 @@ const [myData,setData] = useState(
   building_age:"",
   isForRent:true,
   sqrt_area:null,
+  "text_of_imgs":"",
   // //form2
   // title:"",
   // img:"",
