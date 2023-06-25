@@ -15,8 +15,8 @@ const  UserInfo=({ownerId})=> {
   const [phonenumber,setPhonenumber]=useState()
   const [reivew,setReview]=useState(False)
   const[userDetail,setUserDetail]=useState({
-    first_name:"",
-    last_name:"",
+   // first_name:"",
+  //  last_name:"",
     email:"",
     name:"",
     phonenumber:"",
@@ -24,7 +24,7 @@ const  UserInfo=({ownerId})=> {
 
 useEffect(()=>{
   try{
-    fetch(`https://fortestmimd.pythonanywhere.com/api/users/me`,{
+    fetch(`https://fortestmimd.pythonanywhere.com/auth/users/${ownerId}`,{
     method:'GET',
     headers:{
       'Content-Type':'application/json',
@@ -50,10 +50,10 @@ useEffect(()=>{
   <CardHeader>
     <Flex spacing='2'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-        <Avatar name={`${userDetail.first_name && userDetail.first_name} 
-        ${userDetail.last_name && userDetail.last_name}`}/>
+        <Avatar name={`${userDetail.name && userDetail.name} 
+        ${userDetail.name && userDetail.name}`}/>
         <Box>
-          <Heading size='sm'>{userDetail.first_name&& userDetail.first_name} {userDetail.last_name &&userDetail.last_name} </Heading>
+          <Heading size='sm'>{userDetail.name&& userDetail.name} {userDetail.name &&userDetail.name} </Heading>
         {userDetail.email && <Text>{userDetail.email} </Text>}
         </Box>
       </Flex>
