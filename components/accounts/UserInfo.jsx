@@ -9,11 +9,13 @@ import ShareBtns from '../share/ShareBtns';
 import ShareToWhatsApp from '../share/ShareToWhatsApp';
 import Share from '../share/AllShare';
 import SocialMedia from './SocialMedia';
+import {useRouter} from "next/router"
 const  UserInfo=({ownerId})=> {
-
+  const router = useRouter();
   const {user,authTokens} = useContext(AuthContext);
   const [phonenumber,setPhonenumber]=useState()
-  const [reivew,setReview]=useState(False)
+  const [review,setReview]=useState(false)
+  
   const[userDetail,setUserDetail]=useState({
     first_name:"",
     last_name:"",
@@ -23,6 +25,7 @@ const  UserInfo=({ownerId})=> {
   });
 
 useEffect(()=>{
+  if(user){
   try{
     fetch(`https://fortestmimd.pythonanywhere.com/api/users/me`,{
     method:'GET',
@@ -36,9 +39,14 @@ useEffect(()=>{
     setUserDetail(data)
   })
 
-}catch(errors){
+}
+  
+catch(errors){
   alert("errors")
   
+}
+}else{
+  window.location.replace("/accounts/login")
 }
   
 // eslint-disable-next-line react-hooks/exhaustive-deps

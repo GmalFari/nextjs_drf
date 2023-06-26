@@ -34,7 +34,7 @@ const Profile =({data})=>{
   const id = query['id']
   console.log(id)
   const {user,authTokens} = useContext(AuthContext);
-  console.log(user.user_id)
+  // console.log(user.user_id)
 const myproperties = data?.results
 const [properties,setProperties] = useState(myproperties);
 const listingsH = [properties.filter(myProperty => myProperty.owner == user?.user_id).map((property) =>(
