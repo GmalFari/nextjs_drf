@@ -70,7 +70,7 @@ const ImageScrollbar = ({data,coverPhoto}) => {
         {defaultImg &&
         <ScrollMenu position={'initial'} LeftArrow={LeftArrow}
          RightArrow={RightArrow} style={{overflow:"scroll"}}>
-        {data && data.a.map((item) =>(
+        {data && data.map((item) =>(
             <Box       
                     border={item === defaultImg?"4px solid #127578":"none"}
                     key={item.id} width="100px" height="100px" itemID={item.id}
