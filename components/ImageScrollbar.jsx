@@ -57,13 +57,14 @@ const ImageScrollbar = ({data,coverPhoto}) => {
     },[defaultImg])
     console.log(data)
   return (
-    <Box left={['0','0','0',"10%"]} position="relative" textAlign={"center"} maxW={"1000px"}>
-        <Box  overflow={"hidden"}  pt={"10%"} borderRadius="2px"   
-                textAlign="center">
+    <Box ms={"auto"} position="relative" textAlign={"center"} maxW={"800px"}>
+        <Box textAlign={"center"}  overflow={"hidden"}  pt={"10%"} borderRadius="2px"   
+                >
             <Img style={{"objectFit":"cover"}}
              src={defaultImg} height={"50rm"}
+             textAlign={"center"}
               overflow="hidden" ref={imageRef}  alt=""
-              sizes="(max-width: 500px) 100px, (max-width: 1023px) 400px, 1000px"                
+              sizes="(max-width: 500px) 100px, (max-width: 500px) 400px, 800px"                
   />
         </Box>
         <Box>

@@ -68,8 +68,14 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
     const {user} = useContext(AuthContext)
-    const images = JSON.parse(text_of_imgs)  
-    console.log(images) 
+    let images = null
+    if( text_of_imgs === undefined){
+        console.log(text_of_imgs)
+        images = JSON.parse(text_of_imgs)
+
+    } else {
+        images = []
+    }
     
 return(
         <>
