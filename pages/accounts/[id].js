@@ -32,7 +32,7 @@ const Profile =({data})=>{
   const router = useRouter();
   const {query } = router;  
   const id = query['id']
-  console.log(id)
+  alert(id)
   const {user,authTokens} = useContext(AuthContext);
   // console.log(user.user_id)
 const myproperties = data?.results
@@ -42,8 +42,9 @@ const listingsH = [properties.filter(myProperty => myProperty.owner == user?.use
       ))]
   return(
   <Box  paddingTop={"100px"}>
- <Center>
+ <Center>  
   <UserInfo ownerId={id}  />
+{/*     */}
   
   </Center> 
   <Flex flexDirection={['column']}   flexWrap="wrap" justifyContent="center" alignItems="center" >
