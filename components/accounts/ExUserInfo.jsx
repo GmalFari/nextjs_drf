@@ -7,11 +7,10 @@ import { useContext,useState, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';
 import axios from 'axios';
 import Share from '../share/AllShare';
-const  ExUserInfo=({userDetail,ownerId})=> {
+const  ExUserInfo=({ownerId})=> {
 
   const {user,authTokens} = useContext(AuthContext);
-  const [phonenumber,setPhonenumber]=useState()
-/*  const[userDetail,setUserDetail]=useState({
+  const [phonenumber,setPhonenumber]=useState()  const[userDetail,setUserDetail]=useState({
     
     name:"",
     email:"",
@@ -42,7 +41,7 @@ useEffect(()=>{
  console.log(userDetail)
  
   setPhonenumber(userDetail['phonenumber'])
- */
+ 
   return (
 <Card maxW='md' dir='rtl'>
   <CardHeader>
