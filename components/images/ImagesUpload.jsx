@@ -7,7 +7,7 @@ import { UploadDropzone,UploadButton } from "react-uploader";
 
 // Initialize once (at the start of your app).
 
-const uploader = Uploader({ apiKey: "public_W142hzBE4sj6JPVjh3KruK2CCKQZ" }); // Your real API key.
+const uploader = Uploader({ apiKey: "public_FW25bUbA6QitvhHP5N93uKVwAJPb" }); // Your real API key.
 const uploaderOptions = {
   multi: true,
 

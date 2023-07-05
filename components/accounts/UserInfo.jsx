@@ -42,7 +42,6 @@ useEffect(()=>{
 }
   
 catch(errors){
-  alert("errors")
   
 }
 }else{
