@@ -55,14 +55,14 @@ export const filterData = [
     },
     {
       items: [
-        { name: 'أقل سعر ', value: 'price-asc' },
-        { name: 'أعلى سعر ', value: 'price-des' },
-        { name: 'الأحدث', value: 'date-asc' },
-        { name: 'الأقدم', value: 'date-desc' },
+        { name: 'أقل سعر ', value: 'property_price' },
+        { name: 'أعلى سعر ', value: '-property_price' },
+        { name: 'الأحدث', value: 'timestamp' },
+        { name: 'الأقدم', value: '-timestamp' },
         { name: 'الأفضل', value: 'verified-score' },
       ],
       placeholder: 'ترتيب حسب',
-      queryName: 'sort',
+      queryName: 'ordering',
     },
     {
       items: [
@@ -144,7 +144,7 @@ export const filterData = [
       areaMax,
       rooms,
       baths,
-      sort,
+      ordering,
       locationExternalIDs,
     } = filterValues;
   
@@ -182,8 +182,8 @@ export const filterData = [
         value: baths,
       },
       {
-        name: 'sort',
-        value: sort,
+        name: 'ordering',
+        value: ordering,
       },
       {
         name: 'locationExternalIDs',

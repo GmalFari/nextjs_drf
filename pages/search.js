@@ -32,7 +32,7 @@ import OurLogo from '../components/Logo';
 const Search = ({data,query}) => {
   console.log(query)  
   const myproperties = data?.results
-  
+
     const [properties,setProperties] = useState(myproperties);
     const [pageCount,setPageCount] = useState(data?.count);
     const itemsCount = Math.round(pageCount)
@@ -50,37 +50,38 @@ const Search = ({data,query}) => {
       console.log(currentPage)
     };
     useEffect(() => {
+       if(!onFilter){
         if(currentPage < 1){
-            setCurrentPage(1)
+          setCurrentPage(1)
+      }
+      if(currentPage > itemsCount){
+          setCurrentPage(itemsCount)
+      }
+      const path = router.pathname;
+      const {query } = router;  
+      // clear filter data
+      Object.keys(query).forEach(key => {
+         query[key]='';
+      })
+      query["search"] = searchValue
+      query["page"] = currentPage
+
+      router.push({pathname:path,query});
+       const data = axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/`,{
+        params:{
+          ...query
         }
-        if(currentPage > itemsCount){
-            setCurrentPage(itemsCount)
-        }
-        const path = router.pathname;
-        const {query } = router;  
-        // clear filter data
-        Object.keys(query).forEach(key => {
-           query[key]='';
+       })
+        .then((response) => {
+
+          setPageCount(response.data.count)
+          setOnFilter(false)
+          setProperties(response.data.results);
         })
-        query["search"] = searchValue
-        query["page"] = currentPage
-
-        router.push({pathname:path,query});
-         const data = axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/`,{
-          params:{
-            ...query
-          }
-         })
-          .then((response) => {
-              console.log(response.data.results)
-
-            setPageCount(response.data.count)
-            
-            setProperties(response.data.results);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        .catch((error) => {
+          console.log(error);
+        });
+       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [currentPage,searchValue]);
    
@@ -156,6 +157,8 @@ const Search = ({data,query}) => {
                  <IconButton   border="transparent" 
                 icon={<FaSearch/>}   me="2" ms="2" colorScheme='teal' variant='outline'></IconButton>
          <SearchFilter 
+         onFilter={onFilter}
+         setOnFilter={setOnFilter}
          properties={properties}
          setProperties={setProperties}
          setSearchValue={setSearchValue}

@@ -2,6 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { Box } from '@chakra-ui/react'
+
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 const SearchAutoComplete = ({onSearch,searchValue,
@@ -85,6 +86,8 @@ const SearchAutoComplete = ({onSearch,searchValue,
 
   }
 
+  
+  
   const handleOnFocus = () => {
     console.log('Focused')
   }
@@ -99,7 +102,7 @@ const SearchAutoComplete = ({onSearch,searchValue,
     <div className="App">
         <Box width={["95vw"]} zIndex={"999"}>
           <ReactSearchAutocomplete
-         
+            showClear={false}
             autoFocus={false}
             styling={{borderRadius:"10px",padding:"20px"}}
             showIcon={false}
@@ -112,6 +115,7 @@ const SearchAutoComplete = ({onSearch,searchValue,
             formatResult={formatResult}
             className='ReactSearchAutoComplete'
             placeholder={'أبحث عن العقارات' }
+            
           />
         </Box>
     </div>

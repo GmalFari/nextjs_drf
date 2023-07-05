@@ -23,7 +23,11 @@ import {
 } from '@chakra-ui/react'
 
 import { BsFilter } from 'react-icons/bs';
-const SearchFilter = ({properties,setProperties,setSearchValue}) => {
+const SearchFilter = ({
+          onFilter,
+          setOnFilter,
+          properties,setProperties,
+          setSearchValue}) => {
   const { onOpen, onClose, isOpen } = useDisclosure()
   const [filters] = useState(filterData);
   const [searchTerm, setSearchTerm] = useState('');
@@ -42,12 +46,13 @@ const SearchFilter = ({properties,setProperties,setSearchValue}) => {
             setLoading(true)
           }
         })
-        alert(query)
         router.push({pathname:path,query})
       }
       
       )
   useEffect(() => {
+    if(onFilter){
+      setOnFilter(true)
     const path = router.pathname;
     const {query } = router;  
     query['search']='';
@@ -74,7 +79,8 @@ const SearchFilter = ({properties,setProperties,setSearchValue}) => {
       .catch((error) => {
         console.log(error);
       });
-        
+     
+    }   
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 console.log({...query})
