@@ -26,7 +26,7 @@ const Section2 = () => {
         
         <Box   ref={ref} margin="auto" >{content.content.map((content,index)=>(
            // eslint-disable-next-line react/jsx-key
-           <Link key={index} href={`/search?area=${content}`}> <Text key={index} color="#177578" p="2px">
+           <Link key={index} href={`/search?property_town=${content}&&property_area=${content}&&purpose=للبيع`}> <Text key={index} color="#177578" p="2px">
             {content}
           </Text></Link>
       ))}
@@ -46,7 +46,7 @@ const Section2 = () => {
           <Box margin="auto" >{
           content.content.map((content,index)=>(
              <>
-             <Link href={`/search?area=${content}`}> <Text key={index} color="#177578" p="2px">
+             <Link href={`/search?property_town=${content}&&property_area=${content}&&purpose=للإيجار`}> <Text key={index} color="#177578" p="2px">
               {content}
             </Text></Link>
              </>

@@ -51,8 +51,8 @@ const SearchFilter = ({
       
       )
   useEffect(() => {
+    setOnFilter(true)
     if(onFilter){
-      setOnFilter(true)
     const path = router.pathname;
     const {query } = router;  
     query['search']='';

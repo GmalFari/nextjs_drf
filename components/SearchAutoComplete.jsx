@@ -13,8 +13,8 @@ const SearchAutoComplete = ({onSearch,searchValue,
             name: v.property_title
           }
     ))
-    //  [
     //     {
+    //  [
     //       id: 0,
     //       name: 'للبيع'
     //     },
