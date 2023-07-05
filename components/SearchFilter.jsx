@@ -70,7 +70,6 @@ const SearchFilter = ({
       }
      })
       .then((response) => {
-        console.log(router)
 
         console.log(JSON.stringify(query))
         setProperties(response.data.results);
