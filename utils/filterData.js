@@ -7,6 +7,7 @@ export const filterData = [
       placeholder: 'الغرض',
       queryName: 'purpose',
     },
+    
     {
       items: [
         { name: 'يومي', value: 'يومي' },
@@ -135,6 +136,7 @@ export const filterData = [
   export const getFilterValues = (filterValues) => {
     const {
       purpose,
+
       rentFrequency,
       categoryExternalID,
       minPrice,
@@ -151,6 +153,10 @@ export const filterData = [
         name: 'purpose',
         value: purpose,
       },
+      {
+      name: 'property_price',
+      value: minPrice,
+    },
       {
         name: 'rentFrequency',
         value: rentFrequency,

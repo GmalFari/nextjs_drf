@@ -36,7 +36,7 @@ const Mailto = ({ email, subject, body, children }) => {
 
 
 const HorizonalCard = (
-    {property,property:{id,owner,coverPhoto,property_title,sqrt_area,phone,
+    {property,property:{id,owner,purpose,coverPhoto,property_title,sqrt_area,phone,
                property_town,property_area
         ,property_price,rentFrequency,
         location,rooms,
@@ -87,7 +87,7 @@ const HorizonalCard = (
 
         
             <Link  href={`/property/${id}`} passHref>
-            <Box  height={'100%'} me="4" >
+            <Box position={"relative"}  height={'100%'} me="4" >
                 <Img src={coverPhoto ? coverPhoto:defaultImg} 
                 borderRadius={2}
                 width={[160,170,250]} 
@@ -95,6 +95,18 @@ const HorizonalCard = (
                 minH={[170,200]}
                  style={{objectFit:'cover'}}
                   alt="default house" />
+                  <Box position={"absolute"}
+                        padding={"1px 3px"}
+                        borderRadius={"5"}
+                        fontSize={"xx-small"}
+                        fontWeight={"700"}
+                        backgroundColor={purpose=="للبيع"?"#a3e5eb":"#ff9f53"}
+                        color={'white'}
+                         top={"0.5"} 
+                         right={"0.5"}
+                          zIndex={"111"}>
+                        {purpose}
+                  </Box>
             </Box>
             
             </Link>

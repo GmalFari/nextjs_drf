@@ -18,7 +18,6 @@ import MainAlert from "../MainAlert"
 import { useDisclosure } from '@chakra-ui/react';
 
 const UpdatePropertyDrower = ({isColumn,propertyDetails}) => {
-    console.log(propertyDetails)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
   

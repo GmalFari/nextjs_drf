@@ -29,8 +29,9 @@ import Pagination from '../components/Pagination';
 import OurLogo from '../components/Logo';
 
 // import { paginate } from '../helper/paginate';
-const Search = ({data}) => {
-    const myproperties = data?.results
+const Search = ({data,query}) => {
+  console.log(query)  
+  const myproperties = data?.results
   
     const [properties,setProperties] = useState(myproperties);
     const [pageCount,setPageCount] = useState(data?.count);
@@ -55,23 +56,31 @@ const Search = ({data}) => {
         if(currentPage > itemsCount){
             setCurrentPage(itemsCount)
         }
-        console.log(currentPage)
         const path = router.pathname;
         const {query } = router;  
+        // clear filter data
+        Object.keys(query).forEach(key => {
+           query[key]='';
+        })
         query["search"] = searchValue
         query["page"] = currentPage
-        router.push({pathname:path,query})
-         const data = axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/?search=${query["search"]}&page=${query["page"]}`)
+
+        router.push({pathname:path,query});
+         const data = axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/`,{
+          params:{
+            ...query
+          }
+         })
           .then((response) => {
-            console.log(response.data.results)
+              console.log(response.data.results)
+
             setPageCount(response.data.count)
+            
             setProperties(response.data.results);
-            console.log(response.data)
           })
           .catch((error) => {
             console.log(error);
           });
-            
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [currentPage,searchValue]);
    
@@ -101,7 +110,6 @@ const Search = ({data}) => {
           
         }, []);
       */
-  
     const listingsH = [properties.map((property) =>(
                <HorizonalCard   property={property} key={property.id} /> 
                    ))]
@@ -148,7 +156,9 @@ const Search = ({data}) => {
                  <IconButton   border="transparent" 
                 icon={<FaSearch/>}   me="2" ms="2" colorScheme='teal' variant='outline'></IconButton>
          <SearchFilter 
+         properties={properties}
          setProperties={setProperties}
+         setSearchValue={setSearchValue}
 
          />
                  </Box>
@@ -273,11 +283,16 @@ export default Search
 
 
 export async function getServerSideProps({query}) {
+  query['property_title'] = '';
+    query['property_town'] = '';
+    query['purpose'] = '';
+    query['property_price'] = '';
     // const data = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=${locationExternalIDs}&purpose=${purpose}&hitsPerPage=6&rentFrequency=${rentFrequency}&minPrice=${minPrice}&maxPrice=${maxPrice}&bathsMin=${bathsMin}&roomsMin=${roomsMin}&sort=${sort}&areaMax=${areaMax}&categoryExternalID=${categoryExternalID}&lang=${lang}`);
-        const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/`)
+        const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/?${query}`)
                     return {
                         props:{
                           data:data,
+                          query:query
                         }
                     }
 }

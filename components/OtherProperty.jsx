@@ -11,7 +11,7 @@ const OtherProperty = (
   {property:{id,coverPhoto,property_price,rent_frequency,property_title
     ,agency,isVerified,timestamp}}  
   ) => {
-    console.log(timestamp)
+    
     const date = new Date(timestamp);
     const currentDate = new Date()
     const created = currentDate.getHours() - date.getHours();

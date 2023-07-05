@@ -7,6 +7,7 @@ import Image from 'next/image';
 import noresult from "../assets/images/Noresult.jpg"
 import {filterData,getFilterValues} from "../utils/filterData";
 import OurLogo from './Logo';
+import axios from 'axios';
 import { useDisclosure } from '@chakra-ui/react';
 import {
   Popover,
@@ -22,7 +23,7 @@ import {
 } from '@chakra-ui/react'
 
 import { BsFilter } from 'react-icons/bs';
-const SearchFilter = () => {
+const SearchFilter = ({properties,setProperties,setSearchValue}) => {
   const { onOpen, onClose, isOpen } = useDisclosure()
   const [filters] = useState(filterData);
   const [searchTerm, setSearchTerm] = useState('');
@@ -30,34 +31,53 @@ const SearchFilter = () => {
   const [showLocations, setShowLocations] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const searchProperties = (
-    (filtervalues) =>{
-      const path = router.pathname;
-      const {query } = router;
-      const values = getFilterValues(filtervalues);
-      values.forEach((item)=>{
-        if(item.value && filtervalues?.[item.name]){
-          query[item.name] = item.value
-        }
-      })
-      router.push({pathname:path,query})
-    }
+  const {query } =  router;
+    const searchProperties = (
+      (filtervalues) =>{
+        const path = router.pathname;
+        const values = getFilterValues(filtervalues);
+        values.forEach((item)=>{
+          if(item.value && filtervalues?.[item.name]){
+            query[item.name] = item.value
+            setLoading(true)
+          }
+        })
+        alert(query)
+        router.push({pathname:path,query})
+      }
+      
+      )
+  useEffect(() => {
+    const path = router.pathname;
+    const {query } = router;  
+    query['search']='';
+    setSearchValue('')
+    router.push({pathname:path,query})
+    // clear filter data
+    // Object.keys(query).forEach(key => {
+    //   delete query[key];
+    // })
     
-  )
-  // useEffect(()=>{
-  //   if(searchTerm !== ''){
-  //     const fetchData = async ()=>{
-  //       setLoading(true);
-  //       const data = await fetchApi(`{baseUrl}/auto-complete?query=${searchTerm}`)
-  //       setLoading(data?.hits);
-  //       setLoading(false);
-  //       searchTerm(data?.hits);
-  //       fetchData();
-  //       };
-  //   }
-  // },[searchTerm]);
-  
-  
+    router.push({pathname:path,query});
+     const data = axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/`,{
+      params:{
+          ...query
+      }
+     })
+      .then((response) => {
+        console.log(router)
+
+        console.log(JSON.stringify(query))
+        setProperties(response.data.results);
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+        
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading]);
+console.log({...query})
   return (
     <>
     <Popover isOpen={isOpen}
