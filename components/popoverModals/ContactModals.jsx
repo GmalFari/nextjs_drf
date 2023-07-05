@@ -109,7 +109,7 @@ const ContactPopover=({icon,bgcolor,color,content,contactWith,
       mainContent = <>
         <FormControl mt={4}>
               <Center>
-              <Link href={"tel:+96776278868"} color="teal">+96776278868  
+              <Link href={`tel:${contactWith}`} color="teal">{contactWith} 
               {/* <IconButton
                 ms={"20px"}
                 colorScheme='teal'
@@ -122,7 +122,7 @@ const ContactPopover=({icon,bgcolor,color,content,contactWith,
               </Center>
              </FormControl>
         <FormControl mt={4}>
-        <Link href={"tel:+96776278868"} color="teal">
+        <Link href={`tel:${contactWith}`} color="teal">
 
               <Button width={"full"} leftIcon={<FaPhone />}
               colorScheme='teal'

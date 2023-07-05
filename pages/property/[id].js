@@ -15,8 +15,8 @@ import {GoVerified} from 'react-icons/go';
 import millify from 'millify';
 import ImageScrollbar from '../../components/ImageScrollbar';
 import Link from 'next/link';
-import {useState, createContext, useContext } from 'react';
-import {baseUrl,fetchApi} from '../../utils/fetchApi';
+import {useState, createContext,useEffect, useContext } from 'react';
+import {baseUrl,fetchApi,fetchApi2} from '../../utils/fetchApi';
 import { BasicUsage } from '../../components/BasicUsage';
 import MainBtn from '../../components/MainBtn';
 import PropertyTable from "../../components/property/PropertyTable";
@@ -67,7 +67,8 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
         
     let [toggleMap,setToggleMap ] = useState(true)
     let t = ''
-    const {user} = useContext(AuthContext)
+    const {user,authTokens} = useContext(AuthContext)
+    const token = localStorage.getItem("authTokens"?.access)
     let images = null
     if( text_of_imgs === undefined){
         console.log(text_of_imgs)
@@ -76,7 +77,35 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
     } else {
         images = []
     }
+    const [loading,setLoading]=useState(false)
+ const[exuserDetail,setExUserDetail]=useState({
     
+    name:"",
+    email:"",
+    phonenumber:"",
+  });
+useEffect(()=>{
+    if(user && !loading){
+      const fetchData = async()=>{
+        const url = `https://fortestmimd.pythonanywhere.com/api/users/${owner}/`;
+        
+
+        const response = await fetch(url, {
+    // headers: {
+    //     'Authorization': `Bearer  ${authTokens?.access}`,
+    // },
+    });
+
+        const text = await response.text();
+        setExUserDetail(JSON.parse(text))
+        setLoading(true)
+        console.log(text);
+    //   setExUserDetail(response.data)
+      }
+      fetchData();
+    }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+},[])
 return(
         <>
         <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}>
@@ -148,14 +177,18 @@ return(
             <Divider/>
             <Box p={0} bg='#fff' position={['fixed','fixed','fixed','relative']} left={0} bottom={'0'} width={'100%'}>
             <Grid backgroundColor={"white"} padding={"7px"} templateColumns='repeat(3, 1fr)' gap={2} >
-                <ContactPopover contentType="w" contactWith={`967${'776278868'}`}
+                <ContactPopover contentType="w" contactWith={`${exuserDetail.phonenumber}`}
                   icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
                 <ContactPopover contentType="e"
                  contactWith={'gmalfari@gmail.com'}
-                  icon={<FaEnvelope fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} />
+                  icon={<FaEnvelope fontSize={'sm'} 
+                  fontWeight={'bold'} color='#28b16d' />}
+                   bgcolor={'#006169'} color={'#fff'} />
                 <ContactPopover contentType="p"
-                 icon={<FaPhone fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'}  />
-            
+                contactWith={`${exuserDetail.phonenumber}`}
+                 icon={<FaPhone fontSize={'sm'} 
+                 fontWeight={'bold'} color='#28b16d' />}
+                  bgcolor={'#006169'} color={'#fff'}  />
                  </Grid>
             </Box>
             <Box  mt={"4"} mb={"4"}>
@@ -188,7 +221,7 @@ return(
             <Text as="h2" fontSize="lg" marginBottom="2" fontWeight="bold">
             المعلن
             </Text>
-            <ExUserInfo userDetail={user} ownerId={user?.user_id} />
+            <ExUserInfo userDetail={exuserDetail} />
         </Box>
             <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
                 {/* <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">

@@ -18,6 +18,17 @@ export const fetchApi = async (url) => {
   return data; 
 }
 
+export const fetchApi2 = async (url,token) => {
+
+  const {data} = await axios.get((url), {
+      headers: {
+          // 'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}     `   
+  },
+  });
+  return data; 
+}
+
 
 export const deleteProperty = async (url,authToken)=>{
   console.log(authToken)

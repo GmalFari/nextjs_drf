@@ -7,40 +7,19 @@ import { useContext,useState, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';
 import axios from 'axios';
 import Share from '../share/AllShare';
-const  ExUserInfo=({ownerId})=> {
+const  ExUserInfo=({userDetail})=> {
 
   const {user,authTokens} = useContext(AuthContext);
-  const [phonenumber,setPhonenumber]=useState()  const[userDetail,setUserDetail]=useState({
+  const [phonenumber,setPhonenumber]=useState();
+  // const[userDetail,setUserDetail]=useState({
     
-    name:"",
-    email:"",
-    phonenumber:"",
-  });
-  const getUserdetail = async ()=>{
-    console.log('update tokens')
-   
-}
-useEffect(()=>{
-  let url = `http://fortestmimd.pythonanywhere.com/api/users/3`
-  const getData = async  ()=>{
-  
-  try{
-    
-      
-    await axios.get(url).then((res)=>{
-      alert(res.text())
-      setUserDetail(res.data)
-    })
-  }catch(error){
-    alert(error)
-  }
-  }
-  getData()
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[])
+  //   name:"",
+  //   email:"",
+  //   phonenumber:"",
+  // });
  console.log(userDetail)
  
-  setPhonenumber(userDetail['phonenumber'])
+  // setPhonenumber(userDetail['phonenumber'])
  
   return (
 <Card maxW='md' dir='rtl'>
