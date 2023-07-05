@@ -138,10 +138,10 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         
        
       ))}
-      <Box  ms={2}
+      {/* <Box  ms={6} 
         >
-        <StyleColorMode/>
-        </Box>
+        <StyleColorMode/> الوضع الليلي
+        </Box> */}
     </Box></>
   );
 };
@@ -215,16 +215,16 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         </Link>
       </Text>
       <HStack spacing={{ base: '0', md: '6' }}>
-        <Box display={["none","flex"]}>
+        <Box >
         <StyleColorMode/>
         </Box>
-        <IconButton
+        {/* <IconButton
           display={'block'}
           size="lg"
           variant="ghost"
           aria-label="open menu"
           icon={<FiBell />}
-        />
+        /> */}
         <Flex alignItems={'center'}>
           <Menu>
             <MenuButton

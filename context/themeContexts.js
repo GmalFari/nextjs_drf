@@ -8,12 +8,11 @@ const  StyleColorMode=() =>{
   
     return (
       <>
-        <Box mb={4} bg={bg} color={color}>
-        </Box>
-        <Switch
+       
+        <Switch ms={2} me={4}
             id="dark_mode"
             colorScheme="teal"
-            size="lg"
+            size={["md","lg"]}
             onChange={toggleColorMode}
           />
       </>
