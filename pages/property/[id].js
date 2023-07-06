@@ -195,7 +195,9 @@ return(
             <Text as="h2" fontSize="lg" marginBottom="2" fontWeight="bold">
             معلومات العقار
             </Text>
-            <PropertyTable property_town={property_town}
+            <PropertyTable 
+                         owner={owner}
+                         property_town={property_town}
                         property_district={property_district}
                         property_area={property_area}
                         property_street={property_street}
