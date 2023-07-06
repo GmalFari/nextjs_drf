@@ -70,20 +70,8 @@ export default Profile;
 
 
 
-export async function getServerSideProps({query}) {
-  const purpose = query.purpose || 'for-rent';
-  const rentFrequency = query.rentFrequency || 'yearly';
-  const minPrice = query.minPrice || '0';
-  const maxPrice = query.maxPrice || '1000000';
-  const baths = query.baths || '0';
-  const rooms = query.rooms || '0';
-  const sort = query.sort || 'price-desc';
-  const areaMax = query.areaMax || '35000';
-  const locationExternalIDs = query.locationExternalIDs || '5002';
-  const categoryExternalID = query.categoryExternalID || '4'; 
-  const lang = query.lang || 'ar';
-  // const data = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=${locationExternalIDs}&purpose=${purpose}&hitsPerPage=6&rentFrequency=${rentFrequency}&minPrice=${minPrice}&maxPrice=${maxPrice}&bathsMin=${bathsMin}&roomsMin=${roomsMin}&sort=${sort}&areaMax=${areaMax}&categoryExternalID=${categoryExternalID}&lang=${lang}`);
-      const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/`)
+export async function getServerSideProps({params: {id}}) {
+        const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/?owner=${id}`)
                   return {
                       props:{
                           data:data
