@@ -65,7 +65,7 @@ const Search = ({data,query}) => {
          query[key]='';
       })
       query["search"] = searchValue
-      query["page"] = currentPage
+      //query["page"] = currentPage
 
       router.push({pathname:path,query});
        const data = axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/`,{
