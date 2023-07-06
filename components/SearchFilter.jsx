@@ -52,7 +52,7 @@ const SearchFilter = ({
       )
   useEffect(() => {
     setOnFilter(true)
-    if(onFilter){
+   // if(onFilter){
     const path = router.pathname;
     const {query } = router;  
     query['search']='';
@@ -79,7 +79,7 @@ const SearchFilter = ({
         console.log(error);
       });
      
-    }   
+  //  }   
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 console.log({...query})
