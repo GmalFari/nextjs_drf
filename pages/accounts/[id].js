@@ -37,7 +37,7 @@ const Profile =({data})=>{
   // console.log(user.user_id)
 const myproperties = data?.results
 const [properties,setProperties] = useState(myproperties);
-const listingsH = [properties.filter(myProperty => myProperty.owner == user?.user_id).map((property) =>(
+const listingsH = [properties.filter(myProperty => myProperty.owner.id == user?.user_id).map((property) =>(
   <HorizonalCard   property={property} key={property.id} /> 
       ))]
   return(

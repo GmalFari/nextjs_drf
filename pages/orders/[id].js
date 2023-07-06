@@ -63,7 +63,7 @@ const OrderCard = ({orderDetail:{id,owner,req_order_title,property_description,p
               {property_description && property_description}
           </Text>
         </Stack>
-        <CustDetail userId={owner}  />
+        <CustDetail userId={owner.id}  />
         
       </Box>
     </Center>

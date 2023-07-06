@@ -1,6 +1,10 @@
 /* eslint-disable no-console */
 import { useState,useEffect } from 'react';
-import { Card, CardHeader,Flex, CardBody, CardFooter,
+import {FaBed,FaBath,FaImages,
+  FaWhatsapp,FaEnvelope,FaPhone,FaShare,FaDownload,
+  FaRegHeart, FaVideo} from 'react-icons/fa';
+
+import { Card,Grid, CardHeader,Flex, CardBody, CardFooter,
       useColorMode,useColorModeValue,Switch } from '@chakra-ui/react'
 import { Stack,StackDivider,Button,Box,Heading,Text,Badge, } from '@chakra-ui/react';
 import OrderCreateDrower from '../components/orders/CreateOrderDrower';
@@ -10,6 +14,8 @@ import { fetchApi } from '../utils/fetchApi';
 import Pagination from "../components/Pagination";
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import ContactPopover from "../components/popoverModals/ContactModals";
+
 const Orders = ({data}) =>{
   const { toggleColorMode } = useColorMode();
   const formBackground = useColorModeValue('gray.100', 'gray.700');
@@ -70,7 +76,7 @@ const Orders = ({data}) =>{
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
-  const myOrders = [orders.map((myOrder)=>(
+  const myOrders = [data.map((myOrder)=>(
     <>
         <Box position={"relative"} bg={formBackground} padding={4}>      
         <HorizonalOrder orderDetails={myOrder}/>
@@ -101,6 +107,21 @@ const Orders = ({data}) =>{
           >
       4غرف  &bull;  
           </Box>
+          <Grid backgroundColor={"white"} padding={"7px"} templateColumns='repeat(3, 1fr)' gap={2} >
+                <ContactPopover contentType="w" contactWith={`${"+967776278868"}`}
+                  icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
+                <ContactPopover contentType="e"
+                 contactWith={'gmalfari@gmail.com'}
+                  icon={<FaEnvelope fontSize={'sm'} 
+                  fontWeight={'bold'} color='#28b16d' />}
+                   bgcolor={'#006169'} color={'#fff'} />
+                <ContactPopover contentType="p"
+                contactWith={`${"+967776278868"}`|null}
+                 icon={<FaPhone fontSize={'sm'} 
+                 fontWeight={'bold'} color='#28b16d' />}
+                  bgcolor={'#006169'} color={'#fff'}  />
+                 </Grid>
+            
         </Box>
       </Box>
     </>
@@ -174,7 +195,7 @@ const Orders = ({data}) =>{
 export default Orders;
 export async function getServerSideProps({query}) {
     
-     const orders = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/requests-app/?page=1`)
+     const orders = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/requests-app/`)
     return {
       props: {
         // propertiesForSale:propertyForSale?.results,

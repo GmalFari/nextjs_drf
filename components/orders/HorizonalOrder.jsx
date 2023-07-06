@@ -51,7 +51,7 @@ const HorizonalOrder = ({orderDetails}) => {
           <PopoverContent placement={""}>
               <PopoverArrow />
         <PopoverBody display={"flex"} flexWrap={"wrap"} maxW={"100vw"} justifyContent={"center"} >
-      {user?.user_id == orderDetails.owner ? 
+      {/* {user?.user_id == orderDetails.owner.id ?  */}
          <>
          <UpdateOrderDrower width={"40%"} ml="2px"  isColumn={true} orderDetails={orderDetails}
                id={''}  fontSize={""} />
@@ -60,8 +60,8 @@ const HorizonalOrder = ({orderDetails}) => {
                     alertDialogBody={alertDialogBody} 
                     handleSubmit={handleDelete} />
           </>
-      :null
-      }
+      {/* :null */}
+      
         
         
          </PopoverBody>

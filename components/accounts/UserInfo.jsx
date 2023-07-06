@@ -10,46 +10,46 @@ import ShareToWhatsApp from '../share/ShareToWhatsApp';
 import Share from '../share/AllShare';
 import SocialMedia from './SocialMedia';
 import {useRouter} from "next/router"
-const  UserInfo=({ownerId})=> {
+const  UserInfo=({userDetail,ownerId})=> {
   const router = useRouter();
   const {user,authTokens} = useContext(AuthContext);
   const [phonenumber,setPhonenumber]=useState()
   const [review,setReview]=useState(false)
   
-  const[userDetail,setUserDetail]=useState({
-    first_name:"",
-    last_name:"",
-    email:"",
-    name:"",
-    phonenumber:"",
-  });
+  // const[userDetail,setUserDetail]=useState({
+  //   first_name:"",
+  //   last_name:"",
+  //   email:"",
+  //   name:"",
+  //   phonenumber:"",
+  // });
 
-useEffect(()=>{
-  if(user){
-  try{
-    fetch(`https://fortestmimd.pythonanywhere.com/api/users/me`,{
-    method:'GET',
-    headers:{
-      'Content-Type':'application/json',
-      'Authorization':`Bearer ${authTokens?.access}`
+// useEffect(()=>{
+//   if(user){
+//   try{
+//     fetch(`https://fortestmimd.pythonanywhere.com/api/users/me`,{
+//     method:'GET',
+//     headers:{
+//       'Content-Type':'application/json',
+//       'Authorization':`Bearer ${authTokens?.access}`
 
-    }
-  }).then(response=>response.json()).
-  then(data=>{
-    setUserDetail(data)
-  })
+//     }
+//   }).then(response=>response.json()).
+//   then(data=>{
+//     setUserDetail(data)
+//   })
 
-}
+// }
   
-catch(errors){
+// catch(errors){
   
-}
-}else{
-  window.location.replace("/accounts/login")
-}
+// }
+// }else{
+//   window.location.replace("/accounts/login")
+// }
   
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[])
+// // eslint-disable-next-line react-hooks/exhaustive-deps
+// },[])
 // console.log(userDetail)
 //   setPhonenumber(userDetail['phonenumber'])
       return (

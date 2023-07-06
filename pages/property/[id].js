@@ -84,28 +84,28 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
     email:"",
     phonenumber:"",
   });
-useEffect(()=>{
-    if(user && !loading){
-      const fetchData = async()=>{
-        const url = `https://fortestmimd.pythonanywhere.com/api/users/${owner.id}/`;
+// useEffect(()=>{
+//     if(user && !loading){
+//       const fetchData = async()=>{
+//         const url = `https://fortestmimd.pythonanywhere.com/api/users/${owner.id}/`;
         
 
-        const response = await fetch(url, {
-    // headers: {
-    //     'Authorization': `Bearer  ${authTokens?.access}`,
-    // },
-    });
+//         const response = await fetch(url, {
+//     // headers: {
+//     //     'Authorization': `Bearer  ${authTokens?.access}`,
+//     // },
+//     });
 
-        const text = await response.text();
-        setExUserDetail(JSON.parse(text))
-        setLoading(true)
-        console.log(text);
-    //   setExUserDetail(response.data)
-      }
-      fetchData();
-    }
-// eslint-disable-next-line react-hooks/exhaustive-deps
-},[])
+//         const text = await response.text();
+//         setExUserDetail(JSON.parse(text))
+//         setLoading(true)
+//         console.log(text);
+//     //   setExUserDetail(response.data)
+//       }
+//       fetchData();
+//     }
+// // eslint-disable-next-line react-hooks/exhaustive-deps
+// },[])
 return(
         <>
         <Box width={"50%"} me={"50%"} textAlign={"center"} mt={4} mb={4}>
@@ -177,7 +177,7 @@ return(
             <Divider/>
             <Box p={0} bg='#fff' position={['fixed','fixed','fixed','relative']} left={0} bottom={'0'} width={'100%'}>
             <Grid backgroundColor={"white"} padding={"7px"} templateColumns='repeat(3, 1fr)' gap={2} >
-                <ContactPopover contentType="w" contactWith={`${exuserDetail.phonenumber}`}
+                <ContactPopover contentType="w" contactWith={`${owner.phonenumber}`}
                   icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
                 <ContactPopover contentType="e"
                  contactWith={'gmalfari@gmail.com'}
@@ -185,7 +185,7 @@ return(
                   fontWeight={'bold'} color='#28b16d' />}
                    bgcolor={'#006169'} color={'#fff'} />
                 <ContactPopover contentType="p"
-                contactWith={`${exuserDetail.phonenumber}`}
+                contactWith={`${owner.phonenumber}`}
                  icon={<FaPhone fontSize={'sm'} 
                  fontWeight={'bold'} color='#28b16d' />}
                   bgcolor={'#006169'} color={'#fff'}  />
@@ -223,7 +223,7 @@ return(
             <Text as="h2" fontSize="lg" marginBottom="2" fontWeight="bold">
             المعلن
             </Text>
-            <ExUserInfo userDetail={exuserDetail} />
+            <UserInfo userDetail={owner} ownerId={owner.id} />
         </Box>
             <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
                 {/* <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">
@@ -277,7 +277,7 @@ return(
             </Text>
             </Box>
             exter   
-            <UserInfo userDetail={user} ownerId={user?.user_id} />
+            <UserInfo userDetail={owner} ownerId={owner.id} />
             {/* <AspectRatio ratio={4/3}>
             <iframe
                 src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng'

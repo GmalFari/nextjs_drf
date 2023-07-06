@@ -12,21 +12,21 @@ import {useEffect,useState} from 'react';
 const CustDetail =({userId})=>{
   
  const  [personalDetail,setPersonalDetail] =useState()
-  useEffect(()=>{
-  const options = {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-     // Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5MjUwMDE2LCJpYXQiOjE2ODY2NTgwMTYsImp0aSI6IjFmYWE0Mzk4ZjQ4OTQyMDA4ZjRlOTdiYTU3OThmODg5IiwidXNlcl9pZCI6MX0.AKK2pRWie86HGGO8iFv0qRSCPq0R8fypONFwATTWt8s'
-    },
-      };
+  // useEffect(()=>{
+  // const options = {
+  //   method: 'GET',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //    // Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg5MjUwMDE2LCJpYXQiOjE2ODY2NTgwMTYsImp0aSI6IjFmYWE0Mzk4ZjQ4OTQyMDA4ZjRlOTdiYTU3OThmODg5IiwidXNlcl9pZCI6MX0.AKK2pRWie86HGGO8iFv0qRSCPq0R8fypONFwATTWt8s'
+  //   },
+  //     };
   
-  fetch(`https://fortestmimd.pythonanywhere.com/api/users/${userId}/`, options)
-    .then(response => response.json())
-    .then(response => {setPersonalDetail(response)})
-    .catch(err => console.error(err));}
-    ,[])
-    console.log(personalDetail)
+  // fetch(`https://fortestmimd.pythonanywhere.com/api/users/${userId}/`, options)
+  //   .then(response => response.json())
+  //   .then(response => {setPersonalDetail(response)})
+  //   .catch(err => console.error(err));}
+  //   ,[])
+  //   console.log(personalDetail)
   return(
     <>
 <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
