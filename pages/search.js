@@ -52,12 +52,12 @@ const Search = ({data,query}) => {
     useEffect(() => {
       setOnFilter(false) 
       if(!onFilter){
-      //  if(currentPage < 1){
-        //  setCurrentPage(1)
-   //   }
-     // if(currentPage > itemsCount){
-      //    setCurrentPage(itemsCount)
-    //  }
+       if(currentPage < 1){
+          setCurrentPage(1)
+      }
+      if(currentPage > itemsCount){
+         setCurrentPage(itemsCount)
+      }
       const path = router.pathname;
       const {query } = router;  
       // clear filter data
@@ -65,7 +65,7 @@ const Search = ({data,query}) => {
         delete query[key]
       })
       query["search"] = searchValue
-     // query["page"] = currentPage
+      query["page"] = currentPage
 
       router.push({pathname:path,query});
        const data = axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/`,{
@@ -84,9 +84,9 @@ const Search = ({data,query}) => {
         });
        }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [searchValue]);
+      }, [currentPage,searchValue]);
    
-  useEffect(() => {
+/*  useEffect(() => {
       setOnFilter(false) 
       if(!onFilter){
         if(currentPage < 1){
@@ -122,7 +122,7 @@ const Search = ({data,query}) => {
        }
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [currentPage]);
-   
+   */
     const listingsH = [properties.map((property) =>(
                <HorizonalCard   property={property} key={property.id} /> 
                    ))]
