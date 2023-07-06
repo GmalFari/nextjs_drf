@@ -86,7 +86,8 @@ const Search = ({data,query}) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [searchValue]);
    
-  nFilter(false) 
+  useEffect(() => {
+      setOnFilter(false) 
       if(!onFilter){
         if(currentPage < 1){
           setCurrentPage(1)
