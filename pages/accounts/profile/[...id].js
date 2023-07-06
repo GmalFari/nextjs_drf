@@ -15,20 +15,18 @@ import {FaBed,FaBath,FaImages,
   FaWhatsapp,FaEnvelope,FaPhone,FaShare,FaDownload,
   FaRegHeart} from 'react-icons/fa';
 
-
-import { fetchApi } from '../../utils/fetchApi';
-import HorizonalCard from '../../components/HorizonalCard';
-import UserInfo from '../../components/accounts/UserInfo';
+import { fetchApi } from '../../../utils/fetchApi';
+import HorizonalCard from '../../../components/HorizonalCard';
+import ExUserInfo from '../../../components/accounts/ExUserInfo';
 import axios from 'axios';
 import Link from 'next/link';
 import { FaHome } from 'react-icons/fa';
 import { useContext,useState, useEffect } from 'react';
-import AuthContext from '../../context/AuthContext';  
+import AuthContext from '../../../context/AuthContext';
 import { useRouter } from 'next/router';
-import ContactPopover from '../../components/popoverModals/ContactModals';
+import ContactPopover from '../../../components/popoverModals/ContactModals';
 
-
-const Profile =({data})=>{
+const Profile =({data,secondArgs})=>{
   console.log(JSON.stringify(data))
   const router = useRouter();
   const {query } = router;  
@@ -39,13 +37,13 @@ const Profile =({data})=>{
   // console.log(user.user_id)
 const myproperties = data?.results
 const [properties,setProperties] = useState(myproperties);
-const listingsH = [properties.filter(myProperty => myProperty.owner.id == user?.user_id).map((property) =>(
+const listingsH = [properties.filter(myProperty => myProperty.owner.id == secondArgs).map((property) =>(
   <HorizonalCard   property={property} key={property.id} /> 
       ))]
   return(
   <Box  paddingTop={"100px"}>
  <Center>
-  <UserInfo ownerId={user.user_id} userDetail={user}  />
+  <ExUserInfo ownerId={user.user_id} userDetail={myproperties[0].owner}  />
 {/*     */}
   
   </Center> 
@@ -73,12 +71,12 @@ export default Profile;
 
 
 
-export async function getServerSideProps({params: {id}}) {
-        const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/?owner=${id}`)
+export async function getServerSideProps({params: {id:[a,b]}}) {
+        const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/list-properties/?owner=${a}`)
                   return {
                       props:{
                           data:data,
-
+                          secondArgs:b
                             }
 
                   }

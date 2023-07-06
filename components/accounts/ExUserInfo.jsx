@@ -5,31 +5,45 @@ import {BiLike,BiChat,BiShare} from "react-icons/bi";
 import { StarIcon } from '@chakra-ui/icons';
 import { useContext,useState, useEffect } from 'react';
 import AuthContext from '../../context/AuthContext';
-import axios from 'axios';
+import ShareBtns from '../share/ShareBtns';
+import ShareToWhatsApp from '../share/ShareToWhatsApp';
 import Share from '../share/AllShare';
-const  ExUserInfo=({userDetail})=> {
-
+import SocialMedia from './SocialMedia';
+import {useRouter} from "next/router"
+const  ExUserInfo=({setUserDetail,userDetail})=> {
+  const router = useRouter();
   const {user,authTokens} = useContext(AuthContext);
-  const [phonenumber,setPhonenumber]=useState();
-  // const[userDetail,setUserDetail]=useState({
-    
-  //   name:"",
-  //   email:"",
-  //   phonenumber:"",
-  // });
- console.log(userDetail)
- 
-  // setPhonenumber(userDetail['phonenumber'])
- 
-  return (
+  const [phonenumber,setPhonenumber]=useState()
+  const [review,setReview]=useState(false)
+  
+  const[newuserDetail,setnewUserDetail]=useState({
+    first_name:"",
+    last_name:"",
+    email:"",
+    name:"",
+    phonenumber:"",
+  });
+
+// alert(JSON.stringify(userDetail))
+
+useEffect(()=>{
+  setnewUserDetail(userDetail)
+
+  
+// eslint-disable-next-line react-hooks/exhaustive-deps
+},[])
+// console.log(userDetail)
+//   setPhonenumber(userDetail['phonenumber'])
+      return (
 <Card maxW='md' dir='rtl'>
   <CardHeader>
     <Flex spacing='2'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-        <Avatar name={`${userDetail.name && userDetail.name} ${userDetail.name && userDetail.name}`}/>
+        <Avatar name={`${newuserDetail.first_name && newuserDetail.first_name} 
+        ${newuserDetail.last_name && newuserDetail.last_name}`}/>
         <Box>
-          <Heading size='sm'> {userDetail.name &&userDetail.name} </Heading>
-        {userDetail.phonenumber ? <Text>{userDetail.phonenumber} </Text>: <Text>{"776278868"}</Text>}
+          <Heading size='sm'>{newuserDetail.first_name&& newuserDetail.first_name} {newuserDetail.last_name &&newuserDetail.last_name} </Heading>
+        {newuserDetail.email && <Text>{newuserDetail.email} </Text>}
         </Box>
       </Flex>
       <IconButton
@@ -69,14 +83,17 @@ const  ExUserInfo=({userDetail})=> {
             .fill('')
             .map((_, i) => (
               <StarIcon
+                onClick={(()=>{setReview(!review)})}
                 key={i}
-                color=  {i < 4 ? 'teal.500' : 'gray.300'}
+                color={review? 'teal.500' : 'gray.300'}
               />
             ))}
           <Box as='span' ml='2' color='gray.600' fontSize='sm'>
             {4} reviews
           </Box>
         </Box>
+    <Box>
+    </Box>
   </CardFooter>
 </Card>
 )}

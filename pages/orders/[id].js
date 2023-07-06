@@ -74,7 +74,7 @@ export async function getServerSideProps({params: {id}}){
     const data = await fetchApi(`https://fortestmimd.pythonanywhere.com/api/requests-app/${id}`)
     return {
        props : {
-            orderDetail:data
+            orderDetail:data,
         }
     }
 }
