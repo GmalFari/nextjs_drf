@@ -62,10 +62,10 @@ const Search = ({data,query}) => {
       const {query } = router;  
       // clear filter data
       Object.keys(query).forEach(key => {
-         query[key]='';
+        delete query[key]
       })
       query["search"] = searchValue
-      //query["page"] = currentPage
+      query["page"] = currentPage
 
       router.push({pathname:path,query});
        const data = axios.get(`https://fortestmimd.pythonanywhere.com/api/list-properties/`,{
