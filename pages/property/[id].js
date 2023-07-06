@@ -70,7 +70,7 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
     const {user,authTokens} = useContext(AuthContext)
     const token = localStorage.getItem("authTokens"?.access)
     let images = null
-    if( text_of_imgs === undefined){
+    if( text_of_imgs !== undefined){
         console.log(text_of_imgs)
         images = JSON.parse(text_of_imgs)
 
