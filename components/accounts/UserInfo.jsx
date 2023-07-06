@@ -16,15 +16,17 @@ const  UserInfo=({userDetail,ownerId})=> {
   const [phonenumber,setPhonenumber]=useState()
   const [review,setReview]=useState(false)
   
-  // const[userDetail,setUserDetail]=useState({
-  //   first_name:"",
-  //   last_name:"",
-  //   email:"",
-  //   name:"",
-  //   phonenumber:"",
-  // });
+  const[newuserDetail,setnewUserDetail]=useState({
+    first_name:"",
+    last_name:"",
+    email:"",
+    name:"",
+    phonenumber:"",
+  });
 
-// useEffect(()=>{
+
+useEffect(()=>{
+  setnewUserDetail(userDetail)
 //   if(user){
 //   try{
 //     fetch(`https://fortestmimd.pythonanywhere.com/api/users/me`,{
@@ -49,7 +51,7 @@ const  UserInfo=({userDetail,ownerId})=> {
 // }
   
 // // eslint-disable-next-line react-hooks/exhaustive-deps
-// },[])
+},[])
 // console.log(userDetail)
 //   setPhonenumber(userDetail['phonenumber'])
       return (
@@ -57,11 +59,11 @@ const  UserInfo=({userDetail,ownerId})=> {
   <CardHeader>
     <Flex spacing='2'>
       <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-        <Avatar name={`${userDetail.first_name && userDetail.first_name} 
-        ${userDetail.last_name && userDetail.last_name}`}/>
+        <Avatar name={`${newuserDetail.first_name && newuserDetail.first_name} 
+        ${newuserDetail.last_name && newuserDetail.last_name}`}/>
         <Box>
-          <Heading size='sm'>{userDetail.first_name&& userDetail.first_name} {userDetail.last_name &&userDetail.last_name} </Heading>
-        {userDetail.email && <Text>{userDetail.email} </Text>}
+          <Heading size='sm'>{newuserDetail.first_name&& newuserDetail.first_name} {newuserDetail.last_name &&newuserDetail.last_name} </Heading>
+        {newuserDetail.email && <Text>{newuserDetail.email} </Text>}
         </Box>
       </Flex>
       <IconButton

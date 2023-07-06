@@ -29,11 +29,13 @@ import ContactPopover from '../../components/popoverModals/ContactModals';
 
 
 const Profile =({data})=>{
+  console.log(JSON.stringify(data))
   const router = useRouter();
   const {query } = router;  
   const id = query['id']
   alert(id)
   const {user,authTokens} = useContext(AuthContext);
+  console.log(user)
   // console.log(user.user_id)
 const myproperties = data?.results
 const [properties,setProperties] = useState(myproperties);
@@ -42,8 +44,8 @@ const listingsH = [properties.filter(myProperty => myProperty.owner.id == user?.
       ))]
   return(
   <Box  paddingTop={"100px"}>
- <Center>  
-  <UserInfo ownerId={id}  />
+ <Center>
+  <UserInfo ownerId={id} userDetail={user}  />
 {/*     */}
   
   </Center> 
