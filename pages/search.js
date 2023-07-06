@@ -84,8 +84,8 @@ const Search = ({data,query}) => {
         });
        }
       // eslint-disable-next-line react-hooks/exhaustive-deps
+      
       }, [currentPage,searchValue]);
-   
 /*  useEffect(() => {
       setOnFilter(false) 
       if(!onFilter){

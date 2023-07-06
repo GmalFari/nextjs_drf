@@ -68,14 +68,14 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
     let t = ''
     const {user,authTokens} = useContext(AuthContext)
     const token = localStorage.getItem("authTokens"?.access)
-    let images = null
-    if( text_of_imgs === undefined){
+    let images = []
+    if( text_of_imgs){
         console.log(text_of_imgs)
         images = JSON.parse(text_of_imgs)
-
     } else {
         images = []
     }
+    alert(text_of_imgs)
     const [loading,setLoading]=useState(false)
  const[exuserDetail,setExUserDetail]=useState({
     
