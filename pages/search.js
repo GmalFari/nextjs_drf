@@ -50,7 +50,8 @@ const Search = ({data,query}) => {
       console.log(currentPage)
     };
     useEffect(() => {
-       if(!onFilter){
+      setOnFilter(false) 
+      if(!onFilter){
         if(currentPage < 1){
           setCurrentPage(1)
       }
