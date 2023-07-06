@@ -11,7 +11,9 @@ import {
     Flex,
   } from '@chakra-ui/react'
 
-const PropertyTable =({property_number,
+const PropertyTable =({
+  owner,
+  property_number,
   purpose,
   property_town,
   property_district,
@@ -48,10 +50,10 @@ const PropertyTable =({property_number,
       
     </Thead>
     <Tbody>
-    {phone && 
+    {owner.phonenumber && 
     <Tr>
         <Td> رقم التواصل     </Td>
-        <Td> {phone}</Td>
+        <Td> {owner.phonenumber}</Td>
         
       </Tr>
       }

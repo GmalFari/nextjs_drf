@@ -70,7 +70,7 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
     const {user,authTokens} = useContext(AuthContext)
     const token = localStorage.getItem("authTokens"?.access)
     let images = null
-    if( text_of_imgs !== undefined){
+    if( text_of_imgs === undefined){
         console.log(text_of_imgs)
         images = JSON.parse(text_of_imgs)
 
@@ -87,7 +87,7 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
 useEffect(()=>{
     if(user && !loading){
       const fetchData = async()=>{
-        const url = `https://fortestmimd.pythonanywhere.com/api/users/${owner}/`;
+        const url = `https://fortestmimd.pythonanywhere.com/api/users/${owner.id}/`;
         
 
         const response = await fetch(url, {
@@ -112,7 +112,7 @@ return(
          <MyBreadcrumb /> 
          </Box>
 
-            {user?.user_id == owner ? 
+            {user?.user_id == owner.id ? 
                 <UpdateDeletebtns propertyDetails={propertyDetails} id={id} />
                :null }
         <Box
