@@ -32,6 +32,7 @@ const Profile =({data})=>{
   const router = useRouter();
   const {query } = router;  
   const id = query['id']
+  alert(id)
   const {user,authTokens} = useContext(AuthContext);
   // console.log(user.user_id)
 const myproperties = data?.results
