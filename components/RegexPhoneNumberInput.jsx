@@ -19,7 +19,7 @@ const RegexPhoneNumberInput = ({phonenumber,setPhonenumber}) => {
    if (PHONE_REGEX.test(phoneNumber)) {
      errors["phoneNumber"] = null;
    } else {
-     errors["phoneNumber"] = "Invalid phone number. Please try again."
+     errors["phoneNumber"] = "يجب ان يحتوي رقم التلفون  على 9 ارقام."
    }
    return PHONE_REGEX.test(phoneNumber);
  }
