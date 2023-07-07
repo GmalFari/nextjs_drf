@@ -9,7 +9,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import {useEffect,useState} from 'react';
-const CustDetail =({userId})=>{
+const CustDetail =({owner})=>{
   
  const  [personalDetail,setPersonalDetail] =useState()
   // useEffect(()=>{
@@ -31,11 +31,11 @@ const CustDetail =({userId})=>{
     <>
 <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
           <Avatar
-            src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
+            // src={'https://avatars0.githubusercontent.com/u/1164541?v=4'}
             alt={'Author'}
           />
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
-            <Text fontWeight={600}>{userId }</Text>
+            <Text fontWeight={600}>{owner.first_name&&owner.first_name } {owner.last_name&& owner.last_name}</Text>
             <Text color={'gray.500'}>Feb 08, 2021 · 6min read</Text>
           </Stack>
   </Stack>

@@ -93,11 +93,12 @@ const Orders = ({data}) =>{
 
             </Text>
       </Box>
-              <Box display='flex' alignItems='base line' mt={4}> 
-          <Badge borderRadius='full' px='2' colorScheme='teal' ms='4' me="4">
+              <Box mt={"12px"} display='flex' alignItems='base line'> 
+          <Badge mt={"12px"} borderRadius='full' px='2' colorScheme='teal' h="24px" w={"50px"}
+           ms='4' me="4">
            جديد
           </Badge>
-          <Box
+          <Box mt={"12px"}
             color='gray.500'
             fontWeight='semibold'
             letterSpacing='wide'
@@ -105,9 +106,15 @@ const Orders = ({data}) =>{
             textTransform='uppercase'
             ml='2'
           >
-      4غرف  &bull;  
+          {myOrder.rooms !== null ?
+        `${myOrder.rooms} غرف`:
+            "4 غرف "   
+        }
           </Box>
-          <Grid backgroundColor={"white"} padding={"7px"} templateColumns='repeat(3, 1fr)' gap={2} >
+          <Grid backgroundColor={"transparent"}
+              width={"66%"}
+              me={"1vw"}
+               padding={"7px"} templateColumns='repeat(3, 1fr)' gap={2} >
                 <ContactPopover contentType="w" contactWith={`${"+967776278868"}`}
                   icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
                 <ContactPopover contentType="e"

@@ -13,12 +13,12 @@ import { fetchApi,baseUrl } from '../../utils/fetchApi'
 import { Img } from "@chakra-ui/react";
 import CustDetail from "../../components/CustDetail"
 const OrderCard = ({orderDetail:{id,owner,req_order_title,property_description,property_town}}) => {
- alert('hgg')
  const defaultImg = "https://www.pythonanywhere.com/user/fortestmimd/files/home/fortestmimd/realestate_restapi/mediafiles/No_Image_Available.jpg"
-
+console.log(owner)
   return (
     <Center py={6}>
       <Box
+
         maxW={'445px'}
         w={'full'}
         bg={useColorModeValue('white', 'gray.900')}
@@ -63,7 +63,7 @@ const OrderCard = ({orderDetail:{id,owner,req_order_title,property_description,p
               {property_description && property_description}
           </Text>
         </Stack>
-        <CustDetail userId={owner.id}  />
+        <CustDetail owner={owner}    />
         
       </Box>
     </Center>
