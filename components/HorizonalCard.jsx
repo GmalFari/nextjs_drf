@@ -77,7 +77,7 @@ const HorizonalCard = (
         <PopoverContent placement={""}>
             <PopoverArrow />
             <PopoverBody display={"flex"} flexDirection={"column"}>
-    {user?.user_id == owner ? 
+    {user?.user_id == owner.id ? 
         <UpdateDeletebtns  isColumn={true} propertyDetails={property} id={id} width={"70px"} fontSize={""} />
           
       :null} 
