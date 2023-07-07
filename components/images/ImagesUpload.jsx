@@ -20,16 +20,16 @@ const uploaderOptions = {
     }
   }
 }
+
 const ImagesUpload = ({PropertyId,imageFiles,setImageFiles}) => {
   // console.log(agentsDetails)
   console.log(typeof JSON.stringify(imageFiles))
   console.log( JSON.stringify(imageFiles))
-
 const uploadMulti = 
 <UploadDropzone uploader={uploader}
 options={uploaderOptions}
 onUpdate={files => files.map(x => {
-          setImageFiles([...imageFiles,x.fileUrl]) 
+          setImageFiles([...imageFiles,`${x.fileUrl}`]) 
           } )
           }
 onComplete={files => alert(files.map(x => x.fileUrl).join("\n"))}

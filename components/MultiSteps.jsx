@@ -751,9 +751,9 @@ let testApi = async()=>{
     myform.append("building_age",myData.building_age);
     myform.append("state",myData.state);
     myform.append("directorate",myData.directorate);
-    
+    console.log(imageFiles)
     //imgs 
-    myform.append("text_of_imgs",JSON.stringify(imageFiles));
+    myform.append("text_of_imgs",imageFiles);
     const url = 'https://fortestmimd.pythonanywhere.com/api/list-properties/'
      const options = {
         method: 'POST',

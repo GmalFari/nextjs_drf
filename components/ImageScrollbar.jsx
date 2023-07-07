@@ -42,8 +42,7 @@ const ImageScrollbar = ({data,coverPhoto}) => {
     let mainImg = null
     mainImg = coverPhoto?coverPhoto.url:"https://www.pythonanywhere.com/user/fortestmimd/files/home/fortestmimd/realestate_restapi/mediafiles/No_Image_Available.jpg"
     const [defaultImg, setDefaultImg] = useState(mainImg);
-    const [imgWH ,setImgWH] =useState({width:"100%",
-                                        height:"700px"})
+    const [imgWH ,setImgWH] =useState({width:"100%",                                    height:"700px"})
     const imageRef = useRef()
     useEffect(()=>{
         if (imageRef){

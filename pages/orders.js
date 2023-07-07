@@ -115,15 +115,15 @@ const Orders = ({data}) =>{
               width={"66%"}
               me={"1vw"}
                padding={"7px"} templateColumns='repeat(3, 1fr)' gap={2} >
-                <ContactPopover contentType="w" contactWith={`${"+967776278868"}`}
+                <ContactPopover contentType="w" contactWith={`${myOrder.owner.phonenumber}`|"+967776278868"}
                   icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
                 <ContactPopover contentType="e"
-                 contactWith={'gmalfari@gmail.com'}
+                  contactWith={`${myOrder.owner.email}`|"gmalfari@gmail.com"}
                   icon={<FaEnvelope fontSize={'sm'} 
                   fontWeight={'bold'} color='#28b16d' />}
                    bgcolor={'#006169'} color={'#fff'} />
                 <ContactPopover contentType="p"
-                contactWith={`${"+967776278868"}`|null}
+                  contactWith={`${myOrder.owner.phonenumber}`|"+967776278868"}
                  icon={<FaPhone fontSize={'sm'} 
                  fontWeight={'bold'} color='#28b16d' />}
                   bgcolor={'#006169'} color={'#fff'}  />
