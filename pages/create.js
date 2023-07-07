@@ -94,7 +94,8 @@ const [myData,setData] = useState(
   // //form2
   // title:"",
   // img:"",
-})
+}
+)
 
 
   return (

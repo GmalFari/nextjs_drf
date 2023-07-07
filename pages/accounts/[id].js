@@ -36,22 +36,27 @@ const Profile =({data})=>{
   const {user,authTokens} = useContext(AuthContext);
   // console.log(user.user_id)
 const myproperties = data?.results
-const [properties,setProperties] = useState(myproperties);
+
+const [properties,setProperties] = useState([
+  
+]);
+// myproperties.length == 0? setProperties([]):setProperties(myproperties)
 const [pageCount,setPageCount] = useState(data?.count);
     const itemsCount = Math.round(pageCount)
     const [searchValue,setSearchValue] = useState('')
     const [onSearch,setOnSearch] = useState(false)
     const [searchFilter,setSearchFilter] = useState(false);
     const [toggleVerticalCard,setToggleVerticalCard] = useState('true');
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(0);
     const pageSize = 5;
    const [onFilter,setOnFilter]=useState(false)
    const onPageChange = (page) => {
     setCurrentPage(page);
     console.log(currentPage)
   };
+  // alert(myproperties)
 useEffect(() => {
-   if(currentPage < 1){
+   if(currentPage == 1){
       setCurrentPage(1)
   }
   if(currentPage > itemsCount){
@@ -86,9 +91,9 @@ useEffect(() => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
-const listingsH = [properties.filter(myProperty => myProperty.owner.id == user?.user_id).map((property) =>(
+const listingsH = [properties.length >=1?properties.filter(myProperty => myProperty.owner.id == user?.user_id).map((property) =>(
   <HorizonalCard   property={property} key={property.id} /> 
-      ))]
+      )):null]
   
   return(
   <Box  paddingTop={"100px"}>
