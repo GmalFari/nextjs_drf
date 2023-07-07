@@ -36,10 +36,7 @@ const Profile =({data})=>{
   const {user,authTokens} = useContext(AuthContext);
   // console.log(user.user_id)
 const myproperties = data?.results
-
-const [properties,setProperties] = useState([
-  
-]);
+const [properties,setProperties] = useState(myproperties);
 // myproperties.length == 0? setProperties([]):setProperties(myproperties)
 const [pageCount,setPageCount] = useState(data?.count);
     const itemsCount = Math.round(pageCount)
