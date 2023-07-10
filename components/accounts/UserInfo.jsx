@@ -10,7 +10,7 @@ import ShareToWhatsApp from '../share/ShareToWhatsApp';
 import Share from '../share/AllShare';
 import SocialMedia from './SocialMedia';
 import {useRouter} from "next/router"
-const  UserInfo=({userDetail,exUser,ownerId})=> {
+const  UserInfo=({userDetail,exUser})=> {
   const router = useRouter();
   const {user,authTokens} = useContext(AuthContext);
   const [phonenumber,setPhonenumber]=useState()

@@ -69,13 +69,18 @@ const PropertyDetails = ({propertyDetails,propertyDetails:
     const {user,authTokens} = useContext(AuthContext)
     const token = localStorage.getItem("authTokens"?.access)
     let images = []
-    alert(text_of_imgs)
+    images = text_of_imgs
+    // if (text_of_imgs.startswith()){}
+    let myimgs = text_of_imgs.toString()
+    myimgs = myimgs.split(",")
+    console.log(myimgs[0])
     // images = JSON.parse(text_of_imgs)
     // try{
     //     images = JSON.parse(text_of_imgs)
     // } catch(error) {
     //     alert(error)
     // }
+
     const [loading,setLoading]=useState(false)
     const[exuserDetail,setExUserDetail]=useState({
     name:"",
@@ -124,11 +129,11 @@ return(
         <Box width="100%" >
         <Grid mb={2} templateColumns='repeat(3, 1fr)' gap={2}>
             <BasicUsage comId="I" icon={<FaImages />}
-             btnContent={"الصور"} coverPhoto={coverPhoto} photos={images}/>
+             btnContent={"الصور"} coverPhoto={coverPhoto} photos={myimgs}/>
             <BasicUsage comId="M" icon={<FaMapMarked />} 
-            btnContent={"الخريطة"}   coverPhoto={coverPhoto} photos={photos}   geography={location.coordinates} />
+            btnContent={"الخريطة"}   coverPhoto={coverPhoto} photos={myimgs}   geography={location.coordinates} />
             <BasicUsage comId="V" icon={<FaYoutube />} 
-             btnContent={"الفيديو"}  coverPhoto={coverPhoto} photos={photos}   />
+             btnContent={"الفيديو"}  coverPhoto={coverPhoto} photos={myimgs}   />
         </Grid>
         </Box>
           </Box>
@@ -196,6 +201,7 @@ return(
             <PropertyTable 
                          owner={owner}
                          property_town={property_town}
+                         currency={currency}
                         property_district={property_district}
                         property_area={property_area}
                         property_street={property_street}

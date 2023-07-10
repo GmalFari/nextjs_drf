@@ -13,6 +13,7 @@ import {
 
 const PropertyTable =({
   owner,
+  currency,
   property_number,
   purpose,
   property_town,
@@ -21,7 +22,6 @@ const PropertyTable =({
   ownership_type,
   property_street,
   property_description,
-  currency,
   is_negotiable,
   phone,
   rooms,
@@ -60,7 +60,7 @@ const PropertyTable =({
       {property_price && 
       <Tr>
         <Td> السعر      </Td>
-        <Td> {property_price}</Td>
+        <Td> {`${property_price} ${currency} `}</Td>
         
       </Tr>
       }
@@ -68,6 +68,12 @@ const PropertyTable =({
       <Tr>
         <Td>المدينه</Td>
         <Td>{property_town}</Td>
+      </Tr>
+      }
+      {property_district && 
+      <Tr>
+        <Td>المدينه</Td>
+        <Td>{property_district}</Td>
       </Tr>
       }
       {property_area &&

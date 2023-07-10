@@ -60,14 +60,14 @@ const ImageScrollbar = ({data,coverPhoto}) => {
         <Box textAlign={"center"}  overflow={"hidden"}  pt={"10%"} borderRadius="2px"   
                 >
             <Img style={{"objectFit":"cover"}}
-             src={defaultImg} height={"50rm"}
+             src={defaultImg} height={"40rm"}
              textAlign={"center"}
               overflow="hidden" ref={imageRef}  alt=""
               sizes="(max-width: 500px) 100px, (max-width: 500px) 400px, 800px"                
   />
         </Box>
         <Box>
-        {defaultImg &&
+        {/* {defaultImg && */}
         <ScrollMenu position={'initial'} LeftArrow={LeftArrow}
          RightArrow={RightArrow} style={{overflow:"scroll"}}>
         {data && data.map((item) =>(
@@ -90,7 +90,7 @@ const ImageScrollbar = ({data,coverPhoto}) => {
             
         ))}
         </ScrollMenu>
-        }
+        {/* } */}
         </Box>
 
 </Box>)

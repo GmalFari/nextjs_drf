@@ -98,7 +98,7 @@ const listingsH = [properties.filter(myProperty => myProperty.owner.id == second
   return(
   <Box  paddingTop={"100px"}>
  <Center>
-  <ExUserInfo ownerId={user.user_id} 
+  <ExUserInfo
   userDetail={property_owner}  />
 {/*     */}
   

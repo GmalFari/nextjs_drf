@@ -127,10 +127,12 @@ const Search = ({data,query}) => {
                <HorizonalCard   property={property} key={property.id} /> 
                    ))]
     const listingsV = [properties.map((property) =>(
-        
-       
+  
        <Property property={property} key={property.id} />
         ))]
+      properties.map((mymap)=>{
+        console.log(mymap.text_of_imgs)
+      })
   return (
     <Box>
         {/* <Flex
