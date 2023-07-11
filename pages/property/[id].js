@@ -256,7 +256,7 @@ return(
         </Box>
         <Box border={'1px solid #006169'} color={'#006169'} d={'flex'}>
            <Box ms={'5px'} me={'5px'}><FaFlag/></Box>
-          <Box>الإبلاغ عن هذا الإعلان<Box>
+          <Box>الإبلاغ عن هذا الإعلان</Box>
           </Box>
             <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
                 {/* <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">
