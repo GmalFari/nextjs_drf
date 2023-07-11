@@ -6,7 +6,9 @@ import {Flex,Grid,Select
      Divider,
      Heading
      ,Button} from '@chakra-ui/react';
-import {FaBed,FaBath,FaImages,
+import {
+     FaFlag,
+     FaBed,FaBath,FaImages,
     FaWhatsapp,FaEnvelope,FaPhone,FaShare,FaDownload,
     FaRegHeart, FaVideo} from 'react-icons/fa';
 import { Img } from '@chakra-ui/react';
@@ -252,6 +254,10 @@ return(
 
             </Link>
         </Box>
+        <Box border={'1px solid #006169'} color={'#006169'} d={'flex'}>
+           <Box ms={'5px'} me={'5px'}><FaFlag/></Box>
+          <Box>الإبلاغ عن هذا الإعلان<Box>
+          </Box>
             <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
                 {/* <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">
                     <Text> Type</Text>
@@ -307,7 +313,7 @@ return(
             المعلن
             </Text>
             </Box>
-            exter   
+            exte
             <ExUserInfo  userDetail={owner} ownerId={owner.id} />
             {/* <AspectRatio ratio={4/3}>
             <iframe
