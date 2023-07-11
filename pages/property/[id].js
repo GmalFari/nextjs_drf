@@ -254,18 +254,18 @@ return(
 
             </Link>
         </Box>
-        <Box 
+        <Flex
           borderRadius={'5px'}
           ms={'5px'}
           me={'5px'}
           border={'2px solid #006169'}
                color={'#006169'} 
-               d={'flex'} 
+              // d={'flex'} 
                flexWrap={'nowrap'}
                     >
            <Box ms={'2px'} me={'2px'}><FaFlag/></Box>
-          <Box>الإبلاغ عن هذا الإعلان</Box>
-          </Box>
+          الإبلاغ عن هذا الإعلان
+          </Flex>
             <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
                 {/* <Flex justifyContent="space-between" w="400px"  borderBottom="1px" borderColor="gray.100" p="3">
                     <Text> Type</Text>
