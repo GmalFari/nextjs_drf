@@ -258,8 +258,12 @@ return(
           borderRadius={'5px'}
           ms={'5px'}
           me={'5px'}
-          border={'2px solid #006169'} color={'#006169'} d={'flex'}>
-           <Box ms={'5px'} me={'5px'}><FaFlag/></Box>
+          border={'2px solid #006169'}
+               color={'#006169'} 
+               d={'flex'} 
+               flexWrap={'nowrap'}
+                    >
+           <Box ms={'2px'} me={'2px'}><FaFlag/></Box>
           <Box>الإبلاغ عن هذا الإعلان</Box>
           </Box>
             <Flex flexWrap="wrap" textTransform="uppercase" justifyContent="space-between">
