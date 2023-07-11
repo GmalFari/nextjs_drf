@@ -255,6 +255,8 @@ return(
             </Link>
         </Box>
         <Flex
+          fontWeight={'bold'}
+          mt={5}
           borderRadius={'5px'}
           ms={'5px'}
           me={'5px'}
