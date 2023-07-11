@@ -254,7 +254,11 @@ return(
 
             </Link>
         </Box>
-        <Box border={'1px solid #006169'} color={'#006169'} d={'flex'}>
+        <Box 
+          borderRadius={'5px'}
+          ms={'5px'}
+          me={'5px'}
+          border={'2px solid #006169'} color={'#006169'} d={'flex'}>
            <Box ms={'5px'} me={'5px'}><FaFlag/></Box>
           <Box>الإبلاغ عن هذا الإعلان</Box>
           </Box>
