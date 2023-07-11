@@ -143,7 +143,28 @@ return(
                 <MainBtn icon={<FaShare fontWeight={'bold'} color='#006169' />}  color={'#fff'} />
                 <MainBtn icon={<FaDownload fontWeight={'bold'} color='#006169' />} color={'#fff'}  />
             </Flex>
-            {coverPhoto && <Img src={coverPhoto} ms="2px" me="2px" width={"100%"} height={"100%"} />}
+            <Box>
+            {coverPhoto && <Img src={coverPhoto} ms="2px" me="2px" width={"100%"}
+             height={"100%"} />}
+             <Box position={"absolute"}
+                        padding={"1px 3px"}
+                        borderRadius={"5"}
+                        fontSize={"xx-small"}
+                        fontWeight={"700"}
+                        bg={"#ffffffa3"}
+                         top={"0.5"} 
+                         left={"0.5"}
+                          zIndex={"111"}
+                          display={"flex"}>
+                    <Box color="green.400" me={"2px"} mt={"2px"}  >
+
+                       <GoVerified  /> 
+                    </Box>
+                    <Box fontSize={"xx-small"} fontWeight={"600"}>
+                    تم التوثيق
+                    </Box>
+                  </Box>
+            </Box>
           </Box>
         <Box w='full'>
         <Flex paddingTop='2' alignItems='center' justifyContent='space-between'>
@@ -273,10 +294,14 @@ return(
            </Flex> 
             </Box>
             </Box>
-            <Box mt={"60px"}  width={"20vw"} display={["none","none","none"]}
+            <Box mt={"60px"} 
+              width={"20vw"} display={["none","none","none"]}
              background={"#fff"}
              height={"100vh"}>
-            <Img  src={coverPhoto} width={"100%"} height={"150px"} />
+             
+             <Img  src={coverPhoto} width={"100%"} height={"150px"} />
+            
+           
             <Box display={['none','block']}>
             <Text as="h2" fontSize="lg" marginBottom="2" fontWeight="bold">
             المعلن

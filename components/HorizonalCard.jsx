@@ -16,6 +16,7 @@ import UpdateDeletebtns from "./property/UpdateDeletebtns";
 import AuthContext from "../context/AuthContext";
 import { useContext } from "react";
 import { FaEllipsisV } from 'react-icons/fa';
+
 import {
     Popover,
     PopoverTrigger,
@@ -107,6 +108,24 @@ const HorizonalCard = (
                           zIndex={"111"}>
                         {purpose}
                   </Box>
+                 {coverPhoto &&  <Box position={"absolute"}
+                        padding={"1px 3px"}
+                        borderRadius={"5"}
+                        fontSize={"xx-small"}
+                        fontWeight={"700"}
+                        bg={"#ffffffa3"}
+                         top={"0.5"} 
+                         left={"0.5"}
+                          zIndex={"111"}
+                          display={"flex"}>
+                    <Box color="green.400" me={"2px"} mt={"2px"}  >
+
+                       <GoVerified  /> 
+                    </Box>
+                    <Box fontSize={"xx-small"} fontWeight={"600"}>
+                    تم التوثيق
+                    </Box>
+                  </Box>}
             </Box>
             
             </Link>
@@ -114,7 +133,9 @@ const HorizonalCard = (
             <Box position={'relative'} w={[200,250]} flexGrow={1} >
                 <Flex paddingTop="2" alignItems="center" justifyContent="space-between" >
                     <Flex alignItems="center">
-                        <Box   paddingRight="0" color="green.400">{isVerified &&  <GoVerified />}</Box>
+                        <Box   paddingRight="0" color="green.400">{
+                          coverPhoto ?
+                           <GoVerified />:null}</Box>
                         <Text fontWeight="bold" fontSize="sm"> ريال يمني  {property_price| 'none'}{rentFrequency && `/${rentFrequency}`}</Text>
                     </Flex>
                 </Flex>

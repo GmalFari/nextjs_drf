@@ -8,6 +8,7 @@ import {
     Td,
     TableCaption,
     TableContainer,
+    Link,
     Flex,
   } from '@chakra-ui/react'
 
@@ -50,6 +51,21 @@ const PropertyTable =({
       
     </Thead>
     <Tbody>
+    {/* {owner.phonenumber &&  */}
+    <Tr>
+        <Td>طريقة التوثيق</Td>
+        <Td> 
+          خلال  الفيدو
+        <Td>   مقاول المبنى</Td>
+        </Td>
+        
+      </Tr>
+    <Tr>
+        <Td> رقم /المقاول/المهندس     </Td>
+        <Td>
+        <Link color={"#006190"} href={"tel:+967776278868"}>7xxxxxxxx</Link> </Td>
+        
+      </Tr>
     {owner.phonenumber && 
     <Tr>
         <Td> رقم التواصل     </Td>
@@ -132,9 +148,6 @@ const PropertyTable =({
       }
     </Tbody>
     <Tfoot>
-      
-        
-      
     </Tfoot>
   </Table>
 </TableContainer>

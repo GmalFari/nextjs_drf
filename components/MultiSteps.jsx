@@ -661,6 +661,112 @@ const Form3 = ({errors, data,handleChange,setPropertyLocation,propertyLocation,c
     </>
   );
 };
+const Form4 = ({ errors,myData,setData,title,handleChange,setTitle,setImg}) => {
+  const [inputError,setInputError] = useState('')
+  return (
+    <>
+      <Heading w="100%" textAlign={'center'} fontWeight="normal">
+      بيانات التواصل
+      </Heading>
+      <Box textAlign={"center"} fontSize={"small"}>بيانات هذه الصفحة  لتوثيق العقار وليظهر العقار مع العقارات الموثقة </Box>
+      <SimpleGrid columns={1} spacing={6}>
+      {/* رقم المعلن */}
+      <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
+        <FormLabel
+          htmlFor="title"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}
+          mt="2%">
+رقم صاحب العقار 
+        </FormLabel>
+        <Input
+          borderColor={errors?.sqrt_area?'red':'none'}
+          type="text"
+          name="property_owner_number"
+          id="property_owner_number"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          value={myData.property_title}
+          onChange={handleChange}
+          // onChange={e=>{setTitle(e.target.value)}}
+        />
+        
+      </FormControl>
+      {/* رقم الإعلان */}
+      
+    {/* السعر */}
+    <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
+        <FormLabel
+          htmlFor="title"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}
+          mt="2%">
+        إسم مهندس أو مقاول المشروع
+        </FormLabel>
+        <Input
+          borderColor={errors?.sqrt_area?'red':'none'}
+          type="text"
+          name="property_owner_number"
+          id="property_owner_number"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          value={myData.property_title}
+          onChange={handleChange}
+          // onChange={e=>{setTitle(e.target.value)}}
+        />
+        
+         {/* <FormLabel color={"red"} display={errors?.property_title?'flex':'none'}>
+                 <small>{errors?.property_title?errors.property_title:null}</small>
+                 </FormLabel> */}
+      </FormControl>
+        <FormControl as={GridItem} colSpan={[6, 6, null, 2]}>
+        <FormLabel
+          htmlFor="property_number"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}
+          mt="2%">
+          رقم التواصل مع مهندس أو مقاول المشروع
+        </FormLabel>
+        <Input
+          type="text"
+          // name="property_number"
+          // id="property_number"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          // value={myD}
+          // onChange={handleChange}
+          // onChange={e=>{setTitle(e.target.value)}}
+        />
+      </FormControl>
+        <FormControl>
+      
+        
+      </FormControl>
+      </SimpleGrid>
+    </>
+  );
+};
 
 export default function Multistep({
   myData,setData,
@@ -886,27 +992,29 @@ const handleSubmit = async e => {
                            setPropertyLocation={setPropertyLocation} 
                             /> :
                             step == 4?
+                            <Form4 
+                         errors={errors}
+                         myData={myData}
+                          setData={setData} handleChange={handleChange}
+                           title={myData.property_title}  setImg={setImg} />:
                             <>
                             <Box>أختر الصور للعقار</Box>
                             <ImagesUpload 
 
                             imageFiles={imageFiles} setImageFiles={setImageFiles} />
-                            </>:null
+                            </>
                             
                             }
           
                             <Box>
                             </Box>
-                            
-                           
-                           
         <ButtonGroup mt="5%" w="100%">
           <Flex w="100%" justifyContent="space-between">
             <Flex>
               <Button
                 onClick={() => {
                   setStep(step - 1);
-                  setProgress(progress -25);
+                  setProgress(progress -20);
                 }}
                 isDisabled={step === 1}
                 colorScheme="teal"
@@ -920,7 +1028,7 @@ const handleSubmit = async e => {
               </Button>
               <Button
                 w="7rem"
-                isDisabled={step === 4}
+                isDisabled={step === 5}
                 onClick={() => {
                   setStep(step + 1);
                   if (step === 4) {

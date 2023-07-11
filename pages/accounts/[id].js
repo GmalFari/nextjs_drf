@@ -94,7 +94,7 @@ const listingsH = [properties.length >=1?properties.filter(myProperty => myPrope
   
   return(
   <Box  paddingTop={"100px"}>
- <Center>
+ <Center> 
   <UserInfo  userDetail={user}  />
 {/*     */}
   
