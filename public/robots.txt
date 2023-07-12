@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://nextjs-drf.vercel.app/api/lsitemap.xml
+Sitemap: https://nextjs-drf.vercel.app/api/sitemap.xml
