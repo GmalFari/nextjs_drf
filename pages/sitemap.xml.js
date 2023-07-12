@@ -1,5 +1,5 @@
 import React from 'react';
- 
+ const MAIN_URL ='https://nextjs-drf.vercel.app'
 const EXTERNAL_DATA_URL = 'https://fortestmimd.pythonanywhere.com/api/list-properties/';
  
 const createSitemap = (posts) => `<?xml version="1.0" encoding="UTF-8"?>
@@ -8,7 +8,7 @@ const createSitemap = (posts) => `<?xml version="1.0" encoding="UTF-8"?>
           .map(({ id }) => {
             return `
                 <url>
-                    <loc>${`${EXTERNAL_DATA_URL}/${id}`}</loc>
+                    <loc>${`${MAIN_URL}/property/${id}`}</loc>
                 </url>
             `;
           })
