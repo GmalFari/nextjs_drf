@@ -1,6 +1,6 @@
 import React from 'react';
  
-const EXTERNAL_DATA_URL = 'http://fortestmimd.pythonanywhere.com/api/list-properties/';
+const EXTERNAL_DATA_URL = 'https://fortestmimd.pythonanywhere.com/api/list-properties/';
  
 const createSitemap = (posts) => `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
