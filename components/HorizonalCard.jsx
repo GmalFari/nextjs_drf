@@ -47,8 +47,8 @@ const HorizonalCard = (
     //   const loc2 = location[1]['name_l1'].replace('Dubai','Sanaa');
     //   const loc3 = location[2]['name_l1'].replace('Dubai','Sanaa');
     const defaultImg =
-     "https://www.pythonanywhere.com/user/fortestmimd/files/home/fortestmimd/realestate_restapi/mediafiles/No_Image_Available.jpg"
-    const {user} = useContext(AuthContext)
+        "https://upcdn.io/kW15bRn/raw/No_Image_Available.jpg"
+        const {user} = useContext(AuthContext)
 
       return (
       <Flex w={['95%','95%','700px','800px']} 
