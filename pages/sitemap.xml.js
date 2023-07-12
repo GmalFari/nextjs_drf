@@ -1,5 +1,5 @@
 import React from 'react';
- const MAIN_URL ='https://nextjs-drf.vercel.app'
+ const MAIN_URL ='https://libna-property.vercel.app'
 const EXTERNAL_DATA_URL = 'https://fortestmimd.pythonanywhere.com/api/list-properties/';
  
 const createSitemap = (posts) => `<?xml version="1.0" encoding="UTF-8"?>
