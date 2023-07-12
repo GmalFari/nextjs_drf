@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postbuild": "node ./scripts/generate-sitemap.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -29,6 +30,7 @@
     "eslint-config-next": "13.0.4",
     "express": "^4.18.2",
     "formik": "^2.2.9",
+    "globby": "^13.2.2",
     "js-cookie": "^3.0.1",
     "jwt-decode": "^3.1.2",
     "mapbox-gl": "^2.12.1",
