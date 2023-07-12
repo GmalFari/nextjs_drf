@@ -9,7 +9,15 @@ const nextConfig = {
     'upcdn.io',
     'upload.io',
   ]
-  }
+  } ,
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+    ]
+  },
 
 }
 
