@@ -95,7 +95,7 @@ const HorizonalCard = (
                      left =' 0'
                       bottom='0'
                     right='0'
-                      zIndex='9999'
+                      zIndex='2'
                       backgroundColor='rgba(0,0,0,0,0.6)'
                     ></Box>
                 <Img src={coverPhoto ? coverPhoto:defaultImg} 
@@ -114,7 +114,7 @@ const HorizonalCard = (
                         color={'white'}
                          top={"0.5"} 
                          right={"0.5"}
-                          zIndex={"111"}>
+                          zIndex={"1"}>
                         {property_status==="نشط"? purpose:property_status}
                   </Box>
                  {coverPhoto &&  <Box position={"absolute"}
@@ -125,7 +125,7 @@ const HorizonalCard = (
                         bg={"#ffffffa3"}
                          top={"0.5"} 
                          left={"0.5"}
-                          zIndex={"111"}
+                          zIndex={"1"}
                           display={"flex"}>
                     <Box color="green.400" me={"2px"} mt={"2px"}  >
 
