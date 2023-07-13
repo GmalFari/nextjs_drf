@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from 'next/image';
 import { Img } from "@chakra-ui/react";
 import { FaPhone,FaEnvelope,FaWhatsapp,FaMapMarker,faGridVer} from "react-icons/fa";
-import {Box,Grid,Flex,IconButton,Text,Avator, Spacer} from '@chakra-ui/react';
+import {Box,Grid,Flex,IconButton,Text,Avator, Spacer,LinkBox, LinkOverlay } from '@chakra-ui/react';
 import millify from 'millify';
 import {BsBoxArrowInDown, BsGridFill,BsFillGeoAltFill} from 'react-icons/bs';
 import {GoVerified} from 'react-icons/go'
@@ -87,8 +87,8 @@ const HorizonalCard = (
         </PopoverContent>
         </Popover>
 
-        
-            <Link  href={`/property/${id}`} passHref>
+            <LinkBox as='article' maxW='sm' p='5' borderWidth='1px' rounded='md'>
+            <LinkOverlay href={`/property/${id}`} passHref>
             <Box position={"relative"}  height={'100%'} me="4" >
                 <Img src={coverPhoto ? coverPhoto:defaultImg} 
                 borderRadius={2}
@@ -128,8 +128,8 @@ const HorizonalCard = (
                     </Box>
                   </Box>}
             </Box>
-            
-            </Link>
+            </LinkOverlay>
+            </LinkBox>
 
             <Box position={'relative'} w={[200,250]} flexGrow={1} >
                 <Flex paddingTop="2" alignItems="center" justifyContent="space-between" >
