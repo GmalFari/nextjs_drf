@@ -63,14 +63,7 @@ const HorizonalCard = (
             cursor="pointer"
             position={"relative"}
             >
-              <Box position='absolute'
-                    top=' 0'
-                     left =' 0'
-                      bottom='0'
-                    right='0'
-                      zIndex='99'
-                      backgroundColor='rgba(0,0,0,0.4)'
-                    >gfff</Box>
+              
         <Popover width={"100px"} position={"asolute"}  dir={"ltr"} placement='bottom-end'>
            
         <PopoverTrigger>
@@ -97,7 +90,16 @@ const HorizonalCard = (
             <LinkBox as='horizonalCard'  rounded='md'>
             <LinkOverlay href={`/property/${id}`} passHref>
             <Box position={"relative"}  height={'100%'} me="4" >
-                
+                <Box 
+                    display={property_status==="نشط"? 'none':'block'}
+                    position='absolute'
+                    top=' 0'
+                     left =' 0'
+                      bottom='0'
+                    right='0'
+                      zIndex='99'
+                      backgroundColor='rgba(0,0,0,0.4)'
+                    ></Box>
                 <Img src={coverPhoto ? coverPhoto:defaultImg} 
                 borderRadius={2}
                 width={[160,170,250]} 
