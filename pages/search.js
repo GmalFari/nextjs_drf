@@ -28,6 +28,8 @@ import { IconButton } from '@chakra-ui/react';
 import Pagination from '../components/Pagination';
 import OurLogo from '../components/Logo';
 
+import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
+
 // import { paginate } from '../helper/paginate';
 const Search = ({data,query}) => {
   console.log(query)  
