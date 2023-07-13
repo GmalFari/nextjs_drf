@@ -21,15 +21,15 @@ const mapContext = createContext()
 import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 
 function MyApp({Component,pageProps,router}){
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
  
     useEffect(() => {
         const handleRouteStart = () =>{
-            setLoading(true);
+            setLoading(false);
             NProgress.start()
         };
         const handleRouteDone = () => {
-            setLoading(false);
+            setLoading(true);
             NProgress.done();}
         router.events.on("routeChangeStart", handleRouteStart);
         router.events.on("routeChangeComplete", handleRouteDone);
@@ -50,10 +50,13 @@ function MyApp({Component,pageProps,router}){
           <AuthProvider >
         
         <Layout >
-        
+        {!loading? <Box padding='6' boxShadow='lg' bg='white'>
+  <SkeletonCircle size='10' />
+  <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+</Box>:
                     
                         <Component {...pageProps} />
-        
+            }
                     </Layout>
             
             </AuthProvider>
