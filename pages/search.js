@@ -31,8 +31,7 @@ import OurLogo from '../components/Logo';
 
 // import { paginate } from '../helper/paginate';
 const Search = ({data,query}) => {
-  console.log(query)  
-  alert(JSON.stringify(data))
+  
   const myproperties = data?.results
 
     const [properties,setProperties] = useState(myproperties);
