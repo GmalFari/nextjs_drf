@@ -29,9 +29,11 @@ const MainAlert=({headerContent,alertDialogHeader,alertDialogBody,handleSubmit})
   },[islogout, logoutUser])
   return (
     <>
-<Button   onClick={onOpen} colorScheme='red' variant='outline'>
+<Button rightIcon={<FiTrash />}    onClick={onOpen} 
+  colorScheme='red' 
+  variant='outline'>
   {headerContent} 
-  <FiTrash mx={'2px'} />
+  
   </Button>      <AlertDialog
         motionPreset='slideInBottom'
         leastDestructiveRef={cancelRef}
