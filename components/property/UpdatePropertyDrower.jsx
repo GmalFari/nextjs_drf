@@ -13,6 +13,7 @@ import {
 
 } from '@chakra-ui/react';
 import Multistep from '../MultiSteps';
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { FaPlus } from 'react-icons/fa';
 import MainAlert from "../MainAlert"
 import { useDisclosure } from '@chakra-ui/react';
@@ -32,7 +33,7 @@ const UpdatePropertyDrower = ({isColumn,propertyDetails}) => {
   return (
     <Box position='relative'  display={"flex"} flexWrap={"wrap"} flexDirection={"column !important"}>
 
-     <Button leftIcon={< FaPlus/>}  ref={btnRef} 
+     <Button leftIcon={< ExternalLinkIcon/>}  ref={btnRef} 
      colorScheme='teal' onClick={onOpen}>
       تعديل العقار
       </Button>
