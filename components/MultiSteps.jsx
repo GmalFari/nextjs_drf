@@ -1082,13 +1082,14 @@ const handleSubmit = async e => {
                 onSubmit={handleSubmit}
                 >   
               <Button
+                isLoading={loading}
                 type="submit"
                 w="8rem"
                 colorScheme="teal"
                 variant="solid"
                // onClick={() => {submitted?
         
-              
+              spinnerPlacement={loading?'end'}
               // toast(
               //   // {
               //   // title: ` خطأ`,
