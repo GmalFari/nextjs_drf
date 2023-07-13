@@ -28,7 +28,6 @@ import { IconButton } from '@chakra-ui/react';
 import Pagination from '../components/Pagination';
 import OurLogo from '../components/Logo';
 
-import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
 
 // import { paginate } from '../helper/paginate';
 const Search = ({data,query}) => {
@@ -137,12 +136,9 @@ const Search = ({data,query}) => {
         console.log(mymap.text_of_imgs)
       })
   return (
-    <>
-    {!data?
-      <Box padding='6' boxShadow='lg' bg='white'>
-  <SkeletonCircle size='10' />
-  <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
-</Box>:
+  
+    
+      
     <Box>
         {/* <Flex
         cursor="pointer" 
@@ -302,8 +298,8 @@ const Search = ({data,query}) => {
       </Box>   
  
     </Box>
-            }
-    </>
+            
+    
   )
 }
 
