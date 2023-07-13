@@ -60,7 +60,7 @@ function MyApp({Component,pageProps,router}){
             </AuthProvider>
         </Chakra>
 
-        </>
+        
     );
 }
 
