@@ -96,7 +96,7 @@ const HorizonalCard = (
                       bottom='0'
                     right='0'
                       zIndex='99'
-                      backgroundColor='rgba(0,0,0,0)'
+                      backgroundColor='rgba(0,0,0)'
                     >gfff</Box>
                 <Img src={coverPhoto ? coverPhoto:defaultImg} 
                 borderRadius={2}
