@@ -1085,8 +1085,10 @@ const handleSubmit = async e => {
                 isLoading={loading}
                 type="submit"
                 w="8rem"
-                colorScheme="teal"
-                variant="solid"
+                loadingText='Submitting'
+                colorScheme='teal'
+                variant={loading ?'solid':'outline'}
+                
                // onClick={() => {submitted?
         
               spinnerPlacement={loading?'end'}
