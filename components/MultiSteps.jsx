@@ -48,13 +48,47 @@ const Form1 = ({data,
                 setPropertyLocation,
                 propertyLocation,
                 })=> {
+      const statusType =['نشط','تم الحجز','تم البيع','تم التأجير']
   return (
     <>
     
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
       أعلن عن عقارك 
       </Heading>
-      
+      <FormControl display={myData.id?'block':'none'}>
+    <FormLabel
+          htmlFor="typeProperty"
+          fontSize="sm"
+          fontWeight="md"
+          color="gray.700"
+          _dark={{
+            color: 'gray.50',
+          }}>
+           حالة العقار
+        </FormLabel>
+        <Select
+            dir="ltr"
+          id="property_status"
+          name="property_status"
+          onChange={handleChange}
+          autoComplete="statusType"
+          placeholder=" حالة العقار"
+          focusBorderColor="brand.400"
+          shadow="sm"
+          size="sm"
+          w="full"
+          rounded="md"
+          >
+          {statusType.map((typeP)=>{
+        return (
+            <option key={typeP} value={typeP}>{typeP}</option>
+        )
+  })}
+        </Select>
+      </FormControl>
+
+
+  
       <FormControl as={GridItem} dir="rtl" colSpan={[6, 3]}>
         <FormLabel
           htmlFor="typeProperty"
