@@ -4,7 +4,7 @@
 
 import Router from "next/router";
 import Head from "next/head";
-import { ChakraProvider,extendTheme,Container } from "@chakra-ui/react";
+import {Box, ChakraProvider,extendTheme,Container } from "@chakra-ui/react";
 import Chakra from "../context/Chakra"
 import Layout from '../components/Layout';
 import "nprogress/nprogress.css";
