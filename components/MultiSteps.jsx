@@ -55,7 +55,7 @@ const Form1 = ({data,
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
       أعلن عن عقارك 
       </Heading>
-      <FormControl display={myData.id?'block':'none'}>
+      <FormControl display={data.id?'block':'none'}>
     <FormLabel
           htmlFor="typeProperty"
           fontSize="sm"
@@ -70,6 +70,7 @@ const Form1 = ({data,
             dir="ltr"
           id="property_status"
           name="property_status"
+          value={data.property_status}
           onChange={handleChange}
           autoComplete="statusType"
           placeholder=" حالة العقار"
