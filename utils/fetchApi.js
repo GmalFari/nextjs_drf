@@ -72,7 +72,7 @@ export const UpdateProperty= async(id,myData,imageFiles,authToken,setLoading)=> 
     myform.append("property_title",myData.property_title);
     myform.append("property_type",myData.property_type);
     
-                                                           
+     myform.append("property_status",myData.property_status);                                                   
     myform.append("purpose",myData.purpose);
     myform.append("location",JSON.stringify(myData.location));
     
