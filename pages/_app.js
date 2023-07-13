@@ -12,14 +12,14 @@ import "nprogress/nprogress.css";
 // for validate phone number
 import 'react-phone-number-input/style.css'
 import NProgress  from "nprogress";
-import { useEffect,createContext } from "react";
+import { useEffect,useState,createContext } from "react";
 import "./carousel.scss";
 import "../styles/Home.module.css"
 import { AuthProvider } from "../context/AuthContext";
 import theme from"../styles/theme"
 const mapContext = createContext()
 function MyApp({Component,pageProps,router}){
-    const [loading, setLoading] = React.useState(false);
+    const [loading, setLoading] = useState(false);
  
     useEffect(() => {
         const handleRouteStart = () =>{
