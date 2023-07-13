@@ -170,8 +170,20 @@ const HorizonalCard = (
                 </Box>
                 :null} */}
                 </Box>
-                <Grid  width={'100%'} position={'absolute'} bottom={1}   templateColumns='repeat(3, 1fr)' gap={1} >
-                <ContactPopover headerContent="تواصل مع المعلن لمزيد من المعلومات" contentType="w"
+                <Box width={'100%'} position={'absolute'} bottom={1}>
+                <Grid display={'relative'}     templateColumns='repeat(3, 1fr)' gap={1} >
+                      padding={"1px 3px"}
+                        borderRadius={"5"}
+                        fontSize={"xx-small"}
+                        fontWeight={"700"}
+                        backgroundColor={purpose=="للبيع"?"#a3e5eb":"#ff9f53"}
+                        color={'white'}
+                         top={"0.5"} 
+                         right={"0.5"}
+                          zIndex={"9"}>
+                        {property_status==="نشط"? purpose:property_status}
+                  </Box>
+                    <ContactPopover headerContent="تواصل مع المعلن لمزيد من المعلومات" contentType="w"
                  contactWith={`${owner.phonenumber}`|'+967776278868'}  icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
                 <ContactPopover  contentType="e" contactWith={'gmalfari@gmail.com'} 
                 icon={<FaEnvelope fontSize={'sm'} fontWeight={'bold'} color='#28b16d' />} bgcolor={'#006169'} color={'#fff'} />
@@ -180,6 +192,7 @@ const HorizonalCard = (
                     <Avatar ms="70%"   size="sm" src={agency?.logo?.url} />
                     </Link> */}
             </Grid>
+             </Box>
             </Box>
         </Flex>
 )
