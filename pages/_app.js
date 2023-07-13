@@ -58,7 +58,7 @@ function MyApp({Component,pageProps,router}){
         <Layout >
                 
                     
-                        <Component {!loading?MyLoading:...pageProps} />
+                        <Component {...pageProps} />
             
                     </Layout>
             
