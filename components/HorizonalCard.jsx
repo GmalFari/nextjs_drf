@@ -177,7 +177,7 @@ const HorizonalCard = (
                     templateColumns='repeat(3, 1fr)'
                     gap={1} >
                     <Box 
-                    display={property_status==="نشط"? 'none':'block'}
+                    display={property_status==="نشط"? 'none':'none'}
                     position='absolute'
                     top=' 0'
                      left =' 0'
