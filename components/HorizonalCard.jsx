@@ -87,7 +87,7 @@ const HorizonalCard = (
         </PopoverContent>
         </Popover>
 
-            <LinkBox as='article' maxW='sm' p='5' borderWidth='1px' rounded='md'>
+            <LinkBox as='horizonalCard'  rounded='md'>
             <LinkOverlay href={`/property/${id}`} passHref>
             <Box position={"relative"}  height={'100%'} me="4" >
                 <Img src={coverPhoto ? coverPhoto:defaultImg} 
