@@ -1,3 +1,10 @@
+const [loading, setLoading] = React.useState(false);
+      React.useEffect(() => {
+     
+
+
+
+
 import Router from "next/router";
 import Head from "next/head";
 import { ChakraProvider,extendTheme,Container } from "@chakra-ui/react";
@@ -15,9 +22,16 @@ import { AuthProvider } from "../context/AuthContext";
 import theme from"../styles/theme"
 const mapContext = createContext()
 function MyApp({Component,pageProps,router}){
+    const [loading, setLoading] = React.useState(false);
+ 
     useEffect(() => {
-        const handleRouteStart = () => NProgress.start();
-        const handleRouteDone = () => NProgress.done();
+        const handleRouteStart = () =>{
+            setLoading(true);
+            NProgress.start()
+        };
+        const handleRouteDone = () => {
+            setLoading(false);
+            NProgress.done();}
         router.events.on("routeChangeStart", handleRouteStart);
         router.events.on("routeChangeComplete", handleRouteDone);
         router.events.on("routeChangeError", handleRouteDone);
