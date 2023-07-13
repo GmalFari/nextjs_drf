@@ -19,7 +19,13 @@ import { AuthProvider } from "../context/AuthContext";
 import theme from"../styles/theme"
 const mapContext = createContext()
 import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
+const MyLoading =()=>(
 
+     <Box padding='6' boxShadow='lg' bg='white'>
+  <SkeletonCircle size='10' />
+  <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+</Box>
+);
 function MyApp({Component,pageProps,router}){
     const [loading, setLoading] = useState(true);
  
@@ -50,13 +56,10 @@ function MyApp({Component,pageProps,router}){
           <AuthProvider >
         
         <Layout >
-        {!loading? <Box padding='6' boxShadow='lg' bg='white'>
-  <SkeletonCircle size='10' />
-  <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
-</Box>:
+                
                     
-                        <Component {...pageProps} />
-            }
+                        <Component {!loading?MyLoading:...pageProps} />
+            
                     </Layout>
             
             </AuthProvider>
