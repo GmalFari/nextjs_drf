@@ -43,6 +43,7 @@ function MyApp({Component,pageProps,router}){
         };
       }, [router]);
     return (
+        <>
         {loading?
             <Box padding='6' boxShadow='lg' bg='white'>
   <SkeletonCircle size='10' />
@@ -57,6 +58,7 @@ function MyApp({Component,pageProps,router}){
             </AuthProvider>
         </Chakra>
 }
+        </>
     );
 }
 
