@@ -49,14 +49,10 @@ function MyApp({Component,pageProps,router}){
 
           <AuthProvider >
         <Layout >
-        {loading?
-            <Box padding='6' boxShadow='lg' bg='white'>
-  <SkeletonCircle size='10' />
-  <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
-</Box>:
+        
                     
                         <Component {...pageProps} />
-        }
+        
                     </Layout>
             
             </AuthProvider>
