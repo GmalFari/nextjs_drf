@@ -18,6 +18,8 @@ import "../styles/Home.module.css"
 import { AuthProvider } from "../context/AuthContext";
 import theme from"../styles/theme"
 const mapContext = createContext()
+import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
+
 function MyApp({Component,pageProps,router}){
     const [loading, setLoading] = useState(false);
  
@@ -41,6 +43,11 @@ function MyApp({Component,pageProps,router}){
         };
       }, [router]);
     return (
+        {loading?
+            <Box padding='6' boxShadow='lg' bg='white'>
+  <SkeletonCircle size='10' />
+  <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+</Box>:
       <Chakra theme={theme} >
 
           <AuthProvider >
@@ -49,6 +56,7 @@ function MyApp({Component,pageProps,router}){
                     </Layout>
             </AuthProvider>
         </Chakra>
+}
     );
 }
 
