@@ -171,18 +171,21 @@ const HorizonalCard = (
                 :null} */}
                 </Box>
                 <Box width={'100%'} position={'absolute'} bottom={1}>
-                <Grid display={'relative'} width={'100%'}     templateColumns='repeat(3, 1fr)' gap={1} >
-                      padding={"1px 3px"}
-                        borderRadius={"5"}
-                        fontSize={"xx-small"}
-                        fontWeight={"700"}
-                        backgroundColor={purpose=="للبيع"?"#a3e5eb":"#ff9f53"}
-                        color={'white'}
-                         top={"0.5"} 
-                         right={"0.5"}
-                          zIndex={"9"}>
-                        {property_status==="نشط"? purpose:property_status}
-                  </Box>
+                <Grid display={'relative'} 
+                    width={'100%'}     
+                    templateColumns='repeat(3, 1fr)'
+                    gap={1} >
+                    <Box 
+                    display={property_status==="نشط"? 'none':'block'}
+                    position='absolute'
+                    top=' 0'
+                     left =' 0'
+                      bottom='0'
+                    right='0'
+                      zIndex='99'
+                      backgroundColor='rgba(0,0,0,0.4)'
+                    ></Box>
+                      
                     <ContactPopover headerContent="تواصل مع المعلن لمزيد من المعلومات" contentType="w"
                  contactWith={`${owner.phonenumber}`|'+967776278868'}  icon={<FaWhatsapp fontSize={'md'}  content="whatsapp" fontWeight={'bold'}  color='white' />} bgcolor={"#28b16d"}/>
                 <ContactPopover  contentType="e" contactWith={'gmalfari@gmail.com'} 
