@@ -172,7 +172,8 @@ const HorizonalCard = (
                 </Box>
                 <Box width={'100%'} position={'absolute'} bottom={1}>
                 <Grid display={'relative'} 
-                    width={'100%'}     
+                    width={'100%'}   
+                    munW={'100%'}
                     templateColumns='repeat(3, 1fr)'
                     gap={1} >
                     <Box 
