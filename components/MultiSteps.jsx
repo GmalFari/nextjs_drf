@@ -1064,7 +1064,7 @@ const handleSubmit = async e => {
               <Button
                 w="7rem"
                 display={step===5?'none':'block'}
-                isDisabled={step === 5}
+                
                 onClick={() => {
                   setStep(step + 1);
                   if (step === 5) {
