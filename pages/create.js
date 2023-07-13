@@ -58,6 +58,7 @@ const Create = () => {
 const [myData,setData] = useState(
   {
   property_number:null,
+    property_status:"",
   property_title:"",
   property_type:"",
   coverPhoto:null,
