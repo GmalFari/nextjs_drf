@@ -171,7 +171,7 @@ const HorizonalCard = (
                 :null} */}
                 </Box>
                 <Box width={'100%'} position={'absolute'} bottom={1}>
-                <Grid display={'relative'}     templateColumns='repeat(3, 1fr)' gap={1} >
+                <Grid display={'relative'} width={'100%'}     templateColumns='repeat(3, 1fr)' gap={1} >
                       padding={"1px 3px"}
                         borderRadius={"5"}
                         fontSize={"xx-small"}
