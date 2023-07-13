@@ -41,6 +41,7 @@ const HorizonalCard = (
                property_town,property_area
         ,property_price,rentFrequency,
         location,rooms,
+        property_status,
         baths,area,agency,isVerified,externalID,geography}}) => {
     //   const loc11 = location[3]['name_l1']
     //   const loc1 = loc11.replace('Dubai','Sanaa');
@@ -106,7 +107,7 @@ const HorizonalCard = (
                          top={"0.5"} 
                          right={"0.5"}
                           zIndex={"111"}>
-                        {purpose}
+                        {property_status==="نشط"? purpose:property_status}
                   </Box>
                  {coverPhoto &&  <Box position={"absolute"}
                         padding={"1px 3px"}
