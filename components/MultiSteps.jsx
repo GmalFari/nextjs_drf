@@ -1063,10 +1063,11 @@ const handleSubmit = async e => {
               </Button>
               <Button
                 w="7rem"
+                display{step==5?'none':'block'}
                 isDisabled={step === 5}
                 onClick={() => {
                   setStep(step + 1);
-                  if (step === 4) {
+                  if (step === 5) {
                     setProgress(100);
                   } else {
                     setProgress(progress + 33.33);
@@ -1077,7 +1078,7 @@ const handleSubmit = async e => {
                 القادم
               </Button>
             </Flex>
-            {step === 4?(
+            {step === 5?(
               <form  enctype="multipart/form-data" 
                 onSubmit={handleSubmit}
                 >   
