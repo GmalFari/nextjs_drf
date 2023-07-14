@@ -40,7 +40,7 @@ function MyApp({Component,pageProps,router}){
      }
         const handleRouteDone = () =>{
              NProgress.done()
-             setLoading(true);
+             setLoading(false);
           }
         router.events.on("routeChangeStart", handleRouteStart);
         router.events.on("routeChangeComplete", handleRouteDone);
@@ -61,9 +61,9 @@ function MyApp({Component,pageProps,router}){
           <AuthProvider >
      
         (<Layout >
-                {loading?(
+                {loading?
        <>  Loading.....</>
-    ):
+    :
                     
                         <Component {...pageProps} />
           }
