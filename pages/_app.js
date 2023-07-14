@@ -35,7 +35,7 @@ function MyApp({Component,pageProps,router}){
         
        const handleRouteStart = () => {
             NProgress.start()
-            setLoading(true);
+            //setLoading(true);
             
      }
         const handleRouteDone = () =>{
