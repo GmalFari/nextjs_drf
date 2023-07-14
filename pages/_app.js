@@ -61,7 +61,7 @@ function MyApp({Component,pageProps,router}){
           <AuthProvider >
      
         (<Layout >
-                {oading?(
+                {loading?(
        <>  Loading.....</>
     ):
                     
