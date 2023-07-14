@@ -30,13 +30,13 @@ function MyApp({Component,pageProps,router}){
     const [isLoading, setIsLoading] = useState(false);
  
     useEffect(() => {
-         const handleChangeStart = (url: string) => {
+         const handleChangeStart = (url) => {
             if (url === "<root_to_show_loading>") {
                 setIsLoading(true);
             }
         };
 
-        const handleChangeEnd = (url: string) => {
+        const handleChangeEnd = (url) => {
             if (url === "<root_to_show_loading") {
                 setIsLoading(false);
             }
