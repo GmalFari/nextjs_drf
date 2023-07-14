@@ -27,22 +27,33 @@ const MyLoading =()=>(
 </Box>
 );
 function MyApp({Component,pageProps,router}){
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
  
     useEffect(() => {
-        const handleRouteStart = () => setLoading(false);
-        const handleRouteDone = () =>  setLoading(true);
-        router.events.on("routeChangeStart", handleRouteStart);
-        router.events.on("routeChangeComplete", handleRouteDone);
-        router.events.on("routeChangeError", handleRouteDone);
+         const handleChangeStart = (url: string) => {
+            if (url === "<root_to_show_loading>") {
+                setIsLoading(true);
+            }
+        };
+
+        const handleChangeEnd = (url: string) => {
+            if (url === "<root_to_show_loading") {
+                setIsLoading(false);
+            }
+        };
+       // const handleRouteStart = () => setLoading(false);
+        //const handleRouteDone = () =>  setLoading(true);
+        router.events.on("routeChangeStart", handleChangeStart);
+        router.events.on("routeChangeComplete", handleChangeEnd);
+        router.events.on("routeChangeError", handleChangeEnd);
      
         return () => {
           // Make sure to remove the event handler on unmount!
-          router.events.off("routeChangeStart", handleRouteStart);
-          router.events.off("routeChangeComplete", handleRouteDone);
-          router.events.off("routeChangeError", handleRouteDone);
+          router.events.off("routeChangeStart", handleChangeStart);
+          router.events.off("routeChangeComplete", handleChangeEnd);
+          router.events.off("routeChangeError", handleChangeEnd);
         };
-      }, [router]);
+      }, []);
     return (
     
         
@@ -51,7 +62,7 @@ function MyApp({Component,pageProps,router}){
           <AuthProvider >
      
         (<Layout >
-                {!loading?(
+                {isLoading?(
        <>  Loading.....</>
     ):
                     
