@@ -52,7 +52,7 @@ function MyApp({Component,pageProps,router}){
           router.events.off("routeChangeComplete", handleRouteDone);
           router.events.off("routeChangeError", handleRouteDone);
         };
-      }, []);
+      }, [router]);
     return (
     
         
@@ -60,8 +60,8 @@ function MyApp({Component,pageProps,router}){
 
           <AuthProvider >
      
-        (<Layout >
-                {loading?
+        <Layout >
+           {loading?
        <>  Loading.....</>
     :
                     
