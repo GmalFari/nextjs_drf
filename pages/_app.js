@@ -27,31 +27,30 @@ const MyLoading =()=>(
 </Box>
 );
 function MyApp({Component,pageProps,router}){
-    const [isLoading, setIsLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
  
     useEffect(() => {
-         const handleChangeStart = (url) => {
-            if (url === "<root_to_show_loading>") {
-                setIsLoading(true);
-            }
-        };
+         
 
-        const handleChangeEnd = (url) => {
-            if (url === "<root_to_show_loading") {
-                setIsLoading(false);
-            }
-        };
-       // const handleRouteStart = () => setLoading(false);
-        //const handleRouteDone = () =>  setLoading(true);
-        router.events.on("routeChangeStart", handleChangeStart);
-        router.events.on("routeChangeComplete", handleChangeEnd);
-        router.events.on("routeChangeError", handleChangeEnd);
+        
+       const handleRouteStart = () => {
+            NProgress.start()
+            setLoading(true);
+            
+     }
+        const handleRouteDone = () =>{
+             NProgress.done()
+             setLoading(true);
+          }
+        router.events.on("routeChangeStart", handleRouteStart);
+        router.events.on("routeChangeComplete", handleRouteDone);
+        router.events.on("routeChangeError", handleRouteDone);
      
         return () => {
           // Make sure to remove the event handler on unmount!
-          router.events.off("routeChangeStart", handleChangeStart);
-          router.events.off("routeChangeComplete", handleChangeEnd);
-          router.events.off("routeChangeError", handleChangeEnd);
+          router.events.off("routeChangeStart", handleRouteStart);
+          router.events.off("routeChangeComplete", handleRouteDone);
+          router.events.off("routeChangeError", handleRouteDone);
         };
       }, []);
     return (
@@ -62,13 +61,13 @@ function MyApp({Component,pageProps,router}){
           <AuthProvider >
      
         (<Layout >
-                {isLoading?(
+                {oading?(
        <>  Loading.....</>
     ):
                     
                         <Component {...pageProps} />
           }
-                    </Layout>)
+                    </Layout>
      
             </AuthProvider>
         </Chakra>
