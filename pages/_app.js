@@ -30,13 +30,8 @@ function MyApp({Component,pageProps,router}){
     const [loading, setLoading] = useState(true);
  
     useEffect(() => {
-        const handleRouteStart = () =>{
-            setLoading(false);
-            NProgress.start()
-        };
-        const handleRouteDone = () => {
-            setLoading(true);
-            NProgress.done();}
+        const handleRouteStart = () => setLoading(false);
+        const handleRouteDone = () =>  setLoading(true);
         router.events.on("routeChangeStart", handleRouteStart);
         router.events.on("routeChangeComplete", handleRouteDone);
         router.events.on("routeChangeError", handleRouteDone);
@@ -54,14 +49,14 @@ function MyApp({Component,pageProps,router}){
       <Chakra theme={theme} >
 
           <AuthProvider >
-        
+     {!loading?MyLoading:
         <Layout >
                 
                     
                         <Component {...pageProps} />
             
                     </Layout>
-            
+     }
             </AuthProvider>
         </Chakra>
 
