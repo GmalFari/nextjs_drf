@@ -52,7 +52,7 @@ function MyApp({Component,pageProps,router}){
      
         (<Layout >
                 {!loading?(
-         Loading.....
+       <>  Loading.....</>
     ):
                     
                         <Component {...pageProps} />
