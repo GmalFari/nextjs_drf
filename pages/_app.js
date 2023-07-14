@@ -49,14 +49,16 @@ function MyApp({Component,pageProps,router}){
       <Chakra theme={theme} >
 
           <AuthProvider >
-     {!loading?MyLoading:
-        <Layout >
-                
+     
+        (<Layout >
+                {!loading?(
+         Loading.....
+    ):
                     
                         <Component {...pageProps} />
-            
-                    </Layout>
-     }
+          }
+                    </Layout>)
+     
             </AuthProvider>
         </Chakra>
 
